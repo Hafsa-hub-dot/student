@@ -10022,6 +10022,18 @@ body.parentDirect #studentPortal .ppMenuText span{font-size:11px!important;color
 #studentPortal #ppBack.showHome{visibility:visible!important}
 body.parentDirect #studentPortal #ppBack{display:grid!important}
 #studentPortal .ppScreen{padding-bottom:34px!important}
+/* v64 — الرئيسية مختصرة وزرها عائم دائمًا */
+#studentPortal #ppHome .ppHomeHero{display:none!important}
+#studentPortal .ppAllTabs{display:flex!important;position:fixed!important;z-index:90!important;right:50%!important;bottom:max(18px,env(safe-area-inset-bottom))!important;left:auto!important;margin:0!important;padding:0!important;transform:translateX(50%)!important;background:transparent!important;box-shadow:none!important}
+#studentPortal .ppAllTab{display:none!important}
+#studentPortal .ppAllTab[data-pp-tab="ppHome"]{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:145px!important;min-height:50px!important;padding:0 20px!important;border:1px solid #7e1438!important;border-radius:17px!important;background:linear-gradient(145deg,#991c4b,#63102c)!important;color:#fff!important;font-family:"El Messiri",sans-serif!important;font-size:15px!important;font-weight:900!important;box-shadow:0 6px 0 #460a20,0 14px 24px rgba(66,7,28,.26),inset 0 1px 0 rgba(255,255,255,.25)!important}
+#studentPortal .ppScreen{padding-bottom:105px!important}
+/* v65 — لغة واضحة لولي الأمر */
+#studentPortal .ppTag{font-size:11px!important;line-height:1.65!important;text-align:right!important}
+#studentPortal .ppTag b{color:#741631!important}
+#studentPortal .ppNoteCard p strong{color:#741631!important}
+#studentPortal .ppGradeMetric span{font-size:9px!important;line-height:1.45!important}
+#studentPortal .ppGradeMetric b{font-size:12px!important}
 </style>
 </head>
 <body>
@@ -10903,7 +10915,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>أجندة الأسبوع القادم</strong><span>خطة الأسبوع لكل مادة</span></span>
+                  <span class="ppMenuText"><strong>عرض خطة ابنتي للأسبوع القادم</strong><span>ماذا ستتعلم وما المطلوب منها في كل مادة</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10911,7 +10923,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon wine">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>الدرجات والتقييمات</strong><span>النتائج الحالية والسجل الأسبوعي التراكمي</span></span>
+                  <span class="ppMenuText"><strong>عرض درجات ابنتي وتقييماتها</strong><span>درجات التطبيقات والواجبات والمشاريع بوضوح</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10919,7 +10931,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-4 3 2 5-6"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>التحليل البياني</strong><span>تطور التطبيقات والواجبات والمشروع أسبوعًا بعد أسبوع</span></span>
+                  <span class="ppMenuText"><strong>متابعة تطور مستوى ابنتي</strong><span>رسم بسيط يوضح تقدّمها خلال الأسابيع</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10927,7 +10939,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon gold">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>ملاحظات المعلمات</strong><span>الملاحظات الأكاديمية والسلوكية للفترة</span></span>
+                  <span class="ppMenuText"><strong>عرض ملاحظات معلمات ابنتي</strong><span>ملاحظات واضحة عن التعلم والسلوك والجاهزية</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10935,7 +10947,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20v-7h14v7M7 13V5h10v8M9 20v2M15 20v2"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>مكان الجلوس في الصف</strong><span>مقعد ابنتكم فقط مع حماية خصوصية الطالبات</span></span>
+                  <span class="ppMenuText"><strong>عرض مكان جلوس ابنتي</strong><span>يظهر مقعد ابنتكم فقط حفاظًا على الخصوصية</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10943,7 +10955,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon gold">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.2 5.9-.9L12 3z"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>نجمة الأسبوع</strong><span>سجل تكريمات نجمة الأسبوع للطالبة</span></span>
+                  <span class="ppMenuText"><strong>عرض شهادات تميز ابنتي</strong><span>شهادات ونجوم التميز التي حصلت عليها</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10951,7 +10963,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon wine">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>التقرير الشامل</strong><span>ملخص أكاديمي وتربوي قابل للطباعة</span></span>
+                  <span class="ppMenuText"><strong>عرض التقرير الشامل لابنتي</strong><span>ملخص واضح للأداء الأكاديمي والتربوي</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
               </div>
@@ -10968,7 +10980,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
 
             <section id="ppGrades" class="ppScreen">
               <div class="ppPageHead">
-                <div><h2>الدرجات والتقييمات</h2><p>تفاصيل الفترة الحالية والسجل التراكمي</p></div>
+                <div><h2>درجات ابنتي وتقييماتها</h2><p>الدرجات المسجلة في الفترة الحالية وسجلها السابق</p></div>
                 <button class="ppSmallBtn" type="button" onclick="ppPrintScreen('ppGrades')">طباعة</button>
               </div>
               <div id="ppGradeCards" class="ppGradeList"></div>
@@ -11005,7 +11017,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
 
             <section id="ppNotes" class="ppScreen">
               <div class="ppPageHead">
-                <div><h2>ملاحظات المعلمات</h2><p id="ppNotesPeriod">—</p></div>
+                <div><h2>ملاحظات معلمات ابنتي</h2><p id="ppNotesPeriod">—</p></div>
                 <button class="ppSmallBtn" type="button" onclick="ppPrintScreen('ppNotes')">طباعة</button>
               </div>
               <div id="ppNotesList" class="ppNotesList"></div>
@@ -15019,9 +15031,9 @@ let ppNavStack=[];
 const PP_SCREEN_TITLES={
   ppHome:"الرئيسية",
   ppAgenda:"أجندة الأسبوع القادم",
-  ppGrades:"الدرجات والتقييمات",
+  ppGrades:"درجات ابنتي وتقييماتها",
   ppAnalytics:"التحليل البياني",
-  ppNotes:"ملاحظات المعلمات",
+  ppNotes:"ملاحظات معلمات ابنتي",
   ppSeating:"مكان الجلوس",
   ppCertificates:"نجمة الأسبوع",
   ppReport:"التقرير الشامل"
@@ -15392,10 +15404,10 @@ function ppRenderGrades(){
             <span class="ppSubjectScore">${overall===null?"—":overall+"%"}</span>
           </div>
           <div class="ppGradeMetrics">
-            <div class="ppGradeMetric ${c.cls}"><span>التطبيق</span><b>${esc(c.txt)}</b></div>
-            <div class="ppGradeMetric ${e.cls}"><span>الإلكتروني</span><b>${esc(e.txt)}</b></div>
-            <div class="ppGradeMetric ${h.cls}"><span>الواجب</span><b>${esc(h.txt)}</b></div>
-            <div class="ppGradeMetric ${p.cls}"><span>المشروع</span><b>${esc(p.txt)}</b></div>
+            <div class="ppGradeMetric ${c.cls}"><span>درجة التطبيقات الصفية</span><b>${esc(c.txt)}</b></div>
+            <div class="ppGradeMetric ${e.cls}"><span>درجة منصة قطر</span><b>${esc(e.txt)}</b></div>
+            <div class="ppGradeMetric ${h.cls}"><span>درجة الواجب المنزلي</span><b>${esc(h.txt)}</b></div>
+            <div class="ppGradeMetric ${p.cls}"><span>درجة المشروع</span><b>${esc(p.txt)}</b></div>
           </div>
         </div>`;
     }).join("")
@@ -15524,14 +15536,14 @@ function ppRenderNotes(){
       const enc=encodeURIComponent(x.row.subject);
       return`
         <div class="ppNoteCard">
-          <h3>${esc(x.row.subject)}</h3>
-          <small>${esc(teacherName(x.f.teacherId,x.f.teacherNameSnapshot||"—"))}</small>
-          <p>${esc(x.f.academicNote||x.f.note||"لا توجد ملاحظة أكاديمية مكتوبة.")}</p>
+          <h3>مادة: ${esc(x.row.subject)}</h3>
+          <small>المعلمة: ${esc(teacherName(x.f.teacherId,x.f.teacherNameSnapshot||"—"))}</small>
+          <p><strong>ملاحظة المعلمة:</strong> ${esc(x.f.academicNote||x.f.note||"لا توجد ملاحظة أكاديمية مكتوبة.")}</p>
           <div class="ppTagRow">
-            <span class="ppTag">${esc(normalizeParticipation(x.f.participation))}</span>
-            <span class="ppTag">${esc(behaviorDisplay(x.f))}</span>
-            <span class="ppTag">${esc(toolsDisplay(x.f))}</span>
-            <span class="ppTag">${esc(normalizeELearning(x.f.eLearning??x.f.overall))}</span>
+            <span class="ppTag"><b>المشاركة الصفية:</b> ${esc(normalizeParticipation(x.f.participation))}</span>
+            <span class="ppTag"><b>السلوك:</b> ${esc(behaviorDisplay(x.f))}</span>
+            <span class="ppTag"><b>إحضار الأدوات:</b> ${esc(toolsDisplay(x.f))}</span>
+            <span class="ppTag"><b>التفاعل على منصة قطر:</b> ${esc(normalizeELearning(x.f.eLearning??x.f.overall))}</span>
           </div>
         </div>`;
     }).join("")
