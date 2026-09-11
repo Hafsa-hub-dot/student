@@ -10022,18 +10022,73 @@ body.parentDirect #studentPortal .ppMenuText span{font-size:11px!important;color
 #studentPortal #ppBack.showHome{visibility:visible!important}
 body.parentDirect #studentPortal #ppBack{display:grid!important}
 #studentPortal .ppScreen{padding-bottom:34px!important}
-/* v64 — الرئيسية مختصرة وزرها عائم دائمًا */
-#studentPortal #ppHome .ppHomeHero{display:none!important}
-#studentPortal .ppAllTabs{display:flex!important;position:fixed!important;z-index:90!important;right:50%!important;bottom:max(18px,env(safe-area-inset-bottom))!important;left:auto!important;margin:0!important;padding:0!important;transform:translateX(50%)!important;background:transparent!important;box-shadow:none!important}
-#studentPortal .ppAllTab{display:none!important}
-#studentPortal .ppAllTab[data-pp-tab="ppHome"]{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:145px!important;min-height:50px!important;padding:0 20px!important;border:1px solid #7e1438!important;border-radius:17px!important;background:linear-gradient(145deg,#991c4b,#63102c)!important;color:#fff!important;font-family:"El Messiri",sans-serif!important;font-size:15px!important;font-weight:900!important;box-shadow:0 6px 0 #460a20,0 14px 24px rgba(66,7,28,.26),inset 0 1px 0 rgba(255,255,255,.25)!important}
-#studentPortal .ppScreen{padding-bottom:105px!important}
-/* v65 — لغة واضحة لولي الأمر */
-#studentPortal .ppTag{font-size:11px!important;line-height:1.65!important;text-align:right!important}
-#studentPortal .ppTag b{color:#741631!important}
-#studentPortal .ppNoteCard p strong{color:#741631!important}
-#studentPortal .ppGradeMetric span{font-size:9px!important;line-height:1.45!important}
-#studentPortal .ppGradeMetric b{font-size:12px!important}
+
+/* v64 — بطاقات تقييم وملاحظات واضحة لوليّ الأمر */
+#studentPortal .ppGradeCard{
+  position:relative;overflow:hidden;padding:17px!important;border:1px solid #eadce2!important;
+  border-radius:22px!important;background:linear-gradient(145deg,#fff 0%,#fffafa 100%)!important;
+  box-shadow:0 8px 0 #eadde2,0 17px 30px rgba(82,17,43,.10),inset 0 1px 0 #fff!important;
+}
+#studentPortal .ppGradeCard:before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(180deg,#8a1538,#0d8785)}
+#studentPortal .ppGradeTop{padding:0 4px 12px;border-bottom:1px dashed #eadde2}
+#studentPortal .ppGradeTop strong{font-size:18px!important;color:#65112f!important}
+#studentPortal .ppGradeTop small{font-size:11px!important;color:#866b76!important}
+#studentPortal .ppSubjectScore{padding:9px 13px!important;border:1px solid #bae3d3!important;background:linear-gradient(180deg,#eaffeF,#ccefe1)!important;color:#176b4b!important;font-size:14px!important;box-shadow:0 3px 0 #9bd2bc!important}
+#studentPortal .ppGradeMetrics{gap:9px!important;margin-top:14px!important}
+#studentPortal .ppGradeMetric{min-height:82px;padding:11px 4px!important;border-width:1px!important;border-style:solid!important;border-radius:16px!important;box-shadow:0 4px 0 rgba(55,48,54,.08),inset 0 1px 0 rgba(255,255,255,.9)!important}
+#studentPortal .ppGradeMetric span{font-size:10px!important;font-weight:900!important}
+#studentPortal .ppGradeMetric b{margin-top:6px!important;font-size:15px!important;font-weight:900!important;line-height:1.25!important}
+#studentPortal .ppGradeMetric:nth-child(1){background:linear-gradient(145deg,#e7fbf8,#c9f1eb)!important;border-color:#9ee0d5!important}.ppGradeMetric:nth-child(1) span,.ppGradeMetric:nth-child(1) b{color:#08706e!important}
+#studentPortal .ppGradeMetric:nth-child(2){background:linear-gradient(145deg,#edf4ff,#d7e8ff)!important;border-color:#bed6f7!important}.ppGradeMetric:nth-child(2) span,.ppGradeMetric:nth-child(2) b{color:#2e6097!important}
+#studentPortal .ppGradeMetric:nth-child(3){background:linear-gradient(145deg,#fff0f5,#ffdce8)!important;border-color:#f0bed1!important}.ppGradeMetric:nth-child(3) span,.ppGradeMetric:nth-child(3) b{color:#a51b56!important}
+#studentPortal .ppGradeMetric:nth-child(4){background:linear-gradient(145deg,#fff9e8,#ffedbd)!important;border-color:#efd58d!important}.ppGradeMetric:nth-child(4) span,.ppGradeMetric:nth-child(4) b{color:#956113!important}
+#studentPortal .ppGradeMetric.wait{background:linear-gradient(145deg,#f5f5f6,#ebecee)!important;border-color:#dcdde1!important}.ppGradeMetric.wait span,.ppGradeMetric.wait b{color:#73747a!important}
+#studentPortal .ppGradeMetric.absent{background:linear-gradient(145deg,#fff0f1,#ffdcdf)!important;border-color:#f0b9bf!important}.ppGradeMetric.absent span,.ppGradeMetric.absent b{color:#aa3442!important}
+
+#studentPortal .ppNoteCard{padding:17px!important;border:1px solid #eadce2!important;border-radius:22px!important;background:#fff!important;box-shadow:0 7px 0 #eee1e5,0 15px 28px rgba(82,17,43,.08)!important}
+#studentPortal .ppNoteCard h3{font-size:18px!important;color:#671330!important}
+#studentPortal .ppNoteCard small{font-size:11px!important;color:#8b6a77!important}
+#studentPortal .ppNoteDetail{display:grid;gap:10px;margin-top:12px}
+#studentPortal .ppNoteBlock{padding:12px 13px;border-radius:15px;border:1px solid #eadfe2;background:#fff9fa}
+#studentPortal .ppNoteBlock b{display:block;margin-bottom:5px;font-size:11px;color:#8a1538}
+#studentPortal .ppNoteBlock p{margin:0!important;font-size:13px!important;line-height:1.9!important;color:#594a50!important}
+#studentPortal .ppNoteBlock.behavior{background:linear-gradient(135deg,#edf9f6,#dcf3eb);border-color:#bae2d2}
+#studentPortal .ppNoteBlock.behavior b{color:#147253}
+#studentPortal .ppNoteBlock.behavior p{font-size:15px!important;font-weight:900;color:#176548!important}
+#studentPortal .ppTagRow{gap:7px!important;margin-top:12px!important}
+#studentPortal .ppTag{padding:7px 10px!important;border:1px solid #d6e7e4!important;border-radius:12px!important;background:#f2fbf8!important;color:#296c69!important;font-size:10px!important;font-weight:900!important}
+@media(max-width:480px){#studentPortal .ppGradeMetrics{grid-template-columns:repeat(2,1fr)!important}#studentPortal .ppGradeMetric{min-height:72px}#studentPortal .ppGradeTop strong{font-size:17px!important}}
+
+/* v65 — قراءة ولي الأمر: وصف صريح من دون رموز أو تكرار */
+#studentPortal .ppNotesList{gap:16px!important}
+#studentPortal .ppNoteCard{padding:20px!important}
+#studentPortal .ppNoteCard h3{padding-bottom:10px;border-bottom:1px solid #efe3e7}
+#studentPortal .ppNoteDetail{gap:12px!important}
+#studentPortal .ppNoteBlock{padding:15px 16px!important;border-radius:17px!important}
+#studentPortal .ppNoteBlock b{font-size:13px!important;margin-bottom:7px!important}
+#studentPortal .ppNoteBlock p{font-size:15px!important;line-height:1.85!important}
+#studentPortal .ppBlockTitle,#studentPortal .ppFollowTitle{display:flex;align-items:center;gap:8px}
+#studentPortal .ppLineIcon{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:9px;background:#fff;color:#8a1538;box-shadow:0 2px 0 rgba(103,18,48,.10)}
+#studentPortal .ppLineIcon svg{width:17px;height:17px}
+#studentPortal .ppNoteBlock.behavior .ppLineIcon{color:#147253;background:#f8fffc}
+#studentPortal .ppFollowTitle{margin:17px 1px 9px;color:#6d1835;font-size:13px;font-weight:900}
+#studentPortal .ppFollowGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#studentPortal .ppFollowGrid>div{min-height:105px;padding:12px 8px;border:1px solid #dcebe8;border-radius:15px;background:linear-gradient(145deg,#fbfffe,#edf9f6);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+#studentPortal .ppFollowGrid>div:nth-child(2){border-color:#eadcec;background:linear-gradient(145deg,#fffdfd,#fff3f7)}
+#studentPortal .ppFollowGrid>div:nth-child(3){border-color:#ece0bf;background:linear-gradient(145deg,#fffefb,#fff8e6)}
+#studentPortal .ppFollowGrid span{font-size:10px;color:#786c71;font-weight:800;line-height:1.55}
+#studentPortal .ppFollowGrid b{font-size:12px;color:#176f69;line-height:1.55}
+#studentPortal .ppMetricIcon{width:35px;height:35px;display:grid;place-items:center;border-radius:12px;background:#fff;color:#147b75;box-shadow:0 3px 0 rgba(24,105,98,.11)}
+#studentPortal .ppMetricIcon svg{width:21px;height:21px}
+#studentPortal .ppFollowGrid>div:nth-child(2) .ppMetricIcon{color:#a5265c}.ppFollowGrid>div:nth-child(3) .ppMetricIcon{color:#9b711a}
+#studentPortal .ppFollowGrid>div:nth-child(2) b{color:#9a2456}
+#studentPortal .ppFollowGrid>div:nth-child(3) b{color:#8d6719}
+@media(max-width:480px){#studentPortal .ppFollowGrid{grid-template-columns:1fr!important}#studentPortal .ppFollowGrid>div{min-height:72px;display:grid;grid-template-columns:42px 1fr 1.25fr;align-items:center;text-align:right;padding:12px 14px}.ppMetricIcon{grid-row:span 2}}
+
+/* v66 — عناوين الشريط العلوي أوضح وأفخم */
+body.parentDirect #studentPortal .ppAppTop{background:linear-gradient(135deg,#8a1538,#63102a)!important;border-bottom-color:#b89a63!important;box-shadow:0 4px 12px rgba(84,10,35,.18)!important}
+body.parentDirect #studentPortal .ppAppTitle{color:#fff!important;font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;font-size:27px!important;font-weight:900!important;letter-spacing:.15px;text-shadow:0 2px 5px rgba(30,0,12,.25)!important}
+body.parentDirect #studentPortal .ppAppSub{color:#f5dce5!important;font-size:11px!important;font-weight:800!important}
 </style>
 </head>
 <body>
@@ -10915,7 +10970,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>عرض خطة ابنتي للأسبوع القادم</strong><span>ماذا ستتعلم وما المطلوب منها في كل مادة</span></span>
+                  <span class="ppMenuText"><strong>أجندة الأسبوع القادم</strong><span>خطة الأسبوع لكل مادة</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10923,7 +10978,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon wine">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>عرض درجات ابنتي وتقييماتها</strong><span>درجات التطبيقات والواجبات والمشاريع بوضوح</span></span>
+                  <span class="ppMenuText"><strong>الدرجات والتقييمات</strong><span>النتائج الحالية والسجل الأسبوعي التراكمي</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10931,7 +10986,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-4 3 2 5-6"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>متابعة تطور مستوى ابنتي</strong><span>رسم بسيط يوضح تقدّمها خلال الأسابيع</span></span>
+                  <span class="ppMenuText"><strong>التحليل البياني</strong><span>تطور التطبيقات والواجبات والمشروع أسبوعًا بعد أسبوع</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10939,7 +10994,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon gold">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>عرض ملاحظات معلمات ابنتي</strong><span>ملاحظات واضحة عن التعلم والسلوك والجاهزية</span></span>
+                  <span class="ppMenuText"><strong>ملاحظات المعلمات</strong><span>الملاحظات الأكاديمية والسلوكية للفترة</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10947,7 +11002,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20v-7h14v7M7 13V5h10v8M9 20v2M15 20v2"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>عرض مكان جلوس ابنتي</strong><span>يظهر مقعد ابنتكم فقط حفاظًا على الخصوصية</span></span>
+                  <span class="ppMenuText"><strong>مكان الجلوس في الصف</strong><span>مقعد ابنتكم فقط مع حماية خصوصية الطالبات</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10955,7 +11010,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon gold">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.2 5.9-.9L12 3z"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>عرض شهادات تميز ابنتي</strong><span>شهادات ونجوم التميز التي حصلت عليها</span></span>
+                  <span class="ppMenuText"><strong>نجمة الأسبوع</strong><span>سجل تكريمات نجمة الأسبوع للطالبة</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
 
@@ -10963,7 +11018,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
                   <span class="ppMenuIcon wine">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>عرض التقرير الشامل لابنتي</strong><span>ملخص واضح للأداء الأكاديمي والتربوي</span></span>
+                  <span class="ppMenuText"><strong>التقرير الشامل</strong><span>ملخص أكاديمي وتربوي قابل للطباعة</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
               </div>
@@ -10980,7 +11035,7 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
 
             <section id="ppGrades" class="ppScreen">
               <div class="ppPageHead">
-                <div><h2>درجات ابنتي وتقييماتها</h2><p>الدرجات المسجلة في الفترة الحالية وسجلها السابق</p></div>
+                <div><h2>الدرجات والتقييمات</h2><p>تفاصيل الفترة الحالية والسجل التراكمي</p></div>
                 <button class="ppSmallBtn" type="button" onclick="ppPrintScreen('ppGrades')">طباعة</button>
               </div>
               <div id="ppGradeCards" class="ppGradeList"></div>
@@ -11017,12 +11072,11 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
 
             <section id="ppNotes" class="ppScreen">
               <div class="ppPageHead">
-                <div><h2>ملاحظات معلمات ابنتي</h2><p id="ppNotesPeriod">—</p></div>
+                <div><h2>متابعة السلوك والملاحظات</h2><p id="ppNotesPeriod">تقرير الفترة الحالية</p></div>
                 <button class="ppSmallBtn" type="button" onclick="ppPrintScreen('ppNotes')">طباعة</button>
               </div>
               <div id="ppNotesList" class="ppNotesList"></div>
-              <div class="ppSectionLabel"><strong>سجل الملاحظات السابق</strong><span>من بداية السنة</span></div>
-              <div id="ppNotesHistory" class="ppArchive"></div>
+              <div id="ppNotesHistory" hidden></div>
             </section>
 
             <section id="ppSeating" class="ppScreen">
@@ -15031,9 +15085,9 @@ let ppNavStack=[];
 const PP_SCREEN_TITLES={
   ppHome:"الرئيسية",
   ppAgenda:"أجندة الأسبوع القادم",
-  ppGrades:"درجات ابنتي وتقييماتها",
+  ppGrades:"الدرجات والتقييمات",
   ppAnalytics:"التحليل البياني",
-  ppNotes:"ملاحظات معلمات ابنتي",
+  ppNotes:"ملاحظات المعلمات",
   ppSeating:"مكان الجلوس",
   ppCertificates:"نجمة الأسبوع",
   ppReport:"التقرير الشامل"
@@ -15234,8 +15288,6 @@ function openPortal(id,direct=false){
   const s=db.students.find(x=>String(x.id)===String(id));
   if(!s)return;
 
-  /* لا نُظهر البوابة من رابط QR إلا بعد تجهيز سجل الطالبة الكامل. */
-  document.documentElement.classList.remove("parent-boot");
   portalStudentId=s.id;
   ppDirect=direct;
 
@@ -15274,7 +15326,6 @@ function openPortal(id,direct=false){
 }
 
 function openInvalidParentPortal(){
-  document.documentElement.classList.remove("parent-boot");
   ppDirect=true;
   document.body.classList.add("parentDirect");
   document.querySelector(".topTabs").style.display="none";
@@ -15407,10 +15458,10 @@ function ppRenderGrades(){
             <span class="ppSubjectScore">${overall===null?"—":overall+"%"}</span>
           </div>
           <div class="ppGradeMetrics">
-            <div class="ppGradeMetric ${c.cls}"><span>درجة التطبيقات الصفية</span><b>${esc(c.txt)}</b></div>
-            <div class="ppGradeMetric ${e.cls}"><span>درجة منصة قطر</span><b>${esc(e.txt)}</b></div>
-            <div class="ppGradeMetric ${h.cls}"><span>درجة الواجب المنزلي</span><b>${esc(h.txt)}</b></div>
-            <div class="ppGradeMetric ${p.cls}"><span>درجة المشروع</span><b>${esc(p.txt)}</b></div>
+            <div class="ppGradeMetric ${c.cls}"><span>التطبيق</span><b>${esc(c.txt)}</b></div>
+            <div class="ppGradeMetric ${e.cls}"><span>الإلكتروني</span><b>${esc(e.txt)}</b></div>
+            <div class="ppGradeMetric ${h.cls}"><span>الواجب</span><b>${esc(h.txt)}</b></div>
+            <div class="ppGradeMetric ${p.cls}"><span>المشروع</span><b>${esc(p.txt)}</b></div>
           </div>
         </div>`;
     }).join("")
@@ -15539,14 +15590,23 @@ function ppRenderNotes(){
       const enc=encodeURIComponent(x.row.subject);
       return`
         <div class="ppNoteCard">
-          <h3>مادة: ${esc(x.row.subject)}</h3>
-          <small>المعلمة: ${esc(teacherName(x.f.teacherId,x.f.teacherNameSnapshot||"—"))}</small>
-          <p><strong>ملاحظة المعلمة:</strong> ${esc(x.f.academicNote||x.f.note||"لا توجد ملاحظة أكاديمية مكتوبة.")}</p>
-          <div class="ppTagRow">
-            <span class="ppTag"><b>المشاركة الصفية:</b> ${esc(normalizeParticipation(x.f.participation))}</span>
-            <span class="ppTag"><b>السلوك:</b> ${esc(behaviorDisplay(x.f))}</span>
-            <span class="ppTag"><b>إحضار الأدوات:</b> ${esc(toolsDisplay(x.f))}</span>
-            <span class="ppTag"><b>التفاعل على منصة قطر:</b> ${esc(normalizeELearning(x.f.eLearning??x.f.overall))}</span>
+          <h3>${esc(x.row.subject)}</h3>
+          <small>${esc(teacherName(x.f.teacherId,x.f.teacherNameSnapshot||"—"))}</small>
+          <div class="ppNoteDetail">
+            <div class="ppNoteBlock behavior">
+              <b class="ppBlockTitle"><i class="ppLineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3 4.5 6v5c0 4.7 3.1 8.6 7.5 10 4.4-1.4 7.5-5.3 7.5-10V6L12 3Z"/><path d="m8.5 12 2.2 2.2 4.8-4.8"/></svg></i>السلوك والانضباط</b>
+              <p>${esc(behaviorDisplay(x.f))}</p>
+            </div>
+            <div class="ppNoteBlock">
+              <b class="ppBlockTitle"><i class="ppLineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 3h14v18H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></i>ملاحظة المعلمة</b>
+              <p>${esc(x.f.academicNote||x.f.note||"لا توجد ملاحظة أكاديمية مكتوبة لهذه الفترة.")}</p>
+            </div>
+          </div>
+          <div class="ppFollowTitle"><i class="ppLineIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-4 3 2 5-6"/></svg></i>مؤشرات المتابعة</div>
+          <div class="ppFollowGrid">
+            <div><i class="ppMetricIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 20v-1.6c0-2-1.8-3.4-4-3.4s-4 1.4-4 3.4V20"/><circle cx="12" cy="8" r="3"/><path d="M18 7.5c1.3.3 2.2 1.2 2.2 2.5M5.8 10c0-1.3.9-2.2 2.2-2.5"/></svg></i><span>المشاركة الصفية</span><b>${esc(normalizeParticipation(x.f.participation))}</b></div>
+            <div><i class="ppMetricIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5V7l8-4 8 4v12.5"/><path d="M8 19.5v-6h8v6M7 9h.01M12 9h.01M17 9h.01"/></svg></i><span>إحضار الأدوات</span><b>${esc(toolsDisplay(x.f))}</b></div>
+            <div><i class="ppMetricIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></i><span>التفاعل على منصة قطر</span><b>${esc(normalizeELearning(x.f.eLearning??x.f.overall))}</b></div>
           </div>
         </div>`;
     }).join("")
@@ -17536,26 +17596,17 @@ fillCardDesignForm();
 applyTeacherFontMode();
 applyTeacherRosterFilters();
 updateTeacherSaveStamp(contextLatestSaveTime());
+initializeCloudSync();
 
 const token=new URLSearchParams(location.search).get("student");
-/*
-  رابط الباركود يحتوي رمز الطالبة فقط. لذلك يجب انتظار قراءة قاعدة البيانات
-  أولاً؛ فتح البوابة قبل اكتمال القراءة كان يُظهر الاسم من النسخة المحلية
-  ثم يترك الدرجات والملاحظات غير محمّلة.
-*/
-async function startApplication(){
-  await initializeCloudSync();
-
-  if(!token){
-    document.documentElement.classList.remove("parent-boot");
-    return;
-  }
-
+if(!token){
+  document.documentElement.classList.remove("parent-boot");
+}
+if(token){
   const s=db.students.find(x=>x.token===token);
   if(s)openPortal(s.id,true);
   else openInvalidParentPortal();
 }
-startApplication();
 </script>
 </body>
 </html>
