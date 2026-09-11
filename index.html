@@ -9835,6 +9835,115 @@ table{font-size:12px}th,td{padding:11px 9px}.badge{font-size:12px;padding:5px 9p
   #studentPortal .ppWelcomeCard strong{font-size:23px!important}
   #studentPortal .ppAgendaRow{grid-template-columns:82px minmax(0,1fr)}
 }
+
+/* ============================================================
+   v59 — تجربة QR كأنها تطبيق وليّ الأمر الحقيقي
+   ============================================================ */
+body.parentDirect{background:#170711!important}
+body.parentDirect #studentPortal{min-height:100dvh!important;background:#170711!important}
+body.parentDirect #studentPortal .ppStage{
+  min-height:100dvh!important;padding:18px!important;display:grid!important;place-items:center!important;
+  background:radial-gradient(circle at 18% 10%,rgba(210,169,89,.17),transparent 25%),radial-gradient(circle at 88% 90%,rgba(22,155,150,.16),transparent 30%),#170711;
+}
+body.parentDirect #studentPortal .ppDeviceShell,
+body.parentDirect #studentPortal .ppDeviceShell.phone{
+  width:min(450px,100%)!important;min-height:min(900px,calc(100dvh - 36px))!important;padding:9px!important;border-radius:36px!important;
+  background:linear-gradient(145deg,#303334,#080909 58%,#3c4141)!important;
+  box-shadow:0 5px 0 rgba(255,255,255,.07),0 32px 70px rgba(0,0,0,.52)!important;
+}
+body.parentDirect #studentPortal .ppDeviceShell:before{display:block!important}
+body.parentDirect #studentPortal .ppViewport{
+  min-height:min(882px,calc(100dvh - 54px))!important;border-radius:28px!important;
+  background:linear-gradient(180deg,#fffafb 0%,#f3edf0 100%)!important;
+}
+body.parentDirect #studentPortal .ppContextBar,
+body.parentDirect #studentPortal .ppAllTabs{display:none!important}
+body.parentDirect #studentPortal .ppApp{min-height:100%!important;background:linear-gradient(180deg,#fffafb 0%,#f8f3f5 55%,#f2ecef 100%)}
+body.parentDirect #studentPortal .ppStatusBar{color:#59142e!important;font-size:12px!important}
+body.parentDirect #studentPortal .ppStatusBrand{color:#a31547!important;font-size:10px!important;font-weight:900}
+body.parentDirect #studentPortal .ppAppTop{height:82px!important;padding:12px 18px 12px!important;grid-template-columns:51px 1fr 51px!important}
+body.parentDirect #studentPortal .ppIconBtn{
+  width:49px!important;height:49px!important;border-radius:17px!important;border-color:#ead9df!important;color:#8a1538!important;
+  background:linear-gradient(180deg,#ffffff,#f3e8ec)!important;box-shadow:0 5px 0 #dfcbd2,0 9px 15px rgba(92,15,45,.12),inset 0 1px 0 #fff!important;
+}
+body.parentDirect #studentPortal .ppIconBtn:active{transform:translateY(4px);box-shadow:0 2px 0 #dfcbd2,0 5px 9px rgba(92,15,45,.12),inset 0 1px 0 #fff!important}
+body.parentDirect #studentPortal .ppAppTitle{font-family:"El Messiri",sans-serif!important;font-size:25px!important;font-weight:800!important;color:#5e0e2a!important}
+body.parentDirect #studentPortal .ppAppSub{font-size:11px!important;color:#966176!important;font-weight:700!important}
+body.parentDirect #studentPortal .ppScreen{padding:10px 17px 107px!important;min-height:680px!important}
+body.parentDirect #studentPortal .ppHomeHero{
+  padding:23px 20px!important;border-radius:27px!important;
+  background:radial-gradient(circle at 7% 7%,rgba(255,227,157,.36),transparent 23%),linear-gradient(145deg,#5b0b29,#971948 68%,#b22a58)!important;
+  box-shadow:0 13px 0 #651130,0 24px 34px rgba(87,8,36,.23),inset 0 1px 0 rgba(255,255,255,.22)!important;
+}
+body.parentDirect #studentPortal .ppHomeHero small{font-size:13px!important;color:#f8dfaa!important}
+body.parentDirect #studentPortal .ppHomeHero h2{font-family:"El Messiri",sans-serif!important;font-size:29px!important;font-weight:800!important;line-height:1.55!important;text-shadow:0 3px 10px rgba(40,0,15,.25)}
+body.parentDirect #studentPortal .ppHomeHero p{font-size:14px!important;color:rgba(255,255,255,.85)!important}
+body.parentDirect #studentPortal .ppHomePeriodLabel{margin-top:12px!important;font-size:13px!important}
+body.parentDirect #studentPortal .ppHeroStats{grid-template-columns:repeat(2,1fr)!important;gap:10px!important}
+body.parentDirect #studentPortal .ppHeroStat{padding:12px 6px!important;border-radius:15px!important;background:rgba(255,255,255,.14)!important}
+body.parentDirect #studentPortal .ppHeroStat b{font-size:22px!important}.ppHeroStat span{font-size:11px!important}
+body.parentDirect #studentPortal .ppSectionLabel strong{font-size:20px!important;color:#6f1232!important}
+body.parentDirect #studentPortal .ppSectionLabel span{font-size:11px!important}
+body.parentDirect #studentPortal .ppMenuCard{
+  grid-template-columns:62px minmax(0,1fr) 30px!important;padding:15px!important;border-radius:20px!important;
+  border-color:#eadde1!important;box-shadow:0 5px 0 #e6d9de,0 11px 20px rgba(72,20,38,.08),inset 0 1px 0 #fff!important;
+}
+body.parentDirect #studentPortal .ppMenuCard:active{transform:translateY(4px)!important;box-shadow:0 2px 0 #e6d9de,0 6px 12px rgba(72,20,38,.08),inset 0 1px 0 #fff!important}
+body.parentDirect #studentPortal .ppMenuIcon{width:61px!important;height:61px!important;border-radius:19px!important}
+body.parentDirect #studentPortal .ppMenuText strong{font-size:16px!important;color:#5c1932!important}
+body.parentDirect #studentPortal .ppMenuText span{font-size:12px!important;color:#856f77!important}
+body.parentDirect #studentPortal .ppBottomNav{background:rgba(255,255,255,.97)!important;border-color:#eadce1!important;box-shadow:0 8px 0 #ded1d5,0 18px 30px rgba(69,17,36,.14)!important}
+body.parentDirect #studentPortal .ppBottomNav button{font-size:11px!important;color:#755c65!important}
+body.parentDirect #studentPortal .ppBottomNav button.active{background:linear-gradient(180deg,#9b1b49,#72112f)!important;color:#fff!important;box-shadow:0 3px 8px rgba(88,8,37,.22)!important}
+body.parentDirect #studentPortal .ppPageHead h2{font-size:24px!important;color:#6b1030!important}
+body.parentDirect #studentPortal .ppPageHead p{font-size:13px!important}
+body.parentDirect #studentPortal .ppAgendaSubject,.ppGradeTop strong,.ppNoteCard h3{font-size:16px!important}
+body.parentDirect #studentPortal .ppAgendaText,.ppNoteCard p{font-size:13px!important}
+
+/* launch screen: central student identity, shine and a deliberate 3D entrance */
+body.parentDirect #studentPortal .ppSplash{padding:34px 24px 29px!important;background:radial-gradient(circle at 8% 12%,rgba(244,207,139,.29),transparent 22%),radial-gradient(circle at 94% 84%,rgba(39,190,179,.20),transparent 28%),linear-gradient(145deg,#48061d,#811331 55%,#a71f4d)!important}
+body.parentDirect #studentPortal .ppSplashCenter{margin:auto 0!important}
+body.parentDirect #studentPortal .ppHello{font-size:14px!important;margin-bottom:19px!important;color:#ffe5b2!important}
+body.parentDirect #studentPortal .ppWelcomeCard{min-height:220px!important;padding:27px 24px 23px!important;border-radius:31px!important;transform:perspective(900px) rotateX(5deg) rotateY(-4deg)!important;animation:ppAppLaunch .95s cubic-bezier(.18,.9,.18,1) both,ppAppFloat 4.5s ease-in-out 1.1s infinite!important}
+body.parentDirect #studentPortal .ppWelcomeCard strong{font-size:31px!important;margin-top:18px!important;color:#fff!important}
+body.parentDirect #studentPortal .ppStudentFollow{display:block!important;position:relative;z-index:1;margin-top:3px!important;color:#f7d99a!important;font-size:15px!important;font-weight:800!important}
+body.parentDirect #studentPortal .ppWelcomeCard #ppSplashClass{display:block!important;position:relative;z-index:1;margin-top:8px!important;color:rgba(255,255,255,.84)!important;font-size:13px!important}
+body.parentDirect #studentPortal .ppEnterBtn{min-height:71px!important;border-radius:22px!important;font-size:20px!important;box-shadow:0 11px 0 rgba(48,0,15,.25),0 21px 30px rgba(48,0,15,.31),inset 0 1px 0 #fff!important}
+@keyframes ppAppLaunch{0%{opacity:0;transform:perspective(900px) translateY(72px) rotateX(18deg) rotateY(-11deg) scale(.82)}65%{opacity:1;transform:perspective(900px) translateY(-9px) rotateX(1deg) rotateY(2deg) scale(1.035)}100%{opacity:1;transform:perspective(900px) translateY(0) rotateX(5deg) rotateY(-4deg) scale(1)}}
+@keyframes ppAppFloat{0%,100%{transform:perspective(900px) translateY(0) rotateX(5deg) rotateY(-4deg)}50%{transform:perspective(900px) translateY(-8px) rotateX(1deg) rotateY(2deg)}}
+@media(max-width:620px){
+  body.parentDirect #studentPortal .ppStage{padding:0!important;background:#1b0711!important}
+  body.parentDirect #studentPortal .ppDeviceShell,body.parentDirect #studentPortal .ppDeviceShell.phone{width:100%!important;min-height:100dvh!important;padding:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+  body.parentDirect #studentPortal .ppDeviceShell:before{display:none!important}
+  body.parentDirect #studentPortal .ppViewport{min-height:100dvh!important;border-radius:0!important}
+  body.parentDirect #studentPortal .ppWelcomeCard strong{font-size:27px!important}
+}
+/* v60 — شاشة افتتاح جوال واضحة ومركّزة لوليّ الأمر */
+body.parentDirect #studentPortal .ppSplashTop{justify-content:center!important}
+body.parentDirect #studentPortal .ppSplashTop .ppSplashTitle{display:none!important}
+body.parentDirect #studentPortal .ppSplashSchool{font-size:12px!important;max-width:270px!important;text-align:center!important}
+body.parentDirect #studentPortal .ppSplashCenter{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:19px!important}
+body.parentDirect #studentPortal .ppCenteredLogo{display:block!important;width:104px!important;height:104px!important;flex:0 0 104px!important;border-radius:31px!important;border:1px solid rgba(255,255,255,.46)!important;background-color:#fff!important;box-shadow:0 10px 0 rgba(45,0,16,.20),0 20px 32px rgba(45,0,16,.32),inset 0 1px 0 #fff!important;animation:ppLogoPop .75s cubic-bezier(.18,.9,.18,1) both!important}
+body.parentDirect #studentPortal .ppWelcomeCard{width:100%!important;min-height:183px!important;padding:21px 22px 19px!important;animation:ppAppLaunch .9s cubic-bezier(.18,.9,.18,1) .12s both,ppAppFloat 4.5s ease-in-out 1.05s infinite!important}
+body.parentDirect #studentPortal .ppWelcomeCard strong{font-size:28px!important;line-height:1.48!important;margin-top:11px!important}
+body.parentDirect #studentPortal .ppStudentFollow{display:inline-flex!important;align-items:center;justify-content:center;position:relative!important;z-index:1!important;min-width:136px!important;margin-top:7px!important;padding:7px 20px!important;border-radius:16px!important;background:linear-gradient(180deg,#fcdda0,#d99b45)!important;color:#551124!important;font-family:"El Messiri",sans-serif!important;font-size:23px!important;font-weight:900!important;box-shadow:0 6px 0 #a9652d,0 11px 17px rgba(63,0,20,.26),inset 0 1px 0 rgba(255,255,255,.62)!important;text-shadow:0 1px 0 rgba(255,255,255,.38)!important}
+body.parentDirect #studentPortal .ppWelcomeCard #ppSplashClass{margin-top:11px!important;font-size:12px!important}
+body.parentDirect #studentPortal .ppAppWelcome{margin:0!important;color:#fff!important;text-align:center!important;font-family:"El Messiri",sans-serif!important;font-size:18px!important;font-weight:700!important;line-height:1.85!important;text-shadow:0 2px 8px rgba(40,0,15,.28)!important}
+body.parentDirect #studentPortal .ppAppWelcome b{display:block;color:#ffe0a2!important;font-size:23px!important}
+body.parentDirect #studentPortal .ppWelcomeHint{display:none!important}
+body.parentDirect #studentPortal .ppSplashBottom{width:100%!important}
+body.parentDirect #studentPortal .ppEnterBtn{min-height:68px!important;font-size:19px!important}
+@keyframes ppLogoPop{0%{opacity:0;transform:translateY(-28px) scale(.68) rotate(-10deg)}72%{opacity:1;transform:translateY(4px) scale(1.06) rotate(2deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@media(max-width:620px){
+  body.parentDirect #studentPortal .ppSplash{padding:27px 21px 25px!important}
+  body.parentDirect #studentPortal .ppCenteredLogo{width:94px!important;height:94px!important;flex-basis:94px!important;border-radius:28px!important}
+  body.parentDirect #studentPortal .ppSplashCenter{gap:17px!important}
+  body.parentDirect #studentPortal .ppWelcomeCard{min-height:176px!important;padding:19px 19px 17px!important}
+  body.parentDirect #studentPortal .ppWelcomeCard strong{font-size:25px!important}
+  body.parentDirect #studentPortal .ppStudentFollow{min-width:124px!important;padding:6px 17px!important;font-size:20px!important;border-radius:14px!important}
+  body.parentDirect #studentPortal .ppAppWelcome{font-size:16px!important}
+  body.parentDirect #studentPortal .ppAppWelcome b{font-size:21px!important}
+}
 </style>
 </head>
 <body>
@@ -10625,7 +10734,7 @@ table{font-size:12px}th,td{padding:11px 9px}.badge{font-size:12px;padding:5px 9p
           </div>
 
           <div class="ppSplashCenter">
-            <div class="ppHello">مرحبًا بكم في متابعة ابنتكم</div>
+            <div class="ppSplashLogo ppCenteredLogo" aria-label="شعار دوم معك"></div>
             <div class="ppStudentIntro ppWelcomeCard">
               <span class="ppCardShine" aria-hidden="true"></span>
               <div class="ppWelcomeCardTop">
@@ -10633,8 +10742,10 @@ table{font-size:12px}th,td{padding:11px 9px}.badge{font-size:12px;padding:5px 9p
                 <span aria-hidden="true">✦</span>
               </div>
               <strong id="ppSplashStudent">—</strong>
+              <span class="ppStudentFollow">متابعة</span>
               <span id="ppSplashClass">—</span>
             </div>
+            <p class="ppAppWelcome">مرحبًا بكم في تطبيق <b>دوم معك</b></p>
           </div>
 
           <div class="ppSplashBottom">
@@ -15063,7 +15174,9 @@ function openPortal(id,direct=false){
   ppRenderAll();
   ppOpenScreen("ppHome",{push:false});
 
-  if(window.innerWidth<=620)ppSetDevice("phone");
+  /* QR links always open as a phone application, even when they are scanned from a tablet or computer. */
+  if(direct)ppSetDevice("phone");
+  else if(window.innerWidth<=620)ppSetDevice("phone");
   ppClockTick();
 }
 
