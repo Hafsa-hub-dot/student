@@ -15234,6 +15234,8 @@ function openPortal(id,direct=false){
   const s=db.students.find(x=>String(x.id)===String(id));
   if(!s)return;
 
+  /* لا نُظهر البوابة من رابط QR إلا بعد تجهيز سجل الطالبة الكامل. */
+  document.documentElement.classList.remove("parent-boot");
   portalStudentId=s.id;
   ppDirect=direct;
 
@@ -15272,6 +15274,7 @@ function openPortal(id,direct=false){
 }
 
 function openInvalidParentPortal(){
+  document.documentElement.classList.remove("parent-boot");
   ppDirect=true;
   document.body.classList.add("parentDirect");
   document.querySelector(".topTabs").style.display="none";
@@ -17533,17 +17536,26 @@ fillCardDesignForm();
 applyTeacherFontMode();
 applyTeacherRosterFilters();
 updateTeacherSaveStamp(contextLatestSaveTime());
-initializeCloudSync();
 
 const token=new URLSearchParams(location.search).get("student");
-if(!token){
-  document.documentElement.classList.remove("parent-boot");
-}
-if(token){
+/*
+  رابط الباركود يحتوي رمز الطالبة فقط. لذلك يجب انتظار قراءة قاعدة البيانات
+  أولاً؛ فتح البوابة قبل اكتمال القراءة كان يُظهر الاسم من النسخة المحلية
+  ثم يترك الدرجات والملاحظات غير محمّلة.
+*/
+async function startApplication(){
+  await initializeCloudSync();
+
+  if(!token){
+    document.documentElement.classList.remove("parent-boot");
+    return;
+  }
+
   const s=db.students.find(x=>x.token===token);
   if(s)openPortal(s.id,true);
   else openInvalidParentPortal();
 }
+startApplication();
 </script>
 </body>
 </html>
