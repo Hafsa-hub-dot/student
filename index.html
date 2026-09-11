@@ -9944,6 +9944,84 @@ body.parentDirect #studentPortal .ppEnterBtn{min-height:68px!important;font-size
   body.parentDirect #studentPortal .ppAppWelcome{font-size:16px!important}
   body.parentDirect #studentPortal .ppAppWelcome b{font-size:21px!important}
 }
+/* ============================================================
+   v61 — بوابة ولي الأمر: تطبيق واحد بلا صفحات أو أزرار مكررة
+   ============================================================ */
+body.parentDirect{background:#f6f0f3!important}
+body.parentDirect #studentPortal{background:#f6f0f3!important;min-height:100dvh!important}
+body.parentDirect #studentPortal .ppDeviceToolbar,
+body.parentDirect #studentPortal .ppBottomNav,
+body.parentDirect #studentPortal .ppMoreSheet,
+body.parentDirect #studentPortal .ppMenuList,
+body.parentDirect #studentPortal .ppPageHead .ppSmallBtn,
+body.parentDirect #studentPortal #ppPrintCurrent{display:none!important}
+body.parentDirect #studentPortal .ppStage{display:block!important;min-height:100dvh!important;padding:0!important;background:#f6f0f3!important}
+body.parentDirect #studentPortal .ppDeviceShell,body.parentDirect #studentPortal .ppDeviceShell.phone,body.parentDirect #studentPortal .ppDeviceShell.tablet,body.parentDirect #studentPortal .ppDeviceShell.desktop{width:100%!important;min-height:100dvh!important;padding:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+body.parentDirect #studentPortal .ppDeviceShell:before{display:none!important}
+body.parentDirect #studentPortal .ppViewport{min-height:100dvh!important;border-radius:0!important;overflow:visible!important;background:#f6f0f3!important}
+body.parentDirect #studentPortal .ppApp{display:block!important;min-height:100dvh!important;background:linear-gradient(180deg,#fff 0%,#fbf7f9 55%,#f5eef2 100%)!important}
+body.parentDirect #studentPortal .ppStatusBar{height:34px!important;padding:10px 18px 0!important;background:#fff!important;color:#7b2443!important}
+body.parentDirect #studentPortal .ppAppTop{height:79px!important;padding:8px 18px 11px!important;grid-template-columns:48px 1fr 48px!important;background:#fff!important;border-bottom:1px solid #eee1e6!important}
+body.parentDirect #studentPortal .ppAppTitle{font-size:24px!important;color:#681130!important}
+body.parentDirect #studentPortal .ppAppSub{font-size:11px!important;margin-top:2px!important;color:#916277!important}
+body.parentDirect #studentPortal #ppBack{visibility:hidden!important}
+body.parentDirect #studentPortal #ppBack.showHome{visibility:visible!important}
+body.parentDirect #studentPortal .ppContextBar{display:grid!important;margin:12px 16px 0!important;padding:10px 12px!important;border:1px solid #ead9e0!important;border-radius:18px!important;background:#fff!important;box-shadow:0 7px 18px rgba(82,17,43,.06)!important}
+body.parentDirect #studentPortal .ppContextStudent strong{font-size:18px!important;color:#6c1231!important}
+body.parentDirect #studentPortal .ppContextStudent span{font-size:11px!important;color:#876a75!important}
+body.parentDirect #studentPortal .ppContextPeriod{margin-top:8px!important;padding-top:8px!important;border-top:1px solid #f0e5e9!important}
+body.parentDirect #studentPortal .ppContextPeriod span{font-size:11px!important}
+body.parentDirect #studentPortal .ppPeriodChoiceRow select{min-height:39px!important;font-size:12px!important}
+body.parentDirect #studentPortal #ppCurrentWeekBtn{min-height:39px!important;font-size:11px!important}
+body.parentDirect #studentPortal .ppAllTabs{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;margin:12px 16px 0!important;padding:0!important;overflow:visible!important}
+body.parentDirect #studentPortal .ppAllTab{min-height:48px!important;padding:6px 4px!important;border:1px solid #e9d9e0!important;border-radius:14px!important;background:#fff!important;color:#74304a!important;font-size:10px!important;font-weight:900!important;white-space:normal!important;line-height:1.45!important;box-shadow:0 4px 10px rgba(82,17,43,.05)!important}
+body.parentDirect #studentPortal .ppAllTab.active{background:linear-gradient(145deg,#8e1641,#61102c)!important;color:#fff!important;border-color:#771234!important;box-shadow:0 6px 0 #4b0b22,0 11px 18px rgba(82,17,43,.18)!important;transform:translateY(-2px)!important}
+body.parentDirect #studentPortal .ppScreen{min-height:0!important;padding:15px 16px 35px!important}
+body.parentDirect #studentPortal .ppHomeHero{padding:22px 18px!important;border-radius:25px!important;background:radial-gradient(circle at 92% 5%,rgba(242,202,126,.33),transparent 25%),linear-gradient(145deg,#68102f,#9b1c4b 65%,#0c8482 155%)!important}
+body.parentDirect #studentPortal .ppHomeHero small{font-size:13px!important;color:#ffe2a8!important}
+body.parentDirect #studentPortal .ppHomeHero h2{font-size:29px!important;line-height:1.4!important;margin:5px 0!important}
+body.parentDirect #studentPortal .ppHomeHero p{font-size:13px!important}
+body.parentDirect #studentPortal .ppResumeBtn{width:100%;min-height:57px;margin:16px 0 4px;border:0;border-radius:18px;background:linear-gradient(180deg,#fff5d5,#e6bd62)!important;color:#5c102b!important;font-family:"El Messiri",sans-serif;font-size:18px;font-weight:900;cursor:pointer;box-shadow:0 6px 0 #a66b2f,0 13px 20px rgba(48,0,15,.25),inset 0 1px 0 #fff!important}
+body.parentDirect #studentPortal .ppResumeBtn:active{transform:translateY(4px);box-shadow:0 2px 0 #a66b2f,0 7px 12px rgba(48,0,15,.22),inset 0 1px 0 #fff!important}
+body.parentDirect #studentPortal .ppHeroStats{grid-template-columns:repeat(2,1fr)!important;gap:9px!important;margin-top:16px!important}
+body.parentDirect #studentPortal .ppHeroStat{padding:12px 5px!important;border-radius:15px!important}
+body.parentDirect #studentPortal .ppHeroStat b{font-size:21px!important}.ppHeroStat span{font-size:10px!important}
+body.parentDirect #studentPortal .ppSectionLabel{margin:18px 2px 0!important}
+body.parentDirect #studentPortal .ppSectionLabel strong{font-size:18px!important;color:#6b1533!important}
+/* شاشة الافتتاح: الشعار ثم الاسم ثم الدخول، في منتصف الشاشة فقط */
+body.parentDirect #studentPortal .ppSplash{display:flex!important;position:absolute!important;inset:0!important;z-index:60!important;min-height:100dvh!important;align-items:center!important;justify-content:center!important;padding:28px 24px!important;background:radial-gradient(circle at 17% 12%,rgba(243,207,137,.28),transparent 24%),radial-gradient(circle at 88% 88%,rgba(34,190,177,.22),transparent 29%),linear-gradient(145deg,#48061d,#811331 58%,#a71f4d)!important}
+body.parentDirect #studentPortal .ppSplashTop{display:none!important}
+body.parentDirect #studentPortal .ppSplashCenter{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:18px!important;margin:0!important;width:min(390px,100%)!important}
+body.parentDirect #studentPortal .ppCenteredLogo{display:block!important;width:116px!important;height:116px!important;flex:0 0 116px!important;border-radius:33px!important;border:1px solid rgba(255,255,255,.46)!important;background-color:#fff!important;box-shadow:0 10px 0 rgba(45,0,16,.20),0 20px 32px rgba(45,0,16,.32),inset 0 1px 0 #fff!important}
+body.parentDirect #studentPortal .ppWelcomeCard{width:100%!important;min-height:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;transform:none!important;animation:none!important;text-align:center!important;overflow:visible!important}
+body.parentDirect #studentPortal .ppWelcomeCard:after,body.parentDirect #studentPortal .ppCardShine,body.parentDirect #studentPortal .ppWelcomeCardTop,body.parentDirect #studentPortal .ppStudentFollow,body.parentDirect #studentPortal #ppSplashClass,body.parentDirect #studentPortal .ppAppWelcome{display:none!important}
+body.parentDirect #studentPortal .ppWelcomeCard strong{display:block!important;margin:0!important;color:#fff!important;font-family:"El Messiri",sans-serif!important;font-size:31px!important;font-weight:900!important;line-height:1.5!important;text-shadow:0 3px 10px rgba(40,0,15,.30)!important}
+body.parentDirect #studentPortal .ppSplashBottom{position:static!important;z-index:1!important;width:min(390px,100%)!important;margin-top:19px!important}
+body.parentDirect #studentPortal .ppWelcomeHint{display:none!important}
+body.parentDirect #studentPortal .ppEnterBtn{min-height:69px!important;margin:0!important;border-radius:22px!important;background:linear-gradient(180deg,#fff6d8,#e4b956)!important;color:#5b102a!important;font-family:"El Messiri",sans-serif!important;font-size:20px!important;font-weight:900!important;box-shadow:0 9px 0 #9e612b,0 19px 29px rgba(44,0,14,.31),inset 0 1px 0 #fff!important}
+body.parentDirect #studentPortal .ppEnterBtn b{display:none!important}
+@media(min-width:700px){body.parentDirect #studentPortal .ppContextBar,body.parentDirect #studentPortal .ppAllTabs,body.parentDirect #studentPortal .ppScreens{max-width:1100px;margin-left:auto!important;margin-right:auto!important}body.parentDirect #studentPortal .ppAllTabs{grid-template-columns:repeat(8,minmax(0,1fr))!important}body.parentDirect #studentPortal .ppScreen{padding-left:0!important;padding-right:0!important}}
+/* v62 — لا تكرار في التنقل: الرئيسية فقط ثم الاختيار من بطاقاتها */
+body.parentDirect #studentPortal .ppContextBar{display:none!important}
+body.parentDirect #studentPortal #ppBack{display:none!important}
+body.parentDirect #studentPortal .ppAllTabs{display:flex!important;justify-content:center!important;margin:13px 16px 0!important;padding:0!important}
+body.parentDirect #studentPortal .ppAllTab{display:none!important}
+body.parentDirect #studentPortal .ppAllTab[data-pp-tab="ppHome"]{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:142px!important;min-height:46px!important;padding:0 19px!important;border-radius:15px!important;font-size:13px!important;background:linear-gradient(145deg,#8e1641,#61102c)!important;color:#fff!important;border-color:#771234!important;box-shadow:0 5px 0 #4b0b22,0 10px 17px rgba(82,17,43,.18)!important}
+body.parentDirect #studentPortal .ppMenuList{display:grid!important;gap:11px!important;margin-top:12px!important}
+body.parentDirect #studentPortal .ppMenuCard{min-height:84px!important;padding:14px!important;border-radius:19px!important;border-color:#ead9e0!important;box-shadow:0 6px 0 #eadde2,0 13px 22px rgba(82,17,43,.08),inset 0 1px 0 #fff!important}
+body.parentDirect #studentPortal .ppMenuIcon{width:56px!important;height:56px!important;border-radius:18px!important}
+body.parentDirect #studentPortal .ppMenuText strong{font-size:16px!important;color:#5d1933!important}
+body.parentDirect #studentPortal .ppMenuText span{font-size:11px!important;color:#846d77!important}
+@media(min-width:700px){body.parentDirect #studentPortal .ppMenuList{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* v63 — نفس تجربة ولي الأمر في المعاينة ورابط الـQR: بلا أشرطة مكررة */
+#studentPortal .ppContextBar,
+#studentPortal .ppAllTabs,
+#studentPortal .ppBottomNav,
+#studentPortal .ppMoreSheet{display:none!important}
+#studentPortal #ppBack{visibility:hidden!important}
+#studentPortal #ppBack.showHome{visibility:visible!important}
+body.parentDirect #studentPortal #ppBack{display:grid!important}
+#studentPortal .ppScreen{padding-bottom:34px!important}
 </style>
 </head>
 <body>
@@ -10745,12 +10823,11 @@ body.parentDirect #studentPortal .ppEnterBtn{min-height:68px!important;font-size
               <span class="ppStudentFollow">متابعة</span>
               <span id="ppSplashClass">—</span>
             </div>
+            <div class="ppSplashBottom">
+              <div class="ppWelcomeHint">كل تفاصيلها في مكان واحد</div>
+              <button id="ppEnter" class="ppEnterBtn" type="button"><span>دخول المتابعة</span><b aria-hidden="true">←</b></button>
+            </div>
             <p class="ppAppWelcome">مرحبًا بكم في تطبيق <b>دوم معك</b></p>
-          </div>
-
-          <div class="ppSplashBottom">
-            <div class="ppWelcomeHint">كل تفاصيلها في مكان واحد</div>
-            <button id="ppEnter" class="ppEnterBtn" type="button"><span>دخول المتابعة</span><b aria-hidden="true">←</b></button>
           </div>
         </section>
 
@@ -10805,6 +10882,7 @@ body.parentDirect #studentPortal .ppEnterBtn{min-height:68px!important;font-size
                 <small>أهلًا بكم في متابعة</small>
                 <h2 id="ppHomeStudent">—</h2>
                 <p id="ppHomeClass">—</p>
+                <button id="ppResumeHome" class="ppResumeBtn" type="button" data-pp-open="ppGrades">استمرار المتابعة</button>
 
                 <div id="ppHomePeriodLabel" class="ppHomePeriodLabel">—</div>
 
@@ -15111,7 +15189,7 @@ function ppResizeCharts(){
 function ppOpenScreen(id,{push=true}={}){
   if(!PP_SCREEN_TITLES[id])return;
 
-  if(push&&ppCurrentScreen&&ppCurrentScreen!==id){
+  if(push&&!ppDirect&&ppCurrentScreen&&ppCurrentScreen!==id){
     ppNavStack.push(ppCurrentScreen);
     if(ppNavStack.length>20)ppNavStack.shift();
   }
@@ -15124,6 +15202,7 @@ function ppOpenScreen(id,{push=true}={}){
 
   $("ppAppTitle").textContent=PP_SCREEN_TITLES[id];
   $("ppMoreSheet").classList.remove("open");
+  $("ppBack")?.classList.toggle("showHome",id!=="ppHome");
 
   const periodControl=$("ppContextPeriodControl");
   if(periodControl)periodControl.style.display=id==="ppAgenda"?"none":"grid";
@@ -15174,8 +15253,8 @@ function openPortal(id,direct=false){
   ppRenderAll();
   ppOpenScreen("ppHome",{push:false});
 
-  /* QR links always open as a phone application, even when they are scanned from a tablet or computer. */
-  if(direct)ppSetDevice("phone");
+  /* رابط QR يفتح التطبيق المتجاوب نفسه؛ لا إطار جوال ولا صفحة دخول منفصلة. */
+  if(direct)ppSetDevice(window.innerWidth>=1000?"desktop":window.innerWidth>=700?"tablet":"phone");
   else if(window.innerWidth<=620)ppSetDevice("phone");
   ppClockTick();
 }
@@ -15722,13 +15801,8 @@ $("ppEnter").onclick=()=>{
 };
 
 $("ppBack").onclick=()=>{
-  if(ppCurrentScreen==="ppHome"){
-    $("ppSplash").classList.remove("hide");
-    return;
-  }
-
-  const previous=ppNavStack.pop()||"ppHome";
-  ppOpenScreen(previous,{push:false});
+  ppNavStack=[];
+  ppOpenScreen("ppHome",{push:false});
 };
 
 $("ppPrintCurrent").onclick=ppPrintCurrent;
