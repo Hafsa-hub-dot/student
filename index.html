@@ -10089,6 +10089,17 @@ body.parentDirect #studentPortal #ppBack{display:grid!important}
 body.parentDirect #studentPortal .ppAppTop{background:linear-gradient(135deg,#8a1538,#63102a)!important;border-bottom-color:#b89a63!important;box-shadow:0 4px 12px rgba(84,10,35,.18)!important}
 body.parentDirect #studentPortal .ppAppTitle{color:#fff!important;font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;font-size:27px!important;font-weight:900!important;letter-spacing:.15px;text-shadow:0 2px 5px rgba(30,0,12,.25)!important}
 body.parentDirect #studentPortal .ppAppSub{color:#f5dce5!important;font-size:11px!important;font-weight:800!important}
+
+/* v67 — شاشة QR الافتتاحية: ثابتة ومركّزة بلا تمرير */
+body.parentDirect.ppLaunchOpen{overflow:hidden!important;overscroll-behavior:none!important;height:100dvh!important}
+body.parentDirect.ppLaunchOpen #studentPortal{height:100dvh!important;overflow:hidden!important}
+body.parentDirect #studentPortal .ppSplash:not(.hide){position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;min-height:100dvh!important;max-height:100dvh!important;overflow:hidden!important;z-index:999!important;padding:20px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+body.parentDirect #studentPortal .ppSplash:not(.hide) .ppSplashCenter{width:min(380px,100%)!important;gap:14px!important}
+body.parentDirect #studentPortal .ppSplash:not(.hide) .ppCenteredLogo{width:92px!important;height:92px!important;flex-basis:92px!important;border-radius:27px!important}
+body.parentDirect #studentPortal .ppSplash:not(.hide) .ppWelcomeCard strong{font-size:clamp(25px,7vw,31px)!important;line-height:1.35!important}
+body.parentDirect #studentPortal .ppSplash:not(.hide) .ppSplashBottom{margin-top:8px!important}
+body.parentDirect #studentPortal .ppSplash:not(.hide) .ppEnterBtn{min-height:62px!important;border-radius:19px!important;font-size:18px!important;animation:ppEnterGlow 2.6s ease-in-out infinite!important}
+@keyframes ppEnterGlow{0%,100%{filter:brightness(1);transform:translateY(0)}50%{filter:brightness(1.06);transform:translateY(-2px)}}
 </style>
 </head>
 <body>
@@ -11432,6 +11443,7 @@ const BEHAVIOR_OPTIONS=[
   "تحتاج إلى تكرار التوجيه قبل الاستجابة",
   "تتحدث كثيراً",
   "تجادل كثيراً",
+  "هروب من الحصة",
   "لا تستجيب أبداً"
 ];
 
@@ -15293,9 +15305,11 @@ function openPortal(id,direct=false){
 
   if(direct){
     document.body.classList.add("parentDirect");
+    document.body.classList.add("ppLaunchOpen");
     document.querySelector(".topTabs").style.display="none";
   }else{
     document.body.classList.remove("parentDirect");
+    document.body.classList.remove("ppLaunchOpen");
     document.querySelector(".topTabs").style.display="";
   }
 
@@ -15328,6 +15342,7 @@ function openPortal(id,direct=false){
 function openInvalidParentPortal(){
   ppDirect=true;
   document.body.classList.add("parentDirect");
+  document.body.classList.add("ppLaunchOpen");
   document.querySelector(".topTabs").style.display="none";
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
   $("studentPortal").classList.add("active");
@@ -15869,7 +15884,26 @@ function ppPrintCurrent(){
 }
 
 /* Parent portal events — delegated so every generated link works */
+function ppSoftEnterSound(){
+  try{
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx)return;
+    const ctx=new AudioCtx();
+    const osc=ctx.createOscillator();
+    const gain=ctx.createGain();
+    osc.type="sine";
+    osc.frequency.setValueAtTime(523.25,ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(659.25,ctx.currentTime+.16);
+    gain.gain.setValueAtTime(.0001,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.07,ctx.currentTime+.025);
+    gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.34);
+    osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.35);
+    setTimeout(()=>ctx.close(),500);
+  }catch(e){}
+}
 $("ppEnter").onclick=()=>{
+  ppSoftEnterSound();
+  document.body.classList.remove("ppLaunchOpen");
   $("ppSplash").classList.add("hide");
   ppNavStack=[];
   ppOpenScreen("ppHome",{push:false});
