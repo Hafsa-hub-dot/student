@@ -10118,6 +10118,23 @@ body.parentDirect #studentPortal .ppSplash:not(.hide) .ppEnterBtn{min-height:62p
   body.print-parent #parentPrint canvas,body.print-parent #parentPrint img{display:block!important;max-width:100%!important;height:auto!important;break-inside:avoid!important}body.print-parent #parentPrint .chart,body.print-parent #parentPrint [class*="Chart"]{height:auto!important;min-height:0!important;break-inside:avoid!important}
   body.print-parent #parentPrint .parentSeatingRoom{transform:none!important;zoom:.78!important;transform-origin:top center!important}body.print-parent #parentPrint .ppCertificate{max-width:190mm!important;min-height:0!important;margin:0 auto 8mm!important}body.print-parent #parentPrint .ppCertificate:not(:last-child){break-after:page!important;page-break-after:always!important}
 }
+
+/* زر طباعة واضح داخل بوابة ولي الأمر */
+.ppA4PrintFab{display:none!important}
+body.parentDirect .ppA4PrintFab{
+  position:fixed!important;left:16px!important;bottom:18px!important;z-index:9999!important;
+  display:flex!important;align-items:center!important;gap:8px!important;
+  border:0!important;border-radius:999px!important;padding:13px 18px!important;
+  background:linear-gradient(135deg,#0D7A7D,#553190)!important;color:#fff!important;
+  font-family:"Noto Kufi Arabic",Tahoma,sans-serif!important;font-size:12px!important;font-weight:900!important;
+  box-shadow:0 12px 28px rgba(13,122,125,.35)!important;cursor:pointer!important;
+}
+body.parentDirect.ppLaunchOpen .ppA4PrintFab{display:none!important}
+@media(max-width:620px){
+  body.parentDirect .ppA4PrintFab{left:50%!important;bottom:16px!important;transform:translateX(-50%)!important;white-space:nowrap!important;font-size:10px!important;padding:11px 14px!important}
+}
+@media print{.ppA4PrintFab{display:none!important}}
+
 </style>
 </head>
 <body>
@@ -11246,6 +11263,9 @@ body.parentDirect #studentPortal .ppSplash:not(.hide) .ppEnterBtn{min-height:62p
 <div id="teacherCompletionPrint"></div>
 <div id="seatingPrint"></div>
 <div id="parentPrint"></div>
+<button class="ppA4PrintFab" type="button" onclick="ppPrintFullReport()" aria-label="طباعة التقرير الشامل A4">
+  <span aria-hidden="true">🖨️</span><span>طباعة التقرير الشامل A4</span>
+</button>
 
 <script>
 /* قاعدة جديدة تمامًا حتى لا تسترجع أي بيانات من الإصدارات السابقة */
