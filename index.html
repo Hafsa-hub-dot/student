@@ -10574,6 +10574,21 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
   #seating.mentorSeating .seatingControlBar{flex:0 0 auto}
 }
 
+
+/* شاشة واحدة لأداتي مربية الصف على الكمبيوتر */
+@media(min-width:761px){
+  #seating.mentorActive .seatingWorkspace{height:calc(100dvh - 142px);overflow:hidden;display:flex;flex-direction:column}
+  #seating.mentorActive .mentorToolSwitch,#seating.mentorActive .seatingHero,#seating.mentorActive .seatingControlBar{flex:0 0 auto}
+  #seating.mentorApps .applicationsManager{flex:1;min-height:0;margin:0!important;display:flex;flex-direction:column;overflow:hidden}
+  #seating.mentorApps #applicationsAdminTable{flex:1;min-height:0;display:flex;flex-direction:column}
+  #seating.mentorApps .appPlanner{flex:1;min-height:0}
+  #seating.mentorApps .appScheduleWrap{overflow:hidden}
+  #seating.mentorApps .appScheduleTable th,#seating.mentorApps .appScheduleTable td{height:35px!important;padding:5px!important}
+  #seating.mentorApps .appScheduleStatus{margin:7px 0 0!important}
+  #seating.mentorSeating .seatingBuilderGrid{flex:1;min-height:0;overflow:hidden}
+  #seating.mentorSeating .unseatedPanel,#seating.mentorSeating .classroomCard{max-height:100%;overflow:hidden}
+  #seating.mentorSeating .seatingRoom{transform:scale(.92);transform-origin:top center}
+}
 </style>
 </head>
 <body>
@@ -16081,13 +16096,19 @@ window.ppStatsToggle=id=>{
 
 function applicationSchedule(key){return db.applicationSchedule?.[key]||{}}
 const APP_DAYS=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"];
+function appSubjectName(subject){
+  return String(subject||"").trim()
+    .replace(/^(?:المعلمة|معلمة|الأستاذة|أستاذة)\s+/,"")
+    .replace(/\s*(?:[-–—|:]|،)\s*(?:المعلمة|معلمة|الأستاذة|أستاذة).*/,"")
+    .trim()||"مادة";
+}
 function appTableHTML(key,editable=false){
   const data=applicationSchedule(key);
   return '<div class="appScheduleWrap"><table class="appScheduleTable"><thead><tr><th>الحصة</th>'+APP_DAYS.map(day=>'<th>'+day+'</th>').join('')+'</tr></thead><tbody>'+
-    Array.from({length:7},(_,i)=>{const p=i+1;return '<tr><th>'+p+'</th>'+APP_DAYS.map(day=>{const val=data[day+"-"+p]||"";return '<td class="'+(val?'filled':'')+'" '+(editable?'data-app-slot="'+day+"-"+p+'"':'')+'>'+esc(val||'—')+'</td>'}).join('')+'</tr>'}).join('')+
+    Array.from({length:7},(_,i)=>{const p=i+1;return '<tr><th>'+p+'</th>'+APP_DAYS.map(day=>{const val=data[day+"-"+p]||"";const label=appSubjectName(val);return '<td class="'+(val?'filled':'')+'" '+(editable?'data-app-slot="'+day+"-"+p+'"':'')+'>'+esc(val?label:'—')+'</td>'}).join('')+'</tr>'}).join('')+
   '</tbody></table></div>';
 }
-function appSubjectsHTML(key){return '<div class="appSubjects">'+(classPlan(key)||[]).map(row=>row.subject).filter(Boolean).map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
+function appSubjectsHTML(key){const subjects=[...new Set((classPlan(key)||[]).map(row=>appSubjectName(row.subject)).filter(Boolean))];return '<div class="appSubjects">'+subjects.map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
 function appStatus(message,type="info"){const x=$("appScheduleStatus");if(x){x.textContent=message;x.className="appScheduleStatus "+type}}
 function renderApplicationsAdmin(){
   const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;
