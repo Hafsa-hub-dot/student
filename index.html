@@ -15413,7 +15413,16 @@ function ppOpenScreen(id,{push=true}={}){
 
   ppCurrentScreen=id;
 
-  document.querySelectorAll("#studentPortal .ppScreen").forEach(x=>x.classList.toggle("active",x.id===id));
+  
+  /* يربط أقسام وليّ الأمر بزر الرجوع في الهاتف. */
+  if(ppDirect && push && window.history && history.pushState){
+    history.pushState(
+      {...(history.state||{}),ppPortalScreen:id},
+      "",
+      location.href
+    );
+  }
+document.querySelectorAll("#studentPortal .ppScreen").forEach(x=>x.classList.toggle("active",x.id===id));
   document.querySelectorAll("#studentPortal [data-pp-bottom]").forEach(x=>x.classList.toggle("active",x.dataset.ppBottom===id));
   document.querySelectorAll("#studentPortal [data-pp-tab]").forEach(x=>x.classList.toggle("active",x.dataset.ppTab===id));
   $("ppAppTitle").textContent=id==="ppHome"?"دوم معك":PP_SCREEN_TITLES[id];
@@ -15435,6 +15444,13 @@ function ppOpenScreen(id,{push=true}={}){
   const viewport=document.querySelector("#studentPortal .ppViewport");
   if(viewport)viewport.scrollTo({top:0,behavior:"smooth"});
 }
+
+window.addEventListener("popstate",event=>{
+  const screen=event.state?.ppPortalScreen;
+  if(ppDirect && screen && PP_SCREEN_TITLES[screen]){
+    ppOpenScreen(screen,{push:false});
+  }
+});
 
 function ppClockTick(){
   const d=new Date();
@@ -15482,6 +15498,15 @@ function openPortal(id,direct=false){
   if(direct)ppSetDevice(window.innerWidth>=1000?"desktop":window.innerWidth>=700?"tablet":"phone");
   else if(window.innerWidth<=620)ppSetDevice("phone");
   ppClockTick();
+
+  /* أول صفحة في البوابة تصبح نقطة الرجوع الأساسية للهاتف. */
+  if(direct && window.history && history.replaceState){
+    history.replaceState(
+      {...(history.state||{}),ppPortalScreen:"ppHome"},
+      "",
+      location.href
+    );
+  }
 }
 
 function openInvalidParentPortal(){
