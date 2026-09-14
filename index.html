@@ -10226,6 +10226,11 @@ body.parentDirect .ppMobileActionDock .ppMobilePrintText{
   min-width:0!important;margin:0!important;animation:none!important;
 }
 
+
+/* الرئيسية ليست بندًا للطباعة ولا تظهر كتَبويب علوي */
+#studentPortal [data-pp-tab="ppHome"]{display:none!important}
+body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
+
 </style>
 </head>
 <body>
@@ -15411,9 +15416,12 @@ function ppOpenScreen(id,{push=true}={}){
   document.querySelectorAll("#studentPortal .ppScreen").forEach(x=>x.classList.toggle("active",x.id===id));
   document.querySelectorAll("#studentPortal [data-pp-bottom]").forEach(x=>x.classList.toggle("active",x.dataset.ppBottom===id));
   document.querySelectorAll("#studentPortal [data-pp-tab]").forEach(x=>x.classList.toggle("active",x.dataset.ppTab===id));
-  $("ppAppTitle").textContent=PP_SCREEN_TITLES[id];
+  $("ppAppTitle").textContent=id==="ppHome"?"دوم معك":PP_SCREEN_TITLES[id];
   const mobilePrint=$("ppMobilePrintText");
-  if(mobilePrint)mobilePrint.textContent=`طباعة ${PP_SCREEN_TITLES[id]} A4`;
+  if(mobilePrint){
+    mobilePrint.textContent=`طباعة ${PP_SCREEN_TITLES[id]} A4`;
+    mobilePrint.classList.toggle("hidePrintOnHome",id==="ppHome");
+  }
   const mobileHome=$("ppMobileHomeText");
   if(mobileHome)mobileHome.classList.toggle("isHidden",id==="ppHome");
   $("ppMoreSheet").classList.remove("open");
