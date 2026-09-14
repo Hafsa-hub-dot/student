@@ -10454,6 +10454,18 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 
 .applicationsManager{margin:14px 0;padding:14px;border:1px solid #DDE7E6;border-radius:18px;background:#fff}.appScheduleWrap{overflow:auto}.appScheduleTable{width:100%;min-width:620px;border-collapse:collapse;text-align:center}.appScheduleTable th,.appScheduleTable td{padding:10px;border:1px solid #E1E9E8;font-size:11px}.appScheduleTable th{background:#EDF8F7;color:#0D777B}.appScheduleTable td{color:#594278;font-weight:800}.applicationsManager .appScheduleTable td{cursor:pointer}.ppApplicationsContent .appScheduleTable{font-size:8px}.ppApplicationsContent .appScheduleTable th,.ppApplicationsContent .appScheduleTable td{padding:8px}
 
+
+/* اختيار مربية الصف وجدول السحب */
+.mentorChoice{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.mentorChoice button{min-height:170px;border:1px solid #DCE8E7;border-radius:23px;background:linear-gradient(145deg,#fff,#EFF9F8);color:#22565A;cursor:pointer;box-shadow:0 10px 22px rgba(13,119,123,.09)}
+.mentorChoice button+button{background:linear-gradient(145deg,#fff,#F5F0FB);color:#6B4692}
+.mentorChoice b,.mentorChoice strong,.mentorChoice span{display:block}.mentorChoice b{font-size:36px}.mentorChoice strong{margin-top:7px;font-family:"El Messiri";font-size:22px}.mentorChoice span{margin-top:5px;font-size:10px}
+#seating.mentorActive .mentorChoice{display:none}#seating:not(.mentorActive) .seatingControlBar,#seating:not(.mentorActive) .seatingBuilderGrid,#seating:not(.mentorActive) .seatingFollowPanel,#seating:not(.mentorActive) .applicationsManager{display:none}
+#seating.mentorApps .seatingControlBar,#seating.mentorApps .seatingBuilderGrid,#seating.mentorApps .seatingFollowPanel{display:none}
+#seating.mentorSeating .applicationsManager{display:none}.seatingTeacherOptional{display:none!important}
+.appSubjects{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.appSubjects button{padding:9px 12px;border:1px solid #D6E7E4;border-radius:999px;background:#EFF9F7;color:#0D777B;font-weight:800;cursor:grab}
+.appDays{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.appDay{min-height:92px;padding:9px;border:2px dashed #D8E4E2;border-radius:15px;background:#FAFCFC;text-align:center}.appDay strong{display:block;color:#2C5155}.appDay span{display:block;margin-top:10px;color:#7650A4;font-weight:900}.appHint,.appAdvice{padding:9px;border-radius:10px;background:#F5F8F8;color:#65777A;font-size:11px}.appAdvice{margin-top:10px;background:#FFF7E8;color:#846019}.appClassTitle{margin:0;color:#28575B}
+
 </style>
 </head>
 <body>
@@ -11119,10 +11131,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
           <select id="seatingClass"></select>
         </div>
 
-        <div class="field">
-          <label>مربية الصف</label>
-          <select id="seatingTeacher"></select>
-        </div>
+        <div class="field seatingTeacherOptional"><label>مربية الصف</label><select id="seatingTeacher"></select></div>
 
         <div class="seatingRowsBadge" id="seatingRowsBadge">5 صفوف × 6 مقاعد</div>
       </div>
@@ -11145,8 +11154,12 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
       </div>
     </section>
 
+    <section id="mentorChoice" class="mentorChoice">
+      <button type="button" onclick="openMentorTool('seating')"><b>⌘</b><strong>كروكي الصف</strong><span>اختاري الشعبة ورتّبي أماكن الطالبات</span></button>
+      <button type="button" onclick="openMentorTool('apps')"><b>▦</b><strong>جدول التطبيقات</strong><span>اسحبي مواد الشعبة إلى أيام الأسبوع</span></button>
+    </section>
     <section class="applicationsManager">
-      <div class="section"><div><h2>جدول التطبيقات</h2><div class="sub">اختاري الشعبة ثم اضغطي أي حصة لتحديد المادة التطبيقية أو حذفها.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
+      <div class="section"><div><h2>جدول التطبيقات</h2><div class="sub">تطبيق واحد فقط لكل يوم، مع توصية للتوازن بين المواد العلمية والأدبية.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
       <div id="applicationsAdminTable"></div>
     </section>
 
@@ -15962,11 +15975,25 @@ window.ppStatsToggle=id=>{
 function applicationSchedule(key){return db.applicationSchedule?.[key]||{}}
 const APP_DAYS=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"];
 function appTableHTML(key,editable=false){
-  const plan=classPlan(key)||[], data=applicationSchedule(key);
-  const subjects=plan.map(x=>x.subject).filter(Boolean);
-  return '<div class="appScheduleWrap"><table class="appScheduleTable"><thead><tr><th>الحصة</th>'+APP_DAYS.map(d=>'<th>'+d+'</th>').join('')+'</tr></thead><tbody>'+Array.from({length:7},(_,i)=>'<tr><th>'+ (i+1) +'</th>'+APP_DAYS.map(day=>{const v=data[day+"-"+(i+1)]||"";return '<td '+(editable?'onclick="editApplicationSlot(\''+key+'\',\''+day+'\','+(i+1)+')"':'')+'>'+ (v?esc(v):(editable?'＋':'—')) +'</td>'}).join('')+'</tr>').join('')+'</tbody></table></div>'}
-function renderApplicationsAdmin(){const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}el.innerHTML=appTableHTML(key,true)}
-window.editApplicationSlot=(key,day,period)=>{const list=(classPlan(key)||[]).map(x=>x.subject).filter(Boolean);const old=applicationSchedule(key)[day+"-"+period]||"";const answer=prompt("اكتبي اسم المادة للتطبيق في "+day+" الحصة "+period+"\nالمواد: "+list.join("، "),old);if(answer===null)return;db.applicationSchedule??={};db.applicationSchedule[key]??={};if(clean(answer))db.applicationSchedule[key][day+"-"+period]=clean(answer);else delete db.applicationSchedule[key][day+"-"+period];save();renderApplicationsAdmin()};
+  const data=applicationSchedule(key);
+  return '<div class="appScheduleWrap"><div class="appDays">'+APP_DAYS.map(day=>'<div class="appDay '+(editable?'dropDay':'')+'" '+(editable?'data-app-day="'+day+'"':'')+'><strong>'+day+'</strong><span>'+esc(data[day]||"اسحبي مادة هنا")+'</span></div>').join('')+'</div></div>';
+}
+function appSubjectsHTML(key){
+  const subjects=(classPlan(key)||[]).map(row=>row.subject).filter(Boolean);
+  return '<div class="appSubjects">'+subjects.map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>';
+}
+function appAdvice(key){
+  const values=Object.values(applicationSchedule(key));if(!values.length)return 'اختاري مادة لكل يوم عند الحاجة.';
+  const science=/فيزياء|كيمياء|أحياء|رياض|حاسوب|علم/i, sci=values.filter(x=>science.test(x)).length;
+  return sci&&values.length-sci?'توازن جميل: يوجد مواد علمية وأدبية خلال الأسبوع.':'توصية: أضيفي مادة من النوع الآخر لتحقيق توازن علمي وأدبي.';
+}
+function renderApplicationsAdmin(){const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}el.innerHTML='<h3 class="appClassTitle">'+esc(groups().find(g=>g.key===key)?.label||"الشعبة")+'</h3><div class="appHint">المواد المتاحة — اسحبي المادة إلى اليوم المناسب</div>'+appSubjectsHTML(key)+appTableHTML(key,true)+'<div class="appAdvice">'+esc(appAdvice(key))+'</div>';bindAppDrops(key)}
+function bindAppDrops(key){
+  document.querySelectorAll("[data-app-subject]").forEach(b=>b.ondragstart=e=>e.dataTransfer.setData("text/plain",b.dataset.appSubject));
+  document.querySelectorAll("[data-app-day]").forEach(day=>{day.ondragover=e=>e.preventDefault();day.ondrop=e=>{e.preventDefault();setAppDay(key,day.dataset.appDay,e.dataTransfer.getData("text/plain"))};day.onclick=()=>{if(applicationSchedule(key)[day.dataset.appDay])setAppDay(key,day.dataset.appDay,"")}});
+}
+function setAppDay(key,day,subject){db.applicationSchedule??={};db.applicationSchedule[key]??={};if(subject)db.applicationSchedule[key][day]=subject;else delete db.applicationSchedule[key][day];save();renderApplicationsAdmin()}
+window.openMentorTool=type=>{const root=$("seating");root.classList.add("mentorActive");root.classList.toggle("mentorApps",type==="apps");root.classList.toggle("mentorSeating",type==="seating");if(type==="apps")renderApplicationsAdmin();else loadSeatingDraft();};
 function ppRenderApplications(){const s=ppStudent();if(!s)return;const key=classKey(s);$("ppApplicationsContent").innerHTML=appTableHTML(key,false)}
 
 function ppRenderAgenda(){
