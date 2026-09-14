@@ -10482,6 +10482,17 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .mentorToolSwitch button.active{color:#fff;background:linear-gradient(135deg,#0D777B,#5A3E84);border-color:#0D777B;box-shadow:0 5px 0 #084D50,0 10px 17px rgba(13,119,123,.22)}
 .mentorToolSwitch span{font-size:18px;vertical-align:middle;margin-left:5px}
 
+
+/* ترتيب أدوات مربيات الصفوف */
+#seating.mentorActive .mentorToolSwitch{margin:10px auto 14px!important}
+#seating.mentorActive .seatingHero{margin-bottom:10px!important;padding:15px 20px!important}
+#seating.mentorActive .seatingControlBar{padding:10px 14px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+#seating.mentorActive .seatingControlBar>div:first-child{display:none!important}
+#seating.mentorActive .seatingActions{display:flex!important;flex-wrap:wrap!important;gap:6px!important}
+#seating.mentorActive .seatingActions .btn{min-height:34px!important;padding:0 9px!important;font-size:9px!important}
+.appScheduleTable td{min-width:105px;height:46px}.appScheduleTable td[data-app-slot]{cursor:pointer}.appScheduleTable td.filled{background:#F2ECFA;color:#684294}
+.appScheduleStatus{margin-top:10px;padding:9px;border-radius:10px;background:#EEF7F6;color:#297276;font-size:11px}.appScheduleStatus.warn{background:#FFF0F1;color:#A54253}.appScheduleStatus.ok{background:#EEF8EF;color:#387A45}
+
 </style>
 </head>
 <body>
@@ -15996,36 +16007,31 @@ function applicationSchedule(key){return db.applicationSchedule?.[key]||{}}
 const APP_DAYS=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"];
 function appTableHTML(key,editable=false){
   const data=applicationSchedule(key);
-  return '<div class="appScheduleWrap"><div class="appDays">'+APP_DAYS.map(day=>'<div class="appDay '+(editable?'dropDay':'')+'" '+(editable?'data-app-day="'+day+'"':'')+'><strong>'+day+'</strong><span>'+esc(data[day]||"اسحبي مادة هنا")+'</span></div>').join('')+'</div></div>';
+  return '<div class="appScheduleWrap"><table class="appScheduleTable"><thead><tr><th>الحصة</th>'+APP_DAYS.map(day=>'<th>'+day+'</th>').join('')+'</tr></thead><tbody>'+
+    Array.from({length:7},(_,i)=>{const p=i+1;return '<tr><th>'+p+'</th>'+APP_DAYS.map(day=>{const val=data[day+"-"+p]||"";return '<td class="'+(val?'filled':'')+'" '+(editable?'data-app-slot="'+day+"-"+p+'"':'')+'>'+esc(val||'—')+'</td>'}).join('')+'</tr>'}).join('')+
+  '</tbody></table></div>';
 }
-function appSubjectsHTML(key){
-  const subjects=(classPlan(key)||[]).map(row=>row.subject).filter(Boolean);
-  return '<div class="appSubjects">'+subjects.map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>';
-}
-function appAdvice(key){
-  const values=Object.values(applicationSchedule(key));if(!values.length)return 'اختاري مادة لكل يوم عند الحاجة.';
-  const science=/فيزياء|كيمياء|أحياء|رياض|حاسوب|علم/i, sci=values.filter(x=>science.test(x)).length;
-  return sci&&values.length-sci?'توازن جميل: يوجد مواد علمية وأدبية خلال الأسبوع.':'توصية: أضيفي مادة من النوع الآخر لتحقيق توازن علمي وأدبي.';
-}
-function renderApplicationsAdmin(){const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}el.innerHTML='<h3 class="appClassTitle">'+esc(groups().find(g=>g.key===key)?.label||"الشعبة")+'</h3><div class="appHint">المواد المتاحة — اسحبي المادة إلى اليوم المناسب</div>'+appSubjectsHTML(key)+appTableHTML(key,true)+'<div class="appAdvice">'+esc(appAdvice(key))+'</div>';bindAppDrops(key)}
+function appSubjectsHTML(key){return '<div class="appSubjects">'+(classPlan(key)||[]).map(row=>row.subject).filter(Boolean).map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
+function appStatus(message,type="info"){const x=$("appScheduleStatus");if(x){x.textContent=message;x.className="appScheduleStatus "+type}}
+function renderApplicationsAdmin(){const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}el.innerHTML='<div class="appHint">اسحبي المادة إلى الحصة المناسبة. يسمح النظام بتطبيق واحد فقط في كل يوم.</div>'+appSubjectsHTML(key)+appTableHTML(key,true)+'<div id="appScheduleStatus" class="appScheduleStatus">اختاري مادة ثم اسحبيها إلى اليوم والحصة.</div>';bindAppDrops(key)}
 function bindAppDrops(key){
   document.querySelectorAll("[data-app-subject]").forEach(b=>b.ondragstart=e=>e.dataTransfer.setData("text/plain",b.dataset.appSubject));
-  document.querySelectorAll("[data-app-day]").forEach(day=>{day.ondragover=e=>e.preventDefault();day.ondrop=e=>{e.preventDefault();setAppDay(key,day.dataset.appDay,e.dataTransfer.getData("text/plain"))};day.onclick=()=>{if(applicationSchedule(key)[day.dataset.appDay])setAppDay(key,day.dataset.appDay,"")}});
+  document.querySelectorAll("[data-app-slot]").forEach(cell=>{cell.ondragover=e=>e.preventDefault();cell.ondrop=e=>{e.preventDefault();const [day,period]=cell.dataset.appSlot.split("-");setAppSlot(key,day,period,e.dataTransfer.getData("text/plain"))};cell.onclick=()=>{const [day,period]=cell.dataset.appSlot.split("-");if(applicationSchedule(key)[cell.dataset.appSlot])setAppSlot(key,day,period,"")}});
 }
-function setAppDay(key,day,subject){db.applicationSchedule??={};db.applicationSchedule[key]??={};if(subject)db.applicationSchedule[key][day]=subject;else delete db.applicationSchedule[key][day];save();renderApplicationsAdmin()}
+function setAppSlot(key,day,period,subject){
+  db.applicationSchedule??={};db.applicationSchedule[key]??={};const data=db.applicationSchedule[key];
+  const sameDay=Object.keys(data).find(k=>k.startsWith(day+"-")&&k!==day+"-"+period&&data[k]);
+  if(subject&&sameDay){appStatus("غير مقبول: يوجد تطبيق آخر يوم "+day+" بالفعل.","warn");return}
+  if(subject){data[day+"-"+period]=subject;appStatus("تم تحديد "+subject+" يوم "+day+" في الحصة "+period+" ✓","ok")}else{delete data[day+"-"+period];appStatus("تم حذف التطبيق من يوم "+day+".","info")}
+  save();renderApplicationsAdmin();
+}
 window.openMentorTool=type=>{
-  const root=$("seating"),title=root.querySelector(".seatingHeroTitle h2"),sub=root.querySelector(".seatingHeroTitle p");
+  const root=$("seating"),workspace=root.querySelector(".seatingWorkspace"),sw=root.querySelector(".mentorToolSwitch"),title=root.querySelector(".seatingHeroTitle h2"),sub=root.querySelector(".seatingHeroTitle p");
+  if(workspace&&sw)workspace.prepend(sw);
   root.classList.add("mentorActive");root.classList.toggle("mentorApps",type==="apps");root.classList.toggle("mentorSeating",type==="seating");
   root.querySelectorAll("[data-mentor-tool]").forEach(btn=>btn.classList.toggle("active",btn.dataset.mentorTool===type));
-  if(type==="apps"){
-    if(title)title.textContent="جدول التطبيقات";
-    if(sub)sub.textContent="اختاري الشعبة أولًا، ثم اسحبي موادها إلى أيام الأسبوع.";
-    renderApplicationsAdmin();
-  }else{
-    if(title)title.textContent="كروكي الصف";
-    if(sub)sub.textContent="اختاري الشعبة أولًا، فتظهر أسماء الطالبات مباشرة للسحب والتوزيع.";
-    loadSeatingDraft();
-  }
+  if(type==="apps"){if(title)title.textContent="جدول التطبيقات";if(sub)sub.textContent="اختاري الشعبة أولًا، ثم حددي اليوم والحصة المناسبة لكل تطبيق.";renderApplicationsAdmin()}
+  else{if(title)title.textContent="كروكي الصف";if(sub)sub.textContent="اختاري الشعبة أولًا، فتظهر أسماء الطالبات مباشرة للسحب والتوزيع.";loadSeatingDraft()}
 };
 function ppRenderApplications(){const s=ppStudent();if(!s)return;const key=classKey(s);$("ppApplicationsContent").innerHTML=appTableHTML(key,false)}
 
