@@ -15495,6 +15495,13 @@ function openPortal(id,direct=false){
   ppOpenScreen("ppHome",{push:false});
 
   /* رابط QR يفتح التطبيق المتجاوب نفسه؛ لا إطار جوال ولا صفحة دخول منفصلة. */
+  
+  /* الدخول الفوري بعد مسح QR: لا تحتاج الأم إلى ضغطة ثانية، خصوصًا في الآيفون. */
+  if(direct){
+    document.body.classList.remove("ppLaunchOpen");
+    $("ppSplash").classList.add("hide");
+  }
+
   if(direct)ppSetDevice(window.innerWidth>=1000?"desktop":window.innerWidth>=700?"tablet":"phone");
   else if(window.innerWidth<=620)ppSetDevice("phone");
   ppClockTick();
