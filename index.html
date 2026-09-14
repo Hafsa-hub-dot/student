@@ -10472,6 +10472,16 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 #seating:not(.mentorActive) .mentorChoice{margin-top:58px!important;margin-bottom:58px!important;max-width:980px;margin-right:auto!important;margin-left:auto!important}
 #seating:not(.mentorActive) .mentorChoice button{min-height:230px!important}
 
+
+/* أزرار انتقال ثابتة بين أدوات مربية الصف */
+.mentorToolSwitch{display:none}
+#seating.mentorActive .mentorToolSwitch{position:sticky;top:12px;z-index:30;display:flex;justify-content:center;gap:12px;margin:12px auto 18px;padding:9px;width:max-content;max-width:calc(100% - 24px);border-radius:19px;background:rgba(255,255,255,.93);backdrop-filter:blur(14px);box-shadow:0 10px 26px rgba(22,49,51,.14)}
+.mentorToolSwitch button{min-height:46px;padding:0 18px;border:1px solid #E1E9E8;border-radius:14px;background:linear-gradient(180deg,#fff,#EEF6F5);color:#26595D;font-family:"Noto Kufi Arabic",sans-serif;font-size:11px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #D5E6E3,0 8px 15px rgba(22,49,51,.09);transition:.16s}
+.mentorToolSwitch button+button{background:linear-gradient(180deg,#fff,#F3EDFA);color:#704A99;box-shadow:0 5px 0 #E0D4EF,0 8px 15px rgba(54,35,80,.09)}
+.mentorToolSwitch button:active{transform:translateY(4px);box-shadow:0 1px 0 #D5E6E3}
+.mentorToolSwitch button.active{color:#fff;background:linear-gradient(135deg,#0D777B,#5A3E84);border-color:#0D777B;box-shadow:0 5px 0 #084D50,0 10px 17px rgba(13,119,123,.22)}
+.mentorToolSwitch span{font-size:18px;vertical-align:middle;margin-left:5px}
+
 </style>
 </head>
 <body>
@@ -11164,6 +11174,10 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
       <button type="button" onclick="openMentorTool('seating')"><b>⌘</b><strong>كروكي الصف</strong><span>اختاري الشعبة ورتّبي أماكن الطالبات</span></button>
       <button type="button" onclick="openMentorTool('apps')"><b>▦</b><strong>جدول التطبيقات</strong><span>اسحبي مواد الشعبة إلى أيام الأسبوع</span></button>
     </section>
+    <div class="mentorToolSwitch" aria-label="التنقل بين أدوات مربية الصف">
+      <button type="button" data-mentor-tool="seating" onclick="openMentorTool('seating')"><span>⌘</span> كروكي الصف</button>
+      <button type="button" data-mentor-tool="apps" onclick="openMentorTool('apps')"><span>▦</span> جدول التطبيقات</button>
+    </div>
     <section class="applicationsManager">
       <div class="section"><div><h2>جدول التطبيقات</h2><div class="sub">تطبيق واحد فقط لكل يوم، مع توصية للتوازن بين المواد العلمية والأدبية.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
       <div id="applicationsAdminTable"></div>
@@ -16002,6 +16016,7 @@ function setAppDay(key,day,subject){db.applicationSchedule??={};db.applicationSc
 window.openMentorTool=type=>{
   const root=$("seating"),title=root.querySelector(".seatingHeroTitle h2"),sub=root.querySelector(".seatingHeroTitle p");
   root.classList.add("mentorActive");root.classList.toggle("mentorApps",type==="apps");root.classList.toggle("mentorSeating",type==="seating");
+  root.querySelectorAll("[data-mentor-tool]").forEach(btn=>btn.classList.toggle("active",btn.dataset.mentorTool===type));
   if(type==="apps"){
     if(title)title.textContent="جدول التطبيقات";
     if(sub)sub.textContent="اختاري الشعبة أولًا، ثم اسحبي موادها إلى أيام الأسبوع.";
