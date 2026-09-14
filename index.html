@@ -10493,6 +10493,53 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .appScheduleTable td{min-width:105px;height:46px}.appScheduleTable td[data-app-slot]{cursor:pointer}.appScheduleTable td.filled{background:#F2ECFA;color:#684294}
 .appScheduleStatus{margin-top:10px;padding:9px;border-radius:10px;background:#EEF7F6;color:#297276;font-size:11px}.appScheduleStatus.warn{background:#FFF0F1;color:#A54253}.appScheduleStatus.ok{background:#EEF8EF;color:#387A45}
 
+
+
+/***** تنظيم واجهة مربيات الصفوف وجدول التطبيقات *****/
+#seating.mentorActive .seatingHeroTitle,
+#seating.mentorActive .seatingRowsBadge{display:none!important}
+#seating.mentorActive .seatingHero{
+  display:block!important;
+  padding:12px 18px!important;
+  border-radius:18px!important;
+}
+#seating.mentorActive .seatingSelectors{
+  display:block!important;
+  max-width:520px;
+  margin-inline:auto;
+}
+#seating.mentorActive .seatingSelectors .field:not(:first-child){display:none!important}
+#seating.mentorActive .seatingSelectors label{display:block;text-align:right}
+#seating.mentorApps .seatingControlBar,
+#seating.mentorApps .seatingBuilderGrid,
+#seating.mentorApps .seatingFollowPanel{display:none!important}
+#seating.mentorApps .applicationsManager{margin-top:0!important}
+.appPlanner{
+  display:grid;
+  grid-template-columns:200px minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  direction:rtl;
+}
+.appMaterials{
+  position:sticky;top:12px;
+  padding:14px;
+  border:1px solid #D9EAE8;
+  border-radius:16px;
+  background:#F6FCFB;
+  box-shadow:0 8px 18px rgba(17,99,103,.06);
+}
+.appMaterials>strong{display:block;margin-bottom:9px;color:#17676B;font-size:13px}
+.appMaterials .appSubjects{display:flex;flex-direction:column;gap:7px;margin:0}
+.appMaterials .appSubjects button{width:100%;min-height:37px}
+.appBoard{min-width:0}
+@media(max-width:760px){
+  .appPlanner{grid-template-columns:1fr}
+  .appMaterials{position:static}
+  .appMaterials .appSubjects{flex-direction:row;flex-wrap:wrap}
+  .appMaterials .appSubjects button{width:auto}
+}
+
 </style>
 </head>
 <body>
@@ -16013,15 +16060,20 @@ function appTableHTML(key,editable=false){
 }
 function appSubjectsHTML(key){return '<div class="appSubjects">'+(classPlan(key)||[]).map(row=>row.subject).filter(Boolean).map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
 function appStatus(message,type="info"){const x=$("appScheduleStatus");if(x){x.textContent=message;x.className="appScheduleStatus "+type}}
-function renderApplicationsAdmin(){const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}el.innerHTML='<div class="appHint">اسحبي المادة إلى الحصة المناسبة. يسمح النظام بتطبيق واحد فقط في كل يوم.</div>'+appSubjectsHTML(key)+appTableHTML(key,true)+'<div id="appScheduleStatus" class="appScheduleStatus">اختاري مادة ثم اسحبيها إلى اليوم والحصة.</div>';bindAppDrops(key)}
+function renderApplicationsAdmin(){
+  const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;
+  if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}
+  el.innerHTML='<div class="appHint">اسحبي المادة إلى الحصة المناسبة. يُسمح بتطبيقين كحد أقصى في كل يوم.</div><div class="appPlanner"><aside class="appMaterials"><strong>مواد الشعبة</strong>'+appSubjectsHTML(key)+'</aside><div class="appBoard">'+appTableHTML(key,true)+'</div></div><div id="appScheduleStatus" class="appScheduleStatus">اسحبي المادة إلى يوم وحصة مناسبة. اضغطي على المادة الموضوعة لحذفها.</div>';
+  bindAppDrops(key);
+}
 function bindAppDrops(key){
   document.querySelectorAll("[data-app-subject]").forEach(b=>b.ondragstart=e=>e.dataTransfer.setData("text/plain",b.dataset.appSubject));
   document.querySelectorAll("[data-app-slot]").forEach(cell=>{cell.ondragover=e=>e.preventDefault();cell.ondrop=e=>{e.preventDefault();const [day,period]=cell.dataset.appSlot.split("-");setAppSlot(key,day,period,e.dataTransfer.getData("text/plain"))};cell.onclick=()=>{const [day,period]=cell.dataset.appSlot.split("-");if(applicationSchedule(key)[cell.dataset.appSlot])setAppSlot(key,day,period,"")}});
 }
 function setAppSlot(key,day,period,subject){
   db.applicationSchedule??={};db.applicationSchedule[key]??={};const data=db.applicationSchedule[key];
-  const sameDay=Object.keys(data).find(k=>k.startsWith(day+"-")&&k!==day+"-"+period&&data[k]);
-  if(subject&&sameDay){appStatus("غير مقبول: يوجد تطبيق آخر يوم "+day+" بالفعل.","warn");return}
+  const dayApps=Object.keys(data).filter(k=>k.startsWith(day+"-")&&k!==day+"-"+period&&data[k]);
+  if(subject&&dayApps.length>=2){appStatus("غير مقبول: تم تحديد تطبيقين بالفعل يوم "+day+".","warn");return}
   if(subject){data[day+"-"+period]=subject;appStatus("تم تحديد "+subject+" يوم "+day+" في الحصة "+period+" ✓","ok")}else{delete data[day+"-"+period];appStatus("تم حذف التطبيق من يوم "+day+".","info")}
   save();renderApplicationsAdmin();
 }
