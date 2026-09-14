@@ -11263,8 +11263,8 @@ body.parentDirect.ppLaunchOpen .ppA4PrintFab{display:none!important}
 <div id="teacherCompletionPrint"></div>
 <div id="seatingPrint"></div>
 <div id="parentPrint"></div>
-<button class="ppA4PrintFab" type="button" onclick="ppPrintFullReport()" aria-label="طباعة التقرير الشامل A4">
-  <span aria-hidden="true">🖨️</span><span>طباعة التقرير الشامل A4</span>
+<button class="ppA4PrintFab" type="button" onclick="ppPrintCurrent()" aria-label="طباعة الصفحة الحالية A4">
+  <span aria-hidden="true">🖨️</span><span>طباعة هذه الصفحة A4</span>
 </button>
 
 <script>
@@ -15924,8 +15924,8 @@ window.ppPrintFullReport=()=>{
 };
 
 function ppPrintCurrent(){
+  /* كل صفحة تطبع وحدها، بما فيها صفحة التقرير. */
   if(ppCurrentScreen==="ppCertificates")return ppPrintAllCertificates();
-  if(ppCurrentScreen==="ppReport")return ppPrintFullReport();
   ppPrintScreen(ppCurrentScreen);
 }
 
