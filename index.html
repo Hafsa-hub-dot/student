@@ -15446,8 +15446,26 @@ document.querySelectorAll("#studentPortal .ppScreen").forEach(x=>x.classList.tog
 }
 
 window.addEventListener("popstate",event=>{
+  if(!ppDirect)return;
+
+  /* هذه هي خطوة الرجوع الأخيرة: نسأل قبل مغادرة البوابة. */
+  if(event.state?.ppPortalExitGuard){
+    const wantsExit=window.confirm("هل أنتِ متأكدة من الخروج من بوابة متابعة الطالبة؟");
+    if(wantsExit){
+      history.back();
+      return;
+    }
+    history.pushState(
+      {...(history.state||{}),ppPortalScreen:"ppHome",ppPortalActive:true},
+      "",
+      location.href
+    );
+    ppOpenScreen("ppHome",{push:false});
+    return;
+  }
+
   const screen=event.state?.ppPortalScreen;
-  if(ppDirect && screen && PP_SCREEN_TITLES[screen]){
+  if(screen && PP_SCREEN_TITLES[screen]){
     ppOpenScreen(screen,{push:false});
   }
 });
@@ -15506,10 +15524,15 @@ function openPortal(id,direct=false){
   else if(window.innerWidth<=620)ppSetDevice("phone");
   ppClockTick();
 
-  /* أول صفحة في البوابة تصبح نقطة الرجوع الأساسية للهاتف. */
+  /* خطوة حماية: لا يخرج زر الهاتف من البوابة قبل سؤال وليّ الأمر. */
   if(direct && window.history && history.replaceState){
     history.replaceState(
-      {...(history.state||{}),ppPortalScreen:"ppHome"},
+      {...(history.state||{}),ppPortalScreen:"ppHome",ppPortalExitGuard:true},
+      "",
+      location.href
+    );
+    history.pushState(
+      {...(history.state||{}),ppPortalScreen:"ppHome",ppPortalActive:true},
       "",
       location.href
     );
