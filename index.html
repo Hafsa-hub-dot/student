@@ -10466,6 +10466,12 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .appSubjects{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.appSubjects button{padding:9px 12px;border:1px solid #D6E7E4;border-radius:999px;background:#EFF9F7;color:#0D777B;font-weight:800;cursor:grab}
 .appDays{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.appDay{min-height:92px;padding:9px;border:2px dashed #D8E4E2;border-radius:15px;background:#FAFCFC;text-align:center}.appDay strong{display:block;color:#2C5155}.appDay span{display:block;margin-top:10px;color:#7650A4;font-weight:900}.appHint,.appAdvice{padding:9px;border-radius:10px;background:#F5F8F8;color:#65777A;font-size:11px}.appAdvice{margin-top:10px;background:#FFF7E8;color:#846019}.appClassTitle{margin:0;color:#28575B}
 
+
+/* عند دخول مربيات الصفوف: اختيار الأداة أولًا بلا أي عناصر كروكي */
+#seating:not(.mentorActive) .seatingHero{display:none!important}
+#seating:not(.mentorActive) .mentorChoice{margin-top:58px!important;margin-bottom:58px!important;max-width:980px;margin-right:auto!important;margin-left:auto!important}
+#seating:not(.mentorActive) .mentorChoice button{min-height:230px!important}
+
 </style>
 </head>
 <body>
@@ -15993,7 +15999,19 @@ function bindAppDrops(key){
   document.querySelectorAll("[data-app-day]").forEach(day=>{day.ondragover=e=>e.preventDefault();day.ondrop=e=>{e.preventDefault();setAppDay(key,day.dataset.appDay,e.dataTransfer.getData("text/plain"))};day.onclick=()=>{if(applicationSchedule(key)[day.dataset.appDay])setAppDay(key,day.dataset.appDay,"")}});
 }
 function setAppDay(key,day,subject){db.applicationSchedule??={};db.applicationSchedule[key]??={};if(subject)db.applicationSchedule[key][day]=subject;else delete db.applicationSchedule[key][day];save();renderApplicationsAdmin()}
-window.openMentorTool=type=>{const root=$("seating");root.classList.add("mentorActive");root.classList.toggle("mentorApps",type==="apps");root.classList.toggle("mentorSeating",type==="seating");if(type==="apps")renderApplicationsAdmin();else loadSeatingDraft();};
+window.openMentorTool=type=>{
+  const root=$("seating"),title=root.querySelector(".seatingHeroTitle h2"),sub=root.querySelector(".seatingHeroTitle p");
+  root.classList.add("mentorActive");root.classList.toggle("mentorApps",type==="apps");root.classList.toggle("mentorSeating",type==="seating");
+  if(type==="apps"){
+    if(title)title.textContent="جدول التطبيقات";
+    if(sub)sub.textContent="اختاري الشعبة أولًا، ثم اسحبي موادها إلى أيام الأسبوع.";
+    renderApplicationsAdmin();
+  }else{
+    if(title)title.textContent="كروكي الصف";
+    if(sub)sub.textContent="اختاري الشعبة أولًا، فتظهر أسماء الطالبات مباشرة للسحب والتوزيع.";
+    loadSeatingDraft();
+  }
+};
 function ppRenderApplications(){const s=ppStudent();if(!s)return;const key=classKey(s);$("ppApplicationsContent").innerHTML=appTableHTML(key,false)}
 
 function ppRenderAgenda(){
