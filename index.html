@@ -10452,6 +10452,8 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .ppNotesHistory .ppArchiveItem{border-right:4px solid var(--ppTeacher)!important;background:linear-gradient(135deg,#fff,var(--ppTeacherSoft))!important}
 .ppNotesHistory .ppArchiveTop strong{color:var(--ppTeacher)!important}
 
+.applicationsManager{margin:14px 0;padding:14px;border:1px solid #DDE7E6;border-radius:18px;background:#fff}.appScheduleWrap{overflow:auto}.appScheduleTable{width:100%;min-width:620px;border-collapse:collapse;text-align:center}.appScheduleTable th,.appScheduleTable td{padding:10px;border:1px solid #E1E9E8;font-size:11px}.appScheduleTable th{background:#EDF8F7;color:#0D777B}.appScheduleTable td{color:#594278;font-weight:800}.applicationsManager .appScheduleTable td{cursor:pointer}.ppApplicationsContent .appScheduleTable{font-size:8px}.ppApplicationsContent .appScheduleTable th,.ppApplicationsContent .appScheduleTable td{padding:8px}
+
 </style>
 </head>
 <body>
@@ -10480,7 +10482,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 <nav class="topTabs">
   <button class="tab active" data-view="admin">الإدارة</button>
   <button class="tab" data-view="teacher">المعلمة</button>
-  <button class="tab" data-view="seating">كروكي الصف</button>
+  <button class="tab" data-view="seating">مربيات الصفوف</button>
   <button class="tab" data-view="preview">معاينة ولي الأمر</button>
 </nav>
 
@@ -11143,6 +11145,11 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
       </div>
     </section>
 
+    <section class="applicationsManager">
+      <div class="section"><div><h2>جدول التطبيقات</h2><div class="sub">اختاري الشعبة ثم اضغطي أي حصة لتحديد المادة التطبيقية أو حذفها.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
+      <div id="applicationsAdminTable"></div>
+    </section>
+
     <div class="seatingBuilderGrid">
       <aside class="unseatedPanel">
         <div class="section">
@@ -11326,6 +11333,8 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
                   <span class="ppChevron">‹</span>
                 </button>
 
+                <button class="ppMenuCard" data-pp-open="ppApplications"><span class="ppMenuIcon gold">▦</span><span class="ppMenuText"><strong>مواعيد التطبيقات</strong><span>جدول تطبيقات شعبة ابنتكم</span></span><span class="ppChevron">‹</span></button>
+
                 <button class="ppMenuCard" data-pp-open="ppGrades">
                   <span class="ppMenuIcon wine">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
@@ -11398,6 +11407,11 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
               </div>
               <div id="ppAgendaRows" class="ppAgendaRows"></div>
 <div id="ppAgendaArchive" style="display:none"></div>
+            </section>
+
+            <section id="ppApplications" class="ppScreen">
+              <div class="ppPageHead"><div><h2>مواعيد التطبيقات</h2><p>خطة تطبيقات شعبة ابنتكم</p></div><button class="ppSmallBtn" type="button" onclick="ppPrintScreen('ppApplications')">طباعة</button></div>
+              <div id="ppApplicationsContent"></div>
             </section>
 
             <section id="ppGrades" class="ppScreen">
@@ -11640,7 +11654,7 @@ function normalizeDatabase(data){
   const d=data&&typeof data==="object"?data:{};
   d.settings={...structuredClone(DEFAULT_SITE_SETTINGS),...(d.settings||{})};
   if(!Array.isArray(d.settings.closedRanges))d.settings.closedRanges=[];
-  d.students??=[];d.teachers??=[];d.classPlans??={};d.classAgendas??={};d.weeklyStars??={};d.assessmentConfigs??={};d.seatingPlans??={};d.periods??=[];d.followups??=[];d.usedCodes??=[];d.usedTokens??=[];
+  d.students??=[];d.teachers??=[];d.classPlans??={};d.classAgendas??={};d.applicationSchedule??={};d.weeklyStars??={};d.assessmentConfigs??={};d.seatingPlans??={};d.periods??=[];d.followups??=[];d.usedCodes??=[];d.usedTokens??=[];
   return d;
 }
 
@@ -15482,6 +15496,7 @@ const PP_SCREEN_TITLES={
   ppHome:"الرئيسية",
   ppHomeStats:"إحصائيات تهمني",
   ppAgenda:"أجندة الأسبوع القادم",
+  ppApplications:"مواعيد التطبيقات",
   ppGrades:"الدرجات والتقييمات",
   ppAnalytics:"التحليل البياني",
   ppNotes:"ملاحظات المعلمات",
@@ -15944,6 +15959,16 @@ window.ppStatsToggle=id=>{
   const el=$(id); if(el)el.classList.toggle("open");
 };
 
+function applicationSchedule(key){return db.applicationSchedule?.[key]||{}}
+const APP_DAYS=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"];
+function appTableHTML(key,editable=false){
+  const plan=classPlan(key)||[], data=applicationSchedule(key);
+  const subjects=plan.map(x=>x.subject).filter(Boolean);
+  return '<div class="appScheduleWrap"><table class="appScheduleTable"><thead><tr><th>الحصة</th>'+APP_DAYS.map(d=>'<th>'+d+'</th>').join('')+'</tr></thead><tbody>'+Array.from({length:7},(_,i)=>'<tr><th>'+ (i+1) +'</th>'+APP_DAYS.map(day=>{const v=data[day+"-"+(i+1)]||"";return '<td '+(editable?'onclick="editApplicationSlot(\''+key+'\',\''+day+'\','+(i+1)+')"':'')+'>'+ (v?esc(v):(editable?'＋':'—')) +'</td>'}).join('')+'</tr>').join('')+'</tbody></table></div>'}
+function renderApplicationsAdmin(){const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}el.innerHTML=appTableHTML(key,true)}
+window.editApplicationSlot=(key,day,period)=>{const list=(classPlan(key)||[]).map(x=>x.subject).filter(Boolean);const old=applicationSchedule(key)[day+"-"+period]||"";const answer=prompt("اكتبي اسم المادة للتطبيق في "+day+" الحصة "+period+"\nالمواد: "+list.join("، "),old);if(answer===null)return;db.applicationSchedule??={};db.applicationSchedule[key]??={};if(clean(answer))db.applicationSchedule[key][day+"-"+period]=clean(answer);else delete db.applicationSchedule[key][day+"-"+period];save();renderApplicationsAdmin()};
+function ppRenderApplications(){const s=ppStudent();if(!s)return;const key=classKey(s);$("ppApplicationsContent").innerHTML=appTableHTML(key,false)}
+
 function ppRenderAgenda(){
   const s=ppStudent(); if(!s)return;
 
@@ -16331,6 +16356,7 @@ function ppRenderAll(){
   ppRenderAnalyticsSubjectOptions();
   ppRenderHome();
   ppRenderAgenda();
+  ppRenderApplications();
   ppRenderGrades();
   ppRenderNotes();
   ppRenderSeating();
@@ -16846,7 +16872,8 @@ function renderSeatingBuilder(){
   $("seatingStatusSub").textContent=`تم توزيع ${assigned} من ${students.length} طالبة${seatingSelectedStudentId?" — اختاري المقعد الآن":""}`;
 }
 
-$("seatingClass").onchange=loadSeatingDraft;
+$("seatingClass").onchange=()=>{loadSeatingDraft();renderApplicationsAdmin()};
+$("printApplications").onclick=()=>{const key=$("seatingClass").value;if(key)ppDoPrint("<h1>جدول التطبيقات</h1>"+appTableHTML(key,false))};
 $("seatingTeacher").onchange=()=>{
   if(seatingDraft)seatingDraft.teacherId=$("seatingTeacher").value;
 };
