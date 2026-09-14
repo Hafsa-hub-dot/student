@@ -10333,6 +10333,22 @@ body.parentDirect #studentPortal .ppSectionLabel{margin:9px 2px 5px!important}
 body.parentDirect #studentPortal .ppMenuList{gap:6px!important}
 body.parentDirect #studentPortal .ppMenuCard{padding:9px!important}
 
+
+/* parentHomeComfortSpacing */
+body.parentDirect #studentPortal .ppAppTop{margin-bottom:8px!important}
+body.parentDirect #studentPortal .ppContextBar{margin-bottom:12px!important}
+body.parentDirect #studentPortal .ppStage{padding:12px!important}
+body.parentDirect #studentPortal .ppHomeHero{padding:17px!important;border-radius:21px!important}
+body.parentDirect #studentPortal .ppHomeHero h2{
+  margin:4px 0 2px!important;
+  font-size:clamp(20px,6vw,26px)!important;
+  line-height:1.5!important
+}
+body.parentDirect #studentPortal .ppHomeHero .ppResumeBtn{margin-top:12px!important;min-height:42px!important}
+body.parentDirect #studentPortal .ppSectionLabel{margin:14px 2px 7px!important}
+body.parentDirect #studentPortal .ppMenuList{gap:8px!important}
+body.parentDirect #studentPortal .ppMenuCard{padding:11px!important}
+
 </style>
 </head>
 <body>
@@ -15711,10 +15727,10 @@ function ppRenderHome(){
   const cumulativeAverage=ppAverage(history.map(x=>x.overall));
   const cumulativeAbsence=history.reduce((sum,x)=>sum+x.absence,0);
 
-  $("ppHomeAverage").textContent=snap.overall===null?"—":`${snap.overall}%`;
-  $("ppHomeCumulative").textContent=cumulativeAverage===null?"—":`${cumulativeAverage}%`;
-  $("ppHomeAbsence").textContent=cumulativeAbsence;
-  $("ppHomeStars").textContent=stars.length;
+  if($("ppHomeAverage"))$("ppHomeAverage").textContent=snap.overall===null?"—":`${snap.overall}%`;
+  if($("ppHomeCumulative"))$("ppHomeCumulative").textContent=cumulativeAverage===null?"—":`${cumulativeAverage}%`;
+  if($("ppHomeAbsence"))$("ppHomeAbsence").textContent=cumulativeAbsence;
+  if($("ppHomeStars"))$("ppHomeStars").textContent=stars.length;
 
   
   if($("ppHomeStatsContent")){
