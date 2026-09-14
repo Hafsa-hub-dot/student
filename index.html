@@ -10266,6 +10266,36 @@ body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
 .ppExitStay{background:linear-gradient(135deg,#0D7A7D,#146B8C)!important;color:#fff!important}
 .ppExitLeave{background:#F0EDF5!important;color:#553190!important}
 
+
+/* الرئيسية: إحصائيات مختصرة وموحدة بلا حشو */
+.ppHomeHero{padding:14px!important}
+.ppHomeHero h2{font-size:17px!important}
+.ppHomeStatsPanel{
+  margin-top:10px!important;padding:9px!important;border-radius:15px!important;
+  background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.16)!important;
+}
+.ppStatsPanelHead{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
+.ppStatsPanelHead strong{font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;font-size:13px!important;color:#fff!important}
+.ppStatsPanelHead .ppHomePeriodLabel{
+  margin:0!important;padding:4px 7px!important;border-radius:999px!important;
+  background:rgba(255,255,255,.15)!important;color:rgba(255,255,255,.9)!important;font-size:6.7px!important;
+}
+.ppHomeHero .ppHeroStats{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;margin-top:8px!important}
+.ppHomeHero .ppHeroStat{padding:7px 2px!important;border-radius:10px!important}
+.ppHomeHero .ppHeroStat b{font-size:12px!important}
+.ppHomeHero .ppHeroStat span{font-size:5.8px!important;line-height:1.45!important}
+.ppHomeHero .ppResumeBtn{display:none!important}
+#studentPortal .ppMenuList{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+#studentPortal .ppMenuCard{
+  grid-template-columns:35px minmax(0,1fr)!important;gap:7px!important;padding:9px!important;
+  min-height:62px!important;border-radius:13px!important;
+}
+#studentPortal .ppMenuIcon{width:34px!important;height:34px!important;border-radius:11px!important}
+#studentPortal .ppMenuIcon svg{width:17px!important;height:17px!important}
+#studentPortal .ppMenuText strong{font-size:8.5px!important;line-height:1.5!important}
+#studentPortal .ppMenuText span,#studentPortal .ppChevron{display:none!important}
+#studentPortal .ppSectionLabel{margin:10px 2px 6px!important}
+
 </style>
 </head>
 <body>
@@ -11126,19 +11156,21 @@ body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
                 <small>أهلًا بكم في متابعة</small>
                 <h2 id="ppHomeStudent">—</h2>
                 <p id="ppHomeClass">—</p>
-                <button id="ppResumeHome" class="ppResumeBtn" type="button" data-pp-open="ppGrades">استمرار المتابعة</button>
-
-                <div id="ppHomePeriodLabel" class="ppHomePeriodLabel">—</div>
-
-                <div class="ppHeroStats">
+                <div class="ppHomeStatsPanel">
+                  <div class="ppStatsPanelHead">
+                    <strong>إحصائيات تهمني</strong>
+                    <span id="ppHomePeriodLabel" class="ppHomePeriodLabel">—</span>
+                  </div>
+                  <div class="ppHeroStats">
                   <div class="ppHeroStat"><b id="ppHomeAverage">—</b><span>متوسط الفترة</span></div>
-                  <div class="ppHeroStat"><b id="ppHomeCumulative">—</b><span>المتوسط التراكمي</span></div>
+                </div>
+                <div class="ppHeroStat"><b id="ppHomeCumulative">—</b><span>المتوسط التراكمي</span></div>
                   <div class="ppHeroStat"><b id="ppHomeAbsence">0</b><span>غياب تراكمي</span></div>
                   <div class="ppHeroStat"><b id="ppHomeStars">0</b><span>مرات نجمة الأسبوع</span></div>
                 </div>
 
               <div class="ppSectionLabel">
-                <strong>متابعة الطالبة</strong>
+                <strong>أقسام المتابعة</strong>
                 <span id="ppLastUpdate">—</span>
               </div>
 
