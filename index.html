@@ -10422,6 +10422,25 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .ppStatsAnalyticsSlot>.ppScreen:not(.active){display:none!important}
 .ppStatsAnalyticsSlot .ppAnalyticsFilter{margin-top:0!important}
 
+
+/* تقرير أسبوعي هادئ: أسبوع واحد في كل مرة */
+#studentPortal [data-pp-open="ppHomeStats"] .ppMenuText strong{font-size:inherit}
+.ppWeeklyViewer{overflow:hidden;border:1px solid #E0E8E7;border-radius:16px;background:#fff;box-shadow:0 4px 12px rgba(22,49,51,.05)}
+.ppWeekPager{display:grid;grid-template-columns:1fr 1.35fr 1fr;align-items:center;gap:6px;padding:10px;border-bottom:1px solid #EAF0EF;background:#FBFDFD;text-align:center}
+.ppWeekPager button{min-height:35px;border:1px solid #DCE7E6;border-radius:10px;background:#fff;color:#0D777B;font-family:"Noto Kufi Arabic",sans-serif;font-size:7px;font-weight:900;cursor:pointer}
+.ppWeekPager button:disabled{opacity:.42;cursor:not-allowed}
+.ppWeekPager div strong{display:block;color:#324C50;font-family:"El Messiri",sans-serif;font-size:11px}
+.ppWeekPager div span{display:block;margin-top:2px;color:#7E8E91;font-size:6.5px}
+.ppWeekSubjects{display:grid;gap:7px;padding:10px}
+.ppWeeklyViewer .ppWeekSubject{padding:10px;border:1px solid #E8EEEE;border-radius:12px;background:#fff}
+.ppWeekFacts{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px}
+.ppWeekFacts span{padding:5px 3px;border-radius:7px;background:#F7FAFA;color:#728184;text-align:center;font-size:6.5px}
+.ppWeekFacts b{display:block;margin-top:2px;color:#345156;font-size:7px;line-height:1.55}
+.ppWeeklyViewer .ppWeekSubject em{margin-top:7px}
+.ppWeekStars{margin:0 10px 10px;padding:10px;border-radius:12px;background:#FFF9EC;border:1px solid #F2E4B8}
+.ppWeekStars>strong{display:block;margin-bottom:5px;color:#8A651A;font-family:"El Messiri",sans-serif;font-size:12px}
+.ppWeekStars .ppDetailLine{padding:6px 0;border-top:1px solid rgba(177,133,37,.15)}
+
 </style>
 </head>
 <body>
@@ -11281,7 +11300,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
                 <small>أهلًا بكم في متابعة</small>
                 <h2 id="ppHomeStudent">—</h2>
                 <p id="ppHomeClass">—</p>
-                <button id="ppStatsHome" class="ppResumeBtn" type="button" data-pp-open="ppHomeStats">إحصائيات تهمني</button>
+                
                 <div class="ppSectionLabel">
                 <strong>متابعة الطالبة</strong>
                 <span id="ppLastUpdate">—</span>
@@ -11443,7 +11462,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
           </main>
 
           <div id="ppMoreSheet" class="ppMoreSheet">
-            <button type="button" data-pp-open="ppAnalytics">التحليل البياني</button>
+            <button type="button" data-pp-open="ppHomeStats">إحصائيات تهمني</button>
             <button type="button" data-pp-open="ppNotes">ملاحظات المعلمات</button>
             <button type="button" data-pp-open="ppSeating">مكان الجلوس</button>
             <button type="button" data-pp-open="ppCertificates">نجمة الأسبوع</button>
@@ -15821,6 +15840,8 @@ function ppRenderPeriods(){
   if($("ppHomePeriodLabel"))$("ppHomePeriodLabel").textContent=p?`الفترة: ${pLabel(p)}`:"لا توجد فترة";
 }
 
+let ppStatsWeekIndex=-1;
+
 function ppRenderHome(){
   const s=ppStudent(); if(!s)return;
   const snap=ppPeriodSnapshot(s,ppPeriodId());
@@ -15849,58 +15870,49 @@ function ppRenderHome(){
   const teacherCount=new Set((plan.length?plan:snap.reports.map(item=>item.row))
     .map(row=>String(row.teacherId||row.teacherNameSnapshot||norm(row.subject)||"")).filter(Boolean)).size;
 
-  const starsDetail=stars.length
-    ?stars.slice().reverse().map(item=>{
+  if(ppStatsWeekIndex<0||ppStatsWeekIndex>=history.length)ppStatsWeekIndex=Math.max(0,history.length-1);
+  const selectedWeek=history[ppStatsWeekIndex]||snap;
+  const selectedPeriodId=selectedWeek.period?.id||"";
+  const selectedStars=stars.filter(item=>item.star.periodId===selectedPeriodId);
+  const reportFor=key=>selectedWeek.reports.find(item=>norm(item.row.subject)===key);
+  const weekSubjects=(subjects.length?subjects:selectedWeek.reports.map(item=>({key:norm(item.row.subject),subject:item.row.subject}))).map(item=>{
+    const report=reportFor(item.key),f=report?.f;
+    const grade=f&&score(f)!==null?score(f)+'%':'لم تُرصد درجة';
+    const participation=f?normalizeParticipation(f.participation):'—';
+    const behavior=f?behaviorDisplay(f):'—';
+    const note=f?(f.note||f.academicNote||f.observation||f.comment||'لا توجد ملاحظة مسجلة'):'لا توجد متابعة مسجلة';
+    return '<article class="ppWeekSubject">'+
+      '<strong>'+esc(item.subject)+'</strong>'+
+      '<div class="ppWeekFacts"><span>الدرجة <b>'+esc(grade)+'</b></span><span>المشاركة <b>'+esc(participation)+'</b></span><span>السلوك <b>'+esc(behavior)+'</b></span></div>'+
+      '<em>'+esc(note)+'</em>'+
+    '</article>';
+  }).join("")||'<div class="ppDetailEmpty">لا توجد مواد مسجلة لهذه الطالبة بعد.</div>';
+  const weekStarsHtml=selectedStars.length
+    ?selectedStars.map(item=>{
         const star=item.star;
-        const teacher=teacherName(star.teacherId,star.teacherNameSnapshot||"معلمة المادة");
-        const period=item.period?pLabel(item.period):"أسبوع مسجل";
-        return '<div class="ppDetailLine"><strong>★ '+esc(star.subject||"مادة")+'</strong><span>'+esc(teacher)+' — '+esc(period)+'</span></div>';
+        return '<div class="ppDetailLine"><strong>★ '+esc(star.subject||"مادة")+'</strong><span>'+esc(teacherName(star.teacherId,star.teacherNameSnapshot||"معلمة المادة"))+'</span></div>';
       }).join("")
-    :'<div class="ppDetailEmpty">لم تُسجل نجمة أسبوع لهذه الطالبة حتى الآن.</div>';
-
-  const weeklyDetail=history.slice().reverse().map((period,index)=>{
-    const pid='ppWeekDetail'+index;
-    const rows=period.reports.length
-      ?period.reports.map(item=>{
-          const f=item.f;
-          const avg=f&&score(f)!==null?score(f)+'%':'لم تُرصد درجة';
-          const behavior=f?behaviorDisplay(f):'—';
-          const participation=f?normalizeParticipation(f.participation):'—';
-          const note=f?(f.note||f.academicNote||f.observation||f.comment||'لا توجد ملاحظة مسجلة'):'لا توجد متابعة مسجلة';
-          return '<div class="ppWeekSubject">'+
-            '<strong>'+esc(item.row.subject||"مادة")+'</strong>'+
-            '<span>الدرجة: '+esc(avg)+' • المشاركة: '+esc(participation)+'</span>'+
-            '<span>السلوك: '+esc(behavior)+'</span>'+
-            '<em>'+esc(note)+'</em>'+
-          '</div>';
-        }).join("")
-      :'<div class="ppDetailEmpty">لا توجد متابعة مسجلة في هذا الأسبوع.</div>';
-    return '<section class="ppWeekReport">'+
-      '<button type="button" class="ppWeekToggle" onclick="ppStatsToggle(\''+pid+'\')">'+
-        '<span>تقرير '+esc(period.period?pLabel(period.period):'الأسبوع')+'</span><small>اضغطي لعرض المواد والسلوك والتقييمات</small><b>⌄</b>'+
-      '</button>'+
-      '<div id="'+pid+'" class="ppWeekDetail">'+rows+'</div>'+
-    '</section>';
-  }).join("")||'<div class="ppDetailEmpty">لا يوجد سجل أسبوعي بعد.</div>';
+    :'<div class="ppDetailEmpty">لا توجد نجمة مسجلة في هذا الأسبوع.</div>';
 
   if($("ppHomeStatsContent")){
-    const rowsHtml=absenceRows.length
+    const absenceHtml=absenceRows.length
       ?absenceRows.map(row=>'<div class="ppAbsenceRow"><strong>'+esc(row.subject)+'</strong><b>'+row.current+'</b><b>'+row.cumulative+'</b></div>').join("")
       :'<div class="ppEmpty">لا توجد مواد مسجلة لهذه الطالبة بعد.</div>';
+    const weekLabel=selectedWeek.period?pLabel(selectedWeek.period):'الأسبوع الحالي';
     $("ppHomeStatsContent").innerHTML=
       '<section class="ppAbsencePanel">'+
         '<div class="ppStatsFocusHeading"><strong>الغياب حسب المادة</strong><span>عدد الحصص خلال الأسبوع الحالي ومن بداية السنة</span></div>'+
-        '<div class="ppAbsenceTable"><div class="ppAbsenceHead"><span>المادة</span><span>الحالي</span><span>التراكمي</span></div>'+rowsHtml+'</div>'+
+        '<div class="ppAbsenceTable"><div class="ppAbsenceHead"><span>المادة</span><span>الحالي</span><span>التراكمي</span></div>'+absenceHtml+'</div>'+
       '</section>'+
       '<section class="ppStarsPanel">'+
         '<div class="ppStatsFocusHeading"><strong>نجمة الأسبوع</strong><span>تقدير المعلمات لهذا الأسبوع</span></div>'+
         '<div class="ppStarNumbers"><div><span>هذا الأسبوع</span><b>'+weeklyStars+' <small>من '+teacherCount+' معلمة</small></b></div><div><span>تراكميًا</span><b>'+stars.length+' <small>نجمة</small></b></div></div>'+
-        '<button type="button" class="ppDetailToggle" onclick="ppStatsToggle(\'ppStarsDetail\')">عرض تفاصيل النجوم <span>اسم المعلمة والأسبوع والمادة</span></button>'+
-        '<div id="ppStarsDetail" class="ppHiddenDetail">'+starsDetail+'</div>'+
       '</section>'+
-      '<section class="ppTextReports">'+
-        '<div class="ppStatsFocusHeading"><strong>تقارير المتابعة الأسبوعية</strong><span>تفاصيل كتابية قابلة للطباعة — بلا رسوم بيانية</span></div>'+
-        weeklyDetail+
+      '<section class="ppWeeklyViewer">'+
+        '<div class="ppStatsFocusHeading"><strong>تقرير المتابعة الأسبوعي</strong><span>اختاري الأسبوع لعرض جميع المواد بوضوح</span></div>'+
+        '<div class="ppWeekPager"><button type="button" onclick="ppStatsMoveWeek(-1)" '+(ppStatsWeekIndex<=0?'disabled':'')+'>الأسبوع السابق</button><div><strong>'+esc(weekLabel)+'</strong><span>الأسبوع '+(ppStatsWeekIndex+1)+' من '+history.length+'</span></div><button type="button" onclick="ppStatsMoveWeek(1)" '+(ppStatsWeekIndex>=history.length-1?'disabled':'')+'>الأسبوع التالي</button></div>'+
+        '<div class="ppWeekSubjects">'+weekSubjects+'</div>'+
+        '<div class="ppWeekStars"><strong>نجوم هذا الأسبوع</strong>'+weekStarsHtml+'</div>'+
       '</section>';
   }
   if($("ppStatsPeriod"))$("ppStatsPeriod").textContent=snap.period?'الفترة الحالية: '+pLabel(snap.period):'لا توجد فترة مسجلة';
@@ -15911,12 +15923,14 @@ function ppRenderHome(){
     ?'آخر تحديث '+new Date(latest).toLocaleDateString("ar-QA",{day:"numeric",month:"short",year:"numeric"})
     :'لا توجد تحديثات بعد';
 }
-
+window.ppStatsMoveWeek=step=>{
+  const s=ppStudent(); if(!s)return;
+  const total=ppRelevantPeriods(s).length;
+  ppStatsWeekIndex=Math.max(0,Math.min(total-1,ppStatsWeekIndex+step));
+  ppRenderHome(); ppRenderReport();
+};
 window.ppStatsToggle=id=>{
-  const el=$(id); if(!el)return;
-  el.classList.toggle("open");
-  const button=el.previousElementSibling;
-  if(button&&button.classList.contains("ppWeekToggle"))button.classList.toggle("open",el.classList.contains("open"));
+  const el=$(id); if(el)el.classList.toggle("open");
 };
 
 function ppRenderAgenda(){
