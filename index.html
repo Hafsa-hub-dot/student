@@ -10100,6 +10100,24 @@ body.parentDirect #studentPortal .ppSplash:not(.hide) .ppWelcomeCard strong{font
 body.parentDirect #studentPortal .ppSplash:not(.hide) .ppSplashBottom{margin-top:8px!important}
 body.parentDirect #studentPortal .ppSplash:not(.hide) .ppEnterBtn{min-height:62px!important;border-radius:19px!important;font-size:18px!important;animation:ppEnterGlow 2.6s ease-in-out infinite!important}
 @keyframes ppEnterGlow{0%,100%{filter:brightness(1);transform:translateY(0)}50%{filter:brightness(1.06);transform:translateY(-2px)}}
+
+/* ===== A4 Parent Portal Print — stable, clean and page-safe ===== */
+@media print{
+  @page{size:A4 portrait;margin:10mm}
+  html,body{width:auto!important;min-height:auto!important;background:#fff!important}
+  body.print-parent #parentPrint{width:100%!important;max-width:190mm!important;margin:0 auto!important;padding:0!important;background:#fff!important;color:#1f2937!important;font-family:"IBM Plex Sans Arabic","Noto Kufi Arabic",Arial,sans-serif!important;font-size:10.5pt!important;line-height:1.75!important}
+  body.print-parent #parentPrint *,body.print-parent #parentPrint *:before,body.print-parent #parentPrint *:after{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;animation:none!important;transition:none!important}
+  body.print-parent #parentPrint .ppPageHead,body.print-parent #parentPrint .ppBottomNav,body.print-parent #parentPrint .ppMoreSheet,body.print-parent #parentPrint .ppMenuList,body.print-parent #parentPrint .ppCertActions,body.print-parent #parentPrint button,body.print-parent #parentPrint [role="button"]{display:none!important}
+  body.print-parent #parentPrint h1{font-size:19pt!important;line-height:1.35!important}body.print-parent #parentPrint h2{font-size:15pt!important;line-height:1.45!important}body.print-parent #parentPrint h3{font-size:13pt!important;line-height:1.5!important}body.print-parent #parentPrint h4{font-size:11pt!important;line-height:1.5!important}
+  body.print-parent #parentPrint h1,body.print-parent #parentPrint h2,body.print-parent #parentPrint h3,body.print-parent #parentPrint h4{break-after:avoid!important;page-break-after:avoid!important}
+  body.print-parent #parentPrint .ppReportHero,body.print-parent #parentPrint .ppReportBox,body.print-parent #parentPrint .ppNoteCard,body.print-parent #parentPrint .ppArchiveItem,body.print-parent #parentPrint .ppSeatingCard,body.print-parent #parentPrint .ppAgendaCard,body.print-parent #parentPrint .ppGradeCard,body.print-parent #parentPrint .ppMetricCard,body.print-parent #parentPrint .ppEmpty,body.print-parent #parentPrint .ppCertificate{break-inside:avoid!important;page-break-inside:avoid!important;box-shadow:none!important}
+  body.print-parent #parentPrint .ppReportGrid,body.print-parent #parentPrint .ppFollowGrid,body.print-parent #parentPrint .ppReportKpis,body.print-parent #parentPrint .ppGradeGrid,body.print-parent #parentPrint .ppAnalyticsGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  body.print-parent #parentPrint .ppReportHero,body.print-parent #parentPrint .ppReportBox,body.print-parent #parentPrint .ppNoteCard,body.print-parent #parentPrint .ppArchiveItem,body.print-parent #parentPrint .ppAgendaCard,body.print-parent #parentPrint .ppGradeCard{border:1px solid #d9cbd0!important;border-radius:10px!important;background:#fff!important;padding:9px!important;margin-bottom:8px!important}
+  body.print-parent #parentPrint .ppStage,body.print-parent #parentPrint .ppScreen,body.print-parent #parentPrint .ppScreen.active,body.print-parent #parentPrint .ppPageContent{display:block!important;min-height:0!important;height:auto!important;overflow:visible!important;padding:0!important;background:#fff!important}
+  body.print-parent #parentPrint .tableWrap,body.print-parent #parentPrint .ppTableWrap{overflow:visible!important;border:0!important}body.print-parent #parentPrint table{width:100%!important;min-width:0!important;table-layout:fixed!important;border-collapse:collapse!important;font-size:8.2pt!important}body.print-parent #parentPrint th,body.print-parent #parentPrint td{padding:5px 4px!important;white-space:normal!important;word-break:break-word!important;border:1px solid #dacfd3!important;vertical-align:middle!important}body.print-parent #parentPrint thead{display:table-header-group!important}body.print-parent #parentPrint tr{break-inside:avoid!important;page-break-inside:avoid!important}
+  body.print-parent #parentPrint canvas,body.print-parent #parentPrint img{display:block!important;max-width:100%!important;height:auto!important;break-inside:avoid!important}body.print-parent #parentPrint .chart,body.print-parent #parentPrint [class*="Chart"]{height:auto!important;min-height:0!important;break-inside:avoid!important}
+  body.print-parent #parentPrint .parentSeatingRoom{transform:none!important;zoom:.78!important;transform-origin:top center!important}body.print-parent #parentPrint .ppCertificate{max-width:190mm!important;min-height:0!important;margin:0 auto 8mm!important}body.print-parent #parentPrint .ppCertificate:not(:last-child){break-after:page!important;page-break-after:always!important}
+}
 </style>
 </head>
 <body>
@@ -15842,8 +15860,16 @@ function ppCloneForPrint(screenId){
 function ppDoPrint(html){
   $("parentPrint").innerHTML=html;
   document.body.classList.add("print-parent");
-  window.print();
-  setTimeout(()=>document.body.classList.remove("print-parent"),300);
+  const finishPrint=()=>{
+    document.body.classList.remove("print-parent");
+    $("parentPrint").innerHTML="";
+    window.removeEventListener("afterprint",finishPrint);
+  };
+  window.addEventListener("afterprint",finishPrint,{once:true});
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    window.print();
+    setTimeout(finishPrint,1200);
+  }));
 }
 
 window.ppPrintScreen=id=>{
