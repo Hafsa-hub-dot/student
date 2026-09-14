@@ -10540,6 +10540,23 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
   .appMaterials .appSubjects button{width:auto}
 }
 
+
+/* واجهة المربيات: الأداة أولاً ثم الشعبة، بلا عناوين وحقول مكررة */
+#seating .mentorChoice{display:none!important}
+#seating .mentorToolSwitch{position:sticky;top:12px;z-index:30;display:flex;justify-content:center;gap:10px;margin:10px auto 14px;padding:9px;width:max-content;max-width:calc(100% - 24px);border-radius:19px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);box-shadow:0 10px 26px rgba(22,49,51,.14)}
+#seating:not(.mentorActive) .mentorToolSwitch{display:flex!important}
+#seating.mentorActive .seatingHero{display:block!important;padding:10px 14px!important;margin-bottom:10px!important}
+#seating.mentorActive .seatingHeroTitle{display:none!important}
+#seating.mentorActive .seatingSelectors{max-width:100%!important;display:flex!important;align-items:end!important;justify-content:space-between!important;gap:14px!important;margin:0!important}
+#seating.mentorActive .seatingSelectors .field:first-child{flex:1;max-width:360px}
+#seating.mentorActive .seatingSelectors label{font-size:11px;color:#41686B;font-weight:900;margin-bottom:5px}
+#seating.mentorActive .seatingSelectors select{min-height:42px;font-weight:900}
+#seating.mentorApps .applicationsManager{padding:12px!important;border-radius:18px!important}
+.appScheduleTable th{font-size:12px!important;font-weight:900!important;background:linear-gradient(135deg,#DDF2F0,#F0EAF8)!important}
+.appScheduleTable td{height:42px!important;min-width:94px!important;background:#fff!important}
+.appScheduleTable td.filled{background:linear-gradient(135deg,#EAE1F5,#DFF3F0)!important;color:#553B79!important}
+@media(max-width:760px){#seating.mentorActive .seatingSelectors{display:block!important}#seating.mentorActive .seatingSelectors .field:first-child{max-width:none}.mentorToolSwitch button{padding:0 12px!important;font-size:10px!important}}
+
 </style>
 </head>
 <body>
@@ -11227,17 +11244,12 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
         <button class="btn danger" id="deleteSeatingPlan" type="button">حذف الكروكي</button>
       </div>
     </section>
-
-    <section id="mentorChoice" class="mentorChoice">
-      <button type="button" onclick="openMentorTool('seating')"><b>⌘</b><strong>كروكي الصف</strong><span>اختاري الشعبة ورتّبي أماكن الطالبات</span></button>
-      <button type="button" onclick="openMentorTool('apps')"><b>▦</b><strong>جدول التطبيقات</strong><span>اسحبي مواد الشعبة إلى أيام الأسبوع</span></button>
-    </section>
     <div class="mentorToolSwitch" aria-label="التنقل بين أدوات مربية الصف">
       <button type="button" data-mentor-tool="seating" onclick="openMentorTool('seating')"><span>⌘</span> كروكي الصف</button>
       <button type="button" data-mentor-tool="apps" onclick="openMentorTool('apps')"><span>▦</span> جدول التطبيقات</button>
     </div>
     <section class="applicationsManager">
-      <div class="section"><div><h2>جدول التطبيقات</h2><div class="sub">تطبيق واحد فقط لكل يوم، مع توصية للتوازن بين المواد العلمية والأدبية.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
+      <div class="section"><div><h2>خطة تطبيقات الشعبة</h2><div class="sub">حددي مادتين كحد أقصى يوميًا، ثم اختاري الحصة المناسبة لكل تطبيق.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
       <div id="applicationsAdminTable"></div>
     </section>
 
