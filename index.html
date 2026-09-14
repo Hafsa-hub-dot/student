@@ -10188,6 +10188,37 @@ body.parentDirect .ppMobilePrintText{
 body.parentDirect.ppLaunchOpen .ppMobilePrintText{display:none!important}
 @media print{.ppMobilePrintText{display:none!important}}
 
+
+/* أزرار ولي الأمر الثابتة: طباعة البند والعودة للرئيسية */
+body.parentDirect #studentPortal [data-pp-tab="ppHome"]{display:none!important}
+.ppMobileActionDock{display:none!important}
+body.parentDirect .ppMobileActionDock{
+  position:fixed!important;left:50%!important;bottom:17px!important;transform:translateX(-50%)!important;
+  z-index:10000!important;display:flex!important;align-items:center!important;gap:8px!important;
+  direction:rtl!important;animation:ppDockFloat 3.2s ease-in-out infinite!important;
+}
+body.parentDirect.ppLaunchOpen .ppMobileActionDock{display:none!important}
+body.parentDirect .ppMobileActionDock button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;
+  border:0!important;border-radius:14px!important;padding:13px 15px!important;
+  background:linear-gradient(135deg,#0D7A7D,#146B8C)!important;color:#fff!important;
+  font-family:"Noto Kufi Arabic",Tahoma,sans-serif!important;font-size:10.5px!important;font-weight:900!important;
+  box-shadow:0 10px 24px rgba(13,122,125,.28)!important;cursor:pointer!important;
+  transition:transform .2s ease,box-shadow .2s ease!important;white-space:nowrap!important;
+}
+body.parentDirect .ppMobileActionDock button:hover{transform:translateY(-3px)!important;box-shadow:0 14px 28px rgba(13,122,125,.38)!important}
+body.parentDirect .ppMobileActionDock .ppMobileHomeText{background:linear-gradient(135deg,#553190,#7B4BB3)!important}
+body.parentDirect .ppMobileActionDock .ppMobileHomeText svg{width:17px!important;height:17px!important;animation:ppHomePulse 1.8s ease-in-out infinite!important}
+body.parentDirect .ppMobileActionDock .isHidden{display:none!important}
+@keyframes ppDockFloat{0%,100%{margin-bottom:0}50%{margin-bottom:5px}}
+@keyframes ppHomePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15) rotate(-4deg)}}
+@media(max-width:520px){
+  body.parentDirect .ppMobileActionDock{gap:6px!important;bottom:14px!important}
+  body.parentDirect .ppMobileActionDock button{padding:11px 10px!important;font-size:8.6px!important}
+  body.parentDirect .ppMobileActionDock .ppMobileHomeText svg{width:15px!important;height:15px!important}
+}
+@media print{.ppMobileActionDock{display:none!important}}
+
 </style>
 </head>
 <body>
@@ -11316,7 +11347,13 @@ body.parentDirect.ppLaunchOpen .ppMobilePrintText{display:none!important}
 <div id="teacherCompletionPrint"></div>
 <div id="seatingPrint"></div>
 <div id="parentPrint"></div>
-<button id="ppMobilePrintText" class="ppMobilePrintText" type="button" onclick="ppPrintCurrent()">طباعة هذه الصفحة</button>
+<div id="ppMobileActionDock" class="ppMobileActionDock">
+  <button id="ppMobilePrintText" class="ppMobilePrintText" type="button" onclick="ppPrintCurrent()">طباعة هذه الصفحة</button>
+  <button id="ppMobileHomeText" class="ppMobileHomeText isHidden" type="button" onclick="ppOpenScreen('ppHome',{push:false})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"/></svg>
+    <span>العودة إلى الرئيسية</span>
+  </button>
+</div>
 
 
 <script>
@@ -15370,6 +15407,8 @@ function ppOpenScreen(id,{push=true}={}){
   $("ppAppTitle").textContent=PP_SCREEN_TITLES[id];
   const mobilePrint=$("ppMobilePrintText");
   if(mobilePrint)mobilePrint.textContent=`طباعة ${PP_SCREEN_TITLES[id]} A4`;
+  const mobileHome=$("ppMobileHomeText");
+  if(mobileHome)mobileHome.classList.toggle("isHidden",id==="ppHome");
   $("ppMoreSheet").classList.remove("open");
   $("ppBack")?.classList.toggle("showHome",id!=="ppHome");
 
