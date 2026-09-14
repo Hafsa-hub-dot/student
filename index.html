@@ -10557,6 +10557,23 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .appScheduleTable td.filled{background:linear-gradient(135deg,#EAE1F5,#DFF3F0)!important;color:#553B79!important}
 @media(max-width:760px){#seating.mentorActive .seatingSelectors{display:block!important}#seating.mentorActive .seatingSelectors .field:first-child{max-width:none}.mentorToolSwitch button{padding:0 12px!important;font-size:10px!important}}
 
+
+/* مربيات الصفوف: كل أداة تظهر كاملة في شاشة واحدة */
+@media(min-width:761px){
+  #seating.mentorActive .seatingWorkspace{height:calc(100dvh - 144px);overflow:hidden;display:flex;flex-direction:column}
+  #seating.mentorActive .mentorToolSwitch{flex:0 0 auto}
+  #seating.mentorActive .seatingHero{flex:0 0 auto}
+  #seating.mentorApps .applicationsManager{flex:1;min-height:0;display:flex;flex-direction:column;margin:0!important}
+  #seating.mentorApps #applicationsAdminTable{flex:1;min-height:0;display:flex;flex-direction:column}
+  #seating.mentorApps .appPlanner{flex:1;min-height:0}
+  #seating.mentorApps .appScheduleTable th,#seating.mentorApps .appScheduleTable td{height:36px!important;padding:6px!important}
+  #seating.mentorApps .appScheduleStatus{margin:7px 0 0!important}
+  #seating.mentorSeating .seatingBuilderGrid{flex:1;min-height:0;overflow:hidden}
+  #seating.mentorSeating .unseatedPanel,#seating.mentorSeating .classroomCard{max-height:100%;overflow:hidden}
+  #seating.mentorSeating .seatingRoom{transform:scale(.92);transform-origin:top center}
+  #seating.mentorSeating .seatingControlBar{flex:0 0 auto}
+}
+
 </style>
 </head>
 <body>
@@ -16070,7 +16087,7 @@ function appTableHTML(key,editable=false){
     Array.from({length:7},(_,i)=>{const p=i+1;return '<tr><th>'+p+'</th>'+APP_DAYS.map(day=>{const val=data[day+"-"+p]||"";return '<td class="'+(val?'filled':'')+'" '+(editable?'data-app-slot="'+day+"-"+p+'"':'')+'>'+esc(val||'—')+'</td>'}).join('')+'</tr>'}).join('')+
   '</tbody></table></div>';
 }
-function appSubjectsHTML(key){return '<div class="appSubjects">'+(classPlan(key)||[]).map(row=>row.subject).filter(Boolean).map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
+function appSubjectName(subject){return String(subject||"").replace(/\\s*[-–—|:]\\s*(?:المعلمة|معلمة|الأستاذة|أستاذة).*/,"").replace(/^(?:المعلمة|معلمة|الأستاذة|أستاذة)\\s+/,"").trim()||"مادة";}\nfunction appSubjectsHTML(key){const subjects=[...new Set((classPlan(key)||[]).map(row=>appSubjectName(row.subject)).filter(Boolean))];return '<div class="appSubjects">'+subjects.map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
 function appStatus(message,type="info"){const x=$("appScheduleStatus");if(x){x.textContent=message;x.className="appScheduleStatus "+type}}
 function renderApplicationsAdmin(){
   const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;
