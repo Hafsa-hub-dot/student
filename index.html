@@ -10441,6 +10441,17 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .ppWeekStars>strong{display:block;margin-bottom:5px;color:#8A651A;font-family:"El Messiri",sans-serif;font-size:12px}
 .ppWeekStars .ppDetailLine{padding:6px 0;border-top:1px solid rgba(177,133,37,.15)}
 
+
+/* ألوان ثابتة للمعلمات + ملخص سلوكي تراكمي */
+.ppNotesHeadActions{display:flex;gap:5px;align-items:center}
+.ppNoteCard{border-right:4px solid var(--ppTeacher)!important;background:linear-gradient(135deg,#fff,var(--ppTeacherSoft))!important}
+.ppNoteCard h3,.ppNoteCard small{color:var(--ppTeacher)!important}
+.ppNotesHistory{margin-top:11px;border:1px solid #E0E8E7;border-radius:16px;overflow:hidden;background:#fff}
+.ppNotesHistoryHead{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 11px;background:linear-gradient(135deg,#F1FAF9,#F7F3FC)}
+.ppNotesHistoryHead strong{color:#28565A;font-family:"El Messiri",sans-serif;font-size:13px}
+.ppNotesHistory .ppArchiveItem{border-right:4px solid var(--ppTeacher)!important;background:linear-gradient(135deg,#fff,var(--ppTeacherSoft))!important}
+.ppNotesHistory .ppArchiveTop strong{color:var(--ppTeacher)!important}
+
 </style>
 </head>
 <body>
@@ -11429,10 +11440,10 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
             <section id="ppNotes" class="ppScreen">
               <div class="ppPageHead">
                 <div><h2>متابعة السلوك والملاحظات</h2><p id="ppNotesPeriod">تقرير الفترة الحالية</p></div>
-                <button class="ppSmallBtn" type="button" onclick="ppPrintScreen('ppNotes')">طباعة</button>
+                <div class="ppNotesHeadActions"><button class="ppSmallBtn" type="button" onclick="ppToggleNotesHistory()">الملخص التراكمي</button><button class="ppSmallBtn" type="button" onclick="ppPrintScreen('ppNotes')">طباعة</button></div>
               </div>
               <div id="ppNotesList" class="ppNotesList"></div>
-              <div id="ppNotesHistory" hidden></div>
+              <section id="ppNotesHistory" class="ppNotesHistory" hidden><div class="ppNotesHistoryHead"><strong>الملخص التراكمي للسلوك والملاحظات</strong><button class="ppSmallBtn" type="button" onclick="ppPrintNotesCumulative()">طباعة الملخص</button></div><div id="ppNotesHistoryContent"></div></section>
             </section>
 
             <section id="ppSeating" class="ppScreen">
@@ -16117,6 +16128,23 @@ function ppRenderCharts(){
   });
 }
 
+function ppTeacherTone(id,name=""){
+  const palette=[
+    {main:"#0D777B",soft:"#EAF7F6"},{main:"#7650A4",soft:"#F2ECFA"},
+    {main:"#B35379",soft:"#FBEFF3"},{main:"#A06D16",soft:"#FFF7E5"},
+    {main:"#427BB4",soft:"#EDF5FC"},{main:"#5B8B55",soft:"#EEF7ED"}
+  ];
+  const key=String(id||name||"0"); let n=0;
+  for(let i=0;i<key.length;i++)n=(n*31+key.charCodeAt(i))>>>0;
+  return palette[n%palette.length];
+}
+window.ppToggleNotesHistory=()=>{
+  const box=$("ppNotesHistory");if(box)box.hidden=!box.hidden;
+};
+window.ppPrintNotesCumulative=()=>{
+  const content=$("ppNotesHistoryContent");if(content)ppDoPrint(ppPrintHeader("الملخص التراكمي للسلوك والملاحظات")+content.innerHTML);
+};
+
 function ppRenderNotes(){
   const s=ppStudent(); if(!s)return;
 
@@ -16130,8 +16158,9 @@ function ppRenderNotes(){
   $("ppNotesList").innerHTML=rows.length
     ?rows.map(x=>{
       const enc=encodeURIComponent(x.row.subject);
+      const tone=ppTeacherTone(x.f.teacherId,x.f.teacherNameSnapshot);
       return`
-        <div class="ppNoteCard">
+        <div class="ppNoteCard" style="--ppTeacher:${tone.main};--ppTeacherSoft:${tone.soft}">
           <h3>${esc(x.row.subject)}</h3>
           <small>${esc(teacherName(x.f.teacherId,x.f.teacherNameSnapshot||"—"))}</small>
           <div class="ppNoteDetail">
@@ -16166,6 +16195,7 @@ function ppRenderNotes(){
         period:x.period,
         subject:item.row.subject,
         teacher:teacherName(f.teacherId,f.teacherNameSnapshot||"—"),
+        teacherId:f.teacherId||"",
         note:f.academicNote||f.note||"",
         participation:normalizeParticipation(f.participation),
         behavior:behaviorDisplay(f),
@@ -16175,9 +16205,9 @@ function ppRenderNotes(){
     });
   });
 
-  $("ppNotesHistory").innerHTML=historical.length
+  $("ppNotesHistoryContent").innerHTML=historical.length
     ?historical.map(item=>`
-      <div class="ppArchiveItem">
+      <div class="ppArchiveItem" style="--ppTeacher:${ppTeacherTone(item.teacherId,item.teacher).main};--ppTeacherSoft:${ppTeacherTone(item.teacherId,item.teacher).soft}">
         <div class="ppArchiveTop">
           <strong>${esc(item.subject)} — ${esc(item.teacher)}</strong>
           <span>${item.period?esc(pLabel(item.period)):"—"}</span>
