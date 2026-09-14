@@ -16087,7 +16087,7 @@ function appTableHTML(key,editable=false){
     Array.from({length:7},(_,i)=>{const p=i+1;return '<tr><th>'+p+'</th>'+APP_DAYS.map(day=>{const val=data[day+"-"+p]||"";return '<td class="'+(val?'filled':'')+'" '+(editable?'data-app-slot="'+day+"-"+p+'"':'')+'>'+esc(val||'—')+'</td>'}).join('')+'</tr>'}).join('')+
   '</tbody></table></div>';
 }
-function appSubjectName(subject){return String(subject||"").replace(/\\s*[-–—|:]\\s*(?:المعلمة|معلمة|الأستاذة|أستاذة).*/,"").replace(/^(?:المعلمة|معلمة|الأستاذة|أستاذة)\\s+/,"").trim()||"مادة";}\nfunction appSubjectsHTML(key){const subjects=[...new Set((classPlan(key)||[]).map(row=>appSubjectName(row.subject)).filter(Boolean))];return '<div class="appSubjects">'+subjects.map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
+function appSubjectsHTML(key){return '<div class="appSubjects">'+(classPlan(key)||[]).map(row=>row.subject).filter(Boolean).map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
 function appStatus(message,type="info"){const x=$("appScheduleStatus");if(x){x.textContent=message;x.className="appScheduleStatus "+type}}
 function renderApplicationsAdmin(){
   const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;
