@@ -10219,6 +10219,13 @@ body.parentDirect .ppMobileActionDock .isHidden{display:none!important}
 }
 @media print{.ppMobileActionDock{display:none!important}}
 
+
+/* Reset legacy floating print button rules inside the new action dock */
+body.parentDirect .ppMobileActionDock .ppMobilePrintText{
+  position:static!important;left:auto!important;bottom:auto!important;transform:none!important;
+  min-width:0!important;margin:0!important;animation:none!important;
+}
+
 </style>
 </head>
 <body>
