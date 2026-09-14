@@ -10175,6 +10175,19 @@ body.parentDirect #ppPrintCurrent{display:none!important}
   body.parentDirect:not(.print-parent) .ppResumeBtn{display:none!important}
 }
 
+
+/* زر نصّي لطباعة القسم المفتوح من الهاتف */
+.ppMobilePrintText{display:none!important}
+body.parentDirect .ppMobilePrintText{
+  position:fixed!important;left:50%!important;bottom:17px!important;transform:translateX(-50%)!important;
+  z-index:10000!important;display:block!important;border:0!important;border-radius:14px!important;
+  min-width:205px!important;padding:13px 20px!important;background:#0D7A7D!important;color:#fff!important;
+  font-family:"Noto Kufi Arabic",Tahoma,sans-serif!important;font-size:12px!important;font-weight:900!important;
+  box-shadow:0 10px 24px rgba(13,122,125,.28)!important;cursor:pointer!important;
+}
+body.parentDirect.ppLaunchOpen .ppMobilePrintText{display:none!important}
+@media print{.ppMobilePrintText{display:none!important}}
+
 </style>
 </head>
 <body>
@@ -11303,6 +11316,7 @@ body.parentDirect #ppPrintCurrent{display:none!important}
 <div id="teacherCompletionPrint"></div>
 <div id="seatingPrint"></div>
 <div id="parentPrint"></div>
+<button id="ppMobilePrintText" class="ppMobilePrintText" type="button" onclick="ppPrintCurrent()">طباعة هذه الصفحة</button>
 
 
 <script>
@@ -15962,8 +15976,7 @@ window.ppPrintFullReport=()=>{
 };
 
 function ppPrintCurrent(){
-  /* كل صفحة تطبع وحدها، بما فيها صفحة التقرير. */
-  if(ppCurrentScreen==="ppCertificates")return ppPrintAllCertificates();
+  /* كل صفحة تطبع وحدها، بما فيها الشهادات والتقرير. */
   ppPrintScreen(ppCurrentScreen);
 }
 
