@@ -10135,6 +10135,46 @@ body.parentDirect.ppLaunchOpen .ppA4PrintFab{display:none!important}
 }
 @media print{.ppA4PrintFab{display:none!important}}
 
+
+/* طباعة الصفحة المفتوحة مباشرةً عبر Ctrl + P — بلا أيقونات داخل بوابة ولي الأمر */
+body.parentDirect #ppPrintCurrent{display:none!important}
+@media print{
+  body.parentDirect:not(.print-parent) .head,
+  body.parentDirect:not(.print-parent) .topTabs,
+  body.parentDirect:not(.print-parent) .ppDeviceToolbar,
+  body.parentDirect:not(.print-parent) .ppSplash,
+  body.parentDirect:not(.print-parent) .ppStatusBar,
+  body.parentDirect:not(.print-parent) .ppAllTabs,
+  body.parentDirect:not(.print-parent) .ppA4PrintFab,
+  body.parentDirect:not(.print-parent) .ppAppTop .ppIconBtn,
+  body.parentDirect:not(.print-parent) .ppContextPeriod,
+  body.parentDirect:not(.print-parent) button{display:none!important}
+
+  body.parentDirect:not(.print-parent),
+  body.parentDirect:not(.print-parent) .wrap,
+  body.parentDirect:not(.print-parent) #studentPortal,
+  body.parentDirect:not(.print-parent) .ppStage,
+  body.parentDirect:not(.print-parent) .ppDeviceShell,
+  body.parentDirect:not(.print-parent) .ppViewport,
+  body.parentDirect:not(.print-parent) .ppApp,
+  body.parentDirect:not(.print-parent) .ppScreens,
+  body.parentDirect:not(.print-parent) .ppScreen.active{
+    display:block!important;width:100%!important;max-width:none!important;min-height:0!important;
+    height:auto!important;overflow:visible!important;background:#fff!important;box-shadow:none!important;
+  }
+
+  body.parentDirect:not(.print-parent) .ppAppTop,
+  body.parentDirect:not(.print-parent) .ppContextBar{
+    display:flex!important;background:#fff!important;color:#242424!important;border-bottom:2px solid #8A1538!important;
+    padding:7px 0!important;margin:0 0 8px!important;
+  }
+  body.parentDirect:not(.print-parent) .ppAppTitle,
+  body.parentDirect:not(.print-parent) .ppContextStudent strong{color:#8A1538!important}
+  body.parentDirect:not(.print-parent) .ppScreen:not(.active){display:none!important}
+  body.parentDirect:not(.print-parent) .ppMenuList,
+  body.parentDirect:not(.print-parent) .ppResumeBtn{display:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -11263,9 +11303,7 @@ body.parentDirect.ppLaunchOpen .ppA4PrintFab{display:none!important}
 <div id="teacherCompletionPrint"></div>
 <div id="seatingPrint"></div>
 <div id="parentPrint"></div>
-<button class="ppA4PrintFab" type="button" onclick="ppPrintCurrent()" aria-label="طباعة الصفحة الحالية A4">
-  <span aria-hidden="true">🖨️</span><span>طباعة هذه الصفحة A4</span>
-</button>
+
 
 <script>
 /* قاعدة جديدة تمامًا حتى لا تسترجع أي بيانات من الإصدارات السابقة */
