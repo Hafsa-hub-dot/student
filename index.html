@@ -10389,6 +10389,28 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .ppSummaryItem:first-child b{color:#0D777B;font-family:"El Messiri",sans-serif;font-size:19px}
 .ppSummaryWide{grid-column:1/-1}
 
+
+/* تقارير كتابية مفصلة لولي الأمر داخل الإحصائيات */
+.ppTextReports{overflow:hidden;border:1px solid #E0E8E7;border-radius:16px;background:#fff;box-shadow:0 4px 12px rgba(22,49,51,.05)}
+.ppDetailToggle,.ppWeekToggle{width:100%;border:0;background:#fff;color:#23484C;text-align:right;cursor:pointer;font-family:"Noto Kufi Arabic",sans-serif}
+.ppDetailToggle{padding:10px 12px;border-top:1px solid #EEF1F0;font-size:9px;font-weight:900}
+.ppDetailToggle span{display:block;margin-top:2px;color:#829093;font-size:7px;font-weight:700}
+.ppHiddenDetail,.ppWeekDetail{display:none;background:#FBFDFD}
+.ppHiddenDetail.open,.ppWeekDetail.open{display:block}
+.ppDetailLine{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-top:1px solid #EEF1F0}
+.ppDetailLine strong{color:#966B15;font-size:9px}.ppDetailLine span{color:#697A7D;font-size:7px;text-align:left}
+.ppDetailEmpty{padding:14px 12px;color:#7C8A8D;font-size:8px;text-align:center}
+.ppWeekReport+.ppWeekReport{border-top:1px solid #E9EEEE}
+.ppWeekToggle{position:relative;padding:11px 31px 11px 12px;background:linear-gradient(135deg,#fff,#F6FBFB)}
+.ppWeekToggle>span{display:block;font-family:"El Messiri",sans-serif;font-size:12px;font-weight:800}
+.ppWeekToggle small{display:block;margin-top:2px;color:#7B898C;font-size:7px;font-weight:700}
+.ppWeekToggle b{position:absolute;left:13px;top:14px;color:#0D777B;font-size:16px;transition:transform .2s}
+.ppWeekToggle.open b{transform:rotate(180deg)}
+.ppWeekSubject{padding:10px 12px;border-top:1px solid #EDF1F1}
+.ppWeekSubject strong{display:block;color:#0D777B;font-size:9px}
+.ppWeekSubject span{display:block;margin-top:3px;color:#596C70;font-size:7.5px;line-height:1.7}
+.ppWeekSubject em{display:block;margin-top:5px;padding:6px 7px;border-radius:8px;background:#F8F3FA;color:#76558E;font-size:7px;font-style:normal;line-height:1.7}
+
 </style>
 </head>
 <body>
@@ -11315,7 +11337,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 
             <section id="ppHomeStats" class="ppScreen">
               <div class="ppPageHead">
-                <div><h2>إحصائيات تهمني</h2><p id="ppStatsPeriod">—</p></div>
+                <div><h2>إحصائيات وتفاصيل المتابعة</h2><p id="ppStatsPeriod">—</p></div>
               </div>
               <div id="ppHomeStatsContent" class="ppStatsFocusGrid"></div>
               <div id="ppStatsSummary" class="ppStatsSummary"></div>
@@ -15791,6 +15813,40 @@ function ppRenderHome(){
   const teacherCount=new Set((plan.length?plan:snap.reports.map(item=>item.row))
     .map(row=>String(row.teacherId||row.teacherNameSnapshot||norm(row.subject)||"")).filter(Boolean)).size;
 
+  const starsDetail=stars.length
+    ?stars.slice().reverse().map(item=>{
+        const star=item.star;
+        const teacher=teacherName(star.teacherId,star.teacherNameSnapshot||"معلمة المادة");
+        const period=item.period?pLabel(item.period):"أسبوع مسجل";
+        return '<div class="ppDetailLine"><strong>★ '+esc(star.subject||"مادة")+'</strong><span>'+esc(teacher)+' — '+esc(period)+'</span></div>';
+      }).join("")
+    :'<div class="ppDetailEmpty">لم تُسجل نجمة أسبوع لهذه الطالبة حتى الآن.</div>';
+
+  const weeklyDetail=history.slice().reverse().map((period,index)=>{
+    const pid='ppWeekDetail'+index;
+    const rows=period.reports.length
+      ?period.reports.map(item=>{
+          const f=item.f;
+          const avg=f&&score(f)!==null?score(f)+'%':'لم تُرصد درجة';
+          const behavior=f?behaviorDisplay(f):'—';
+          const participation=f?normalizeParticipation(f.participation):'—';
+          const note=f?(f.note||f.academicNote||f.observation||f.comment||'لا توجد ملاحظة مسجلة'):'لا توجد متابعة مسجلة';
+          return '<div class="ppWeekSubject">'+
+            '<strong>'+esc(item.row.subject||"مادة")+'</strong>'+
+            '<span>الدرجة: '+esc(avg)+' • المشاركة: '+esc(participation)+'</span>'+
+            '<span>السلوك: '+esc(behavior)+'</span>'+
+            '<em>'+esc(note)+'</em>'+
+          '</div>';
+        }).join("")
+      :'<div class="ppDetailEmpty">لا توجد متابعة مسجلة في هذا الأسبوع.</div>';
+    return '<section class="ppWeekReport">'+
+      '<button type="button" class="ppWeekToggle" onclick="ppStatsToggle('+JSON.stringify(pid)+')">'+
+        '<span>تقرير '+esc(period.period?pLabel(period.period):'الأسبوع')+'</span><small>اضغطي لعرض المواد والسلوك والتقييمات</small><b>⌄</b>'+
+      '</button>'+
+      '<div id="'+pid+'" class="ppWeekDetail">'+rows+'</div>'+
+    '</section>';
+  }).join("")||'<div class="ppDetailEmpty">لا يوجد سجل أسبوعي بعد.</div>';
+
   if($("ppHomeStatsContent")){
     const rowsHtml=absenceRows.length
       ?absenceRows.map(row=>'<div class="ppAbsenceRow"><strong>'+esc(row.subject)+'</strong><b>'+row.current+'</b><b>'+row.cumulative+'</b></div>').join("")
@@ -15803,6 +15859,12 @@ function ppRenderHome(){
       '<section class="ppStarsPanel">'+
         '<div class="ppStatsFocusHeading"><strong>نجمة الأسبوع</strong><span>تقدير المعلمات لهذا الأسبوع</span></div>'+
         '<div class="ppStarNumbers"><div><span>هذا الأسبوع</span><b>'+weeklyStars+' <small>من '+teacherCount+' معلمة</small></b></div><div><span>تراكميًا</span><b>'+stars.length+' <small>نجمة</small></b></div></div>'+
+        '<button type="button" class="ppDetailToggle" onclick="ppStatsToggle(\'ppStarsDetail\')">عرض تفاصيل النجوم <span>اسم المعلمة والأسبوع والمادة</span></button>'+
+        '<div id="ppStarsDetail" class="ppHiddenDetail">'+starsDetail+'</div>'+
+      '</section>'+
+      '<section class="ppTextReports">'+
+        '<div class="ppStatsFocusHeading"><strong>تقارير المتابعة الأسبوعية</strong><span>تفاصيل كتابية قابلة للطباعة — بلا رسوم بيانية</span></div>'+
+        weeklyDetail+
       '</section>';
   }
   if($("ppStatsPeriod"))$("ppStatsPeriod").textContent=snap.period?'الفترة الحالية: '+pLabel(snap.period):'لا توجد فترة مسجلة';
@@ -15813,6 +15875,13 @@ function ppRenderHome(){
     ?'آخر تحديث '+new Date(latest).toLocaleDateString("ar-QA",{day:"numeric",month:"short",year:"numeric"})
     :'لا توجد تحديثات بعد';
 }
+
+window.ppStatsToggle=id=>{
+  const el=$(id); if(!el)return;
+  el.classList.toggle("open");
+  const button=el.previousElementSibling;
+  if(button&&button.classList.contains("ppWeekToggle"))button.classList.toggle("open",el.classList.contains("open"));
+};
 
 function ppRenderAgenda(){
   const s=ppStudent(); if(!s)return;
