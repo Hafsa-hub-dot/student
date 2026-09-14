@@ -10411,6 +10411,17 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 .ppWeekSubject span{display:block;margin-top:3px;color:#596C70;font-size:7.5px;line-height:1.7}
 .ppWeekSubject em{display:block;margin-top:5px;padding:6px 7px;border-radius:8px;background:#F8F3FA;color:#76558E;font-size:7px;font-style:normal;line-height:1.7}
 
+
+/* دمج التحليل اللفظي والبياني في «إحصائيات تهمني» */
+#studentPortal #ppMoreSheet [data-pp-open="ppAnalytics"]{display:none!important}
+.ppStatsModeTabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:0 0 10px}
+.ppStatsModeTabs button{min-height:42px;padding:6px;border:1px solid #DCE7E6;border-radius:12px;background:#fff;color:#587074;font-family:"Noto Kufi Arabic",sans-serif;font-size:8px;font-weight:900;cursor:pointer}
+.ppStatsModeTabs button.active{color:#fff;border-color:#0D777B;background:linear-gradient(135deg,#0D777B,#6B4794);box-shadow:0 5px 12px rgba(13,119,123,.19)}
+.ppStatsAnalyticsSlot>.ppScreen{min-height:0!important;padding:0 0 88px!important;animation:none}
+.ppStatsAnalyticsSlot>.ppScreen .ppPageHead{display:none!important}
+.ppStatsAnalyticsSlot>.ppScreen:not(.active){display:none!important}
+.ppStatsAnalyticsSlot .ppAnalyticsFilter{margin-top:0!important}
+
 </style>
 </head>
 <body>
@@ -11339,8 +11350,15 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
               <div class="ppPageHead">
                 <div><h2>إحصائيات وتفاصيل المتابعة</h2><p id="ppStatsPeriod">—</p></div>
               </div>
-              <div id="ppHomeStatsContent" class="ppStatsFocusGrid"></div>
-              <div id="ppStatsSummary" class="ppStatsSummary"></div>
+              <div class="ppStatsModeTabs" role="tablist">
+                <button id="ppStatsTextTab" type="button" class="active" onclick="ppStatsSetMode('text')">التحليل اللفظي المفصل</button>
+                <button id="ppStatsChartTab" type="button" onclick="ppStatsSetMode('charts')">التحليل البياني التراكمي</button>
+              </div>
+              <div id="ppStatsTextPanel">
+                <div id="ppHomeStatsContent" class="ppStatsFocusGrid"></div>
+                <div id="ppStatsSummary" class="ppStatsSummary"></div>
+              </div>
+              <div id="ppStatsAnalyticsSlot" class="ppStatsAnalyticsSlot"></div>
             </section>
 
             <section id="ppAgenda" class="ppScreen">
@@ -15637,11 +15655,29 @@ document.querySelectorAll("#studentPortal .ppScreen").forEach(x=>x.classList.tog
   const periodControl=$("ppContextPeriodControl");
   if(periodControl)periodControl.style.display=id==="ppAgenda"?"none":"grid";
 
+  if(id==="ppHomeStats")ppPrepareStatsAnalytics();
   if(id==="ppAnalytics")setTimeout(ppRenderCharts,30);
 
   const viewport=document.querySelector("#studentPortal .ppViewport");
   if(viewport)viewport.scrollTo({top:0,behavior:"smooth"});
 }
+
+
+function ppPrepareStatsAnalytics(){
+  const slot=$("ppStatsAnalyticsSlot"),analytics=$("ppAnalytics");
+  if(slot&&analytics&&analytics.parentElement!==slot)slot.appendChild(analytics);
+  ppStatsSetMode("text");
+}
+window.ppStatsSetMode=mode=>{
+  const text=$("ppStatsTextPanel"),analytics=$("ppAnalytics");
+  const textTab=$("ppStatsTextTab"),chartTab=$("ppStatsChartTab");
+  const charts=mode==="charts";
+  if(text)text.style.display=charts?"none":"block";
+  if(analytics)analytics.classList.toggle("active",charts);
+  if(textTab)textTab.classList.toggle("active",!charts);
+  if(chartTab)chartTab.classList.toggle("active",charts);
+  if(charts)setTimeout(ppRenderCharts,40);
+};
 
 function ppShowExitConfirm(){
   const screen=$("ppExitConfirm");
