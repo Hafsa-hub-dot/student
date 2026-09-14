@@ -11038,7 +11038,7 @@ body.parentDirect.ppLaunchOpen .ppMobilePrintText{display:none!important}
             <button class="ppAllTab" type="button" data-pp-tab="ppNotes">الملاحظات</button>
             <button class="ppAllTab" type="button" data-pp-tab="ppSeating">الكروكي</button>
             <button class="ppAllTab" type="button" data-pp-tab="ppCertificates">نجمة الأسبوع</button>
-            <button class="ppAllTab" type="button" data-pp-tab="ppReport">التقرير الشامل</button>
+            <button class="ppAllTab" type="button" data-pp-tab="ppReport">ملخص المتابعة</button>
           </nav>
 
           <main class="ppScreens">
@@ -11117,7 +11117,7 @@ body.parentDirect.ppLaunchOpen .ppMobilePrintText{display:none!important}
                   <span class="ppMenuIcon wine">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg>
                   </span>
-                  <span class="ppMenuText"><strong>التقرير الشامل</strong><span>ملخص أكاديمي وتربوي قابل للطباعة</span></span>
+                  <span class="ppMenuText"><strong>ملخص المتابعة</strong><span>ملخص أكاديمي وتربوي قابل للطباعة</span></span>
                   <span class="ppChevron">‹</span>
                 </button>
               </div>
@@ -11196,7 +11196,7 @@ body.parentDirect.ppLaunchOpen .ppMobilePrintText{display:none!important}
 
             <section id="ppReport" class="ppScreen">
               <div class="ppPageHead">
-                <div><h2>التقرير الشامل</h2><p>ملخص الفترة + مؤشرات تراكمية للسنة الدراسية</p></div>
+                <div><h2>ملخص المتابعة</h2><p>ملخص الفترة + مؤشرات تراكمية للسنة الدراسية</p></div>
                 <button class="ppSmallBtn" type="button" onclick="ppPrintFullReport()">طباعة الكل</button>
               </div>
               <div id="ppReportContent"></div>
@@ -11209,7 +11209,7 @@ body.parentDirect.ppLaunchOpen .ppMobilePrintText{display:none!important}
             <button type="button" data-pp-open="ppNotes">ملاحظات المعلمات</button>
             <button type="button" data-pp-open="ppSeating">مكان الجلوس</button>
             <button type="button" data-pp-open="ppCertificates">نجمة الأسبوع</button>
-            <button type="button" data-pp-open="ppReport">التقرير الشامل</button>
+            <button type="button" data-pp-open="ppReport">ملخص المتابعة</button>
           </div>
 
           <nav class="ppBottomNav">
@@ -15192,7 +15192,7 @@ const PP_SCREEN_TITLES={
   ppNotes:"ملاحظات المعلمات",
   ppSeating:"مكان الجلوس",
   ppCertificates:"نجمة الأسبوع",
-  ppReport:"التقرير الشامل"
+  ppReport:"ملخص المتابعة"
 };
 
 function ppStudent(){
@@ -15367,8 +15367,9 @@ function ppOpenScreen(id,{push=true}={}){
   document.querySelectorAll("#studentPortal .ppScreen").forEach(x=>x.classList.toggle("active",x.id===id));
   document.querySelectorAll("#studentPortal [data-pp-bottom]").forEach(x=>x.classList.toggle("active",x.dataset.ppBottom===id));
   document.querySelectorAll("#studentPortal [data-pp-tab]").forEach(x=>x.classList.toggle("active",x.dataset.ppTab===id));
-
   $("ppAppTitle").textContent=PP_SCREEN_TITLES[id];
+  const mobilePrint=$("ppMobilePrintText");
+  if(mobilePrint)mobilePrint.textContent=`طباعة ${PP_SCREEN_TITLES[id]} A4`;
   $("ppMoreSheet").classList.remove("open");
   $("ppBack")?.classList.toggle("showHome",id!=="ppHome");
 
@@ -15970,7 +15971,7 @@ window.ppPrintAllCertificates=()=>{
 window.ppPrintFullReport=()=>{
   ppRenderCharts();
   const ids=["ppReport","ppGrades","ppAnalytics","ppAgenda","ppNotes","ppSeating","ppCertificates"];
-  const html=ppPrintHeader("التقرير الشامل للمتابعة")+
+  const html=ppPrintHeader("ملخص المتابعة للمتابعة")+
     ids.map(id=>`<section style="margin-bottom:18px;page-break-inside:avoid"><h2 style="color:#0D7A7D;border-bottom:1px solid #ddd;padding-bottom:4px;font-size:16px">${esc(PP_SCREEN_TITLES[id])}</h2>${ppCloneForPrint(id)}</section>`).join("");
   ppDoPrint(html);
 };
