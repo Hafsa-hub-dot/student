@@ -15599,13 +15599,19 @@ window.ppConfirmExit=()=>history.back();
 window.addEventListener("popstate",event=>{
   if(!ppDirect)return;
 
-  /* من الرئيسية فقط تظهر صفحة خروج داخلية بدل رسالة المتصفح. */
+  const screen=event.state?.ppPortalScreen;
+
+  /* تظهر رسالة الخروج فقط إذا كان وليّ الأمر موجودًا أصلًا في الرئيسية.
+     الرجوع من أي قسم داخلي يعيد للرئيسية مباشرةً بلا رسالة. */
   if(event.state?.ppPortalExitGuard){
-    ppShowExitConfirm();
+    if(ppCurrentScreen==="ppHome"){
+      ppShowExitConfirm();
+    }else{
+      ppOpenScreen("ppHome",{push:false});
+    }
     return;
   }
 
-  const screen=event.state?.ppPortalScreen;
   if(screen && PP_SCREEN_TITLES[screen]){
     ppOpenScreen(screen,{push:false});
   }
@@ -15673,7 +15679,7 @@ function openPortal(id,direct=false){
       location.href
     );
     history.pushState(
-      {...(history.state||{}),ppPortalScreen:"ppHome",ppPortalActive:true},
+      {...(history.state||{}),ppPortalScreen:"ppHome",ppPortalActive:true,ppPortalExitGuard:false},
       "",
       location.href
     );
