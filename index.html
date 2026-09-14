@@ -10363,6 +10363,32 @@ body.parentDirect #studentPortal .ppPageHead{margin-bottom:7px!important}
 body.parentDirect #studentPortal .ppPageHead h2{font-size:14px!important;line-height:1.45!important}
 body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 
+
+/* إحصائيات تهمني: الغياب والنجوم والملخص التربوي في صفحة واحدة */
+#studentPortal [data-pp-open="ppReport"],#studentPortal #ppMoreSheet [data-pp-open="ppReport"]{display:none!important}
+.ppStatsFocusGrid,.ppStatsSummary{display:grid;gap:10px;margin-bottom:10px}
+.ppAbsencePanel,.ppStarsPanel,.ppParentSummary{overflow:hidden;border:1px solid #E0E8E7;border-radius:16px;background:#fff;box-shadow:0 4px 12px rgba(22,49,51,.05)}
+.ppStatsFocusHeading{padding:11px 12px 9px;background:linear-gradient(135deg,#F1FAF9,#F7F3FC)}
+.ppStatsFocusHeading strong{display:block;color:#174F54;font-family:"El Messiri",sans-serif;font-size:14px}
+.ppStatsFocusHeading span{display:block;margin-top:2px;color:#758487;font-size:7px}
+.ppAbsenceHead,.ppAbsenceRow{display:grid;grid-template-columns:minmax(0,1fr)62px 70px;gap:6px;align-items:center}
+.ppAbsenceHead{padding:8px 12px;background:#FBFCFC;color:#859195;font-size:7px;font-weight:800}
+.ppAbsenceRow{padding:10px 12px;border-top:1px solid #EEF1F0}
+.ppAbsenceRow strong{color:#344B4E;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ppAbsenceRow b{padding:5px 3px;border-radius:8px;background:#F5F8F8;color:#0D777B;text-align:center;font-size:9px}
+.ppAbsenceRow b:last-child{background:#F7F1FA;color:#67408D}
+.ppStarNumbers{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:11px}
+.ppStarNumbers>div{padding:11px 7px;border-radius:12px;background:linear-gradient(145deg,#F9F4E7,#FFF);text-align:center;border:1px solid #F1E3B8}
+.ppStarNumbers>div+div{background:linear-gradient(145deg,#F4EFFA,#FFF);border-color:#E6DCF1}
+.ppStarNumbers span,.ppSummaryItem span{display:block;color:#778489;font-size:7px}
+.ppStarNumbers b{display:block;margin-top:4px;color:#956A16;font-family:"El Messiri",sans-serif;font-size:21px}
+.ppStarNumbers>div+div b{color:#67408D}.ppStarNumbers small{font-family:"Noto Kufi Arabic",sans-serif;font-size:7px;font-weight:800}
+.ppSummaryGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:10px}
+.ppSummaryItem{min-height:58px;padding:9px;border-radius:11px;background:#FAFCFC;border:1px solid #EDF1F1}
+.ppSummaryItem b{display:block;margin-top:4px;color:#344B4E;font-size:8px;line-height:1.7}
+.ppSummaryItem:first-child b{color:#0D777B;font-family:"El Messiri",sans-serif;font-size:19px}
+.ppSummaryWide{grid-column:1/-1}
+
 </style>
 </head>
 <body>
@@ -11292,6 +11318,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
                 <div><h2>إحصائيات تهمني</h2><p id="ppStatsPeriod">—</p></div>
               </div>
               <div id="ppHomeStatsContent" class="ppStatsFocusGrid"></div>
+              <div id="ppStatsSummary" class="ppStatsSummary"></div>
             </section>
 
             <section id="ppAgenda" class="ppScreen">
@@ -15738,41 +15765,53 @@ function ppRenderPeriods(){
 
 function ppRenderHome(){
   const s=ppStudent(); if(!s)return;
-
   const snap=ppPeriodSnapshot(s,ppPeriodId());
   const history=ppRelevantPeriods(s);
   const stars=ppAllStars(s.id);
+  const plan=ppStudentPlan(s);
 
-  const cumulativeAverage=ppAverage(history.map(x=>x.overall));
-  const cumulativeAbsence=history.reduce((sum,x)=>sum+x.absence,0);
+  const subjects=[];
+  const addSubject=(subject,teacherId="")=>{
+    const key=norm(subject);
+    if(key&&!subjects.some(item=>item.key===key))subjects.push({key,subject:subject||"مادة",teacherId});
+  };
+  plan.forEach(row=>addSubject(row.subject,row.teacherId||""));
+  snap.reports.forEach(item=>addSubject(item.row.subject,item.row.teacherId||""));
 
-  if($("ppHomeAverage"))$("ppHomeAverage").textContent=snap.overall===null?"—":`${snap.overall}%`;
-  if($("ppHomeCumulative"))$("ppHomeCumulative").textContent=cumulativeAverage===null?"—":`${cumulativeAverage}%`;
-  if($("ppHomeAbsence"))$("ppHomeAbsence").textContent=cumulativeAbsence;
-  if($("ppHomeStars"))$("ppHomeStars").textContent=stars.length;
+  const absenceFor=(period,key)=>period.reports
+    .filter(item=>norm(item.row.subject)===key)
+    .reduce((sum,item)=>sum+(+item.f?.absence||0),0);
+  const absenceRows=subjects.map(item=>({
+    key:item.key,subject:item.subject,
+    current:absenceFor(snap,item.key),
+    cumulative:history.reduce((sum,period)=>sum+absenceFor(period,item.key),0)
+  }));
 
-  
+  const weeklyStars=stars.filter(item=>item.star.periodId===ppPeriodId()).length;
+  const teacherCount=new Set((plan.length?plan:snap.reports.map(item=>item.row))
+    .map(row=>String(row.teacherId||row.teacherNameSnapshot||norm(row.subject)||"")).filter(Boolean)).size;
+
   if($("ppHomeStatsContent")){
-    $("ppHomeStatsContent").innerHTML=`
-      <div class="ppStatsFocusCard"><span>متوسط الفترة</span><b>${snap.overall===null?"—":snap.overall+"%"}</b></div>
-      <div class="ppStatsFocusCard"><span>المتوسط التراكمي</span><b>${cumulativeAverage===null?"—":cumulativeAverage+"%"}</b></div>
-      <div class="ppStatsFocusCard"><span>الغياب التراكمي</span><b>${cumulativeAbsence}</b></div>
-      <div class="ppStatsFocusCard"><span>مرات نجمة الأسبوع</span><b>${stars.length}</b></div>`;
+    const rowsHtml=absenceRows.length
+      ?absenceRows.map(row=>'<div class="ppAbsenceRow"><strong>'+esc(row.subject)+'</strong><b>'+row.current+'</b><b>'+row.cumulative+'</b></div>').join("")
+      :'<div class="ppEmpty">لا توجد مواد مسجلة لهذه الطالبة بعد.</div>';
+    $("ppHomeStatsContent").innerHTML=
+      '<section class="ppAbsencePanel">'+
+        '<div class="ppStatsFocusHeading"><strong>الغياب حسب المادة</strong><span>عدد الحصص خلال الأسبوع الحالي ومن بداية السنة</span></div>'+
+        '<div class="ppAbsenceTable"><div class="ppAbsenceHead"><span>المادة</span><span>الحالي</span><span>التراكمي</span></div>'+rowsHtml+'</div>'+
+      '</section>'+
+      '<section class="ppStarsPanel">'+
+        '<div class="ppStatsFocusHeading"><strong>نجمة الأسبوع</strong><span>تقدير المعلمات لهذا الأسبوع</span></div>'+
+        '<div class="ppStarNumbers"><div><span>هذا الأسبوع</span><b>'+weeklyStars+' <small>من '+teacherCount+' معلمة</small></b></div><div><span>تراكميًا</span><b>'+stars.length+' <small>نجمة</small></b></div></div>'+
+      '</section>';
   }
-  if($("ppStatsPeriod"))$("ppStatsPeriod").textContent=snap.period?`الفترة: ${pLabel(snap.period)}`:"لا توجد فترة مسجلة";
-if($("ppHomePeriodLabel")){
-    $("ppHomePeriodLabel").textContent=snap.period?`الفترة: ${pLabel(snap.period)}`:"لا توجد فترة";
-  }
+  if($("ppStatsPeriod"))$("ppStatsPeriod").textContent=snap.period?'الفترة الحالية: '+pLabel(snap.period):'لا توجد فترة مسجلة';
+  if($("ppHomePeriodLabel"))$("ppHomePeriodLabel").textContent=snap.period?'الفترة: '+pLabel(snap.period):'لا توجد فترة';
 
-  const latest=history
-    .map(x=>x.latestUpdate)
-    .filter(Boolean)
-    .sort()
-    .pop();
-
+  const latest=history.map(item=>item.latestUpdate).filter(Boolean).sort().pop();
   $("ppLastUpdate").textContent=latest
-    ?`آخر تحديث ${new Date(latest).toLocaleDateString("ar-QA",{day:"numeric",month:"short",year:"numeric"})}`
-    :"لا توجد تحديثات بعد";
+    ?'آخر تحديث '+new Date(latest).toLocaleDateString("ar-QA",{day:"numeric",month:"short",year:"numeric"})
+    :'لا توجد تحديثات بعد';
 }
 
 function ppRenderAgenda(){
@@ -16110,49 +16149,32 @@ function ppRenderReport(){
   const s=ppStudent(); if(!s)return;
   const snap=ppPeriodSnapshot(s,ppPeriodId());
   const history=ppRelevantPeriods(s);
-  const stars=ppAllStars(s.id);
-
-  const cumulativeAverage=ppAverage(history.map(x=>x.overall));
-  const totalAbs=history.reduce((a,x)=>a+x.absence,0);
-  const totalLate=history.reduce((a,x)=>a+x.late,0);
-  const fList=snap.existing.map(x=>x.f);
+  const fList=snap.existing.map(item=>item.f);
 
   const participation=ppMode(fList.map(f=>normalizeParticipation(f.participation)));
   const behavior=ppMode(fList.map(f=>behaviorDisplay(f)));
   const tools=ppMode(fList.map(f=>toolsDisplay(f)));
   const platform=ppMode(fList.map(f=>normalizeELearning(f.eLearning??f.overall)));
+  const average=snap.overall===null?'—':snap.overall+'%';
+  const academicText=history.length
+    ?'تم تسجيل متابعة في '+history.length+' فترة، ويمكن فتح صفحة الدرجات والتقييمات للتفاصيل.'
+    :'تظهر التفاصيل عند رصد متابعة الطالبة.';
 
-  $("ppReportContent").innerHTML=`
-    <div class="ppReportHero">
-      <h3>${esc(s.name)}</h3>
-      <p>${esc(classLabel(s.gradeNo,s.section))} — ${snap.period?esc(pLabel(snap.period)):"—"}</p>
-      <div class="ppReportKpis">
-        <div class="ppReportKpi"><b>${snap.overall===null?"—":snap.overall+"%"}</b><span>متوسط الفترة</span></div>
-        <div class="ppReportKpi"><b>${cumulativeAverage===null?"—":cumulativeAverage+"%"}</b><span>متوسط تراكمي</span></div>
-        <div class="ppReportKpi"><b>${stars.length}</b><span>مرات نجمة الأسبوع</span></div>
-      </div>
-    </div>
+  const reportHtml=
+    '<section class="ppParentSummary">'+
+      '<div class="ppStatsFocusHeading"><strong>ملخص متابعة الطالبة</strong><span>مؤشرات أكاديمية وسلوكية للفترة الحالية</span></div>'+
+      '<div class="ppSummaryGrid">'+
+        '<div class="ppSummaryItem"><span>متوسط الفترة</span><b>'+average+'</b></div>'+
+        '<div class="ppSummaryItem"><span>المشاركة الصفية</span><b>'+esc(participation)+'</b></div>'+
+        '<div class="ppSummaryItem"><span>السلوك والانضباط</span><b>'+esc(behavior)+'</b></div>'+
+        '<div class="ppSummaryItem"><span>الأدوات والجاهزية</span><b>'+esc(tools)+'</b></div>'+
+        '<div class="ppSummaryItem"><span>التفاعل على منصة قطر</span><b>'+esc(platform)+'</b></div>'+
+        '<div class="ppSummaryItem ppSummaryWide"><span>التقدم الأكاديمي</span><b>'+esc(academicText)+'</b></div>'+
+      '</div>'+
+    '</section>';
 
-    <div class="ppReportGrid">
-      <div class="ppReportBox">
-        <h4>الحضور التراكمي</h4><p>الغياب: ${totalAbs} — التأخر: ${totalLate} منذ بداية السجل.</p>
-      </div>
-      <div class="ppReportBox">
-        <h4>المشاركة الصفية</h4><p>${esc(participation)}</p>
-      </div>
-      <div class="ppReportBox">
-        <h4>السلوك والانضباط</h4><p>${esc(behavior)}</p>
-      </div>
-      <div class="ppReportBox">
-        <h4>الأدوات والجاهزية</h4><p>${esc(tools)}</p>
-      </div>
-      <div class="ppReportBox">
-        <h4>منصة قطر</h4><p>${esc(platform)}</p>
-      </div>
-      <div class="ppReportBox">
-        <h4>التطور الأكاديمي</h4><p>تم تسجيل بيانات في ${history.length} فترة أسبوعية، ويمكن متابعة مسار التطبيقات والواجبات والمشروع من التحليل البياني.</p>
-      </div>
-    </div>`;
+  if($("ppReportContent"))$("ppReportContent").innerHTML=reportHtml;
+  if($("ppStatsSummary"))$("ppStatsSummary").innerHTML=reportHtml;
 }
 
 function ppRenderAll(){
