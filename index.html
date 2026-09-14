@@ -15840,7 +15840,7 @@ function ppRenderHome(){
         }).join("")
       :'<div class="ppDetailEmpty">لا توجد متابعة مسجلة في هذا الأسبوع.</div>';
     return '<section class="ppWeekReport">'+
-      '<button type="button" class="ppWeekToggle" onclick="ppStatsToggle('+JSON.stringify(pid)+')">'+
+      '<button type="button" class="ppWeekToggle" onclick="ppStatsToggle(\''+pid+'\')">'+
         '<span>تقرير '+esc(period.period?pLabel(period.period):'الأسبوع')+'</span><small>اضغطي لعرض المواد والسلوك والتقييمات</small><b>⌄</b>'+
       '</button>'+
       '<div id="'+pid+'" class="ppWeekDetail">'+rows+'</div>'+
