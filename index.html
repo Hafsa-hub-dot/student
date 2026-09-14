@@ -10296,6 +10296,26 @@ body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
 #studentPortal .ppMenuText span,#studentPortal .ppChevron{display:none!important}
 #studentPortal .ppSectionLabel{margin:10px 2px 6px!important}
 
+
+/* استعادة شكل الرئيسية الأصلي وإضافة صفحة الإحصاءات */
+.ppHomeHero{padding:17px!important}
+.ppHomeHero h2{font-size:19px!important}
+.ppHomeHero .ppHeroStats{grid-template-columns:repeat(3,1fr)!important;gap:7px!important;margin-top:10px!important}
+.ppHomeHero .ppHeroStat{padding:9px 4px!important;border-radius:12px!important}
+.ppHomeHero .ppHeroStat b{font-size:15px!important}
+.ppHomeHero .ppHeroStat span{font-size:6.5px!important;line-height:normal!important}
+#studentPortal .ppMenuList{grid-template-columns:1fr!important;gap:8px!important}
+#studentPortal .ppMenuCard{grid-template-columns:44px minmax(0,1fr) 27px!important;gap:10px!important;padding:11px!important;min-height:0!important;border-radius:16px!important}
+#studentPortal .ppMenuIcon{width:43px!important;height:43px!important;border-radius:14px!important}
+#studentPortal .ppMenuIcon svg{width:21px!important;height:21px!important}
+#studentPortal .ppMenuText strong{font-size:10.5px!important;line-height:normal!important}
+#studentPortal .ppMenuText span,#studentPortal .ppChevron{display:block!important}
+#studentPortal .ppSectionLabel{margin:14px 2px 7px!important}
+.ppStatsFocusGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ppStatsFocusCard{padding:16px 10px;border:1px solid #DCE8E7;border-radius:17px;background:linear-gradient(145deg,#fff,#F3FAF9);text-align:center;box-shadow:0 5px 14px rgba(13,122,125,.06)}
+.ppStatsFocusCard span{display:block;color:#66777A;font-size:8px;font-weight:800}
+.ppStatsFocusCard b{display:block;margin-top:7px;color:#0D7A7D;font-family:"El Messiri","Noto Kufi Arabic",sans-serif;font-size:24px}
+
 </style>
 </head>
 <body>
@@ -11156,21 +11176,19 @@ body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
                 <small>أهلًا بكم في متابعة</small>
                 <h2 id="ppHomeStudent">—</h2>
                 <p id="ppHomeClass">—</p>
-                <div class="ppHomeStatsPanel">
-                  <div class="ppStatsPanelHead">
-                    <strong>إحصائيات تهمني</strong>
-                    <span id="ppHomePeriodLabel" class="ppHomePeriodLabel">—</span>
-                  </div>
-                  <div class="ppHeroStats">
+                <button id="ppStatsHome" class="ppResumeBtn" type="button" data-pp-open="ppHomeStats">إحصائيات تهمني</button>
+
+                <div id="ppHomePeriodLabel" class="ppHomePeriodLabel">—</div>
+
+                <div class="ppHeroStats">
                   <div class="ppHeroStat"><b id="ppHomeAverage">—</b><span>متوسط الفترة</span></div>
-                </div>
-                <div class="ppHeroStat"><b id="ppHomeCumulative">—</b><span>المتوسط التراكمي</span></div>
+                  <div class="ppHeroStat"><b id="ppHomeCumulative">—</b><span>المتوسط التراكمي</span></div>
                   <div class="ppHeroStat"><b id="ppHomeAbsence">0</b><span>غياب تراكمي</span></div>
                   <div class="ppHeroStat"><b id="ppHomeStars">0</b><span>مرات نجمة الأسبوع</span></div>
                 </div>
 
               <div class="ppSectionLabel">
-                <strong>أقسام المتابعة</strong>
+                <strong>متابعة الطالبة</strong>
                 <span id="ppLastUpdate">—</span>
               </div>
 
@@ -11231,6 +11249,13 @@ body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
                   <span class="ppChevron">‹</span>
                 </button>
               </div>
+            </section>
+
+            <section id="ppHomeStats" class="ppScreen">
+              <div class="ppPageHead">
+                <div><h2>إحصائيات تهمني</h2><p id="ppStatsPeriod">—</p></div>
+              </div>
+              <div id="ppHomeStatsContent" class="ppStatsFocusGrid"></div>
             </section>
 
             <section id="ppAgenda" class="ppScreen">
@@ -15322,6 +15347,7 @@ let ppNavStack=[];
 
 const PP_SCREEN_TITLES={
   ppHome:"الرئيسية",
+  ppHomeStats:"إحصائيات تهمني",
   ppAgenda:"أجندة الأسبوع القادم",
   ppGrades:"الدرجات والتقييمات",
   ppAnalytics:"التحليل البياني",
@@ -15684,7 +15710,16 @@ function ppRenderHome(){
   $("ppHomeAbsence").textContent=cumulativeAbsence;
   $("ppHomeStars").textContent=stars.length;
 
-  if($("ppHomePeriodLabel")){
+  
+  if($("ppHomeStatsContent")){
+    $("ppHomeStatsContent").innerHTML=`
+      <div class="ppStatsFocusCard"><span>متوسط الفترة</span><b>${snap.overall===null?"—":snap.overall+"%"}</b></div>
+      <div class="ppStatsFocusCard"><span>المتوسط التراكمي</span><b>${cumulativeAverage===null?"—":cumulativeAverage+"%"}</b></div>
+      <div class="ppStatsFocusCard"><span>الغياب التراكمي</span><b>${cumulativeAbsence}</b></div>
+      <div class="ppStatsFocusCard"><span>مرات نجمة الأسبوع</span><b>${stars.length}</b></div>`;
+  }
+  if($("ppStatsPeriod"))$("ppStatsPeriod").textContent=snap.period?`الفترة: ${pLabel(snap.period)}`:"لا توجد فترة مسجلة";
+if($("ppHomePeriodLabel")){
     $("ppHomePeriodLabel").textContent=snap.period?`الفترة: ${pLabel(snap.period)}`:"لا توجد فترة";
   }
 
