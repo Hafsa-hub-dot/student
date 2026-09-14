@@ -15417,7 +15417,7 @@ function ppOpenScreen(id,{push=true}={}){
   /* يربط أقسام وليّ الأمر بزر الرجوع في الهاتف. */
   if(ppDirect && push && window.history && history.pushState){
     history.pushState(
-      {...(history.state||{}),ppPortalScreen:id},
+      {...(history.state||{}),ppPortalScreen:id,ppPortalExitGuard:false},
       "",
       location.href
     );
@@ -15456,7 +15456,7 @@ window.addEventListener("popstate",event=>{
       return;
     }
     history.pushState(
-      {...(history.state||{}),ppPortalScreen:"ppHome",ppPortalActive:true},
+      {ppPortalScreen:"ppHome",ppPortalActive:true,ppPortalExitGuard:false},
       "",
       location.href
     );
