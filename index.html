@@ -10231,6 +10231,41 @@ body.parentDirect .ppMobileActionDock .ppMobilePrintText{
 #studentPortal [data-pp-tab="ppHome"]{display:none!important}
 body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
 
+
+/* صفحة تأكيد خروج ولي الأمر */
+.ppExitConfirm{display:none!important}
+.ppExitConfirm.show{
+  position:fixed!important;inset:0!important;z-index:20000!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:22px!important;direction:rtl!important;
+  background:linear-gradient(145deg,rgba(246,251,252,.98),rgba(240,237,250,.98))!important;
+}
+.ppExitCard{
+  position:relative!important;width:min(420px,100%)!important;overflow:hidden!important;
+  padding:31px 24px 24px!important;text-align:center!important;border-radius:28px!important;
+  background:#fff!important;border:1px solid rgba(13,122,125,.16)!important;
+  box-shadow:0 22px 55px rgba(35,45,73,.18)!important;
+  font-family:"Noto Kufi Arabic",Tahoma,sans-serif!important;
+}
+.ppExitGlow{position:absolute!important;border-radius:50%!important;pointer-events:none!important}
+.ppExitGlowOne{width:180px!important;height:180px!important;top:-95px!important;right:-80px!important;background:rgba(13,122,125,.13)!important}
+.ppExitGlowTwo{width:150px!important;height:150px!important;bottom:-85px!important;left:-65px!important;background:rgba(85,49,144,.11)!important}
+.ppExitMark{
+  position:relative!important;z-index:1!important;width:62px!important;height:62px!important;margin:0 auto 12px!important;
+  display:grid!important;place-items:center!important;border-radius:20px!important;
+  color:#fff!important;background:linear-gradient(135deg,#0D7A7D,#553190)!important;
+  box-shadow:0 10px 22px rgba(13,122,125,.25)!important;
+}
+.ppExitMark svg{width:31px!important;height:31px!important}
+.ppExitBrand{position:relative!important;z-index:1!important;color:#0D7A7D!important;font-size:11px!important;font-weight:900!important;letter-spacing:.6px!important}
+.ppExitCard h2{position:relative!important;z-index:1!important;margin:7px 0 7px!important;color:#553190!important;font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;font-size:25px!important}
+.ppExitCard p{position:relative!important;z-index:1!important;margin:0 auto 14px!important;max-width:320px!important;color:#5D6570!important;font-size:11px!important;line-height:2!important}
+.ppExitAsk{position:relative!important;z-index:1!important;margin:0 0 14px!important;color:#26333D!important;font-size:11px!important;font-weight:900!important}
+.ppExitActions{position:relative!important;z-index:1!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:9px!important}
+.ppExitActions button{border:0!important;border-radius:13px!important;padding:12px 8px!important;font-family:"Noto Kufi Arabic",Tahoma,sans-serif!important;font-size:9.5px!important;font-weight:900!important;cursor:pointer!important}
+.ppExitStay{background:linear-gradient(135deg,#0D7A7D,#146B8C)!important;color:#fff!important}
+.ppExitLeave{background:#F0EDF5!important;color:#553190!important}
+
 </style>
 </head>
 <body>
@@ -11359,6 +11394,26 @@ body.parentDirect .ppMobileActionDock .hidePrintOnHome{display:none!important}
 <div id="teacherCompletionPrint"></div>
 <div id="seatingPrint"></div>
 <div id="parentPrint"></div>
+<div id="ppExitConfirm" class="ppExitConfirm" aria-hidden="true">
+  <div class="ppExitCard">
+    <div class="ppExitGlow ppExitGlowOne"></div>
+    <div class="ppExitGlow ppExitGlowTwo"></div>
+    <div class="ppExitMark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <path d="M4 19h16M5.5 16V8.5L12 5l6.5 3.5V16"/><path d="M9 16v-4h6v4"/>
+        <path d="M12 10v5M9.5 12.5 12 15l2.5-2.5"/>
+      </svg>
+    </div>
+    <div class="ppExitBrand">دوم معك</div>
+    <h2>شكرًا لحرصكم</h2>
+    <p>متابعتكم لابنتكم تصنع فرقًا جميلًا في رحلتها التعليمية.</p>
+    <div class="ppExitAsk">هل تودون الخروج من البوابة؟</div>
+    <div class="ppExitActions">
+      <button type="button" class="ppExitStay" onclick="ppCancelExit()">الاستمرار في المتابعة</button>
+      <button type="button" class="ppExitLeave" onclick="ppConfirmExit()">الخروج</button>
+    </div>
+  </div>
+</div>
 <div id="ppMobileActionDock" class="ppMobileActionDock">
   <button id="ppMobilePrintText" class="ppMobilePrintText" type="button" onclick="ppPrintCurrent()">طباعة هذه الصفحة</button>
   <button id="ppMobileHomeText" class="ppMobileHomeText isHidden" type="button" onclick="ppOpenScreen('ppHome',{push:false})">
@@ -15445,22 +15500,28 @@ document.querySelectorAll("#studentPortal .ppScreen").forEach(x=>x.classList.tog
   if(viewport)viewport.scrollTo({top:0,behavior:"smooth"});
 }
 
+function ppShowExitConfirm(){
+  const screen=$("ppExitConfirm");
+  if(screen){screen.classList.add("show");screen.setAttribute("aria-hidden","false");}
+}
+window.ppCancelExit=()=>{
+  const screen=$("ppExitConfirm");
+  if(screen){screen.classList.remove("show");screen.setAttribute("aria-hidden","true");}
+  history.pushState(
+    {ppPortalScreen:"ppHome",ppPortalActive:true,ppPortalExitGuard:false},
+    "",
+    location.href
+  );
+  ppOpenScreen("ppHome",{push:false});
+};
+window.ppConfirmExit=()=>history.back();
+
 window.addEventListener("popstate",event=>{
   if(!ppDirect)return;
 
-  /* هذه هي خطوة الرجوع الأخيرة: نسأل قبل مغادرة البوابة. */
+  /* من الرئيسية فقط تظهر صفحة خروج داخلية بدل رسالة المتصفح. */
   if(event.state?.ppPortalExitGuard){
-    const wantsExit=window.confirm("هل أنتِ متأكدة من الخروج من بوابة متابعة الطالبة؟");
-    if(wantsExit){
-      history.back();
-      return;
-    }
-    history.pushState(
-      {ppPortalScreen:"ppHome",ppPortalActive:true,ppPortalExitGuard:false},
-      "",
-      location.href
-    );
-    ppOpenScreen("ppHome",{push:false});
+    ppShowExitConfirm();
     return;
   }
 
