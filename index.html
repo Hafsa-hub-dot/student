@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- CLEAN EMPTY DATA EDITION 2026-09-14: isolated storage + cloud document -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -10540,7 +10541,6 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
   .appMaterials .appSubjects button{width:auto}
 }
 
-
 /* واجهة المربيات: الأداة أولاً ثم الشعبة، بلا عناوين وحقول مكررة */
 #seating .mentorChoice{display:none!important}
 #seating .mentorToolSwitch{position:sticky;top:12px;z-index:30;display:flex;justify-content:center;gap:10px;margin:10px auto 14px;padding:9px;width:max-content;max-width:calc(100% - 24px);border-radius:19px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);box-shadow:0 10px 26px rgba(22,49,51,.14)}
@@ -10552,43 +10552,14 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 #seating.mentorActive .seatingSelectors label{font-size:11px;color:#41686B;font-weight:900;margin-bottom:5px}
 #seating.mentorActive .seatingSelectors select{min-height:42px;font-weight:900}
 #seating.mentorApps .applicationsManager{padding:12px!important;border-radius:18px!important}
+#seating.mentorApps .appSectionHead{margin-bottom:10px!important;align-items:center!important}
+#seating.mentorApps .appSectionHead h2{font-size:18px!important;margin:0!important}
+#seating.mentorApps .appSectionHead .sub{font-size:10px!important}
 .appScheduleTable th{font-size:12px!important;font-weight:900!important;background:linear-gradient(135deg,#DDF2F0,#F0EAF8)!important}
 .appScheduleTable td{height:42px!important;min-width:94px!important;background:#fff!important}
 .appScheduleTable td.filled{background:linear-gradient(135deg,#EAE1F5,#DFF3F0)!important;color:#553B79!important}
 @media(max-width:760px){#seating.mentorActive .seatingSelectors{display:block!important}#seating.mentorActive .seatingSelectors .field:first-child{max-width:none}.mentorToolSwitch button{padding:0 12px!important;font-size:10px!important}}
 
-
-/* مربيات الصفوف: كل أداة تظهر كاملة في شاشة واحدة */
-@media(min-width:761px){
-  #seating.mentorActive .seatingWorkspace{height:calc(100dvh - 144px);overflow:hidden;display:flex;flex-direction:column}
-  #seating.mentorActive .mentorToolSwitch{flex:0 0 auto}
-  #seating.mentorActive .seatingHero{flex:0 0 auto}
-  #seating.mentorApps .applicationsManager{flex:1;min-height:0;display:flex;flex-direction:column;margin:0!important}
-  #seating.mentorApps #applicationsAdminTable{flex:1;min-height:0;display:flex;flex-direction:column}
-  #seating.mentorApps .appPlanner{flex:1;min-height:0}
-  #seating.mentorApps .appScheduleTable th,#seating.mentorApps .appScheduleTable td{height:36px!important;padding:6px!important}
-  #seating.mentorApps .appScheduleStatus{margin:7px 0 0!important}
-  #seating.mentorSeating .seatingBuilderGrid{flex:1;min-height:0;overflow:hidden}
-  #seating.mentorSeating .unseatedPanel,#seating.mentorSeating .classroomCard{max-height:100%;overflow:hidden}
-  #seating.mentorSeating .seatingRoom{transform:scale(.92);transform-origin:top center}
-  #seating.mentorSeating .seatingControlBar{flex:0 0 auto}
-}
-
-
-/* شاشة واحدة لأداتي مربية الصف على الكمبيوتر */
-@media(min-width:761px){
-  #seating.mentorActive .seatingWorkspace{height:calc(100dvh - 142px);overflow:hidden;display:flex;flex-direction:column}
-  #seating.mentorActive .mentorToolSwitch,#seating.mentorActive .seatingHero,#seating.mentorActive .seatingControlBar{flex:0 0 auto}
-  #seating.mentorApps .applicationsManager{flex:1;min-height:0;margin:0!important;display:flex;flex-direction:column;overflow:hidden}
-  #seating.mentorApps #applicationsAdminTable{flex:1;min-height:0;display:flex;flex-direction:column}
-  #seating.mentorApps .appPlanner{flex:1;min-height:0}
-  #seating.mentorApps .appScheduleWrap{overflow:hidden}
-  #seating.mentorApps .appScheduleTable th,#seating.mentorApps .appScheduleTable td{height:35px!important;padding:5px!important}
-  #seating.mentorApps .appScheduleStatus{margin:7px 0 0!important}
-  #seating.mentorSeating .seatingBuilderGrid{flex:1;min-height:0;overflow:hidden}
-  #seating.mentorSeating .unseatedPanel,#seating.mentorSeating .classroomCard{max-height:100%;overflow:hidden}
-  #seating.mentorSeating .seatingRoom{transform:scale(.92);transform-origin:top center}
-}
 </style>
 </head>
 <body>
@@ -10619,6 +10590,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
   <button class="tab" data-view="teacher">المعلمة</button>
   <button class="tab" data-view="seating">مربيات الصفوف</button>
   <button class="tab" data-view="preview">معاينة ولي الأمر</button>
+  <button class="tab activityTopTab" data-view="activityExcelHub">📊 Excel الأنشطة</button>
 </nav>
 
 <main class="wrap">
@@ -10630,6 +10602,10 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
     <button class="aTab" data-panel="students">الطالبات</button>
     <button class="aTab" data-panel="teachers">المعلمات</button>
     <button class="aTab" data-panel="classSetup">إعداد الشعب</button>
+    <button class="aTab" data-panel="quality">🛡️ مراقبة جودة العمل</button>
+    <button class="aTab" data-panel="analytics">📊 التحليل والإحصائيات</button>
+    <button class="aTab" data-panel="archiveBank">📦 بنك الأرشفة</button>
+    <button class="aTab" data-panel="wording">✏️ العبارات الجاهزة</button>
     <button class="aTab" data-panel="settings">هوية الموقع والسنة</button>
     <button class="aTab" data-panel="cards">توليد البطاقات</button>
   </div>
@@ -10855,36 +10831,217 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
   </div>
 
   <div id="p-classSetup" class="panel">
-    <div class="grid">
-      <div class="card s4">
-        <h2>اختيار الشعبة</h2>
-        <div class="field"><label>المستوى</label><select id="setupLevel"></select></div>
-        <div class="field"><label>الشعبة</label><select id="setupSection"></select></div>
-        <div id="setupInfo" class="notice info">يتم جلب المستويات والشعب تلقائيًا من Excel الطالبات.</div>
+    <div class="teacherFirstSetup">
+      <div class="teacherSetupHero">
+        <div>
+          <span>توزيع الحصص</span>
+          <h2>المعلمات وشعبهن</h2>
+          <p>كل معلمة أمامك، اختاري لها الشعب من القوائم المنسدلة. المادة تؤخذ تلقائيًا من تخصص المعلمة.</p>
+        </div>
+        <div class="teacherSetupHeroActions">
+          <button class="btn soft" id="reloadTeacherAssignments" type="button">إعادة تحميل التوزيع</button>
+          <button class="btn primary" id="saveAllTeacherAssignments" type="button">حفظ جميع التوزيعات</button>
+        </div>
       </div>
 
-      <div class="card s8">
+      <div id="teacherAssignmentStatus" class="notice info">اختاري شعب كل معلمة ثم احفظي جميع التوزيعات مرة واحدة.</div>
+      <div id="teacherAssignmentList" class="teacherAssignmentList"></div>
+
+      <div class="card teacherSetupSummaryCard">
         <div class="section">
           <div>
-            <h2>مواد ومعلمات الشعبة</h2>
-            <div class="sub">أضيفي مادة، ثم تظهر فقط المعلمات اللواتي مادتهن مطابقة لها. لا يوجد قسم مواد منفصل ولا ربط منفصل.</div>
+            <h2>ملخص التوزيع</h2>
+            <div class="sub">يعرض عدد الشعب المرتبطة بكل معلمة بعد الحفظ.</div>
           </div>
-          <button class="btn soft" id="addPlanRow">إضافة مادة للشعبة</button>
         </div>
-
-        <div id="planRows"></div>
-        <button class="btn primary" id="saveClassPlan">حفظ إعداد الشعبة</button>
+        <div id="allPlansSummary" class="cards"></div>
       </div>
 
-      <div class="card s12">
-        <h2>ملخص إعداد جميع الشعب</h2>
-        <div id="allPlansSummary" class="cards"></div>
+      <!-- عناصر توافقية مخفية حتى تبقى الوظائف القديمة آمنة ولا تؤثر على الواجهة الجديدة -->
+      <div hidden aria-hidden="true">
+        <select id="setupLevel"></select>
+        <select id="setupSection"></select>
+        <div id="setupInfo"></div>
+        <button id="addPlanRow" type="button"></button>
+        <div id="planRows"></div>
+        <button id="saveClassPlan" type="button"></button>
       </div>
     </div>
   </div>
 
 
-  <div id="p-settings" class="panel">
+  <div id="p-quality" class="panel">
+    <div class="qualityControlShell">
+      <div class="qualityHero">
+        <div>
+          <span>لوحة الإدارة</span>
+          <h2>مراقبة جودة العمل</h2>
+          <p>متابعة إنجاز المعلمات في الأجندة، رصد الدرجات، والملاحظات من شاشة واحدة.</p>
+        </div>
+        <div class="qualityHeroTools">
+          <label>
+            <span>الأسبوع / الفترة</span>
+            <select id="qualityPeriodSelect"></select>
+          </label>
+          <button class="btn soft" id="qualityCurrentPeriodBtn" type="button">الفترة الحالية</button>
+          <button class="btn dark" id="printQualityReport" type="button">طباعة التقرير</button>
+        </div>
+      </div>
+
+      <div class="qualityLegend">
+        <span class="qLegend qDone">أخضر = تم</span>
+        <span class="qLegend qPartial">أصفر = بدأ ولم يكتمل</span>
+        <span class="qLegend qMissing">أحمر = لم يتم</span>
+      </div>
+
+      <div class="qualityKpis">
+        <div class="qualityKpi"><span>عدد المعلمات</span><b id="qualityTeacherCount">0</b></div>
+        <div class="qualityKpi"><span>الأجندة مكتملة</span><b id="qualityAgendaDone">0</b></div>
+        <div class="qualityKpi"><span>الرصد مكتمل</span><b id="qualityGradesDone">0</b></div>
+        <div class="qualityKpi"><span>الملاحظات مكتملة</span><b id="qualityNotesDone">0</b></div>
+      </div>
+
+      <div class="qualityTableWrap">
+        <table class="qualityTable">
+          <thead>
+            <tr>
+              <th>المعلمة</th>
+              <th>المادة</th>
+              <th>الشعب</th>
+              <th>الأجندة</th>
+              <th>رصد الدرجات</th>
+              <th>الملاحظات</th>
+              <th>جودة الإنجاز</th>
+              <th>تفاصيل</th>
+            </tr>
+          </thead>
+          <tbody id="qualityTableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="qualityDetails" class="qualityDetails" hidden></div>
+    </div>
+  </div>
+
+
+
+  <div id="p-analytics" class="panel">
+    <div class="analyticsShell">
+      <div class="analyticsHero">
+        <div>
+          <span class="analyticsEyebrow">لوحة الإدارة الذكية</span>
+          <h2>📊 مركز التحليل والإحصائيات</h2>
+          <p>تحليلات تلقائية للدرجات والصفوف والشعب والمواد والتطبيقات من بيانات الرصد الفعلية.</p>
+        </div>
+        <button id="analyticsPrint" class="analyticsPrintBtn" type="button">🖨️ طباعة التقرير الحالي A4</button>
+      </div>
+
+      <div class="analyticsFilters">
+        <label><span>الفترة</span><select id="anPeriod"><option value="">كل الفترات</option></select></label>
+        <label><span>الصف</span><select id="anGrade"><option value="">كل الصفوف</option></select></label>
+        <label><span>الشعبة</span><select id="anClass"><option value="">كل الشعب</option></select></label>
+        <label><span>المادة</span><select id="anSubject"><option value="">كل المواد</option></select></label>
+        <label><span>المعلمة</span><select id="anTeacher"><option value="">كل المعلمات</option></select></label>
+      </div>
+
+      <div class="analyticsKpis">
+        <div><span>الطالبات</span><b id="anStudents">0</b></div>
+        <div><span>متوسط الدرجات</span><b id="anAverage">—</b></div>
+        <div><span>عمليات الرصد</span><b id="anAssessments">0</b></div>
+        <div><span>التطبيقات</span><b id="anApplications">0</b></div>
+        <div><span>الشعب</span><b id="anClasses">0</b></div>
+      </div>
+
+      <div class="analyticsButtons">
+        <button data-analysis="classes"><b>📈</b><span>تحليل الصفوف والشعب</span><small>متوسط كل شعبة</small></button>
+        <button data-analysis="compare"><b>⚖️</b><span>مقارنة الشعب</span><small>مقارنة مباشرة</small></button>
+        <button data-analysis="applications"><b>📝</b><span>تحليل التطبيقات</span><small>عدد الرصد لكل شعبة</small></button>
+        <button data-analysis="subjects"><b>📚</b><span>تحليل المواد</span><small>متوسط كل مادة</small></button>
+        <button data-analysis="teachers"><b>👩‍🏫</b><span>المعلمات والمنسقات</span><small>حجم الرصد والإنجاز</small></button>
+        <button data-analysis="grades"><b>🎯</b><span>توزيع الدرجات</span><small>نطاقات التحصيل</small></button>
+        <button data-analysis="trend"><b>📅</b><span>التطور عبر الفترات</span><small>اتجاه النتائج</small></button>
+        <button data-analysis="school"><b>🏫</b><span>الصورة العامة</span><small>ملخص المدرسة</small></button>
+      </div>
+
+      <div class="analyticsStage">
+        <div class="analyticsStageHead">
+          <div><span>الرسم الحالي</span><h3 id="analyticsTitle">تحليل الصفوف والشعب</h3></div>
+          <span id="analyticsScope" class="badge info">كل البيانات</span>
+        </div>
+        <div class="analyticsCanvasWrap"><canvas id="analyticsChart"></canvas></div>
+        <div id="analyticsInsight" class="analyticsInsight"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="p-archiveBank" class="panel">
+    <div class="archiveBankShell">
+      <div class="archiveBankHero">
+        <div>
+          <span>السجل المحفوظ</span>
+          <h2>بنك الأرشفة</h2>
+          <p>كل كشف محفوظ هنا يبقى مستقلًا حتى بعد تصفير كشف المعلمة النشط.</p>
+        </div>
+        <div class="archiveBankHeroActions">
+          <button class="btn danger" id="archiveAllCurrentExcels" type="button">📦 أرشفة كل الكشوف الحالية وتصفيرها</button>
+        </div>
+      </div>
+
+      <div class="notice info archiveBankNotice">
+        الترتيب داخل البنك: <strong>الشهر ← الأسبوع ← المادة ← المعلمة/المنسقة ← الشعبة</strong>.
+        لا يتم التصفير إلا بعد إنشاء نسخة الأرشيف بنجاح.
+      </div>
+
+      <div class="archiveBankStats">
+        <div><span>إجمالي الملفات</span><b id="archiveBankCount">0</b></div>
+        <div><span>المعلمات/المنسقات</span><b id="archiveBankTeachers">0</b></div>
+        <div><span>المواد</span><b id="archiveBankSubjects">0</b></div>
+        <div><span>الأشهر</span><b id="archiveBankMonths">0</b></div>
+      </div>
+
+      <div class="archivePrintBar">
+        <label><span>الشهر</span><select id="archiveFilterMonth"><option value="">كل الأشهر</option></select></label>
+        <label><span>الأسبوع</span><select id="archiveFilterWeek"><option value="">كل الأسابيع</option></select></label>
+        <label><span>المادة</span><select id="archiveFilterSubject"><option value="">كل المواد</option></select></label>
+        <label><span>المعلمة/المنسقة</span><select id="archiveFilterTeacher"><option value="">الكل</option></select></label>
+        <button class="btn soft" id="printArchiveFiltered" type="button">🖨️ طباعة الفترة المحددة</button>
+        <button class="btn dark" id="printArchiveCumulative" type="button">🖨️ طباعة الأرشيف التراكمي كاملًا</button>
+      </div>
+
+      <div id="archiveBankTree" class="archiveBankTree">
+        <div class="empty">لا توجد ملفات مؤرشفة بعد.</div>
+      </div>
+    </div>
+  </div>
+
+<div id="p-wording" class="panel">
+    <div class="grid">
+      <div class="card s12">
+        <div class="section">
+          <div>
+            <h2>التحكم في العبارات الجاهزة</h2>
+            <div class="sub">هذه هي العبارات التي تظهر للمعلمة في قوائم الرصد. يمكنك تعديلها أو إضافة خيارات جديدة دون تعديل الكود.</div>
+          </div>
+          <span class="badge info">كل سطر = خيار</span>
+        </div>
+
+        <div class="wordingGrid">
+          <label><span>المشاركة الصفية</span><textarea id="wordingParticipation" rows="8"></textarea></label>
+          <label><span>إحضار الأدوات</span><textarea id="wordingTools" rows="8"></textarea></label>
+          <label><span>السلوك والانضباط</span><textarea id="wordingBehavior" rows="8"></textarea></label>
+          <label><span>التفاعل على منصة قطر</span><textarea id="wordingELearning" rows="8"></textarea></label>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" id="saveWordingSettings" type="button">حفظ العبارات</button>
+          <button class="btn soft" id="resetWordingSettings" type="button">استرجاع العبارات الافتراضية</button>
+        </div>
+        <div id="wordingStatus" class="notice info" style="margin-top:10px">أي تعديل هنا ينعكس على قوائم المعلمة عند فتح الرصد.</div>
+      </div>
+    </div>
+  </div>
+
+<div id="p-settings" class="panel">
     <div class="grid">
       <div class="card s5">
         <div class="settingsBrandPreview">
@@ -11156,6 +11313,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
       <textarea id="classAgendaText" rows="1" placeholder="اكتبي أجندة الشعبة هنا..."></textarea>
 
       <span id="agendaSaveState" class="miniState">—</span>
+<label class="agendaPinToggle"><input id="classAgendaPinned" type="checkbox"><span>📌 تثبيت لولي الأمر</span></label>
       <div class="agendaRibbonActions">
         <button class="agendaRibbonDelete" id="deleteClassAgenda" type="button">حذف</button>
         <button class="agendaRibbonSave" id="saveClassAgenda">حفظ</button>
@@ -11224,6 +11382,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
         </div>
 
         <div class="luxuryActions">
+          <button class="luxuryStarBtn" id="printCurrentStars" type="button" title="طباعة شهادات نجوم الأسبوع الحالي فقط">⭐ شهادات نجوم الأسبوع الحالي</button>
           <button class="luxuryExcelBtn" id="exportTeacherExcel" type="button" title="تنزيل المتابعة الأسبوعية بصيغة Excel للطباعة">طباعة</button>
           <button class="luxuryGhostBtn" id="resetUnsavedDefaults">إعادة غير المحفوظ</button>
           <button class="luxuryPrimaryBtn" id="saveAllRoster">حفظ الكل الآن</button>
@@ -11276,12 +11435,13 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
         <button class="btn danger" id="deleteSeatingPlan" type="button">حذف الكروكي</button>
       </div>
     </section>
+
     <div class="mentorToolSwitch" aria-label="التنقل بين أدوات مربية الصف">
       <button type="button" data-mentor-tool="seating" onclick="openMentorTool('seating')"><span>⌘</span> كروكي الصف</button>
       <button type="button" data-mentor-tool="apps" onclick="openMentorTool('apps')"><span>▦</span> جدول التطبيقات</button>
     </div>
     <section class="applicationsManager">
-      <div class="section"><div><h2>خطة تطبيقات الشعبة</h2><div class="sub">حددي مادتين كحد أقصى يوميًا، ثم اختاري الحصة المناسبة لكل تطبيق.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
+      <div class="section appSectionHead"><div><h2>خطة تطبيقات الشعبة</h2><div class="sub">حددي مواد التطبيقات لكل يوم — بحد أقصى مادتين يوميًا.</div></div><button id="printApplications" class="btn soft small" type="button">طباعة الجدول</button></div>
       <div id="applicationsAdminTable"></div>
     </section>
 
@@ -11346,6 +11506,91 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
         </table>
       </div>
     </section>
+
+  </div>
+</section>
+
+
+<section id="activityExcelHub" class="view activityExcelHub">
+  <div class="activityHubShell">
+
+    <section id="activityTeacherStep" class="activityFlowStep active">
+      <div class="activityFlowHero">
+        <span class="activityFlowIcon">📊</span>
+        <div>
+          <small>كشف درجات الأنشطة</small>
+          <h1>اختاري اسم المعلمة أولًا</h1>
+          <p>بعد اختيار الاسم ستظهر الشعب المرتبطة بهذه المعلمة فقط.</p>
+        </div>
+      </div>
+      <div class="activityTeacherPicker">
+        <label><span>اسم المعلمة</span><select id="activityTeacherSelect"></select></label>
+        <button id="activityTeacherContinue" class="btn primary" type="button">متابعة إلى الشعب</button>
+      </div>
+    </section>
+
+    <section id="activityClassesStep" class="activityFlowStep">
+      <div class="activityFlowBar">
+        <div>
+          <button id="activityChangeTeacher" class="activityBackBtn" type="button">← تغيير المعلمة</button>
+          <h2 id="activityTeacherTitle">شعب المعلمة</h2>
+          <p>اختاري الشعبة، أكملي الكشف، احفظيه واطبعيه، ثم ارجعي لباقي الشعب.</p>
+        </div>
+        <span id="activityClassesCount" class="badge info">0 شعبة</span>
+      </div>
+      <div id="activityClassCards" class="activityClassCards"></div>
+    </section>
+
+    <section id="activityDetailStep" class="activityFlowStep">
+      <div class="activityFlowBar">
+        <div>
+          <button id="activityBackToClasses" class="activityBackBtn" type="button">← الرجوع إلى الشعب</button>
+          <h2 id="activityDetailTitle">كشف الأنشطة</h2>
+          <p id="activityDetailMeta">—</p>
+        </div>
+        <span id="activitySavedState" class="badge">غير محفوظ</span>
+      </div>
+
+      <input id="activityClass" type="hidden">
+      <input id="activitySubject" type="hidden">
+
+      <div class="activityTableToolbar">
+        <div class="activityTableInfo">
+          <strong>الكشف التراكمي للأنشطة</strong>
+          <span>تظهر الأعمدة تلقائيًا عند رصد درجة جديدة، ويمكن تعديل الخانات اليدوية مباشرة داخل الجدول.</span>
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="saveActivityClassWork" type="button">حفظ التعديلات</button>
+          <button class="btn primary" id="downloadActivityExcel" type="button">تنزيل Excel التراكمي</button>
+          <button class="btn dark" id="printActivityExcel" type="button">طباعة فترة محددة</button>
+          <button class="btn danger" id="archiveActivityExcel" type="button">📦 أرشفة هذا الكشف وتصفيره</button>
+        </div>
+      </div>
+
+      <div class="card activityLiveTableCard">
+        <div class="section">
+          <div><h2>جدول الأنشطة</h2><div class="sub">التطبيقات والواجبات تُضاف تلقائيًا من الرصد، والمشروع موجود، والخانات الصفراء قابلة للتعديل اليدوي.</div></div>
+          <span id="activityPreviewBadge" class="badge">—</span>
+        </div>
+        <div id="activityExcelPreview" class="activityExcelPreview"><div class="activityLiveEmpty"><span>📊</span><strong>جارٍ تجهيز الجدول…</strong></div></div>
+      </div>
+
+      <div id="activityPrintRange" class="activityPrintRange" hidden>
+        <div class="activityPrintRangeBox">
+          <div class="section">
+            <div><h2>اختيار فترة الطباعة</h2><div class="sub">هذا الاختيار يؤثر على الطباعة فقط؛ Excel يبقى تراكميًا كاملًا.</div></div>
+            <button type="button" class="activityRangeClose" id="closeActivityPrintRange">×</button>
+          </div>
+          <div class="activityPrintRangeFields">
+            <label><span>من تاريخ</span><input id="activityPrintFrom" type="date"></label>
+            <label><span>إلى تاريخ</span><input id="activityPrintTo" type="date"></label>
+          </div>
+          <div class="actions">
+            <button class="btn primary" id="confirmActivityPrint" type="button">طباعة الآن</button>
+          </div>
+        </div>
+      </div>
+    </section></section>
 
   </div>
 </section>
@@ -11459,7 +11704,20 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
                 <span id="ppLastUpdate">—</span>
               </div>
 
-              <div class="ppMenuList">
+              <section id="ppSmartHub" class="ppSmartHub">
+<button class="ppWhatsNewCard" type="button" onclick="ppOpenWhatsNew()"><span class="ppSmartIcon">🔔</span><span><strong>ما الجديد؟</strong><small id="ppWhatsNewText">لا توجد تحديثات جديدة</small></span><b id="ppWhatsNewCount">0</b></button>
+<div id="ppWhatsNewPanel" class="ppWhatsNewPanel" hidden></div>
+<button id="ppSmartDrawerToggle" class="ppSmartDrawerToggle" type="button" onclick="ppToggleSmartDrawer()">
+  <span>ملخص المتابعة السريع</span><b id="ppSmartDrawerArrow">⌄</b>
+</button>
+<div id="ppSmartDrawer" class="ppSmartDrawer" hidden>
+<div class="ppWeekNowCard"><div class="ppSmartHead"><strong>📅 هذا الأسبوع</strong><span>ملخص سريع</span></div><div id="ppWeekNowContent" class="ppWeekNowContent"></div></div>
+<div class="ppProgressCard"><div class="ppSmartHead"><strong>📈 مؤشر التقدم</strong><span>حسب آخر رصد</span></div><div id="ppProgressContent"></div></div>
+<div class="ppAchievementsCard"><div class="ppSmartHead"><strong>🏆 إنجازات الطالبة</strong><span>شارات تلقائية</span></div><div id="ppAchievementsContent" class="ppAchievementChips"></div></div>
+<div id="ppPinnedImportant" class="ppPinnedImportant" hidden></div>
+<button class="ppParentReportBtn" type="button" onclick="ppPrintFullReport()">🖨️ تقرير ابنتي — A4</button>
+</div>
+</section><div class="ppMenuList">
                 <button class="ppMenuCard" data-pp-open="ppAgenda">
                   <span class="ppMenuIcon teal">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg>
@@ -11733,6 +11991,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 <div id="teacherCompletionPrint"></div>
 <div id="seatingPrint"></div>
 <div id="parentPrint"></div>
+<div id="activityPrint"></div>
 <div id="ppExitConfirm" class="ppExitConfirm" aria-hidden="true">
   <div class="ppExitCard">
     <div class="ppExitGlow ppExitGlowOne"></div>
@@ -11764,7 +12023,7 @@ body.parentDirect #studentPortal .ppPageHead p{font-size:7px!important}
 
 <script>
 /* قاعدة جديدة تمامًا حتى لا تسترجع أي بيانات من الإصدارات السابقة */
-const DB_KEY="parentFollowup_v10_clean_class_plan";
+const DB_KEY="parentFollowup_v11_fresh_empty_20260914";
 
 /* ربط Firebase — لا تعدّلي هذه الإعدادات */
 const FIREBASE_CONFIG={
@@ -11775,7 +12034,7 @@ const FIREBASE_CONFIG={
   messagingSenderId:"891490085293",
   appId:"1:891490085293:web:2110faf1185e5b58249924"
 };
-const FIREBASE_DOCUMENT_PATH={collection:"schoolFollowup",document:"mainData"};
+const FIREBASE_DOCUMENT_PATH={collection:"schoolFollowup",document:"mainData_fresh_empty_20260914"};
 let cloudDb=null,cloudReady=false,cloudSaveTimer=null;
 
 function cloudStatus(message,type="info"){
@@ -11789,7 +12048,7 @@ function normalizeDatabase(data){
   const d=data&&typeof data==="object"?data:{};
   d.settings={...structuredClone(DEFAULT_SITE_SETTINGS),...(d.settings||{})};
   if(!Array.isArray(d.settings.closedRanges))d.settings.closedRanges=[];
-  d.students??=[];d.teachers??=[];d.classPlans??={};d.classAgendas??={};d.applicationSchedule??={};d.weeklyStars??={};d.assessmentConfigs??={};d.seatingPlans??={};d.periods??=[];d.followups??=[];d.usedCodes??=[];d.usedTokens??=[];
+  d.students??=[];d.teachers??=[];d.classPlans??={};d.classAgendas??={};d.applicationSchedule??={};d.weeklyStars??={};d.assessmentConfigs??={};d.seatingPlans??={};d.periods??=[];d.followups??=[];d.usedCodes??=[];d.usedTokens??=[];d.activityManualData??={};d.archiveBank??=[];
   return d;
 }
 
@@ -11951,15 +12210,14 @@ function academicMonths(start=academicStartDate(),end=academicEndDate()){
 }
 
 const SCALE=["ممتاز","جيد جدًا","جيد","مقبول","يحتاج متابعة"];
-const PARTICIPATION_OPTIONS=[
+const DEFAULT_PARTICIPATION_OPTIONS=[
   "تشارك بفاعلية في كل حصة",
   "تشارك بانتظام في معظم الحصص",
   "تشارك أحيانًا",
   "تشارك عند التوجيه فقط",
   "لم تشارك خلال هذه الفترة"
 ];
-
-const TOOLS_STATUS_OPTIONS=[
+const DEFAULT_TOOLS_STATUS_OPTIONS=[
   "تحضر جميع الأدوات في كل الحصص",
   "تحضر جميع الأدوات في معظم الحصص",
   "تنسى أداة في حصة واحدة",
@@ -11968,10 +12226,7 @@ const TOOLS_STATUS_OPTIONS=[
   "غالبًا لا تكتمل أدواتها",
   "لم تحضر الأدوات المطلوبة خلال هذه الفترة"
 ];
-
-
-
-const BEHAVIOR_OPTIONS=[
+const DEFAULT_BEHAVIOR_OPTIONS=[
   "تستجيب للتعليمات",
   "تحتاج إلى تكرار التوجيه قبل الاستجابة",
   "تتحدث كثيراً",
@@ -11979,14 +12234,35 @@ const BEHAVIOR_OPTIONS=[
   "هروب من الحصة",
   "لا تستجيب أبداً"
 ];
-
-const ELEARNING_OPTIONS=[
+const DEFAULT_ELEARNING_OPTIONS=[
   "تتفاعل بانتظام على منصة قطر",
   "تتفاعل غالبًا على منصة قطر",
   "تتفاعل أحيانًا على منصة قطر",
   "نادرًا ما تتفاعل على منصة قطر",
   "لا تتفاعل على منصة قطر"
 ];
+
+const PARTICIPATION_OPTIONS=[...DEFAULT_PARTICIPATION_OPTIONS];
+const TOOLS_STATUS_OPTIONS=[...DEFAULT_TOOLS_STATUS_OPTIONS];
+const BEHAVIOR_OPTIONS=[...DEFAULT_BEHAVIOR_OPTIONS];
+const ELEARNING_OPTIONS=[...DEFAULT_ELEARNING_OPTIONS];
+
+function cleanOptionLines(value){
+  const arr=Array.isArray(value)?value:String(value||"").split(/\n+/);
+  return [...new Set(arr.map(clean).filter(Boolean))];
+}
+function replaceOptionArray(target,source,fallback){
+  const values=cleanOptionLines(source);
+  target.splice(0,target.length,...(values.length?values:fallback));
+}
+function syncConfigurableOptionLists(){
+  const lists=siteSettings().optionLists||{};
+  replaceOptionArray(PARTICIPATION_OPTIONS,lists.participation,DEFAULT_PARTICIPATION_OPTIONS);
+  replaceOptionArray(TOOLS_STATUS_OPTIONS,lists.tools,DEFAULT_TOOLS_STATUS_OPTIONS);
+  replaceOptionArray(BEHAVIOR_OPTIONS,lists.behavior,DEFAULT_BEHAVIOR_OPTIONS);
+  replaceOptionArray(ELEARNING_OPTIONS,lists.eLearning,DEFAULT_ELEARNING_OPTIONS);
+}
+
 
 const ASSESSMENT_STATUS_OPTIONS=[
   "لم يُعطَ بعد",
@@ -12043,19 +12319,19 @@ function selectOptions(list,selected){
 }
 
 function normalizeParticipation(v){
-  return PARTICIPATION_OPTIONS.includes(v)?v:"تشارك بفاعلية في كل حصة";
+  return PARTICIPATION_OPTIONS.includes(v)?v:(PARTICIPATION_OPTIONS[0]||"—");
 }
 
 function normalizeToolsStatus(v){
-  return TOOLS_STATUS_OPTIONS.includes(v)?v:"تحضر جميع الأدوات في كل الحصص";
+  return TOOLS_STATUS_OPTIONS.includes(v)?v:(TOOLS_STATUS_OPTIONS[0]||"—");
 }
 
 function normalizeBehavior(v){
-  return BEHAVIOR_OPTIONS.includes(v)?v:"تستجيب للتعليمات";
+  return BEHAVIOR_OPTIONS.includes(v)?v:(BEHAVIOR_OPTIONS[0]||"—");
 }
 
 function normalizeELearning(v){
-  return ELEARNING_OPTIONS.includes(v)?v:"تتفاعل بانتظام على منصة قطر";
+  return ELEARNING_OPTIONS.includes(v)?v:(ELEARNING_OPTIONS[0]||"—");
 }
 
 function toolsDisplay(f){
@@ -12063,20 +12339,70 @@ function toolsDisplay(f){
   return normalizeToolsStatus(f.toolsStatus||f.tools);
 }
 
-function starKey(classKeyValue,subject,periodId){
-  return `${classKeyValue}|||${norm(subject)}|||${periodId}`;
+function weeklyStarWeekStart(value=new Date()){
+  const d=value instanceof Date?new Date(value):new Date(value||Date.now());
+  if(Number.isNaN(d.getTime()))return localISO();
+  d.setHours(12,0,0,0);
+  d.setDate(d.getDate()-d.getDay()); // الأحد
+  return [
+    d.getFullYear(),
+    String(d.getMonth()+1).padStart(2,"0"),
+    String(d.getDate()).padStart(2,"0")
+  ].join("-");
+}
+function weeklyStarRecordWeek(star){
+  return clean(star?.weekStart)||weeklyStarWeekStart(star?.date||star?.updatedAt||new Date());
+}
+function starKey(classKeyValue,subject,periodId,weekStart=weeklyStarWeekStart()){
+  return `${classKeyValue}|||${norm(subject)}|||${periodId}|||${weekStart}`;
 }
 function getWeeklyStar(classKeyValue,subject,periodId){
-  return db.weeklyStars?.[starKey(classKeyValue,subject,periodId)]||null;
+  const currentWeek=weeklyStarWeekStart();
+  return Object.values(db.weeklyStars||{}).find(star=>
+    star &&
+    star.classKey===classKeyValue &&
+    norm(star.subject)===norm(subject) &&
+    star.periodId===periodId &&
+    !star.archived &&
+    weeklyStarRecordWeek(star)===currentWeek
+  )||null;
+}
+function ensureWeeklyStarArchive(){
+  db.weeklyStars??={};
+  const currentWeek=weeklyStarWeekStart();
+  let changed=false;
+
+  for(const star of Object.values(db.weeklyStars)){
+    if(!star)continue;
+    const week=weeklyStarRecordWeek(star);
+
+    if(!star.weekStart){
+      star.weekStart=week;
+      changed=true;
+    }
+
+    if(week<currentWeek && !star.archived){
+      star.archived=true;
+      star.archivedAt=new Date().toISOString();
+      changed=true;
+    }
+  }
+  return changed;
 }
 function setWeeklyStar(classKeyValue,subject,periodId,teacherId,studentIds,date,signature){
   db.weeklyStars??={};
-  const key=starKey(classKeyValue,subject,periodId);
+  ensureWeeklyStarArchive();
+
+  const weekStart=weeklyStarWeekStart();
+  const key=starKey(classKeyValue,subject,periodId,weekStart);
   const unique=[...new Set((studentIds||[]).map(String).filter(Boolean))];
 
+  /* لا نلمس أي نجمة مؤرشفة؛ التعديل دائمًا يخص الأسبوع الجاري فقط. */
   if(unique.length){
     const t=teacherRecord(teacherId);
+    const existing=db.weeklyStars[key];
     db.weeklyStars[key]={
+      ...(existing||{}),
       classKey:classKeyValue,
       subject,
       periodId,
@@ -12084,25 +12410,36 @@ function setWeeklyStar(classKeyValue,subject,periodId,teacherId,studentIds,date,
       teacherKey:t?teacherStableKey(t):"",
       teacherNameSnapshot:t?.name||"",
       studentIds:unique,
+      weekStart,
+      archived:false,
+      archivedAt:"",
       date:clean(date)||localISO(),
       signature:clean(signature)||teacherName(teacherId,t?.name||""),
       updatedAt:new Date().toISOString()
     };
   }else{
+    /* إلغاء النجمة خلال الأسبوع الجاري يحذف السجل الجاري فقط، فتختفي فورًا من ولي الأمر. */
     delete db.weeklyStars[key];
   }
 }
 function weeklyStarContains(studentId,periodId){
+  ensureWeeklyStarArchive();
   const cp=currentPeriod();
+  const currentWeek=weeklyStarWeekStart();
 
   return Object.values(db.weeklyStars||{}).filter(x=>{
-    if(x.periodId!==periodId || !Array.isArray(x.studentIds) || !x.studentIds.includes(String(studentId)))return false;
+    if(
+      x.archived ||
+      weeklyStarRecordWeek(x)!==currentWeek ||
+      x.periodId!==periodId ||
+      !Array.isArray(x.studentIds) ||
+      !x.studentIds.map(String).includes(String(studentId))
+    )return false;
 
     if(cp?.id===periodId){
       const entry=classPlanEntry(x.classKey,x.subject);
       if(entry?.teacherId && String(entry.teacherId)!==String(x.teacherId))return false;
     }
-
     return true;
   });
 }
@@ -12124,25 +12461,30 @@ function clean(v){return String(v??"").trim().replace(/\s+/g," ")}
 function norm(v){return clean(v).replace(/[ًٌٍَُِّْـ]/g,"").replace(/[إأآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).toLowerCase()}
 function esc(v){return String(v??"").replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]))}
 
+function freshEmptyDatabase(){
+  return normalizeDatabase({
+    settings:structuredClone(DEFAULT_SITE_SETTINGS),
+    students:[],
+    teachers:[],
+    classPlans:{},
+    classAgendas:{},
+    applicationSchedule:{},
+    weeklyStars:{},
+    assessmentConfigs:{},
+    seatingPlans:{},
+    periods:[],
+    followups:[],
+    activityManualData:{},
+    archiveBank:[],
+    usedCodes:[],
+    usedTokens:[]
+  });
+}
+
 function loadDB(){
   let d=null;
   try{d=JSON.parse(localStorage.getItem(DB_KEY)||"null")}catch(e){}
-  if(!d){
-    d={
-      settings:structuredClone(DEFAULT_SITE_SETTINGS),
-      students:[],
-      teachers:[],
-      classPlans:{},
-      classAgendas:{},
-      weeklyStars:{},
-      assessmentConfigs:{},
-      seatingPlans:{},
-      periods:[],
-      followups:[],
-      usedCodes:[],
-      usedTokens:[]
-    };
-  }
+  if(!d){ d=freshEmptyDatabase(); }
   return normalizeDatabase(d);
 }
 const DB_BACKUP_KEY=DB_KEY+"_last_good";
@@ -12836,6 +13178,11 @@ document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
 
   if(b.dataset.view==="seating"){
     setSeatingFollowReportVisible(false);
+  }
+  if(b.dataset.view==="activityExcelHub"){
+    renderActivityTeacherPicker();
+    showActivityFlowStep(activitySelectedTeacherId?"activityClassesStep":"activityTeacherStep");
+    if(activitySelectedTeacherId)renderActivityClassCards();
   }
 });
 
@@ -14051,6 +14398,215 @@ function renderPlansSummary(){
     :`<div class="empty">لا توجد شعب بعد.</div>`;
 }
 
+
+/* ========================= Teacher-first class setup V68 ========================= */
+let teacherSetupDraft={};
+let teacherSetupDraftInitialized=false;
+
+function teacherSetupSubjectName(value){
+  return appSubjectOnly(value);
+}
+
+function teacherSetupLoadDraft(){
+  teacherSetupDraft={};
+  for(const t of db.teachers){
+    teacherSetupDraft[String(t.id)]=[];
+  }
+  for(const [classKeyValue,rows] of Object.entries(db.classPlans||{})){
+    for(const row of rows||[]){
+      const tid=String(row.teacherId||"");
+      if(!tid)continue;
+      teacherSetupDraft[tid]??=[];
+      if(!teacherSetupDraft[tid].some(x=>x.classKey===classKeyValue&&norm(x.subject)===norm(row.subject))){
+        teacherSetupDraft[tid].push({classKey:classKeyValue,subject:row.subject});
+      }
+    }
+  }
+  teacherSetupDraftInitialized=true;
+}
+function teacherSetupGroupOptions(selected=""){
+  const gs=groups();
+  return `<option value="">اختاري الشعبة</option>`+
+    gs.map(g=>`<option value="${esc(g.key)}" ${g.key===selected?"selected":""}>${esc(activityLatinDigits(g.label))}</option>`).join("");
+}
+function teacherSetupAssignedCount(teacherId){
+  return (teacherSetupDraft[String(teacherId)]||[]).filter(x=>x.classKey).length;
+}
+function renderTeacherFirstSetup(force=false){
+  const root=$("teacherAssignmentList");
+  if(!root)return;
+  if(force||!teacherSetupDraftInitialized)teacherSetupLoadDraft();
+
+  const teachers=db.teachers.slice().sort((a,b)=>a.name.localeCompare(b.name,"ar"));
+  if(!teachers.length){
+    root.innerHTML=`<div class="empty">أضيفي المعلمات أولًا من تبويب «المعلمات»، وبعدها ستظهر هنا تلقائيًا.</div>`;
+    return;
+  }
+
+  root.innerHTML=teachers.map(t=>{
+    const tid=String(t.id);
+    const rows=teacherSetupDraft[tid]||[];
+    const rowHtml=rows.length
+      ?rows.map((row,i)=>`
+        <div class="teacherAssignmentRow">
+          <div class="assignmentClassField">
+            <label>الشعبة</label>
+            <select data-teacher-assignment="${esc(tid)}" data-assignment-index="${i}">
+              ${teacherSetupGroupOptions(row.classKey)}
+            </select>
+          </div>
+          <div class="assignmentSubjectFixed">
+            <span>المادة</span>
+            <strong>${esc(teacherSetupSubjectName(row.subject||t.specialty)||"غير محدد")}</strong>
+          </div>
+          <button type="button" class="assignmentDelete" data-delete-teacher-assignment="${esc(tid)}" data-assignment-index="${i}">حذف</button>
+        </div>`).join("")
+      :`<div class="teacherNoAssignments">لم تُحدد شعب لهذه المعلمة بعد.</div>`;
+
+    return`
+      <article class="teacherAssignmentCard">
+        <div class="teacherAssignmentHead">
+          <div class="teacherIdentityBadge">
+            <span>${esc((t.name||"م").trim().charAt(0)||"م")}</span>
+            <div>
+              <h3>${esc(t.name)}</h3>
+              <p>${esc(t.specialty||"غير محدد")}</p>
+            </div>
+          </div>
+          <div class="teacherAssignmentCount">${activityLatinDigits(teacherSetupAssignedCount(tid))} شعبة</div>
+        </div>
+
+        <div class="teacherAssignmentRows">${rowHtml}</div>
+
+        <button type="button" class="teacherAddClassBtn" data-add-teacher-assignment="${esc(tid)}">
+          + إضافة شعبة للمعلمة
+        </button>
+      </article>`;
+  }).join("");
+}
+function teacherSetupAddAssignment(teacherId){
+  const t=teacherRecord(teacherId);
+  if(!t)return;
+  teacherSetupDraft[String(teacherId)]??=[];
+  teacherSetupDraft[String(teacherId)].push({
+    classKey:"",
+    subject:teacherSetupSubjectName(t.specialty)||"غير محدد"
+  });
+  renderTeacherFirstSetup();
+}
+function teacherSetupRemoveAssignment(teacherId,index){
+  const arr=teacherSetupDraft[String(teacherId)]||[];
+  arr.splice(index,1);
+  renderTeacherFirstSetup();
+}
+function teacherSetupSaveAll(){
+  const next={};
+  const occupied=new Map();
+
+  for(const t of db.teachers){
+    const tid=String(t.id);
+    const subject=teacherSetupSubjectName(t.specialty)||"غير محدد";
+    const rows=teacherSetupDraft[tid]||[];
+
+    for(const row of rows){
+      const ck=clean(row.classKey);
+      if(!ck)continue;
+
+      const duplicateKey=`${ck}|||${norm(subject)}`;
+      if(occupied.has(duplicateKey)&&occupied.get(duplicateKey)!==tid){
+        const other=teacherRecord(occupied.get(duplicateKey));
+        const label=groups().find(g=>g.key===ck)?.label||ck.replace("|"," / ");
+        return alert(`لا يمكن ربط مادة «${subject}» في ${label} بمعلمتين معًا: ${other?.name||"معلمة أخرى"} و${t.name}.`);
+      }
+      occupied.set(duplicateKey,tid);
+
+      next[ck]??=[];
+      next[ck].push({
+        subject,
+        teacherId:t.id,
+        teacherKey:teacherStableKey(t),
+        teacherNameSnapshot:t.name
+      });
+    }
+  }
+
+  db.classPlans=next;
+  save();
+  teacherSetupLoadDraft();
+  renderTeacherFirstSetup();
+  renderPlansSummary();
+  renderTeacherSetupSummary();
+  renderTeacherMain();
+  renderActivityTeacherPicker();
+
+  const status=$("teacherAssignmentStatus");
+  if(status){
+    status.className="notice ok";
+    status.textContent="تم حفظ جميع توزيعات المعلمات والشعب ✓ وانعكس الربط على واجهة المعلمة وExcel الأنشطة وولي الأمر.";
+  }
+}
+$("teacherAssignmentList")?.addEventListener("change",e=>{
+  const select=e.target.closest("[data-teacher-assignment]");
+  if(!select)return;
+  const tid=select.dataset.teacherAssignment;
+  const index=Number(select.dataset.assignmentIndex);
+  const arr=teacherSetupDraft[tid]||[];
+  if(!arr[index])return;
+
+  const duplicateSameTeacher=arr.some((x,i)=>i!==index&&x.classKey&&x.classKey===select.value);
+  if(duplicateSameTeacher){
+    select.value=arr[index].classKey||"";
+    return alert("هذه الشعبة مضافة بالفعل لهذه المعلمة.");
+  }
+
+  arr[index].classKey=select.value;
+  const status=$("teacherAssignmentStatus");
+  if(status){
+    status.className="notice warn";
+    status.textContent="يوجد تعديل غير محفوظ — اضغطي «حفظ جميع التوزيعات».";
+  }
+  renderTeacherFirstSetup();
+});
+$("teacherAssignmentList")?.addEventListener("click",e=>{
+  const add=e.target.closest("[data-add-teacher-assignment]");
+  if(add){teacherSetupAddAssignment(add.dataset.addTeacherAssignment);return}
+  const del=e.target.closest("[data-delete-teacher-assignment]");
+  if(del){
+    teacherSetupRemoveAssignment(del.dataset.deleteTeacherAssignment,Number(del.dataset.assignmentIndex));
+    const status=$("teacherAssignmentStatus");
+    if(status){status.className="notice warn";status.textContent="يوجد تعديل غير محفوظ — اضغطي «حفظ جميع التوزيعات»."}
+  }
+});
+$("saveAllTeacherAssignments")?.addEventListener("click",teacherSetupSaveAll);
+$("reloadTeacherAssignments")?.addEventListener("click",()=>{
+  teacherSetupLoadDraft();
+  renderTeacherFirstSetup();
+  const status=$("teacherAssignmentStatus");
+  if(status){status.className="notice info";status.textContent="تمت إعادة تحميل آخر توزيع محفوظ."}
+});
+
+
+
+function renderTeacherSetupSummary(){
+  const target=$("allPlansSummary");
+  if(!target)return;
+  const teachers=db.teachers.slice().sort((a,b)=>a.name.localeCompare(b.name,"ar"));
+  target.innerHTML=teachers.length
+    ?teachers.map(t=>{
+      const links=classPlansForTeacher(t.id);
+      return `<div class="mini teacherSummaryMini">
+        <strong>${esc(t.name)}</strong>
+        <div class="sub">${esc(t.specialty||"")}</div>
+        <div class="teacherSummaryClasses">${
+          links.length
+            ?links.map(x=>esc(activityLatinDigits(groups().find(g=>g.key===x.classKey)?.label||x.classKey.replace("|"," / ")))).join(" • ")
+            :"لا توجد شعب مرتبطة"
+        }</div>
+      </div>`;
+    }).join("")
+    :`<div class="empty">لا توجد معلمات بعد.</div>`;
+}
+
 /* ========================= Teacher Interface ========================= */
 const rosterDirty=new Set();
 let rosterAutoTimer=null;
@@ -14458,7 +15014,7 @@ function rosterRowHtml(student){
         </td>
 
         <td class="starCell">
-          <input class="starCheck" type="checkbox" data-field="weeklyStar" ${starIds.includes(String(student.id))?"checked":""} aria-label="نجمة الأسبوع - ${esc(student.name)}">
+          <input class="starCheck" type="checkbox" data-field="weeklyStar" ${starIds.includes(String(student.id))?"checked":""} title="نجمة الأسبوع الجاري — يمكن إلغاؤها حتى يوم السبت" aria-label="نجمة الأسبوع - ${esc(student.name)}">
         </td>
       </tr>
     </tbody>`;
@@ -14467,7 +15023,7 @@ function renderClassAgenda(){
   const k=rosterContext();
   const saved=getClassAgenda(k.classKey,k.subject,k.periodId);
 
-  $("classAgendaText").value=saved?.text||"";
+  $("classAgendaText").value=saved?.text||""; if($("classAgendaPinned"))$("classAgendaPinned").checked=!!saved?.pinned;
 
   if(saved?.text){
     $("agendaSaveState").textContent="محفوظ ✓";
@@ -14515,6 +15071,8 @@ $("saveClassAgenda").onclick=()=>{
     k.teacherId,
     $("classAgendaText").value
   );
+  const savedAgenda=getClassAgenda(k.classKey,k.subject,k.periodId);
+  if(savedAgenda)savedAgenda.pinned=!!$("classAgendaPinned")?.checked;
 
   if(save()){
     $("agendaSaveState").textContent="محفوظ ✓";
@@ -14851,12 +15409,12 @@ function upsertRosterStudent(studentId){
 
     absence:absenceInput.value,
     late:lateInput.value,
-    participation:valueFromRow(row,"participation")||"تشارك بفاعلية في كل حصة",
-    toolsStatus:valueFromRow(row,"toolsStatus")||"تحضر جميع الأدوات في كل الحصص",
-    tools:valueFromRow(row,"toolsStatus")||"تحضر جميع الأدوات في كل الحصص",
-    behavior:valueFromRow(row,"behavior")||"تستجيب للتعليمات",
-    eLearning:valueFromRow(row,"eLearning")||"تتفاعل بانتظام على منصة قطر",
-    overall:valueFromRow(row,"eLearning")||"تتفاعل بانتظام على منصة قطر",
+    participation:valueFromRow(row,"participation")||PARTICIPATION_OPTIONS[0]||"",
+    toolsStatus:valueFromRow(row,"toolsStatus")||TOOLS_STATUS_OPTIONS[0]||"",
+    tools:valueFromRow(row,"toolsStatus")||TOOLS_STATUS_OPTIONS[0]||"",
+    behavior:valueFromRow(row,"behavior")||BEHAVIOR_OPTIONS[0]||"",
+    eLearning:valueFromRow(row,"eLearning")||ELEARNING_OPTIONS[0]||"",
+    overall:valueFromRow(row,"eLearning")||ELEARNING_OPTIONS[0]||"",
     academicNote:existingNote,
     note:existingNote,
     updatedAt:new Date().toISOString()
@@ -15775,6 +16333,7 @@ function ppRelevantPeriods(s,subjectFilter="all"){
   return periods.slice(first,last+1);
 }
 function ppAllStars(studentId){
+  ensureWeeklyStarArchive();
   return Object.entries(db.weeklyStars||{})
     .filter(([,star])=>Array.isArray(star.studentIds)&&star.studentIds.map(String).includes(String(studentId)))
     .map(([key,star])=>({key,star,period:autoPeriodById(star.periodId)}))
@@ -16002,6 +16561,29 @@ function ppRenderPeriods(){
 }
 
 let ppStatsWeekIndex=-1;
+function ppLastSeenKey(id){return "doomMaak_parent_seen_"+id}
+function ppUpdateEvents(s){const a=[],push=(t,i,n,d)=>{if(t)a.push({time:t,icon:i,title:n,detail:d})};(db.followups||[]).filter(f=>String(f.studentId)===String(s.id)).forEach(f=>{if(["classroom","electronic","homework","project"].some(x=>assessmentGradeFromRecord(f,x)!==null))push(f.updatedAt,"📊","تم تحديث الدرجات",f.subject||"مادة");if(clean(f.academicNote||f.note))push(f.updatedAt,"📝","ملاحظة جديدة",f.subject||"مادة")});const seat=db.seatingPlans?.[classKey(s)];if(seat?.updatedAt)push(seat.updatedAt,"🪑","تم تحديث مكان الجلوس","كروكي الشعبة");Object.values(db.classAgendas||{}).filter(x=>x.classKey===classKey(s)).forEach(x=>push(x.updatedAt,"📌",x.pinned?"تنبيه مهم مثبت":"تم تحديث الأجندة",x.subject||"مادة"));ppAllStars(s.id).forEach(x=>push(x.star.updatedAt,"⭐","نجمة الأسبوع",x.star.subject||"مادة"));return a.filter(x=>!Number.isNaN(new Date(x.time).getTime())).sort((x,y)=>new Date(y.time)-new Date(x.time))}
+function ppToggleSmartDrawer(){
+  const drawer=$("ppSmartDrawer"),arrow=$("ppSmartDrawerArrow");
+  if(!drawer)return;
+  drawer.hidden=!drawer.hidden;
+  if(arrow)arrow.textContent=drawer.hidden?"⌄":"⌃";
+}
+function ppOpenWhatsNew(){const s=ppStudent();if(!s)return;const p=$("ppWhatsNewPanel");if(p)p.hidden=!p.hidden;localStorage.setItem(ppLastSeenKey(s.id),new Date().toISOString());if($("ppWhatsNewCount"))$("ppWhatsNewCount").textContent="0";if($("ppWhatsNewText"))$("ppWhatsNewText").textContent="تم عرض آخر التحديثات"}
+function ppSmartProgressLabel(v){return v==null?["بانتظار الرصد","neutral"]:v>=85?["ممتاز","great"]:v>=70?["مستقر","stable"]:["يحتاج متابعة","watch"]}
+function ppRenderSmartHub(s,snap,history,stars,plan){
+ const ev=ppUpdateEvents(s),seen=localStorage.getItem(ppLastSeenKey(s.id))||"1970-01-01T00:00:00.000Z",fresh=ev.filter(e=>new Date(e.time)>new Date(seen));
+ if($("ppWhatsNewCount"))$("ppWhatsNewCount").textContent=fresh.length;if($("ppWhatsNewText"))$("ppWhatsNewText").textContent=fresh.length?`لديك ${fresh.length} تحديثات جديدة منذ آخر زيارة`:"أنتِ مطّلعة على آخر التحديثات";
+ if($("ppWhatsNewPanel"))$("ppWhatsNewPanel").innerHTML=(fresh.length?fresh:ev.slice(0,5)).map(e=>`<div class="ppUpdateLine"><span>${e.icon}</span><div><strong>${esc(e.title)}</strong><small>${esc(e.detail)} • ${new Date(e.time).toLocaleString("ar-QA",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit"})}</small></div></div>`).join("")||'<div class="ppSmartEmpty">لا توجد تحديثات مسجلة بعد.</div>';
+ const key=classKey(s),names=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],day=names[new Date().getDay()],apps=APP_DAYS.includes(day)?appDaySubjects(key,day):[],notes=snap.existing.map(x=>clean(x.f.academicNote||x.f.note)).filter(Boolean),grades=snap.reports.map(({row,f})=>({subject:row.subject,val:score(f)})).filter(x=>x.val!==null);
+ if($("ppWeekNowContent"))$("ppWeekNowContent").innerHTML=`<div><span>📚 تطبيقات اليوم</span><b>${apps.length?esc(apps.join(" • ")):"لا يوجد تطبيق محدد"}</b></div><div><span>📝 أهم الملاحظات</span><b>${notes.length?esc(notes.at(-1)):"لا توجد ملاحظات جديدة"}</b></div><div><span>📊 آخر تقييم</span><b>${grades.length?esc(grades.at(-1).subject)+" — "+grades.at(-1).val+"%":"بانتظار الرصد"}</b></div><div><span>✓ الغياب هذا الأسبوع</span><b>${snap.absence||0} حصة</b></div>`;
+ const subjects=[...new Map((plan||[]).map(r=>[norm(r.subject),r.subject])).values()];
+ if($("ppProgressContent"))$("ppProgressContent").innerHTML=(subjects.length?subjects:["المتابعة العامة"]).map(subject=>{const r=snap.reports.find(x=>norm(x.row.subject)===norm(subject)),v=r?score(r.f):snap.overall,[lab,cl]=ppSmartProgressLabel(v);return `<div class="ppProgressRow"><div><strong>${esc(subject)}</strong><span class="${cl}">${lab}</span></div><div class="ppProgressTrack"><i style="width:${Math.max(0,Math.min(100,v??0))}%"></i></div><small>${v==null?"—":v+"%"}</small></div>`}).join("");
+ const ach=[],fs=snap.existing.map(x=>x.f);if(fs.length&&fs.every(f=>(+f.late||0)===0))ach.push("⏱️ مواظبة ممتازة");if(fs.some(f=>normalizeParticipation(f.participation).includes("فاعلية")))ach.push("🙋‍♀️ مشاركة رائعة");if(fs.some(f=>behaviorDisplay(f).includes("تستجيب")))ach.push("💎 التزام مميز");if(stars.some(x=>!x.star.archived))ach.push("⭐ نجمة الأسبوع");if(history.length>=2){const a=history.at(-2)?.overall,b=history.at(-1)?.overall;if(a!=null&&b!=null&&b>a)ach.push("📈 تحسن ملحوظ")}if($("ppAchievementsContent"))$("ppAchievementsContent").innerHTML=(ach.length?ach:["🌱 في انتظار إنجاز جديد"]).map(x=>`<span>${x}</span>`).join("");
+ const pinned=Object.values(db.classAgendas||{}).filter(a=>a.classKey===key&&a.pinned&&clean(a.text)).sort((a,b)=>String(b.updatedAt||"").localeCompare(String(a.updatedAt||"")))[0],pin=$("ppPinnedImportant");if(pin){pin.hidden=!pinned;pin.innerHTML=pinned?`<strong>📌 مهم من المعلمة — ${esc(pinned.subject||"")}</strong><p>${esc(pinned.text)}</p>`:""}
+ const latest=[...ev.map(e=>e.time),...history.map(x=>x.latestUpdate).filter(Boolean)].sort().pop();if($("ppLastUpdate"))$("ppLastUpdate").textContent=latest?`آخر تحديث: ${new Date(latest).toLocaleString("ar-QA",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit"})}`:"لا توجد تحديثات بعد";
+}
+
 
 function ppRenderHome(){
   const s=ppStudent(); if(!s)return;
@@ -16078,11 +16660,6 @@ function ppRenderHome(){
   }
   if($("ppStatsPeriod"))$("ppStatsPeriod").textContent=snap.period?'الفترة الحالية: '+pLabel(snap.period):'لا توجد فترة مسجلة';
   if($("ppHomePeriodLabel"))$("ppHomePeriodLabel").textContent=snap.period?'الفترة: '+pLabel(snap.period):'لا توجد فترة';
-
-  const latest=history.map(item=>item.latestUpdate).filter(Boolean).sort().pop();
-  $("ppLastUpdate").textContent=latest
-    ?'آخر تحديث '+new Date(latest).toLocaleDateString("ar-QA",{day:"numeric",month:"short",year:"numeric"})
-    :'لا توجد تحديثات بعد';
 }
 window.ppStatsMoveWeek=step=>{
   const s=ppStudent(); if(!s)return;
@@ -16096,46 +16673,111 @@ window.ppStatsToggle=id=>{
 
 function applicationSchedule(key){return db.applicationSchedule?.[key]||{}}
 const APP_DAYS=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"];
-function appSubjectName(subject){
-  return String(subject||"").trim()
-    .replace(/^(?:المعلمة|معلمة|الأستاذة|أستاذة)\s+/,"")
-    .replace(/\s*(?:[-–—|:]|،)\s*(?:المعلمة|معلمة|الأستاذة|أستاذة).*/,"")
-    .trim()||"مادة";
+
+/* جدول التطبيقات: عرض اسم المادة فقط — بلا كلمة معلمة أو اسم المعلمة */
+function appSubjectOnly(value){
+  let text=clean(value||"");
+  if(!text)return "";
+
+  /* جدول التطبيقات يعرض اسم المادة فقط — لا مسميات وظيفية */
+  text=text
+    .replace(/^(?:(?:ال)?معلم(?:ة)?|(?:ال)?منسق(?:ة)?|(?:ال)?مدرس(?:ة)?|(?:ال)?أستاذ(?:ة)?)\s+/u,"")
+    .trim();
+
+  /* لو كان النص محفوظًا بصيغة: المادة — اسم المعلمة */
+  text=text.split(/\s+[—–-]\s+/u)[0].trim();
+
+  return text;
+}
+function appDaySubjects(key,day){
+  const data=applicationSchedule(key);
+  const values=Object.entries(data)
+    .filter(([k,v])=>k.startsWith(day+"-")&&v)
+    .sort(([a],[b])=>{
+      const na=Number(a.split("-").pop())||0, nb=Number(b.split("-").pop())||0;
+      return na-nb;
+    })
+    .map(([,v])=>appSubjectOnly(v))
+    .filter(Boolean);
+  return [...new Set(values)].slice(0,2);
 }
 function appTableHTML(key,editable=false){
-  const data=applicationSchedule(key);
-  return '<div class="appScheduleWrap"><table class="appScheduleTable"><thead><tr><th>الحصة</th>'+APP_DAYS.map(day=>'<th>'+day+'</th>').join('')+'</tr></thead><tbody>'+
-    Array.from({length:7},(_,i)=>{const p=i+1;return '<tr><th>'+p+'</th>'+APP_DAYS.map(day=>{const val=data[day+"-"+p]||"";const label=appSubjectName(val);return '<td class="'+(val?'filled':'')+'" '+(editable?'data-app-slot="'+day+"-"+p+'"':'')+'>'+esc(val?label:'—')+'</td>'}).join('')+'</tr>'}).join('')+
+  return '<div class="appScheduleWrap"><table class="appScheduleTable appDaysOnlyTable"><thead><tr><th>اليوم</th><th>المادة الأولى</th><th>المادة الثانية</th></tr></thead><tbody>'+
+    APP_DAYS.map(day=>{
+      const vals=appDaySubjects(key,day);
+      return '<tr><th>'+day+'</th>'+
+        [0,1].map(i=>'<td class="'+(vals[i]?'filled':'')+'" '+(editable?'data-app-day-slot="'+esc(day)+'|'+i+'"':'')+'>'+esc(vals[i]||'—')+'</td>').join('')+
+      '</tr>';
+    }).join('')+
   '</tbody></table></div>';
 }
-function appSubjectsHTML(key){const subjects=[...new Set((classPlan(key)||[]).map(row=>appSubjectName(row.subject)).filter(Boolean))];return '<div class="appSubjects">'+subjects.map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')+'</div>'}
+function appSubjectsHTML(key){
+  const used=new Set(APP_DAYS.flatMap(day=>appDaySubjects(key,day)));
+  const subjects=(classPlan(key)||[])
+    .map(row=>appSubjectOnly(row.subject))
+    .filter(Boolean)
+    .filter((subject,index,arr)=>arr.indexOf(subject)===index)
+    .filter(subject=>!used.has(subject));
+  return '<div class="appSubjects">'+(
+    subjects.length
+      ? subjects.map(subject=>'<button draggable="true" data-app-subject="'+esc(subject)+'" type="button">'+esc(subject)+'</button>').join('')
+      : '<div class="appMaterialsEmpty">تم توزيع كل مواد الشعبة ✓</div>'
+  )+'</div>';
+}
 function appStatus(message,type="info"){const x=$("appScheduleStatus");if(x){x.textContent=message;x.className="appScheduleStatus "+type}}
 function renderApplicationsAdmin(){
   const el=$("applicationsAdminTable");if(!el)return;const key=$("seatingClass").value;
   if(!key){el.innerHTML='<div class="empty">اختاري الشعبة أولًا.</div>';return}
-  el.innerHTML='<div class="appHint">اسحبي المادة إلى الحصة المناسبة. يُسمح بتطبيقين كحد أقصى في كل يوم.</div><div class="appPlanner"><aside class="appMaterials"><strong>مواد الشعبة</strong>'+appSubjectsHTML(key)+'</aside><div class="appBoard">'+appTableHTML(key,true)+'</div></div><div id="appScheduleStatus" class="appScheduleStatus">اسحبي المادة إلى يوم وحصة مناسبة. اضغطي على المادة الموضوعة لحذفها.</div>';
+  el.innerHTML='<div class="appHint">اسحبي <strong>اسم المادة فقط</strong> إلى اليوم المناسب. يُسمح بمادتين كحد أقصى في كل يوم.</div><div class="appPlanner"><aside class="appMaterials"><strong>مواد الشعبة</strong>'+appSubjectsHTML(key)+'</aside><div class="appBoard">'+appTableHTML(key,true)+'</div></div><div id="appScheduleStatus" class="appScheduleStatus">اسحبي المادة إلى اليوم المناسب. اضغطي على المادة الموضوعة لحذفها.</div>';
   bindAppDrops(key);
 }
 function bindAppDrops(key){
   document.querySelectorAll("[data-app-subject]").forEach(b=>b.ondragstart=e=>e.dataTransfer.setData("text/plain",b.dataset.appSubject));
-  document.querySelectorAll("[data-app-slot]").forEach(cell=>{cell.ondragover=e=>e.preventDefault();cell.ondrop=e=>{e.preventDefault();const [day,period]=cell.dataset.appSlot.split("-");setAppSlot(key,day,period,e.dataTransfer.getData("text/plain"))};cell.onclick=()=>{const [day,period]=cell.dataset.appSlot.split("-");if(applicationSchedule(key)[cell.dataset.appSlot])setAppSlot(key,day,period,"")}});
+  document.querySelectorAll("[data-app-day-slot]").forEach(cell=>{
+    cell.ondragover=e=>e.preventDefault();
+    cell.ondrop=e=>{
+      e.preventDefault();
+      const [day,index]=cell.dataset.appDaySlot.split("|");
+      setAppDaySlot(key,day,Number(index),e.dataTransfer.getData("text/plain"));
+    };
+    cell.onclick=()=>{
+      const [day,index]=cell.dataset.appDaySlot.split("|");
+      if(appDaySubjects(key,day)[Number(index)])setAppDaySlot(key,day,Number(index),"");
+    };
+  });
 }
-function setAppSlot(key,day,period,subject){
-  db.applicationSchedule??={};db.applicationSchedule[key]??={};const data=db.applicationSchedule[key];
-  const dayApps=Object.keys(data).filter(k=>k.startsWith(day+"-")&&k!==day+"-"+period&&data[k]);
-  if(subject&&dayApps.length>=2){appStatus("غير مقبول: تم تحديد تطبيقين بالفعل يوم "+day+".","warn");return}
-  if(subject){data[day+"-"+period]=subject;appStatus("تم تحديد "+subject+" يوم "+day+" في الحصة "+period+" ✓","ok")}else{delete data[day+"-"+period];appStatus("تم حذف التطبيق من يوم "+day+".","info")}
+function setAppDaySlot(key,day,index,subject){
+  db.applicationSchedule??={};db.applicationSchedule[key]??={};
+  const data=db.applicationSchedule[key];
+  let vals=appDaySubjects(key,day);
+
+  if(subject){
+    subject=appSubjectOnly(subject);
+    if(vals.includes(subject)){appStatus(subject+" موجودة بالفعل يوم "+day+".","warn");return}
+    if(index>vals.length)index=vals.length;
+    vals[index]=subject;
+    vals=vals.filter(Boolean).slice(0,2);
+  }else{
+    vals.splice(index,1);
+  }
+
+  Object.keys(data).filter(k=>k.startsWith(day+"-")).forEach(k=>delete data[k]);
+  vals.forEach((v,i)=>data[day+"-"+(i+1)]=v);
+
+  appStatus(subject?("تم تحديد "+subject+" يوم "+day+" ✓"):("تم حذف المادة من يوم "+day+"."),
+            subject?"ok":"info");
   save();renderApplicationsAdmin();
 }
 window.openMentorTool=type=>{
   const root=$("seating"),workspace=root.querySelector(".seatingWorkspace"),sw=root.querySelector(".mentorToolSwitch"),title=root.querySelector(".seatingHeroTitle h2"),sub=root.querySelector(".seatingHeroTitle p");
   if(workspace&&sw)workspace.prepend(sw);
+  root.classList.remove("mentorLanding");
   root.classList.add("mentorActive");root.classList.toggle("mentorApps",type==="apps");root.classList.toggle("mentorSeating",type==="seating");
   root.querySelectorAll("[data-mentor-tool]").forEach(btn=>btn.classList.toggle("active",btn.dataset.mentorTool===type));
-  if(type==="apps"){if(title)title.textContent="جدول التطبيقات";if(sub)sub.textContent="اختاري الشعبة أولًا، ثم حددي اليوم والحصة المناسبة لكل تطبيق.";renderApplicationsAdmin()}
+  if(type==="apps"){if(title)title.textContent="جدول التطبيقات";if(sub)sub.textContent="اختاري الشعبة أولًا، ثم حددي مواد التطبيقات لكل يوم.";renderApplicationsAdmin()}
   else{if(title)title.textContent="كروكي الصف";if(sub)sub.textContent="اختاري الشعبة أولًا، فتظهر أسماء الطالبات مباشرة للسحب والتوزيع.";loadSeatingDraft()}
 };
-function ppRenderApplications(){const s=ppStudent();if(!s)return;const key=classKey(s);$("ppApplicationsContent").innerHTML=appTableHTML(key,false)}
+function ppRenderApplications(){const s=ppStudent();if(!s)return;const key=classKey(s),today=new Date().getDay(),idx={"الأحد":0,"الاثنين":1,"الثلاثاء":2,"الأربعاء":3,"الخميس":4};$("ppApplicationsContent").innerHTML='<div class="appScheduleWrap"><table class="appScheduleTable appDaysOnlyTable"><thead><tr><th>اليوم</th><th>المادة الأولى</th><th>المادة الثانية</th></tr></thead><tbody>'+APP_DAYS.map(day=>{const vals=appDaySubjects(key,day),di=idx[day],st=di===today?"اليوم":di>today?"قادم":"تم";return '<tr><th>'+day+' <span class="ppAppStatus '+(st==="اليوم"?"today":st==="قادم"?"upcoming":"done")+'">'+st+'</span></th>'+[0,1].map(i=>'<td class="'+(vals[i]?'filled':'')+'">'+esc(vals[i]||'—')+'</td>').join('')+'</tr>'}).join('')+'</tbody></table></div>'}
 
 function ppRenderAgenda(){
   const s=ppStudent(); if(!s)return;
@@ -16439,13 +17081,15 @@ function ppRenderSeating(){
 
 function ppCertificateHTML(item,s,index,newest=false,printMode=false){
   const {key,star,period}=item;
+  const isArchived=!!star.archived;
   const teacher=teacherName(star.teacherId,star.teacherNameSnapshot||"—");
   const reason=`تقديرًا لجهودها وتميّزها وتفاعلها الإيجابي في مادة ${star.subject} خلال ${period?pLabel(period):"الفترة الحالية"}، وحرصها على أداء المهام بروح من المسؤولية والاجتهاد.`;
   const enc=encodeURIComponent(key);
 
   return`
-    <article class="ppCertificate">
-      ${newest?`<div class="ppCertNewest">أحدث شهادة</div>`:""}
+    <article class="ppCertificate ${isArchived?"archivedStarCertificate":"currentStarCertificate"}">
+      ${newest?`<div class="ppCertNewest">${isArchived?"أحدث شهادة مؤرشفة":"نجمة هذا الأسبوع"}</div>`:""}
+      ${isArchived?`<div class="ppStarArchiveBadge">محفوظة في الأرشيف</div>`:""}
       <div class="ppCertTop">
         <div class="ppCertLogo"></div>
         <div class="ppCertSchool">
@@ -17291,9 +17935,10 @@ $("printSeatingPlan").onclick=()=>{
 };
 
 /* ========================= Preview ========================= */
+/* المعاينة تستخدم نفس وضع QR الحقيقي (direct=true) لضمان التطابق الكامل. */
 $("openPreview").onclick=()=>{
   const id=$("previewStudent").value;
-  if(id)openPortal(id,false);
+  if(id)openPortal(id,true);
 };
 
 /* ========================= Admin Teacher Completion ========================= */
@@ -17796,6 +18441,1355 @@ $("printAdminIncomplete").onclick=()=>{
   window.print();
   setTimeout(()=>document.body.classList.remove("print-teacher-completion"),300);
 };
+
+
+
+/* ========================= Activities Excel workflow ========================= */
+let activitySelectedTeacherId="";
+let activitySelectedAssignment={classKey:"",subject:""};
+
+function activityLatinDigits(value){
+  return String(value??"")
+    .replace(/[٠-٩]/g,d=>"0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)])
+    .replace(/[۰-۹]/g,d=>"0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]);
+}
+function activityTeacherRecord(){return teacherRecord(activitySelectedTeacherId)}
+function activityTeacherAssignments(){
+  if(!activitySelectedTeacherId)return[];
+  const result=[];
+  for(const [classKeyValue,rows] of Object.entries(db.classPlans||{})){
+    for(const row of rows||[]){
+      if(String(row.teacherId)===String(activitySelectedTeacherId)){
+        const key=`${classKeyValue}|||${norm(row.subject)}`;
+        if(!result.some(x=>x.key===key)){
+          result.push({
+            key,
+            classKey:classKeyValue,
+            subject:row.subject,
+            label:groups().find(g=>g.key===classKeyValue)?.label||classKeyValue.replace("|"," / ")
+          });
+        }
+      }
+    }
+  }
+  return result.sort((a,b)=>a.label.localeCompare(b.label,"ar")||a.subject.localeCompare(b.subject,"ar"));
+}
+function showActivityFlowStep(id){
+  ["activityTeacherStep","activityClassesStep","activityDetailStep"].forEach(x=>$(x)?.classList.toggle("active",x===id));
+}
+function renderActivityTeacherPicker(){
+  const select=$("activityTeacherSelect"); if(!select)return;
+  const old=select.value||activitySelectedTeacherId;
+  const teachers=db.teachers.slice().sort((a,b)=>a.name.localeCompare(b.name,"ar"));
+  select.innerHTML=teachers.length
+    ?`<option value="">اختاري اسم المعلمة</option>`+teachers.map(t=>`<option value="${esc(t.id)}">${esc(t.name)} — ${esc(t.specialty||"")}</option>`).join("")
+    :`<option value="">لا توجد معلمات بعد</option>`;
+  if(teachers.some(t=>String(t.id)===String(old)))select.value=old;
+}
+function renderActivityClassCards(){
+  const t=activityTeacherRecord(),cards=$("activityClassCards");
+  if(!cards)return;
+  const list=activityTeacherAssignments();
+  $("activityTeacherTitle").textContent=t?`شعب المعلمة: ${t.name}`:"شعب المعلمة";
+  $("activityClassesCount").textContent=`${activityLatinDigits(list.length)} شعبة`;
+  cards.innerHTML=list.length
+    ?list.map(item=>{
+      const saved=activitySavedConfig(item.classKey,item.subject) || Object.keys(db.activityManualData||{}).some(k=>k.includes(`|||${item.classKey}|||${norm(item.subject)}|||`));
+      return `<button type="button" class="activityClassCard ${saved?"saved":""}" data-activity-class="${esc(item.classKey)}" data-activity-subject="${esc(item.subject)}">
+        <span class="activityClassCardIcon">▦</span>
+        <strong>${esc(activityLatinDigits(item.label))}</strong>
+        <small>${esc(item.subject)}</small>
+        <em>${saved?"✓ محفوظ":"فتح الكشف"}</em>
+      </button>`;
+    }).join("")
+    :`<div class="empty">لا توجد شعب مرتبطة بهذه المعلمة في «إعداد الشعب».</div>`;
+}
+function activityConfigKey(classKeyValue,subject){
+  return `${activitySelectedTeacherId}|||${classKeyValue}|||${norm(subject)}`;
+}
+function activitySavedConfig(classKeyValue,subject){
+  return siteSettings().activityExcelByAssignment?.[activityConfigKey(classKeyValue,subject)]||null;
+}
+function activitySaveCurrentConfig(){
+  if(!activitySelectedTeacherId||!activitySelectedAssignment.classKey)return false;
+  const all={...(siteSettings().activityExcelByAssignment||{})};
+  all[activityConfigKey(activitySelectedAssignment.classKey,activitySelectedAssignment.subject)]={
+    from:$("activityFrom").value,
+    to:$("activityTo").value,
+    appsAverageMax:Math.max(1,+$("activityAppsAverageMax").value||20),
+    homeworkAverageMax:Math.max(1,+$("activityHomeworkAverageMax").value||10),
+    projectMax:Math.max(1,+$("activityProjectMax").value||15),
+    manualColumns:activityManualColumns(),
+    savedAt:new Date().toISOString()
+  };
+  db.settings={...siteSettings(),activityExcelByAssignment:all};
+  save();
+  $("activitySavedState").className="badge ok";
+  $("activitySavedState").textContent="محفوظ ✓";
+  renderActivityClassCards();
+  return true;
+}
+function activityLoadAssignment(classKeyValue,subject){
+  activitySelectedAssignment={classKey:classKeyValue,subject};
+  $("activityClass").value=classKeyValue;
+  $("activitySubject").value=subject;
+
+  const saved=activitySavedConfig(classKeyValue,subject);
+  const cp=currentPeriod();
+  $("activityFrom").value=saved?.from||cp?.start||academicStartDate();
+  $("activityTo").value=saved?.to||cp?.end||localISO();
+  $("activityAppsAverageMax").value=saved?.appsAverageMax||20;
+  $("activityHomeworkAverageMax").value=saved?.homeworkAverageMax||10;
+  $("activityProjectMax").value=saved?.projectMax||15;
+  $("activityManualColumns").value=(saved?.manualColumns?.length?saved.manualColumns:["المشاركة /5","المهارات /5","ملاحظات المعلمة"]).join("\n");
+
+  const t=activityTeacherRecord();
+  const label=groups().find(g=>g.key===classKeyValue)?.label||classKeyValue.replace("|"," / ");
+  $("activityDetailTitle").textContent=`${activityLatinDigits(label)} — ${subject}`;
+  $("activityDetailMeta").textContent=`المعلمة: ${t?.name||"—"}`;
+  $("activitySavedState").className=`badge ${saved?"ok":""}`;
+  $("activitySavedState").textContent=saved?"محفوظ ✓":"غير محفوظ";
+  $("activityExcelPreview").innerHTML='<div class="activityLiveEmpty"><span>📊</span><strong>جارٍ تجهيز الجدول…</strong></div>';
+  $("activityPreviewBadge").textContent="—";
+  updateActivityRangeStatus();
+  showActivityFlowStep("activityDetailStep");
+  requestAnimationFrame(renderActivityExcelLive);
+}
+window.openActivityAssignment=(classKeyValue,subject)=>activityLoadAssignment(classKeyValue,subject);
+
+$("activityTeacherContinue")?.addEventListener("click",()=>{
+  const id=$("activityTeacherSelect").value;
+  if(!id)return alert("اختاري اسم المعلمة أولًا.");
+  activitySelectedTeacherId=id;
+  renderActivityClassCards();
+  showActivityFlowStep("activityClassesStep");
+});
+$("activityChangeTeacher")?.addEventListener("click",()=>{
+  activitySelectedTeacherId="";
+  activitySelectedAssignment={classKey:"",subject:""};
+  renderActivityTeacherPicker();
+  showActivityFlowStep("activityTeacherStep");
+});
+$("activityBackToClasses")?.addEventListener("click",()=>{
+  renderActivityClassCards();
+  showActivityFlowStep("activityClassesStep");
+});
+$("activityClassCards")?.addEventListener("click",e=>{
+  const card=e.target.closest("[data-activity-class]");
+  if(!card)return;
+  activityLoadAssignment(card.dataset.activityClass,card.dataset.activitySubject);
+});
+$("saveActivityClassWork")?.addEventListener("click",()=>{
+  if(activitySaveCurrentConfig()){
+    $("activitySavedState").textContent="محفوظ ✓";
+  }
+});
+
+
+
+["activityFrom","activityTo","activityAppsAverageMax","activityHomeworkAverageMax","activityProjectMax","activityManualColumns"].forEach(id=>{
+  $(id)?.addEventListener("input",()=>{
+    if($("activitySavedState")){
+      $("activitySavedState").className="badge warn";
+      $("activitySavedState").textContent="تعديل غير محفوظ";
+    }
+    requestAnimationFrame(renderActivityExcelLive);
+  });
+});
+
+/* ========================= Configurable wording ========================= */
+function renderWordingSettings(){
+  if(!$("wordingParticipation"))return;
+  syncConfigurableOptionLists();
+  $("wordingParticipation").value=PARTICIPATION_OPTIONS.join("\n");
+  $("wordingTools").value=TOOLS_STATUS_OPTIONS.join("\n");
+  $("wordingBehavior").value=BEHAVIOR_OPTIONS.join("\n");
+  $("wordingELearning").value=ELEARNING_OPTIONS.join("\n");
+}
+if($("saveWordingSettings"))$("saveWordingSettings").onclick=()=>{
+  const participation=cleanOptionLines($("wordingParticipation").value);
+  const tools=cleanOptionLines($("wordingTools").value);
+  const behavior=cleanOptionLines($("wordingBehavior").value);
+  const eLearning=cleanOptionLines($("wordingELearning").value);
+  if(!participation.length||!tools.length||!behavior.length||!eLearning.length){
+    return alert("يجب أن تحتوي كل قائمة على خيار واحد على الأقل.");
+  }
+  db.settings={...siteSettings(),optionLists:{participation,tools,behavior,eLearning}};
+  syncConfigurableOptionLists();
+  save(); renderTeacherMain(); renderWordingSettings();
+  $("wordingStatus").className="notice ok";
+  $("wordingStatus").textContent="تم حفظ العبارات ✓ ستظهر القوائم الجديدة للمعلمات مباشرة.";
+};
+if($("resetWordingSettings"))$("resetWordingSettings").onclick=()=>{
+  if(!confirm("استرجاع العبارات الافتراضية؟"))return;
+  db.settings={...siteSettings(),optionLists:{
+    participation:[...DEFAULT_PARTICIPATION_OPTIONS],
+    tools:[...DEFAULT_TOOLS_STATUS_OPTIONS],
+    behavior:[...DEFAULT_BEHAVIOR_OPTIONS],
+    eLearning:[...DEFAULT_ELEARNING_OPTIONS]
+  }};
+  syncConfigurableOptionLists(); save(); renderTeacherMain(); renderWordingSettings();
+  $("wordingStatus").className="notice ok";
+  $("wordingStatus").textContent="تم استرجاع العبارات الافتراضية.";
+};
+
+/* ========================= Activities Excel by date range ========================= */
+function activityPeriodsInRange(from,to){
+  if(!from||!to||from>to)return[];
+  return AUTO_PERIODS.filter(p=>p.end>=from&&p.start<=to);
+}
+function activitySelectedClass(){return $("activityClass")?.value||""}
+function activitySelectedSubject(){return $("activitySubject")?.value||""}
+function activityManualColumns(){
+  return cleanOptionLines($("activityManualColumns")?.value||"").slice(0,12);
+}
+function activityFollowupFor(studentId,classKeyValue,subject,periodId){
+  return (db.followups||[])
+    .filter(f=>
+      String(f.studentId)===String(studentId)&&
+      (!f.classKey||f.classKey===classKeyValue)&&
+      norm(f.subject)===norm(subject)&&
+      f.periodId===periodId
+    )
+    .sort((a,b)=>String(b.updatedAt||"").localeCompare(String(a.updatedAt||"")))[0]||null;
+}
+function activityScaledGrade(f,type,outOf){
+  if(!f)return null;
+  const status=assessmentStatusFromRecord(f,type);
+  const grade=assessmentGradeFromRecord(f,type);
+  const max=assessmentMaxFromRecord(f,type);
+  if(status!=="تم الرصد"||!gradeIsNumeric(grade)||!max)return null;
+  return Math.round(((grade/max)*outOf)*100)/100;
+}
+function activityBestTwoAverage(values,sourceMax,targetMax){
+  const nums=values.filter(v=>typeof v==="number"&&Number.isFinite(v)).sort((a,b)=>b-a);
+  if(!nums.length)return null;
+  const avg=nums.length===1?nums[0]:(nums[0]+nums[1])/2;
+  return Math.round(((avg/sourceMax)*targetMax)*100)/100;
+}
+function activityExportModel(){
+  const from=$("activityFrom")?.value||"";
+  const to=$("activityTo")?.value||"";
+  const classKeyValue=activitySelectedClass();
+  const subject=activitySelectedSubject();
+  const periods=activityPeriodsInRange(from,to);
+  const students=db.students.filter(s=>classKey(s)===classKeyValue).sort(studentSort);
+  const appsAvgMax=Math.max(1,+$("activityAppsAverageMax")?.value||20);
+  const homeworkAvgMax=Math.max(1,+$("activityHomeworkAverageMax")?.value||10);
+  const projectMax=Math.max(1,+$("activityProjectMax")?.value||15);
+  const manual=activityManualColumns();
+
+  const applicationCols=[];
+  const homeworkCols=[];
+  periods.forEach(p=>{
+    applicationCols.push({period:p,type:"classroom",label:activityLatinDigits(`تطبيق ورقي — ${shortDateAR(p.start)}`),outOf:20});
+    applicationCols.push({period:p,type:"electronic",label:activityLatinDigits(`تطبيق إلكتروني — ${shortDateAR(p.start)}`),outOf:20});
+    homeworkCols.push({period:p,type:"homework",label:activityLatinDigits(`واجب — ${shortDateAR(p.start)}`),outOf:10});
+  });
+
+  const rows=students.map((s,index)=>{
+    const records=new Map(periods.map(p=>[p.id,activityFollowupFor(s.id,classKeyValue,subject,p.id)]));
+    const apps=applicationCols.map(c=>activityScaledGrade(records.get(c.period.id),c.type,c.outOf));
+    const homework=homeworkCols.map(c=>activityScaledGrade(records.get(c.period.id),c.type,c.outOf));
+    const projects=periods.map(p=>activityScaledGrade(records.get(p.id),"project",projectMax)).filter(v=>v!==null);
+    const project=projects.length?Math.max(...projects):null;
+    return{
+      index:index+1,student:s,apps,homework,project,
+      appsAverage:activityBestTwoAverage(apps,20,appsAvgMax),
+      homeworkAverage:activityBestTwoAverage(homework,10,homeworkAvgMax)
+    };
+  });
+
+  return{from,to,classKeyValue,subject,teacher:activityTeacherRecord(),periods,students,rows,applicationCols,homeworkCols,manual,appsAvgMax,homeworkAvgMax,projectMax};
+}
+function activityValidateModel(m){
+  if(!m.from||!m.to)return"حددي تاريخ البداية والنهاية.";
+  if(m.from>m.to)return"تاريخ البداية يجب أن يكون قبل تاريخ النهاية.";
+  if(!m.classKeyValue)return"اختاري الصف / الشعبة.";
+  if(!m.subject)return"اختاري المادة.";
+  if(!m.periods.length)return"لا توجد أسابيع دراسية داخل الفترة المحددة.";
+  if(!m.students.length)return"لا توجد طالبات في الشعبة المختارة.";
+  return"";
+}
+function activityHeaderCells(m){
+  return[
+    "#","الاسم",
+    ...m.applicationCols.map(x=>x.label),
+    `★ متوسط أفضل درجتين تطبيقات /${m.appsAvgMax}`,
+    ...m.homeworkCols.map(x=>x.label),
+    `★ متوسط أفضل درجتين واجبات /${m.homeworkAvgMax}`,
+    `المشروع /${m.projectMax}`,
+    ...m.manual
+  ];
+}
+function activityRowValues(m,row){
+  return[
+    row.index,
+    row.student.name,
+    ...row.apps.map(v=>v??""),
+    row.appsAverage??"",
+    ...row.homework.map(v=>v??""),
+    row.homeworkAverage??"",
+    row.project??"",
+    ...m.manual.map(()=>"")
+  ];
+}
+function renderActivityAdminSelectors(){
+  if(!$("activityClass"))return;
+  const oldClass=$("activityClass").value;
+  const oldSubject=$("activitySubject").value;
+  const gs=groups();
+  $("activityClass").innerHTML=gs.length
+    ?gs.map(g=>`<option value="${esc(g.key)}">${esc(g.label)}</option>`).join("")
+    :`<option value="">لا توجد شعب</option>`;
+  if(gs.some(g=>g.key===oldClass))$("activityClass").value=oldClass;
+
+  const ck=$("activityClass").value;
+  const subjects=[...new Set(classPlan(ck).map(x=>x.subject).filter(Boolean))];
+  $("activitySubject").innerHTML=subjects.length
+    ?subjects.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join("")
+    :`<option value="">لا توجد مواد مرتبطة بالشعبة</option>`;
+  if(subjects.includes(oldSubject))$("activitySubject").value=oldSubject;
+
+  const cp=currentPeriod();
+  if(!$("activityFrom").value)$("activityFrom").value=cp?.start||academicStartDate();
+  if(!$("activityTo").value)$("activityTo").value=cp?.end||localISO();
+
+  const cfg=siteSettings().activityExcel||{};
+  if(cfg.appsAverageMax)$("activityAppsAverageMax").value=cfg.appsAverageMax;
+  if(cfg.homeworkAverageMax)$("activityHomeworkAverageMax").value=cfg.homeworkAverageMax;
+  if(cfg.projectMax)$("activityProjectMax").value=cfg.projectMax;
+  if(Array.isArray(cfg.manualColumns)&&cfg.manualColumns.length)$("activityManualColumns").value=cfg.manualColumns.join("\n");
+  updateActivityRangeStatus();
+}
+function updateActivityRangeStatus(){
+  if(!$("activityRangeStatus"))return;
+  const m=activityExportModel(),err=activityValidateModel(m);
+  if(err){
+    $("activityRangeStatus").className="notice info";
+    $("activityRangeStatus").textContent=err;
+    renderActivityExcelLive();
+    return;
+  }
+  $("activityRangeStatus").className="notice ok";
+  $("activityRangeStatus").textContent=`الفترة: ${activityLatinDigits(dateAR(m.from))} ← ${activityLatinDigits(dateAR(m.to))} — ${activityLatinDigits(m.periods.length)} أسبوع/أسابيع — ${activityLatinDigits(m.students.length)} طالبة.`;
+  renderActivityExcelLive();
+}
+function persistActivityExcelSettings(){
+  db.settings={...siteSettings(),activityExcel:{
+    appsAverageMax:Math.max(1,+$("activityAppsAverageMax").value||20),
+    homeworkAverageMax:Math.max(1,+$("activityHomeworkAverageMax").value||10),
+    projectMax:Math.max(1,+$("activityProjectMax").value||15),
+    manualColumns:activityManualColumns()
+  }};
+  save();
+}
+function activityPreviewHTML(m,forPrint=false){
+  const headers=activityHeaderCells(m);
+  const appAvgIndex=2+m.applicationCols.length;
+  const hwStart=appAvgIndex+1;
+  const hwAvgIndex=hwStart+m.homeworkCols.length;
+  const projectIndex=hwAvgIndex+1;
+  const manualStart=projectIndex+1;
+  const rows=m.rows.map(r=>`<tr>${activityRowValues(m,r).map((v,i)=>{
+    const cls=[
+      i===0?"activityNumberCell":"",
+      i===1?"activityNameCell":"",
+      (i===appAvgIndex||i===hwAvgIndex)?"activityAverageCell":"",
+      i===projectIndex?"activityProjectCell":"",
+      i>=manualStart?"activityManualCell":""
+    ].filter(Boolean).join(" ");
+    return `<td class="${cls}">${esc(activityLatinDigits(v))}</td>`;
+  }).join("")}</tr>`).join("");
+  return`
+    <div class="activityPrintTitle">
+      <h1>كشف درجات الأنشطة</h1>
+      <div>${esc(schoolName())} — المعلمة: ${esc(m.teacher?.name||"—")} — ${esc(m.subject)} — ${esc(activityLatinDigits(groups().find(g=>g.key===m.classKeyValue)?.label||m.classKeyValue.replace("|"," / ")))}</div>
+      <small>من ${esc(activityLatinDigits(dateAR(m.from)))} إلى ${esc(activityLatinDigits(dateAR(m.to)))}</small>
+    </div>
+    <div class="activityPreviewWrap">
+      <table class="activityPreviewTable">
+        <thead><tr>${headers.map((h,i)=>{
+          const cls=h.includes("أفضل درجتين")?"avgHead":m.manual.includes(h)?"manualHead":i===0?"numberHead":i===1?"nameHead":"";
+          return `<th class="${cls}">${esc(activityLatinDigits(h))}</th>`;
+        }).join("")}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+function renderActivityExcelLive(){
+  if(!$("activityExcelPreview")||!$("activityDetailStep")?.classList.contains("active"))return;
+  const m=activityExportModel(),err=activityValidateModel(m);
+  if(err){
+    $("activityExcelPreview").innerHTML=`<div class="activityLiveEmpty"><span>📊</span><strong>الجدول سيظهر هنا تلقائيًا</strong><small>${esc(err)}</small></div>`;
+    if($("activityPreviewBadge"))$("activityPreviewBadge").textContent="—";
+    return;
+  }
+  renderActivityExcelLive();
+}
+function previewActivityExcel(){
+  const m=activityExportModel(),err=activityValidateModel(m);
+  if(err)return alert(err);
+  persistActivityExcelSettings();
+  $("activityExcelPreview").innerHTML=activityPreviewHTML(m);
+  $("activityPreviewBadge").textContent=`${activityLatinDigits(m.students.length)} طالبة • ${activityLatinDigits(m.periods.length)} أسبوع`;
+}
+function safeActivitySheetName(value){
+  return clean(value).replace(/[\\/?*\[\]:]/g," ").slice(0,31)||"درجات الأنشطة";
+}
+function exportActivityExcel(){
+  const m=activityExportModel(),err=activityValidateModel(m);
+  if(err)return alert(err);
+  if(typeof XLSX==="undefined")return alert("تعذر تحميل مكتبة Excel.");
+  persistActivityExcelSettings();
+
+  const headers=activityHeaderCells(m);
+  const title=`كشف درجات الأنشطة — ${m.subject}`;
+  const className=activityLatinDigits(groups().find(g=>g.key===m.classKeyValue)?.label||m.classKeyValue.replace("|"," / "));
+  const teacherDisplay=m.teacher?.name||"—";
+  const aoa=[
+    [schoolName(),...Array(headers.length-1).fill("")],
+    [title,...Array(headers.length-1).fill("")],
+    [`المعلمة: ${teacherDisplay} — ${className} — من ${activityLatinDigits(dateAR(m.from))} إلى ${activityLatinDigits(dateAR(m.to))}`,...Array(headers.length-1).fill("")],
+    [],
+    headers,
+    ...m.rows.map(r=>activityRowValues(m,r))
+  ];
+  const ws=XLSX.utils.aoa_to_sheet(aoa);
+  ws["!dir"]="rtl"; ws["!rtl"]=true;
+  ws["!merges"]=[
+    {s:{r:0,c:0},e:{r:0,c:headers.length-1}},
+    {s:{r:1,c:0},e:{r:1,c:headers.length-1}},
+    {s:{r:2,c:0},e:{r:2,c:headers.length-1}}
+  ];
+  ws["!cols"]=headers.map((h,i)=>({wch:i===1?34:Math.max(10,Math.min(22,String(h).length+3))}));
+  ws["!rows"]=[{hpt:32},{hpt:30},{hpt:25},{hpt:8},{hpt:54},...m.rows.map(()=>({hpt:27}))];
+  ws["!margins"]={left:.2,right:.2,top:.35,bottom:.35,header:.15,footer:.15};
+  ws["!pageSetup"]={orientation:"landscape",paperSize:9,fitToWidth:1,fitToHeight:0};
+  ws["!autofilter"]={ref:`A5:${XLSX.utils.encode_col(headers.length-1)}${5+m.rows.length}`};
+
+  const thin={style:"thin",color:{rgb:"D8D2D4"}};
+  const border={top:thin,bottom:thin,left:thin,right:thin};
+  const titleStyle={font:{name:"Arial",sz:18,bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"8A1538"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2},border};
+  const subTitleStyle={font:{name:"Arial",sz:15,bold:true,color:{rgb:"8A1538"}},fill:{fgColor:{rgb:"F7E8ED"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2},border};
+  const periodStyle={font:{name:"Arial",sz:11,bold:true,color:{rgb:"0B676B"}},fill:{fgColor:{rgb:"ECF7F5"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2},border};
+  const headerStyle={font:{name:"Arial",sz:10,bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"0F7477"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2,wrapText:true},border};
+  const bodyStyle={font:{name:"Arial",sz:10,color:{rgb:"2F3D3F"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2,wrapText:true},border};
+  const nameStyle={...bodyStyle,font:{name:"Arial",sz:10,bold:true,color:{rgb:"5F1730"}},alignment:{horizontal:"right",vertical:"center",readingOrder:2,wrapText:true}};
+  const avgStyle={...bodyStyle,font:{name:"Arial",sz:10,bold:true,color:{rgb:"7A2345"}},fill:{fgColor:{rgb:"F9EDF1"}}};
+  const manualStyle={...bodyStyle,fill:{fgColor:{rgb:"FFF5D7"}}};
+
+  for(let c=0;c<headers.length;c++){
+    ["A1","A2","A3"].forEach((base,ri)=>{
+      const addr=XLSX.utils.encode_cell({r:ri,c});
+      if(ws[addr])ws[addr].s=ri===0?titleStyle:ri===1?subTitleStyle:periodStyle;
+    });
+    const h=XLSX.utils.encode_cell({r:4,c});
+    if(ws[h])ws[h].s=headerStyle;
+  }
+
+  const appAvgIndex=2+m.applicationCols.length;
+  const hwStart=appAvgIndex+1;
+  const hwAvgIndex=hwStart+m.homeworkCols.length;
+  const projectIndex=hwAvgIndex+1;
+  const manualStart=projectIndex+1;
+
+  for(let r=5;r<5+m.rows.length;r++){
+    for(let c=0;c<headers.length;c++){
+      const addr=XLSX.utils.encode_cell({r,c});
+      if(!ws[addr])ws[addr]={t:"s",v:""};
+      ws[addr].s=c===1?nameStyle:(c===appAvgIndex||c===hwAvgIndex)?avgStyle:c>=manualStart?manualStyle:bodyStyle;
+    }
+  }
+
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,safeActivitySheetName(`أنشطة ${m.subject}`));
+  wb.Workbook={Views:[{RTL:true}]};
+  wb.Props={Title:title,Subject:"درجات الأنشطة ضمن فترة محددة",Author:brandArabic(),Company:schoolName(),CreatedDate:new Date()};
+  const filename=safeExcelFileName(`درجات الأنشطة - ${className} - ${m.subject} - ${m.from} إلى ${m.to}`)+".xlsx";
+  XLSX.writeFile(wb,filename,{bookType:"xlsx",compression:true,cellStyles:true});
+}
+function printActivityExcel(){
+  const m=activityExportModel(),err=activityValidateModel(m);
+  if(err)return alert(err);
+  persistActivityExcelSettings();
+  const slot=$("activityPrint");
+  slot.innerHTML=activityPreviewHTML(m,true);
+  document.body.classList.add("print-activity-excel");
+  window.print();
+  setTimeout(()=>{document.body.classList.remove("print-activity-excel");slot.innerHTML="";},500);
+}
+
+if($("activityClass"))$("activityClass").onchange=()=>{renderActivityAdminSelectors();updateActivityRangeStatus()};
+["activitySubject","activityFrom","activityTo","activityAppsAverageMax","activityHomeworkAverageMax","activityProjectMax","activityManualColumns"].forEach(id=>{
+  $(id)?.addEventListener("input",updateActivityRangeStatus);
+  $(id)?.addEventListener("change",updateActivityRangeStatus);
+});
+if($("previewActivityExcel"))$("previewActivityExcel").onclick=previewActivityExcel;
+if($("downloadActivityExcel"))$("downloadActivityExcel").onclick=exportActivityExcel;
+if($("printActivityExcel"))$("printActivityExcel").onclick=printActivityExcel;
+
+
+
+/* ========================= Activities Excel cumulative override V67 ========================= */
+const ACTIVITY_MANUAL_COLUMNS=["المشاركة /5","المهارات /5","ملاحظات المعلمة"];
+
+function activityManualStore(){
+  db.activityManualData??={};
+  return db.activityManualData;
+}
+function activityManualKey(studentId,column){
+  return `${activitySelectedTeacherId}|||${activitySelectedAssignment.classKey}|||${norm(activitySelectedAssignment.subject)}|||${studentId}|||${norm(column)}`;
+}
+function activityManualValue(studentId,column){
+  return activityManualStore()[activityManualKey(studentId,column)]??"";
+}
+function setActivityManualValue(studentId,column,value){
+  const store=activityManualStore(),key=activityManualKey(studentId,column),v=clean(value);
+  if(v)store[key]=v; else delete store[key];
+}
+function activityAllPeriodsForAssignment(){
+  const ck=activitySelectedAssignment.classKey,subject=activitySelectedAssignment.subject;
+  const ids=new Set(
+    (db.followups||[])
+      .filter(f=>(!f.classKey||f.classKey===ck)&&norm(f.subject)===norm(subject)&&f.periodId)
+      .map(f=>String(f.periodId))
+  );
+  return AUTO_PERIODS.filter(p=>ids.has(String(p.id)));
+}
+function activityHasAnyGrade(period,type){
+  const ck=activitySelectedAssignment.classKey,subject=activitySelectedAssignment.subject;
+  const students=db.students.filter(s=>classKey(s)===ck);
+  return students.some(s=>{
+    const f=activityFollowupFor(s.id,ck,subject,period.id);
+    const g=assessmentGradeFromRecord(f,type);
+    return gradeIsNumeric(g);
+  });
+}
+function activityCumulativeModel({from="",to=""}={}){
+  const classKeyValue=activitySelectedAssignment.classKey||activitySelectedClass();
+  const subject=activitySelectedAssignment.subject||activitySelectedSubject();
+  let periods=activityAllPeriodsForAssignment();
+  if(from&&to)periods=periods.filter(p=>p.end>=from&&p.start<=to);
+
+  const students=db.students.filter(s=>classKey(s)===classKeyValue).sort(studentSort);
+
+  const applicationCols=[];
+  const homeworkCols=[];
+  periods.forEach(p=>{
+    if(activityHasAnyGrade(p,"classroom")){
+      applicationCols.push({period:p,type:"classroom",label:activityLatinDigits(`تطبيق ورقي — ${shortDateAR(p.start)}`),outOf:20});
+    }
+    if(activityHasAnyGrade(p,"electronic")){
+      applicationCols.push({period:p,type:"electronic",label:activityLatinDigits(`تطبيق إلكتروني — ${shortDateAR(p.start)}`),outOf:20});
+    }
+    if(activityHasAnyGrade(p,"homework")){
+      homeworkCols.push({period:p,type:"homework",label:activityLatinDigits(`واجب — ${shortDateAR(p.start)}`),outOf:10});
+    }
+  });
+
+  const rows=students.map((s,index)=>{
+    const apps=applicationCols.map(c=>{
+      const f=activityFollowupFor(s.id,classKeyValue,subject,c.period.id);
+      return activityScaledGrade(f,c.type,20);
+    });
+    const homework=homeworkCols.map(c=>{
+      const f=activityFollowupFor(s.id,classKeyValue,subject,c.period.id);
+      return activityScaledGrade(f,c.type,10);
+    });
+    const projectValues=periods.map(p=>{
+      const f=activityFollowupFor(s.id,classKeyValue,subject,p.id);
+      return activityScaledGrade(f,"project",15);
+    }).filter(v=>v!==null);
+    const project=projectValues.length?projectValues.at(-1):null;
+    return{
+      index:index+1,
+      student:s,
+      apps,
+      homework,
+      project,
+      appsAverage:activityBestTwoAverage(apps,20,20),
+      homeworkAverage:activityBestTwoAverage(homework,10,10)
+    };
+  });
+
+  return{
+    from,to,classKeyValue,subject,
+    teacher:activityTeacherRecord(),
+    periods,students,rows,applicationCols,homeworkCols,
+    manual:ACTIVITY_MANUAL_COLUMNS,
+    appsAvgMax:20,homeworkAvgMax:10,projectMax:15
+  };
+}
+function activityExportModel(){return activityCumulativeModel()}
+function activityValidateModel(m){
+  if(!m.classKeyValue)return"اختاري الشعبة.";
+  if(!m.subject)return"اختاري المادة.";
+  if(!m.students.length)return"لا توجد طالبات في هذه الشعبة.";
+  return"";
+}
+function activityHeaderCells(m){
+  return[
+    "#","الاسم / الشعبة",
+    ...m.applicationCols.map(x=>x.label),
+    "★ متوسط أفضل درجتين تطبيقات /20",
+    ...m.homeworkCols.map(x=>x.label),
+    "★ متوسط أفضل درجتين واجبات /10",
+    "المشروع /15",
+    ...ACTIVITY_MANUAL_COLUMNS
+  ];
+}
+function activityRowValues(m,row,{manualValues=true}={}){
+  return[
+    row.index,
+    `${row.student.name} — ${activityLatinDigits(classLabel(row.student.gradeNo,row.student.section))}`,
+    ...row.apps.map(v=>v??""),
+    row.appsAverage??"",
+    ...row.homework.map(v=>v??""),
+    row.homeworkAverage??"",
+    row.project??"",
+    ...ACTIVITY_MANUAL_COLUMNS.map(col=>manualValues?activityManualValue(row.student.id,col):"")
+  ];
+}
+function activityPreviewHTML(m,forPrint=false){
+  const headers=activityHeaderCells(m);
+  const appAvgIndex=2+m.applicationCols.length;
+  const hwStart=appAvgIndex+1;
+  const hwAvgIndex=hwStart+m.homeworkCols.length;
+  const projectIndex=hwAvgIndex+1;
+  const manualStart=projectIndex+1;
+
+  const rows=m.rows.map(r=>`<tr>${activityRowValues(m,r).map((v,i)=>{
+    const cls=[
+      i===0?"activityNumberCell":"",
+      i===1?"activityNameCell":"",
+      (i===appAvgIndex||i===hwAvgIndex)?"activityAverageCell":"",
+      i===projectIndex?"activityProjectCell":"",
+      i>=manualStart?"activityManualCell":""
+    ].filter(Boolean).join(" ");
+
+    if(!forPrint&&i>=manualStart){
+      const column=ACTIVITY_MANUAL_COLUMNS[i-manualStart];
+      const isNote=column.includes("ملاحظات");
+      return `<td class="${cls}"><${isNote?"textarea":"input"} class="activityManualInput" data-activity-manual-student="${esc(r.student.id)}" data-activity-manual-column="${esc(column)}" ${isNote?'rows="2"':''} value="${isNote?"":esc(activityLatinDigits(v))}">${isNote?esc(activityLatinDigits(v)):""}</${isNote?"textarea":"input"}></td>`;
+    }
+    return `<td class="${cls}">${esc(activityLatinDigits(v))}</td>`;
+  }).join("")}</tr>`).join("");
+
+  const rangeText=(m.from&&m.to)
+    ?`<small>فترة الطباعة: من ${esc(activityLatinDigits(dateAR(m.from)))} إلى ${esc(activityLatinDigits(dateAR(m.to)))}</small>`
+    :`<small>كشف تراكمي — من بداية الرصد حتى الآن</small>`;
+
+  return`
+    <div class="activityPrintTitle">
+      <h1>كشف درجات الأنشطة</h1>
+      <div>${esc(schoolName())} — المعلمة: ${esc(m.teacher?.name||"—")} — ${esc(m.subject)} — ${esc(activityLatinDigits(groups().find(g=>g.key===m.classKeyValue)?.label||m.classKeyValue.replace("|"," / ")))}</div>
+      ${rangeText}
+    </div>
+    <div class="activityPreviewWrap">
+      <table class="activityPreviewTable">
+        <thead><tr>${headers.map((h,i)=>{
+          const cls=h.includes("أفضل درجتين")?"avgHead":ACTIVITY_MANUAL_COLUMNS.includes(h)?"manualHead":i===0?"numberHead":i===1?"nameHead":"";
+          return `<th class="${cls}">${esc(activityLatinDigits(h))}</th>`;
+        }).join("")}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+}
+function renderActivityExcelLive(){
+  if(!$("activityExcelPreview")||!$("activityDetailStep")?.classList.contains("active"))return;
+  const m=activityCumulativeModel(),err=activityValidateModel(m);
+  if(err){
+    $("activityExcelPreview").innerHTML=`<div class="activityLiveEmpty"><span>📊</span><strong>الجدول سيظهر هنا تلقائيًا</strong><small>${esc(err)}</small></div>`;
+    if($("activityPreviewBadge"))$("activityPreviewBadge").textContent="—";
+    return;
+  }
+  $("activityExcelPreview").innerHTML=activityPreviewHTML(m,false);
+  const autoCols=m.applicationCols.length+m.homeworkCols.length+(m.rows.some(r=>r.project!==null)?1:0);
+  $("activityPreviewBadge").textContent=`${activityLatinDigits(m.students.length)} طالبة • ${activityLatinDigits(autoCols)} عمود رصد تلقائي`;
+}
+function activityLoadAssignment(classKeyValue,subject){
+  activitySelectedAssignment={classKey:classKeyValue,subject};
+  $("activityClass").value=classKeyValue;
+  $("activitySubject").value=subject;
+  const t=activityTeacherRecord();
+  const label=groups().find(g=>g.key===classKeyValue)?.label||classKeyValue.replace("|"," / ");
+  $("activityDetailTitle").textContent=`${activityLatinDigits(label)} — ${subject}`;
+  $("activityDetailMeta").textContent=`المعلمة: ${t?.name||"—"} • كشف تراكمي`;
+  $("activitySavedState").className="badge";
+  $("activitySavedState").textContent="جاهز";
+  showActivityFlowStep("activityDetailStep");
+  requestAnimationFrame(renderActivityExcelLive);
+}
+function activitySaveManualInputs(){
+  document.querySelectorAll("#activityExcelPreview [data-activity-manual-student]").forEach(el=>{
+    const value=el.tagName==="TEXTAREA"?el.value:el.value;
+    setActivityManualValue(el.dataset.activityManualStudent,el.dataset.activityManualColumn,value);
+  });
+  save();
+  $("activitySavedState").className="badge ok";
+  $("activitySavedState").textContent="محفوظ ✓";
+  renderActivityClassCards();
+}
+function exportActivityExcel(){
+  activitySaveManualInputs();
+  const m=activityCumulativeModel(),err=activityValidateModel(m);
+  if(err)return alert(err);
+  if(typeof XLSX==="undefined")return alert("تعذر تحميل مكتبة Excel.");
+
+  const headers=activityHeaderCells(m);
+  const title=`كشف درجات الأنشطة — ${m.subject}`;
+  const className=activityLatinDigits(groups().find(g=>g.key===m.classKeyValue)?.label||m.classKeyValue.replace("|"," / "));
+  const teacherDisplay=m.teacher?.name||"—";
+  const aoa=[
+    [schoolName(),...Array(headers.length-1).fill("")],
+    [title,...Array(headers.length-1).fill("")],
+    [`المعلمة: ${teacherDisplay} — ${className} — كشف تراكمي`,...Array(headers.length-1).fill("")],
+    [],
+    headers,
+    ...m.rows.map(r=>activityRowValues(m,r,{manualValues:true}))
+  ];
+
+  const ws=XLSX.utils.aoa_to_sheet(aoa);
+  ws["!dir"]="rtl";ws["!rtl"]=true;
+  ws["!merges"]=[
+    {s:{r:0,c:0},e:{r:0,c:headers.length-1}},
+    {s:{r:1,c:0},e:{r:1,c:headers.length-1}},
+    {s:{r:2,c:0},e:{r:2,c:headers.length-1}}
+  ];
+  ws["!cols"]=headers.map((h,i)=>({wch:i===1?34:Math.max(10,Math.min(23,String(h).length+3))}));
+  ws["!rows"]=[{hpt:32},{hpt:30},{hpt:25},{hpt:8},{hpt:54},...m.rows.map(()=>({hpt:28}))];
+  ws["!margins"]={left:.2,right:.2,top:.35,bottom:.35,header:.15,footer:.15};
+  ws["!pageSetup"]={orientation:"landscape",paperSize:9,fitToWidth:1,fitToHeight:0};
+  ws["!autofilter"]={ref:`A5:${XLSX.utils.encode_col(headers.length-1)}${5+m.rows.length}`};
+
+  const thin={style:"thin",color:{rgb:"D8D2D4"}},border={top:thin,bottom:thin,left:thin,right:thin};
+  const styles={
+    title:{font:{name:"Arial",sz:18,bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"8A1538"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2},border},
+    sub:{font:{name:"Arial",sz:15,bold:true,color:{rgb:"8A1538"}},fill:{fgColor:{rgb:"F7E8ED"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2},border},
+    meta:{font:{name:"Arial",sz:11,bold:true,color:{rgb:"0B676B"}},fill:{fgColor:{rgb:"ECF7F5"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2},border},
+    head:{font:{name:"Arial",sz:10,bold:true,color:{rgb:"FFFFFF"}},fill:{fgColor:{rgb:"0F7477"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2,wrapText:true},border},
+    body:{font:{name:"Arial",sz:10,color:{rgb:"2F3D3F"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2,wrapText:true},border},
+    name:{font:{name:"Arial",sz:10,bold:true,color:{rgb:"5F1730"}},fill:{fgColor:{rgb:"FFF4E5"}},alignment:{horizontal:"right",vertical:"center",readingOrder:2,wrapText:true},border},
+    manual:{font:{name:"Arial",sz:10,color:{rgb:"4F452B"}},fill:{fgColor:{rgb:"FFF5D7"}},alignment:{horizontal:"center",vertical:"center",readingOrder:2,wrapText:true},border}
+  };
+  for(let c=0;c<headers.length;c++){
+    for(let r=0;r<3;r++){const a=XLSX.utils.encode_cell({r,c});if(ws[a])ws[a].s=r===0?styles.title:r===1?styles.sub:styles.meta}
+    const h=XLSX.utils.encode_cell({r:4,c});if(ws[h])ws[h].s=styles.head;
+  }
+  const manualStart=headers.length-ACTIVITY_MANUAL_COLUMNS.length;
+  for(let r=5;r<5+m.rows.length;r++){
+    for(let c=0;c<headers.length;c++){
+      const a=XLSX.utils.encode_cell({r,c});if(!ws[a])ws[a]={t:"s",v:""};
+      ws[a].s=c===1?styles.name:c>=manualStart?styles.manual:styles.body;
+    }
+  }
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,safeActivitySheetName(`أنشطة ${m.subject}`));
+  wb.Workbook={Views:[{RTL:true}]};
+  wb.Props={Title:title,Subject:"درجات الأنشطة التراكمية",Author:teacherDisplay,Company:schoolName(),CreatedDate:new Date()};
+  XLSX.writeFile(wb,safeExcelFileName(`درجات الأنشطة التراكمية - ${className} - ${m.subject}`)+".xlsx",{bookType:"xlsx",compression:true,cellStyles:true});
+}
+function openActivityPrintRange(){
+  activitySaveManualInputs();
+  const all=activityAllPeriodsForAssignment();
+  if(!$("activityPrintFrom").value)$("activityPrintFrom").value=all[0]?.start||academicStartDate();
+  if(!$("activityPrintTo").value)$("activityPrintTo").value=all.at(-1)?.end||localISO();
+  $("activityPrintRange").hidden=false;
+}
+function closeActivityPrintRange(){if($("activityPrintRange"))$("activityPrintRange").hidden=true}
+function confirmActivityPrint(){
+  const from=$("activityPrintFrom").value,to=$("activityPrintTo").value;
+  if(!from||!to)return alert("حددي تاريخ البداية والنهاية.");
+  if(from>to)return alert("تاريخ البداية يجب أن يكون قبل تاريخ النهاية.");
+  const m=activityCumulativeModel({from,to}),err=activityValidateModel(m);
+  if(err)return alert(err);
+  const slot=$("activityPrint");
+  slot.innerHTML=activityPreviewHTML(m,true);
+  closeActivityPrintRange();
+  document.body.classList.add("print-activity-excel");
+  window.print();
+  setTimeout(()=>{document.body.classList.remove("print-activity-excel");slot.innerHTML="";},500);
+}
+
+
+/* Activity cumulative bindings */
+if($("saveActivityClassWork"))$("saveActivityClassWork").onclick=activitySaveManualInputs;
+if($("downloadActivityExcel"))$("downloadActivityExcel").onclick=exportActivityExcel;
+if($("printActivityExcel"))$("printActivityExcel").onclick=openActivityPrintRange;
+if($("closeActivityPrintRange"))$("closeActivityPrintRange").onclick=closeActivityPrintRange;
+if($("confirmActivityPrint"))$("confirmActivityPrint").onclick=confirmActivityPrint;
+$("activityExcelPreview")?.addEventListener("input",()=>{
+  if($("activitySavedState")){
+    $("activitySavedState").className="badge warn";
+    $("activitySavedState").textContent="تعديل غير محفوظ";
+  }
+});
+
+
+/* ========================= Quality Control Dashboard V69 ========================= */
+let qualitySelectedPeriodId="";
+
+function qualityPeriodId(){
+  const v=$("qualityPeriodSelect")?.value||qualitySelectedPeriodId;
+  if(v&&AUTO_PERIODS.some(p=>p.id===v))return v;
+  return currentPeriod()?.id||AUTO_PERIODS[0]?.id||"";
+}
+function qualityTeacherAssignments(teacherId){
+  const rows=[];
+  for(const [classKeyValue,plan] of Object.entries(db.classPlans||{})){
+    for(const item of plan||[]){
+      if(String(item.teacherId)===String(teacherId)){
+        rows.push({
+          classKey:classKeyValue,
+          subject:item.subject,
+          classLabel:groups().find(g=>g.key===classKeyValue)?.label||classKeyValue.replace("|"," / ")
+        });
+      }
+    }
+  }
+  return rows;
+}
+function qualityAgendaStat(t,assignments,periodId){
+  if(!assignments.length)return{done:0,total:0,pct:0,status:"missing",items:[]};
+  const items=assignments.map(a=>{
+    const ag=getClassAgenda(a.classKey,a.subject,periodId);
+    const ok=!!clean(ag?.text);
+    return{...a,ok,text:ag?.text||""};
+  });
+  const done=items.filter(x=>x.ok).length,total=items.length,pct=Math.round(done/total*100);
+  return{done,total,pct,status:pct===100?"done":pct===0?"missing":"partial",items};
+}
+function qualityGradeStat(t,assignments,periodId){
+  let total=0,done=0;
+  const items=[];
+  for(const a of assignments){
+    const students=db.students.filter(s=>classKey(s)===a.classKey);
+    for(const s of students){
+      total++;
+      const f=(db.followups||[]).find(x=>
+        String(x.studentId)===String(s.id)&&
+        String(x.teacherId)===String(t.id)&&
+        norm(x.subject)===norm(a.subject)&&
+        x.periodId===periodId
+      );
+      const hasGrade=!!(f&&["classroom","electronic","homework","project"].some(type=>{
+        const status=assessmentStatusFromRecord(f,type);
+        const grade=assessmentGradeFromRecord(f,type);
+        return status==="تم الرصد"&&gradeIsNumeric(grade);
+      }));
+      if(hasGrade)done++;
+      items.push({student:s,assignment:a,ok:hasGrade});
+    }
+  }
+  const pct=total?Math.round(done/total*100):0;
+  return{done,total,pct,status:pct===100?"done":pct===0?"missing":"partial",items};
+}
+function qualityNotesStat(t,assignments,periodId){
+  let total=0,done=0;
+  const items=[];
+  for(const a of assignments){
+    const students=db.students.filter(s=>classKey(s)===a.classKey);
+    for(const s of students){
+      total++;
+      const f=(db.followups||[]).find(x=>
+        String(x.studentId)===String(s.id)&&
+        String(x.teacherId)===String(t.id)&&
+        norm(x.subject)===norm(a.subject)&&
+        x.periodId===periodId
+      );
+      const ok=!!clean(f?.academicNote||f?.note||"");
+      if(ok)done++;
+      items.push({student:s,assignment:a,ok});
+    }
+  }
+  const pct=total?Math.round(done/total*100):0;
+  return{done,total,pct,status:pct===100?"done":pct===0?"missing":"partial",items};
+}
+function qualityStatusCell(stat,label){
+  const cls=stat.status==="done"?"qDone":stat.status==="partial"?"qPartial":"qMissing";
+  return `<div class="qualityStatus ${cls}">
+    <strong>${activityLatinDigits(stat.pct)}%</strong>
+    <span>${label}</span>
+    <small>${activityLatinDigits(stat.done)}/${activityLatinDigits(stat.total)}</small>
+  </div>`;
+}
+function qualityOverall(agenda,grades,notes){
+  const vals=[agenda.pct,grades.pct,notes.pct];
+  const pct=Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
+  return{pct,status:pct===100?"done":pct===0?"missing":"partial"};
+}
+function qualitySnapshot(){
+  const periodId=qualityPeriodId();
+  return db.teachers.slice().sort((a,b)=>a.name.localeCompare(b.name,"ar")).map(t=>{
+    const assignments=qualityTeacherAssignments(t.id);
+    const agenda=qualityAgendaStat(t,assignments,periodId);
+    const grades=qualityGradeStat(t,assignments,periodId);
+    const notes=qualityNotesStat(t,assignments,periodId);
+    const overall=qualityOverall(agenda,grades,notes);
+    return{teacher:t,assignments,agenda,grades,notes,overall};
+  });
+}
+function renderQualityPeriodOptions(){
+  const sel=$("qualityPeriodSelect"); if(!sel)return;
+  const old=sel.value||qualitySelectedPeriodId;
+  sel.innerHTML=AUTO_PERIODS.length
+    ?AUTO_PERIODS.map(p=>`<option value="${p.id}">${esc(pLabel(p))}</option>`).join("")
+    :`<option value="">لا توجد فترة</option>`;
+  const cp=currentPeriod();
+  if(old&&AUTO_PERIODS.some(p=>p.id===old))sel.value=old;
+  else if(cp)sel.value=cp.id;
+  else if(AUTO_PERIODS[0])sel.value=AUTO_PERIODS[0].id;
+  qualitySelectedPeriodId=sel.value||"";
+}
+function renderQualityDashboard(){
+  if(!$("qualityTableBody"))return;
+  renderQualityPeriodOptions();
+  const snap=qualitySnapshot();
+
+  $("qualityTeacherCount").textContent=activityLatinDigits(snap.length);
+  $("qualityAgendaDone").textContent=activityLatinDigits(snap.filter(x=>x.agenda.pct===100).length);
+  $("qualityGradesDone").textContent=activityLatinDigits(snap.filter(x=>x.grades.pct===100).length);
+  $("qualityNotesDone").textContent=activityLatinDigits(snap.filter(x=>x.notes.pct===100).length);
+
+  $("qualityTableBody").innerHTML=snap.length
+    ?snap.map((x,i)=>{
+      const cls=x.overall.status==="done"?"qDone":x.overall.status==="partial"?"qPartial":"qMissing";
+      const classes=[...new Set(x.assignments.map(a=>activityLatinDigits(a.classLabel)))];
+      const subjects=[...new Set(x.assignments.map(a=>a.subject))];
+      return `<tr>
+        <td class="qualityTeacherName"><strong>${esc(x.teacher.name)}</strong></td>
+        <td>${esc(subjects.join("، ")||x.teacher.specialty||"—")}</td>
+        <td>${esc(classes.join("، ")||"—")}</td>
+        <td>${qualityStatusCell(x.agenda,"الأجندة")}</td>
+        <td>${qualityStatusCell(x.grades,"الدرجات")}</td>
+        <td>${qualityStatusCell(x.notes,"الملاحظات")}</td>
+        <td><div class="qualityOverall ${cls}"><b>${activityLatinDigits(x.overall.pct)}%</b></div></td>
+        <td><button class="qualityDetailsBtn" type="button" data-quality-index="${i}">عرض</button></td>
+      </tr>`;
+    }).join("")
+    :`<tr><td colspan="8"><div class="empty">لا توجد معلمات بعد.</div></td></tr>`;
+}
+function renderQualityDetails(index){
+  const snap=qualitySnapshot();
+  const x=snap[index],box=$("qualityDetails");
+  if(!x||!box)return;
+
+  const missingAgenda=x.agenda.items.filter(i=>!i.ok);
+  const missingGrades=x.grades.items.filter(i=>!i.ok);
+  const missingNotes=x.notes.items.filter(i=>!i.ok);
+
+  box.hidden=false;
+  box.innerHTML=`
+    <div class="qualityDetailsHead">
+      <div><strong>${esc(x.teacher.name)}</strong><span>${esc(x.teacher.specialty||"")}</span></div>
+      <button type="button" onclick="$('qualityDetails').hidden=true">×</button>
+    </div>
+    <div class="qualityDetailGrid">
+      <section>
+        <h3>الأجندة الناقصة</h3>
+        ${missingAgenda.length
+          ?missingAgenda.map(i=>`<div>${esc(activityLatinDigits(i.classLabel))} — ${esc(i.subject)}</div>`).join("")
+          :'<p class="qualityAllDone">مكتملة ✓</p>'}
+      </section>
+      <section>
+        <h3>طالبات بلا رصد درجات</h3>
+        ${missingGrades.length
+          ?missingGrades.slice(0,50).map(i=>`<div>${esc(i.student.name)} — ${esc(activityLatinDigits(i.assignment.classLabel))}</div>`).join("")
+          :'<p class="qualityAllDone">مكتمل ✓</p>'}
+      </section>
+      <section>
+        <h3>طالبات بلا ملاحظات</h3>
+        ${missingNotes.length
+          ?missingNotes.slice(0,50).map(i=>`<div>${esc(i.student.name)} — ${esc(activityLatinDigits(i.assignment.classLabel))}</div>`).join("")
+          :'<p class="qualityAllDone">مكتمل ✓</p>'}
+      </section>
+    </div>`;
+}
+$("qualityTableBody")?.addEventListener("click",e=>{
+  const b=e.target.closest("[data-quality-index]");
+  if(b)renderQualityDetails(Number(b.dataset.qualityIndex));
+});
+$("qualityPeriodSelect")?.addEventListener("change",()=>{
+  qualitySelectedPeriodId=$("qualityPeriodSelect").value||"";
+  renderQualityDashboard();
+});
+$("qualityCurrentPeriodBtn")?.addEventListener("click",()=>{
+  const cp=currentPeriod(); if(!cp)return;
+  qualitySelectedPeriodId=cp.id;
+  $("qualityPeriodSelect").value=cp.id;
+  renderQualityDashboard();
+});
+function qualityPrintHTML(){
+  const p=autoPeriodById(qualityPeriodId());
+  const snap=qualitySnapshot();
+  return `<div class="qualityPrintSheet">
+    <h1>مراقبة جودة العمل</h1>
+    <div class="qualityPrintMeta">${esc(schoolName())} — ${esc(p?pLabel(p):"—")}</div>
+    <table><thead><tr><th>المعلمة</th><th>الأجندة</th><th>الدرجات</th><th>الملاحظات</th><th>الجودة</th></tr></thead>
+    <tbody>${snap.map(x=>`<tr>
+      <td>${esc(x.teacher.name)}</td>
+      <td>${activityLatinDigits(x.agenda.pct)}%</td>
+      <td>${activityLatinDigits(x.grades.pct)}%</td>
+      <td>${activityLatinDigits(x.notes.pct)}%</td>
+      <td>${activityLatinDigits(x.overall.pct)}%</td>
+    </tr>`).join("")}</tbody></table>
+  </div>`;
+}
+$("printQualityReport")?.addEventListener("click",()=>{
+  const slot=$("activityPrint");
+  slot.innerHTML=qualityPrintHTML();
+  document.body.classList.add("print-activity-excel");
+  window.print();
+  setTimeout(()=>{document.body.classList.remove("print-activity-excel");slot.innerHTML="";},500);
+});
+
+
+
+/* ========================= Archive Bank V70 ========================= */
+function archiveTeacherRole(t){
+  const text=clean(t?.specialty||"");
+  return /منسق/u.test(text)?"منسقة":"معلمة";
+}
+function archiveMonthKey(value=new Date()){
+  const d=value instanceof Date?value:new Date(value);
+  if(Number.isNaN(d.getTime()))return localISO().slice(0,7);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
+}
+function archiveMonthLabel(key){
+  const [y,m]=String(key||"").split("-").map(Number);
+  if(!y||!m)return key||"—";
+  return new Intl.DateTimeFormat("ar-QA",{month:"long",year:"numeric"}).format(new Date(y,m-1,1));
+}
+function archiveCurrentWeek(){
+  const p=currentPeriod()||AUTO_PERIODS[0]||null;
+  return{
+    id:p?.id||weeklyStarWeekStart(),
+    label:p?pLabel(p):`الأسبوع ${weeklyStarWeekStart()}`,
+    start:p?.start||weeklyStarWeekStart(),
+    end:p?.end||weeklyStarWeekStart()
+  };
+}
+function archiveAssignmentKey(teacherId,classKeyValue,subject){
+  return `${teacherId}|||${classKeyValue}|||${norm(subject)}`;
+}
+function archiveAssignmentHasData(teacherId,classKeyValue,subject){
+  const follow=(db.followups||[]).some(f=>
+    String(f.teacherId)===String(teacherId)&&
+    (!f.classKey||f.classKey===classKeyValue)&&
+    norm(f.subject)===norm(subject)
+  );
+  const prefix=archiveAssignmentKey(teacherId,classKeyValue,subject)+"|||";
+  const manual=Object.keys(db.activityManualData||{}).some(k=>k.startsWith(prefix));
+  return follow||manual;
+}
+function archiveBuildSnapshot(teacherId,classKeyValue,subject){
+  const oldTeacher=activitySelectedTeacherId;
+  const oldAssignment={...activitySelectedAssignment};
+
+  activitySelectedTeacherId=String(teacherId);
+  activitySelectedAssignment={classKey:classKeyValue,subject};
+
+  const model=activityCumulativeModel();
+  const headers=activityHeaderCells(model);
+  const rows=model.rows.map(r=>activityRowValues(model,r,{manualValues:true}));
+
+  activitySelectedTeacherId=oldTeacher;
+  activitySelectedAssignment=oldAssignment;
+
+  const teacher=teacherRecord(teacherId);
+  const group=groups().find(g=>g.key===classKeyValue);
+  const week=archiveCurrentWeek();
+  const now=new Date();
+
+  return{
+    id:crypto.randomUUID?.()||`ARC-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    archivedAt:now.toISOString(),
+    monthKey:archiveMonthKey(now),
+    weekId:week.id,
+    weekLabel:week.label,
+    weekStart:week.start,
+    weekEnd:week.end,
+    subject:appSubjectOnly(subject),
+    teacherId:String(teacherId),
+    teacherName:teacher?.name||"—",
+    teacherRole:archiveTeacherRole(teacher),
+    teacherSpecialty:teacher?.specialty||"",
+    classKey:classKeyValue,
+    classLabel:group?.label||classKeyValue.replace("|"," / "),
+    schoolName:schoolName(),
+    academicYear:academicYearLabel(),
+    headers,
+    rows,
+    periodIds:model.periods.map(p=>p.id),
+    rowCount:rows.length
+  };
+}
+function archiveClearAssignmentActiveData(teacherId,classKeyValue,subject){
+  db.followups=(db.followups||[]).filter(f=>!(
+    String(f.teacherId)===String(teacherId)&&
+    (!f.classKey||f.classKey===classKeyValue)&&
+    norm(f.subject)===norm(subject)
+  ));
+
+  const prefix=archiveAssignmentKey(teacherId,classKeyValue,subject)+"|||";
+  for(const key of Object.keys(db.activityManualData||{})){
+    if(key.startsWith(prefix))delete db.activityManualData[key];
+  }
+}
+function archiveOneAssignment(teacherId,classKeyValue,subject,{ask=true}={}){
+  if(!archiveAssignmentHasData(teacherId,classKeyValue,subject)){
+    if(ask)alert("لا توجد درجات أو بيانات في هذا الكشف لأرشفتها.");
+    return false;
+  }
+
+  const teacher=teacherRecord(teacherId);
+  const group=groups().find(g=>g.key===classKeyValue);
+  if(ask&&!confirm(
+    `سيتم الآن:\n\n1) حفظ نسخة كاملة من كشف ${teacher?.name||"المعلمة"} — ${subject} — ${group?.label||classKeyValue}\n2) وضعها في بنك الأرشفة\n3) تصفير درجات وخانات هذا الكشف النشط\n\nهل تريدين المتابعة؟`
+  ))return false;
+
+  const snapshot=archiveBuildSnapshot(teacherId,classKeyValue,subject);
+  db.archiveBank??=[];
+  db.archiveBank.push(snapshot);
+
+  archiveClearAssignmentActiveData(teacherId,classKeyValue,subject);
+
+  if(!save()){
+    return false;
+  }
+  return snapshot;
+}
+function archiveCurrentActivityExcel(){
+  activitySaveManualInputs();
+  const teacherId=activitySelectedTeacherId;
+  const {classKey,subject}=activitySelectedAssignment;
+  if(!teacherId||!classKey||!subject)return alert("اختاري المعلمة والشعبة أولًا.");
+
+  const result=archiveOneAssignment(teacherId,classKey,subject,{ask:true});
+  if(!result)return;
+
+  renderActivityExcelLive();
+  renderActivityClassCards();
+  renderArchiveBank();
+  renderQualityDashboard();
+  $("activitySavedState").className="badge ok";
+  $("activitySavedState").textContent="تمت الأرشفة والتصفير ✓";
+  alert("تم حفظ نسخة كاملة في بنك الأرشفة، ثم تصفير الكشف النشط بنجاح.");
+}
+function archiveAllCurrentExcels(){
+  const assignments=[];
+  for(const t of db.teachers){
+    for(const a of qualityTeacherAssignments(t.id)){
+      if(archiveAssignmentHasData(t.id,a.classKey,a.subject)){
+        assignments.push({teacherId:t.id,classKey:a.classKey,subject:a.subject});
+      }
+    }
+  }
+  if(!assignments.length)return alert("لا توجد كشوف تحتوي بيانات لأرشفتها.");
+  if(!confirm(
+    `سيتم أرشفة ${assignments.length} كشف/كشوف وحفظ نسخة مستقلة من كل كشف، ثم تصفير الدرجات والخانات اليدوية في النسخ النشطة.\n\nمتابعة؟`
+  ))return;
+
+  const created=[];
+  for(const a of assignments){
+    const snap=archiveBuildSnapshot(a.teacherId,a.classKey,a.subject);
+    db.archiveBank??=[];
+    db.archiveBank.push(snap);
+    created.push(snap);
+  }
+  for(const a of assignments){
+    archiveClearAssignmentActiveData(a.teacherId,a.classKey,a.subject);
+  }
+  save();
+  renderAll();
+  renderArchiveBank();
+  alert(`تمت أرشفة ${created.length} كشف/كشوف وتصفير النسخ النشطة بنجاح.`);
+}
+function archiveEntries(){
+  return (db.archiveBank||[]).slice().sort((a,b)=>String(b.archivedAt||"").localeCompare(String(a.archivedAt||"")));
+}
+function archiveFilteredEntries(){
+  const month=$("archiveFilterMonth")?.value||"";
+  const week=$("archiveFilterWeek")?.value||"";
+  const subject=$("archiveFilterSubject")?.value||"";
+  const teacher=$("archiveFilterTeacher")?.value||"";
+
+  return archiveEntries().filter(a=>
+    (!month||a.monthKey===month)&&
+    (!week||a.weekId===week)&&
+    (!subject||norm(a.subject)===norm(subject))&&
+    (!teacher||String(a.teacherId)===String(teacher))
+  );
+}
+function archiveTableHTML(entry){
+  const headers=entry.headers||[];
+  const rows=entry.rows||[];
+  return`
+    <div class="archiveFileSheet">
+      <div class="archiveFileHead">
+        <div>
+          <h2>${esc(entry.subject||"مادة")}</h2>
+          <p>${esc(entry.teacherRole||"معلمة")}: <strong>${esc(entry.teacherName||"—")}</strong> — ${esc(activityLatinDigits(entry.classLabel||"—"))}</p>
+        </div>
+        <div class="archiveFileMeta">
+          <span>${esc(archiveMonthLabel(entry.monthKey))}</span>
+          <span>${esc(entry.weekLabel||"—")}</span>
+        </div>
+      </div>
+      <div class="archiveTableScroll">
+        <table class="archiveDataTable">
+          <thead><tr>${headers.map(h=>`<th>${esc(activityLatinDigits(h))}</th>`).join("")}</tr></thead>
+          <tbody>${rows.map(r=>`<tr>${r.map((v,i)=>`<td class="${i===1?"archiveNameCell":""}">${esc(activityLatinDigits(v))}</td>`).join("")}</tr>`).join("")}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+function renderArchiveBankFilters(){
+  if(!$("archiveFilterMonth"))return;
+  const entries=archiveEntries();
+  const keep={
+    month:$("archiveFilterMonth").value,
+    week:$("archiveFilterWeek").value,
+    subject:$("archiveFilterSubject").value,
+    teacher:$("archiveFilterTeacher").value
+  };
+  const months=[...new Set(entries.map(x=>x.monthKey).filter(Boolean))];
+  const weeks=[...new Map(entries.map(x=>[x.weekId,x.weekLabel])).entries()];
+  const subjects=[...new Set(entries.map(x=>x.subject).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ar"));
+  const teachers=[...new Map(entries.map(x=>[String(x.teacherId),`${x.teacherRole||"معلمة"} ${x.teacherName}`])).entries()];
+
+  $("archiveFilterMonth").innerHTML='<option value="">كل الأشهر</option>'+months.map(x=>`<option value="${esc(x)}">${esc(archiveMonthLabel(x))}</option>`).join("");
+  $("archiveFilterWeek").innerHTML='<option value="">كل الأسابيع</option>'+weeks.map(([id,label])=>`<option value="${esc(id)}">${esc(label)}</option>`).join("");
+  $("archiveFilterSubject").innerHTML='<option value="">كل المواد</option>'+subjects.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");
+  $("archiveFilterTeacher").innerHTML='<option value="">الكل</option>'+teachers.map(([id,label])=>`<option value="${esc(id)}">${esc(label)}</option>`).join("");
+
+  if(months.includes(keep.month))$("archiveFilterMonth").value=keep.month;
+  if(weeks.some(x=>x[0]===keep.week))$("archiveFilterWeek").value=keep.week;
+  if(subjects.includes(keep.subject))$("archiveFilterSubject").value=keep.subject;
+  if(teachers.some(x=>x[0]===keep.teacher))$("archiveFilterTeacher").value=keep.teacher;
+}
+function renderArchiveBank(){
+  const tree=$("archiveBankTree");
+  if(!tree)return;
+  const entries=archiveEntries();
+  renderArchiveBankFilters();
+
+  $("archiveBankCount").textContent=activityLatinDigits(entries.length);
+  $("archiveBankTeachers").textContent=activityLatinDigits(new Set(entries.map(x=>x.teacherId)).size);
+  $("archiveBankSubjects").textContent=activityLatinDigits(new Set(entries.map(x=>norm(x.subject))).size);
+  $("archiveBankMonths").textContent=activityLatinDigits(new Set(entries.map(x=>x.monthKey)).size);
+
+  if(!entries.length){
+    tree.innerHTML='<div class="empty">لا توجد ملفات مؤرشفة بعد.</div>';
+    return;
+  }
+
+  const byMonth=new Map();
+  for(const e of entries){
+    if(!byMonth.has(e.monthKey))byMonth.set(e.monthKey,new Map());
+    const byWeek=byMonth.get(e.monthKey);
+    if(!byWeek.has(e.weekId))byWeek.set(e.weekId,{label:e.weekLabel,subjects:new Map()});
+    const week=byWeek.get(e.weekId);
+    const sk=e.subject||"بدون مادة";
+    if(!week.subjects.has(sk))week.subjects.set(sk,new Map());
+    const byTeacher=week.subjects.get(sk);
+    const tk=`${e.teacherRole||"معلمة"} ${e.teacherName}`;
+    if(!byTeacher.has(tk))byTeacher.set(tk,[]);
+    byTeacher.get(tk).push(e);
+  }
+
+  tree.innerHTML=[...byMonth.entries()].map(([month,weeks])=>`
+    <details class="archiveMonth" open>
+      <summary><strong>${esc(archiveMonthLabel(month))}</strong><span>${activityLatinDigits([...weeks.values()].reduce((n,w)=>n+[...w.subjects.values()].reduce((a,t)=>a+[...t.values()].reduce((x,files)=>x+files.length,0),0),0))} ملف</span></summary>
+      <div class="archiveMonthBody">
+        ${[...weeks.entries()].map(([weekId,week])=>`
+          <details class="archiveWeek">
+            <summary><strong>${esc(week.label||weekId)}</strong></summary>
+            <div class="archiveWeekBody">
+              ${[...week.subjects.entries()].map(([subject,teachers])=>`
+                <details class="archiveSubject">
+                  <summary><strong>${esc(subject)}</strong></summary>
+                  <div class="archiveSubjectBody">
+                    ${[...teachers.entries()].map(([teacher,files])=>`
+                      <div class="archiveTeacherBlock">
+                        <div class="archiveTeacherHead"><strong>${esc(teacher)}</strong><span>${activityLatinDigits(files.length)} ملف</span></div>
+                        <div class="archiveFileCards">
+                          ${files.map(f=>`
+                            <article class="archiveFileCard">
+                              <div><strong>${esc(activityLatinDigits(f.classLabel||"—"))}</strong><small>${esc(new Date(f.archivedAt).toLocaleString("ar-QA",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}))}</small></div>
+                              <div class="archiveFileActions">
+                                <button type="button" data-archive-view="${esc(f.id)}">فتح</button>
+                                <button type="button" data-archive-print="${esc(f.id)}">طباعة A4</button>
+                              </div>
+                            </article>`).join("")}
+                        </div>
+                      </div>`).join("")}
+                  </div>
+                </details>`).join("")}
+            </div>
+          </details>`).join("")}
+      </div>
+    </details>`).join("");
+}
+function archiveOpenFile(id){
+  const e=(db.archiveBank||[]).find(x=>String(x.id)===String(id));
+  if(!e)return;
+  const tree=$("archiveBankTree");
+  tree.insertAdjacentHTML("afterbegin",`
+    <div id="archiveOpenPreview" class="archiveOpenPreview">
+      <div class="archiveOpenPreviewHead">
+        <strong>${esc(e.subject)} — ${esc(e.teacherName)} — ${esc(activityLatinDigits(e.classLabel))}</strong>
+        <button type="button" onclick="$('archiveOpenPreview').remove()">×</button>
+      </div>
+      ${archiveTableHTML(e)}
+    </div>`);
+  $("archiveOpenPreview")?.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function archivePrintEntries(entries,title){
+  if(!entries.length)return alert("لا توجد ملفات ضمن الاختيار الحالي للطباعة.");
+  const slot=$("activityPrint");
+  slot.innerHTML=`
+    <div class="archivePrintDocument">
+      <div class="archivePrintCover">
+        <h1>${esc(title)}</h1>
+        <p>${esc(schoolName())}</p>
+        <small>السنة الدراسية ${esc(academicYearLabel())} — عدد الملفات: ${activityLatinDigits(entries.length)}</small>
+      </div>
+      ${entries.map(e=>`<section class="archivePrintPage">${archiveTableHTML(e)}</section>`).join("")}
+    </div>`;
+  document.body.classList.add("print-archive-bank");
+  window.print();
+  setTimeout(()=>{
+    document.body.classList.remove("print-archive-bank");
+    slot.innerHTML="";
+  },700);
+}
+$("archiveBankTree")?.addEventListener("click",e=>{
+  const view=e.target.closest("[data-archive-view]");
+  if(view){archiveOpenFile(view.dataset.archiveView);return}
+  const print=e.target.closest("[data-archive-print]");
+  if(print){
+    const item=(db.archiveBank||[]).find(x=>String(x.id)===String(print.dataset.archivePrint));
+    if(item)archivePrintEntries([item],`ملف مؤرشف — ${item.subject} — ${item.teacherName}`);
+  }
+});
+["archiveFilterMonth","archiveFilterWeek","archiveFilterSubject","archiveFilterTeacher"].forEach(id=>{
+  $(id)?.addEventListener("change",()=>{
+    const count=archiveFilteredEntries().length;
+    const btn=$("printArchiveFiltered");
+    if(btn)btn.textContent=`🖨️ طباعة الفترة المحددة (${activityLatinDigits(count)})`;
+  });
+});
+$("printArchiveFiltered")?.addEventListener("click",()=>{
+  archivePrintEntries(archiveFilteredEntries(),"بنك الأرشفة — الفترة المحددة");
+});
+$("printArchiveCumulative")?.addEventListener("click",()=>{
+  archivePrintEntries(archiveEntries(),"بنك الأرشفة — التقرير التراكمي الكامل");
+});
+$("archiveActivityExcel")?.addEventListener("click",archiveCurrentActivityExcel);
+$("archiveAllCurrentExcels")?.addEventListener("click",archiveAllCurrentExcels);
+
 
 /* ========================= Admin Week Selection ========================= */
 let adminSelectedPeriodId="";
@@ -18316,8 +20310,25 @@ function renderCommonSelectors(){
 
 function fillScale(){ /* خيارات التقييم تُنشأ داخل صفوف الطالبات */ }
 
+function normalizeClassPlanSubjectLabels(){
+  let changed=false;
+  for(const rows of Object.values(db.classPlans||{})){
+    for(const row of rows||[]){
+      const cleanSubject=appSubjectOnly(row.subject);
+      if(cleanSubject && cleanSubject!==row.subject){
+        row.subject=cleanSubject;
+        changed=true;
+      }
+    }
+  }
+  if(changed)save();
+}
+
 function renderAll(){
+  /* عند أول فتح بعد يوم الأحد: تثبيت نجوم الأسبوع السابق في الأرشيف. */
+  if(ensureWeeklyStarArchive())save();
   syncRelationships();
+  normalizeClassPlanSubjectLabels();
   renderBrandIdentity();
   if($("settingSchoolName"))renderSiteSettings();
   db.students.sort(studentSort);
@@ -18330,9 +20341,17 @@ function renderAll(){
   renderTeacherTable();
   renderSetupSelectors();
   renderPlansSummary();
+  renderTeacherFirstSetup();
+  renderTeacherSetupSummary();
+  renderQualityDashboard();
+  renderArchiveBank();
+  if($("anPeriod")){ analyticsFillFilters(); renderAnalytics(analyticsMode); }
   renderTeacherMain();
   renderSeatingSelectors();
   renderQrBaseStatus();
+  syncConfigurableOptionLists();
+  renderWordingSettings();
+  renderActivityTeacherPicker();
 
   if($("p-cards")?.classList.contains("active")){
     fillCardDesignForm();
@@ -18384,5 +20403,1099 @@ if(token){
   else openInvalidParentPortal();
 }
 </script>
+
+<style id="MENTOR_LAYOUT_V57">
+#seating.view.active{padding-top:0!important}
+#seating .seatingWorkspace{display:flex!important;flex-direction:column!important;gap:9px!important;width:100%!important}
+#seating .mentorToolSwitch{order:-30!important;position:sticky!important;top:6px!important;z-index:20!important;width:min(680px,100%)!important;margin:0 auto 2px!important;padding:6px!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:7px!important;border:1px solid #E2E8E7!important;border-radius:18px!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(10px)!important;box-shadow:0 6px 18px rgba(33,58,60,.07),inset 0 1px 0 #fff!important}
+#seating .mentorToolSwitch button{min-height:46px!important;padding:8px 16px!important;border:1px solid #DDE6E4!important;border-radius:13px!important;background:linear-gradient(180deg,#FFF,#F7FAF9)!important;color:#31565A!important;font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;font-size:14px!important;font-weight:800!important;cursor:pointer!important;box-shadow:0 3px 8px rgba(35,64,66,.05),inset 0 1px 0 #fff!important}
+#seating .mentorToolSwitch button:hover{transform:translateY(-1px)!important}
+#seating .mentorToolSwitch button.active,#seating .mentorToolSwitch button[aria-pressed="true"]{border-color:#7E1433!important;background:linear-gradient(180deg,#94183D,#78142F)!important;color:#FFF!important;box-shadow:0 6px 14px rgba(109,22,49,.18),inset 0 1px 0 rgba(255,255,255,.18)!important}
+#seating .seatingHero{order:-20!important;grid-template-columns:minmax(240px,.72fr) minmax(440px,1.28fr)!important;gap:12px!important;align-items:center!important;padding:11px 14px!important;border-radius:18px!important;box-shadow:0 5px 14px rgba(36,57,58,.05)!important}
+#seating .seatingHeroTitle{gap:10px!important;align-items:center!important}
+#seating .seatingLogo{width:44px!important;height:44px!important;flex:0 0 44px!important;border-radius:13px!important;font-size:21px!important}
+#seating .seatingEyebrow{font-size:9px!important}
+#seating .seatingHero h2{font-size:21px!important;line-height:1.25!important}
+#seating .seatingHero p{display:none!important}
+#seating .seatingSelectors{display:grid!important;grid-template-columns:minmax(150px,1fr) minmax(170px,1fr) auto!important;gap:8px!important;align-items:end!important}
+#seating .seatingSelectors .field{margin:0!important;gap:3px!important}
+#seating .seatingSelectors label{margin:0!important;font-size:9px!important}
+#seating .seatingSelectors select{min-height:39px!important;height:39px!important;border-radius:11px!important;padding:5px 9px!important;font-size:12px!important}
+#seating .seatingRowsBadge{min-height:39px!important;height:39px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:5px 10px!important;border-radius:11px!important;white-space:nowrap!important;font-size:9px!important}
+#seating .seatingControlBar{order:-10!important;display:grid!important;grid-template-columns:minmax(160px,.65fr) minmax(0,1.35fr)!important;align-items:center!important;gap:10px!important;padding:8px 10px!important;border-radius:14px!important;box-shadow:0 4px 11px rgba(35,64,66,.04)!important}
+#seating .seatingControlBar strong{font-size:11px!important}
+#seating .seatingControlBar>div:first-child>span{display:none!important}
+#seating .seatingActions{display:flex!important;justify-content:flex-end!important;align-items:center!important;gap:5px!important;flex-wrap:wrap!important}
+#seating .seatingActions button{min-height:34px!important;padding:6px 9px!important;border-radius:10px!important;font-size:9px!important}
+#seating .applicationsManager{margin:0!important;padding:12px!important;border-radius:18px!important}
+#seating .applicationsManager>.section{margin-bottom:7px!important}
+#seating .applicationsManager h2{margin:0!important;font-size:17px!important}
+#seating .applicationsManager .sub{font-size:8px!important;line-height:1.55!important}
+#seating .seatingBuilderGrid{grid-template-columns:245px minmax(0,1fr)!important;gap:9px!important;align-items:start!important}
+#seating .unseatedPanel,#seating .classroomCard{border-radius:17px!important}
+#seating .unseatedPanel{padding:10px!important}
+#seating .unseatedPanel .section{margin-bottom:6px!important}
+#seating .unseatedPanel .sub{display:none!important}
+#seating .seatingStudentPool{padding-top:5px!important;gap:5px!important}
+#seating .unseatedStudent{min-height:39px!important;padding:6px 8px!important;border-radius:10px!important;font-size:10px!important}
+#seating .classroomCard{padding:10px!important}
+#seating .seatingRoom{min-height:520px!important;padding:12px!important;border-radius:15px!important}
+@media(max-width:1000px){#seating .mentorToolSwitch{position:static!important}#seating .seatingHero{grid-template-columns:1fr!important}#seating .seatingSelectors{grid-template-columns:1fr 1fr!important}#seating .seatingRowsBadge{grid-column:1/-1!important}#seating .seatingControlBar{grid-template-columns:1fr!important}#seating .seatingActions{justify-content:flex-start!important}#seating .seatingBuilderGrid{grid-template-columns:1fr!important}}
+@media(max-width:650px){#seating .mentorToolSwitch{grid-template-columns:1fr 1fr!important;padding:5px!important}#seating .mentorToolSwitch button{min-height:43px!important;padding:7px 8px!important;font-size:11px!important}#seating .seatingSelectors{grid-template-columns:1fr!important}#seating .seatingRowsBadge{grid-column:auto!important}}
+</style>
+<script id="MENTOR_LAYOUT_V57_SCRIPT">
+(function(){function arrangeMentorPage(){const workspace=document.querySelector('#seating .seatingWorkspace');const switcher=workspace?.querySelector('.mentorToolSwitch');if(!workspace||!switcher)return;if(workspace.firstElementChild!==switcher){workspace.insertBefore(switcher,workspace.firstElementChild);}}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',arrangeMentorPage,{once:true});}else{arrangeMentorPage();}})();
+</script>
+
+
+<style id="APP_DAYS_ONLY_V58">
+#seating .appDaysOnlyTable{width:100%!important;table-layout:fixed!important}
+#seating .appDaysOnlyTable th,
+#seating .appDaysOnlyTable td{height:58px!important;padding:10px!important;text-align:center!important;font-size:13px!important}
+#seating .appDaysOnlyTable thead th{height:42px!important}
+#seating .appDaysOnlyTable tbody th{width:24%!important;font-weight:900!important}
+#seating .appDaysOnlyTable td{cursor:pointer!important}
+#seating .appDaysOnlyTable td.filled{font-weight:900!important}
+</style>
+
+
+<style id="MENTOR_TABS_V59">
+/* صفحة مربيات الصفوف: تبويبات فقط في البداية */
+#seating.mentorLanding .seatingHero,
+#seating.mentorLanding .seatingControlBar,
+#seating.mentorLanding .applicationsManager,
+#seating.mentorLanding .seatingBuilderGrid,
+#seating.mentorLanding .seatingFollowPanel{
+  display:none!important;
+}
+
+#seating.mentorLanding .seatingWorkspace{
+  min-height:68vh!important;
+  display:grid!important;
+  place-items:center!important;
+}
+
+#seating.mentorLanding .mentorToolSwitch{
+  width:min(900px,92vw)!important;
+  position:static!important;
+  margin:auto!important;
+  padding:18px!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:18px!important;
+  border:1px solid #E7E1E3!important;
+  border-radius:30px!important;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(14,122,126,.08),transparent 28%),
+    radial-gradient(circle at 85% 15%,rgba(138,21,56,.08),transparent 30%),
+    linear-gradient(180deg,#FFFFFF,#FBFCFC)!important;
+  box-shadow:0 22px 60px rgba(34,54,58,.10)!important;
+}
+
+#seating.mentorLanding .mentorToolSwitch button{
+  min-height:180px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:14px!important;
+  border-radius:24px!important;
+  border:1px solid #E1E8E7!important;
+  background:linear-gradient(180deg,#FFFFFF,#F7FAFA)!important;
+  font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;
+  font-size:24px!important;
+  font-weight:900!important;
+  color:#294B4E!important;
+  box-shadow:
+    0 10px 24px rgba(35,64,66,.08),
+    inset 0 1px 0 rgba(255,255,255,.9)!important;
+  transition:.22s ease!important;
+}
+
+#seating.mentorLanding .mentorToolSwitch button:hover{
+  transform:translateY(-5px) scale(1.015)!important;
+  box-shadow:0 18px 34px rgba(35,64,66,.13)!important;
+}
+
+#seating.mentorLanding .mentorToolSwitch button span{
+  width:72px!important;
+  height:72px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:22px!important;
+  font-size:34px!important;
+  line-height:1!important;
+  background:linear-gradient(180deg,#F1FAF9,#E7F4F3)!important;
+  color:#0E7A7E!important;
+  border:1px solid #D9E9E7!important;
+  box-shadow:0 8px 18px rgba(14,122,126,.10)!important;
+}
+
+#seating.mentorLanding .mentorToolSwitch button[data-mentor-tool="apps"] span{
+  background:linear-gradient(180deg,#FBF2F5,#F6E7EC)!important;
+  color:#8A1538!important;
+  border-color:#EDD7DE!important;
+  box-shadow:0 8px 18px rgba(138,21,56,.10)!important;
+}
+
+#seating .appMaterialsEmpty{
+  padding:16px 10px!important;
+  border:1px dashed #CFE1DE!important;
+  border-radius:14px!important;
+  background:#F6FBFA!important;
+  color:#467275!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  text-align:center!important;
+}
+
+@media(max-width:700px){
+  #seating.mentorLanding .mentorToolSwitch{
+    grid-template-columns:1fr!important;
+  }
+  #seating.mentorLanding .mentorToolSwitch button{
+    min-height:130px!important;
+    font-size:20px!important;
+  }
+}
+</style>
+
+<script id="MENTOR_LANDING_V59">
+(function(){
+  function mentorLanding(){
+    const root=document.getElementById("seating");
+    if(!root)return;
+    root.classList.add("mentorLanding");
+    root.classList.remove("mentorApps","mentorSeating","mentorActive");
+    root.querySelectorAll("[data-mentor-tool]").forEach(btn=>btn.classList.remove("active"));
+  }
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",mentorLanding,{once:true});
+  }else{
+    mentorLanding();
+  }
+})();
+</script>
+
+
+<style id="SEATING_APPS_LUX_V60">
+/* ===== كروكي الصف — واجهة المعلمة/المربية ===== */
+#seating .classroomCard{
+  border:1px solid #DDE8E6!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(circle at 8% 5%,rgba(14,122,126,.05),transparent 24%),
+    linear-gradient(180deg,#FFFFFF,#FBFDFD)!important;
+  box-shadow:0 18px 40px rgba(36,57,58,.08),0 3px 9px rgba(36,57,58,.04)!important;
+}
+#seating .seatingRoom{
+  border:1px solid #E2ECEA!important;
+  border-radius:21px!important;
+  background:
+    linear-gradient(rgba(14,122,126,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(14,122,126,.035) 1px,transparent 1px),
+    linear-gradient(180deg,#FCFEFE,#F6FAF9)!important;
+  background-size:28px 28px,28px 28px,100% 100%!important;
+  box-shadow:inset 0 1px 0 #fff!important;
+}
+#seating .classBoard{
+  width:72%!important;
+  min-height:48px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+  border-radius:16px!important;
+  background:linear-gradient(145deg,#0E7A7E,#0A6064)!important;
+  color:#fff!important;
+  font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;
+  font-size:14px!important;
+  font-weight:900!important;
+  box-shadow:0 10px 24px rgba(11,99,103,.20),inset 0 1px 0 rgba(255,255,255,.20)!important;
+}
+#seating .teacherDeskFixture,
+#seating .doorFixture{
+  border-radius:14px!important;
+  min-height:37px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-weight:900!important;
+  box-shadow:0 6px 14px rgba(35,64,66,.06)!important;
+}
+#seating .classSeatRow{gap:7px!important}
+#seating .seat,
+#seating .classSeat,
+#seating [data-seat-id]{
+  border-radius:14px!important;
+}
+#seating .occupiedSeat,
+#seating .seatStudent{
+  box-shadow:0 7px 15px rgba(35,64,66,.07)!important;
+}
+
+/* ===== كروكي الصف — ولي الأمر ===== */
+#studentPortal .ppSeatingMeta{
+  margin-bottom:12px!important;
+  padding:11px 14px!important;
+  border:1px solid #DDE9E7!important;
+  border-radius:15px!important;
+  background:linear-gradient(135deg,#F5FBFA,#FFF)!important;
+  color:#506A6D!important;
+  font-size:10px!important;
+  line-height:1.9!important;
+  box-shadow:0 6px 16px rgba(35,64,66,.05)!important;
+}
+#studentPortal .ppSeatingMeta strong{
+  color:#0D7074!important;
+  font-size:11px!important;
+}
+#studentPortal .ppSeatingCard{
+  overflow:hidden!important;
+  padding:12px!important;
+  border:1px solid #DFE9E7!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(14,122,126,.055),transparent 28%),
+    linear-gradient(180deg,#FFF,#F8FBFA)!important;
+  box-shadow:0 16px 34px rgba(35,64,66,.08)!important;
+}
+#studentPortal .parentSeatingRoom{
+  overflow:auto!important;
+  padding:10px!important;
+  border:1px solid #E8EFED!important;
+  border-radius:17px!important;
+  background:#FCFEFE!important;
+}
+#studentPortal .parentSeatingRoom .classBoard{
+  border-radius:13px!important;
+  background:linear-gradient(145deg,#0E787C,#0B6165)!important;
+  color:#fff!important;
+  box-shadow:0 8px 18px rgba(13,112,116,.18)!important;
+}
+#studentPortal .parentSeatingRoom .seat,
+#studentPortal .parentSeatingRoom .classSeat,
+#studentPortal .parentSeatingRoom [data-seat-id]{
+  border-radius:12px!important;
+}
+#studentPortal .parentSeatingRoom .parentOwnSeat,
+#studentPortal .parentSeatingRoom .ownSeat{
+  outline:2px solid #C7A052!important;
+  outline-offset:2px!important;
+  box-shadow:0 8px 18px rgba(138,21,56,.12)!important;
+}
+
+/* ===== جدول التطبيقات — المعلمة/المربية + ولي الأمر ===== */
+#seating .applicationsManager{
+  border:1px solid #DDE8E6!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(14,122,126,.05),transparent 26%),
+    radial-gradient(circle at 92% 5%,rgba(138,21,56,.045),transparent 25%),
+    linear-gradient(180deg,#FFFFFF,#FBFCFC)!important;
+  box-shadow:0 16px 34px rgba(35,64,66,.07)!important;
+}
+.appScheduleWrap{
+  overflow:auto!important;
+  border:1px solid #E2EAE8!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  box-shadow:0 8px 20px rgba(35,64,66,.045)!important;
+}
+.appScheduleTable{
+  min-width:0!important;
+  width:100%!important;
+  border-collapse:separate!important;
+  border-spacing:0!important;
+  overflow:hidden!important;
+  font-family:"Tajawal","Readex Pro","Noto Kufi Arabic",sans-serif!important;
+}
+.appScheduleTable th,
+.appScheduleTable td{
+  border:0!important;
+  border-bottom:1px solid #E8EFED!important;
+  border-left:1px solid #EDF2F1!important;
+}
+.appScheduleTable thead th{
+  padding:13px 10px!important;
+  background:linear-gradient(180deg,#0F7C80,#0B676B)!important;
+  color:#FFF!important;
+  font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  letter-spacing:.1px!important;
+}
+.appScheduleTable tbody th{
+  padding:12px 10px!important;
+  background:linear-gradient(180deg,#F4FAF9,#EDF6F5)!important;
+  color:#1B686B!important;
+  font-size:12px!important;
+  font-weight:900!important;
+}
+.appScheduleTable tbody td{
+  min-height:52px!important;
+  padding:12px 10px!important;
+  background:#FFF!important;
+  color:#5C456E!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  transition:.16s ease!important;
+}
+.appScheduleTable tbody tr:last-child th,
+.appScheduleTable tbody tr:last-child td{border-bottom:0!important}
+.appScheduleTable tbody td.filled{
+  background:linear-gradient(145deg,#FBF3F6,#F5EDF7)!important;
+  color:#7A2345!important;
+  box-shadow:inset 0 0 0 1px rgba(138,21,56,.045)!important;
+}
+#seating .appScheduleTable tbody td:hover{
+  background:#F4FAF9!important;
+  transform:translateY(-1px)!important;
+}
+#seating .appMaterials{
+  border:1px solid #D8E8E5!important;
+  border-radius:18px!important;
+  background:linear-gradient(180deg,#F8FCFB,#F0F8F7)!important;
+  box-shadow:0 10px 22px rgba(14,122,126,.07)!important;
+}
+#seating .appMaterials>strong{
+  color:#0D696D!important;
+  font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;
+  font-size:14px!important;
+}
+#seating .appSubjects button{
+  min-height:40px!important;
+  border:1px solid #D7E7E4!important;
+  border-radius:13px!important;
+  background:linear-gradient(180deg,#FFF,#F6FAF9)!important;
+  color:#225E62!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  box-shadow:0 5px 12px rgba(35,64,66,.055)!important;
+}
+#seating .appSubjects button:hover{
+  transform:translateY(-2px)!important;
+  border-color:#9EC9C5!important;
+  box-shadow:0 9px 18px rgba(35,64,66,.09)!important;
+}
+
+/* جدول التطبيقات داخل بوابة ولي الأمر */
+#studentPortal .ppApplicationsContent{
+  padding:4px!important;
+}
+#studentPortal .ppApplicationsContent .appScheduleWrap{
+  border-radius:18px!important;
+  box-shadow:0 10px 24px rgba(35,64,66,.065)!important;
+}
+#studentPortal .ppApplicationsContent .appScheduleTable{
+  font-size:10px!important;
+}
+#studentPortal .ppApplicationsContent .appScheduleTable thead th{
+  padding:11px 7px!important;
+  font-size:10px!important;
+}
+#studentPortal .ppApplicationsContent .appScheduleTable tbody th,
+#studentPortal .ppApplicationsContent .appScheduleTable tbody td{
+  padding:11px 7px!important;
+  font-size:10px!important;
+}
+@media(max-width:650px){
+  #studentPortal .ppSeatingCard{padding:8px!important;border-radius:18px!important}
+  #studentPortal .parentSeatingRoom{padding:6px!important}
+  #studentPortal .ppApplicationsContent .appScheduleTable thead th,
+  #studentPortal .ppApplicationsContent .appScheduleTable tbody th,
+  #studentPortal .ppApplicationsContent .appScheduleTable tbody td{
+    padding:9px 5px!important;
+    font-size:9px!important;
+  }
+}
+</style>
+
+
+<style id="WEEKLY_STAR_ARCHIVE_V61">
+#studentPortal .ppCertificate{position:relative!important}
+#studentPortal .ppStarArchiveBadge{
+  position:absolute!important;
+  top:14px!important;
+  left:14px!important;
+  z-index:2!important;
+  padding:5px 9px!important;
+  border:1px solid #D9E7E4!important;
+  border-radius:999px!important;
+  background:rgba(247,251,250,.96)!important;
+  color:#547174!important;
+  font-size:8px!important;
+  font-weight:900!important;
+}
+#studentPortal .currentStarCertificate{
+  box-shadow:0 14px 34px rgba(138,21,56,.10),0 3px 10px rgba(35,64,66,.05)!important;
+}
+#studentPortal .currentStarCertificate .ppCertStar{
+  filter:drop-shadow(0 8px 14px rgba(199,160,82,.20))!important;
+}
+</style>
+
+<style id="PARENT_SMART_SYSTEM_V62">
+#studentPortal .ppSmartHub{display:grid;gap:9px;margin:10px 0 14px}.ppWhatsNewCard{width:100%;display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:9px;padding:11px;border:1px solid #DCE9E7;border-radius:16px;background:linear-gradient(135deg,#F2FAF9,#FFF);text-align:right;color:#35585B;box-shadow:0 7px 18px rgba(35,64,66,.06);cursor:pointer}.ppSmartIcon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#E5F3F1;font-size:18px}.ppWhatsNewCard strong{display:block;font-family:"El Messiri";font-size:11px}.ppWhatsNewCard small{display:block;color:#7A8B8D;font-size:7px}.ppWhatsNewCard b{min-width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:#8A1538;color:#fff;font-size:9px}.ppWhatsNewPanel,.ppWeekNowCard,.ppProgressCard,.ppAchievementsCard{padding:10px;border:1px solid #E2E9E8;border-radius:15px;background:#fff;box-shadow:0 5px 14px rgba(35,64,66,.045)}.ppUpdateLine{display:grid;grid-template-columns:25px 1fr;gap:7px;padding:7px;border-bottom:1px solid #EEF1F0}.ppUpdateLine strong{display:block;font-size:8px}.ppUpdateLine small{display:block;font-size:6.5px;color:#899}.ppSmartHead{display:flex;justify-content:space-between;margin-bottom:7px}.ppSmartHead strong{font-family:"El Messiri";font-size:10px}.ppSmartHead span{font-size:6.5px;color:#999}.ppWeekNowContent{display:grid;grid-template-columns:1fr 1fr;gap:6px}.ppWeekNowContent>div{padding:8px;border-radius:10px;background:#F7FAF9}.ppWeekNowContent span{display:block;font-size:6.5px;color:#788}.ppWeekNowContent b{display:block;margin-top:3px;font-size:7.5px;color:#435B5E}.ppProgressRow{display:grid;grid-template-columns:105px 1fr 30px;gap:7px;align-items:center;margin:7px 0}.ppProgressRow>div:first-child{display:flex;justify-content:space-between}.ppProgressRow strong,.ppProgressRow span,.ppProgressRow small{font-size:6.5px}.ppProgressTrack{height:7px;border-radius:999px;background:#EDF2F1;overflow:hidden}.ppProgressTrack i{display:block;height:100%;background:linear-gradient(90deg,#0E7A7E,#65B5A7)}.great{color:#287458}.stable{color:#98741E}.watch{color:#9B4052}.ppAchievementChips{display:flex;gap:5px;flex-wrap:wrap}.ppAchievementChips span{padding:6px 8px;border-radius:999px;background:#FFF8E8;border:1px solid #EAD9A8;color:#765D25;font-size:7px;font-weight:800}.ppPinnedImportant{padding:11px;border:1px solid #E6D4A4;border-radius:15px;background:#FFF9E9}.ppPinnedImportant strong{font-size:9px;color:#795E24}.ppPinnedImportant p{font-size:7.5px;line-height:1.8}.ppParentReportBtn{min-height:42px;border:0;border-radius:14px;background:linear-gradient(145deg,#8A1538,#6F102D);color:#fff;font-family:"El Messiri";font-weight:900}.ppOwnSeatLegend{width:max-content;margin:0 auto 8px;padding:6px 11px;border-radius:999px;background:#FFF8E5;border:1px solid #E5CF91;color:#76591D;font-size:8px}.ownParentSeat{outline:3px solid #C7A052!important;box-shadow:0 0 0 6px rgba(199,160,82,.14),0 10px 22px rgba(138,21,56,.15)!important;animation:ppSeatGlow 1.8s infinite}@keyframes ppSeatGlow{50%{box-shadow:0 0 0 9px rgba(199,160,82,.07),0 12px 25px rgba(138,21,56,.18)}}.ppAppStatus{display:inline-block;padding:3px 5px;border-radius:999px;font-size:6px}.ppAppStatus.today{background:#F8E8EE;color:#8A1538}.ppAppStatus.upcoming{background:#E7F5F3;color:#0E7276}.ppAppStatus.done{background:#F0F2F1;color:#7B8586}#teacher .agendaPinToggle{display:flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid #E6DDBF;border-radius:11px;background:#FFF9EA;color:#725A25;font-size:9px;font-weight:800}#teacher .agendaPinToggle input{accent-color:#8A1538}
+</style><style id="SMART_DRAWER_V63">
+#studentPortal .ppSmartDrawerToggle{
+  width:100%!important;min-height:39px!important;padding:8px 13px!important;
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  border:1px solid #DDE8E6!important;border-radius:13px!important;
+  background:linear-gradient(180deg,#FFFFFF,#F6FAF9)!important;
+  color:#426164!important;font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;
+  font-size:9px!important;font-weight:900!important;cursor:pointer!important;
+  box-shadow:0 5px 13px rgba(35,64,66,.045)!important;
+}
+#studentPortal .ppSmartDrawerToggle b{font-size:17px!important;color:#0E7A7E!important;line-height:1!important}
+#studentPortal .ppSmartDrawer{display:grid;gap:9px}
+#studentPortal .ppSmartDrawer[hidden]{display:none!important}
+</style>
+<style id="ACTIVITY_EXCEL_ADMIN_V64">
+#admin .activityExcelHero{border-color:#DCE8E6!important;background:radial-gradient(circle at 10% 5%,rgba(14,122,126,.05),transparent 28%),linear-gradient(180deg,#FFF,#FBFDFC)!important}
+#admin .activityExcelFilters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}
+#admin .activityExcelConfig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:8px 0}
+#admin .activityExcelFilters label,#admin .activityExcelConfig label,#admin .activityExcelManual label,#admin .wordingGrid label{display:flex;flex-direction:column;gap:6px}
+#admin .activityExcelFilters span,#admin .activityExcelConfig span,#admin .activityExcelManual span,#admin .wordingGrid span{font-size:9px;font-weight:900;color:#475B5E}
+#admin .activityExcelFilters input,#admin .activityExcelFilters select,#admin .activityExcelConfig input,#admin .activityExcelManual textarea,#admin .wordingGrid textarea{width:100%;border:1px solid #D9E4E2;border-radius:12px;padding:10px;background:#fff;outline:none}
+#admin .activityExcelManual{margin:10px 0}
+#admin .activityExcelActions{margin-top:11px}
+#admin .wordingGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+#admin .wordingGrid textarea{min-height:190px;line-height:1.8;resize:vertical}
+.activityExcelPreview{overflow:auto}
+.activityPreviewWrap{overflow:auto;border:1px solid #E1E8E7;border-radius:14px;background:#fff}
+.activityPreviewTable{min-width:1200px!important;font-size:8px!important}
+.activityPreviewTable th{background:#0F7477!important;color:#fff!important;white-space:normal!important;min-width:82px!important}
+.activityPreviewTable td{background:#fff!important}
+.activityPreviewTable .activityNameCell{min-width:210px!important;text-align:right!important;font-weight:900!important;color:#6A2140!important}
+.activityPrintTitle{text-align:center;margin-bottom:12px}.activityPrintTitle h1{margin:0;color:#8A1538;font-family:"El Messiri";font-size:22px}.activityPrintTitle div{margin-top:4px;font-weight:800;color:#35575A}.activityPrintTitle small{display:block;margin-top:4px;color:#738083}
+#activityPrint{display:none}
+@media(max-width:950px){#admin .activityExcelFilters{grid-template-columns:1fr 1fr}#admin .activityExcelConfig{grid-template-columns:1fr}#admin .wordingGrid{grid-template-columns:1fr}}
+@media print{
+  body.print-activity-excel>*{display:none!important}
+  body.print-activity-excel #activityPrint{display:block!important;direction:rtl;background:#fff;color:#222}
+  body.print-activity-excel #activityPrint .activityPreviewWrap{overflow:visible!important;border:0!important}
+  body.print-activity-excel #activityPrint table{width:100%!important;min-width:0!important;font-size:6.5pt!important}
+  body.print-activity-excel #activityPrint th,body.print-activity-excel #activityPrint td{padding:4px!important;border:1px solid #bbb!important}
+  @page{size:A4 landscape;margin:7mm}
+}
+</style>
+
+
+<style id="ACTIVITY_TEACHER_FLOW_V65">
+.topTabs .activityTopTab{padding-inline:20px!important}
+#activityExcelHub{padding-top:0!important}
+.activityHubShell{width:min(1180px,100%);margin:0 auto}
+.activityFlowStep{display:none}
+.activityFlowStep.active{display:block}
+.activityFlowHero{min-height:250px;display:flex;align-items:center;justify-content:center;gap:22px;padding:35px;border:1px solid #E5DFE1;border-radius:30px;background:radial-gradient(circle at 15% 15%,rgba(14,122,126,.07),transparent 28%),radial-gradient(circle at 85% 10%,rgba(138,21,56,.08),transparent 30%),linear-gradient(180deg,#FFF,#FBFCFC);box-shadow:0 20px 48px rgba(36,49,52,.09)}
+.activityFlowIcon{width:100px;height:100px;display:grid;place-items:center;border-radius:28px;background:linear-gradient(145deg,#F9EEF2,#F2E1E7);font-size:46px;box-shadow:0 12px 24px rgba(138,21,56,.11)}
+.activityFlowHero small{font-size:13px;color:#8A1538;font-weight:900}.activityFlowHero h1{margin:5px 0;font-family:"El Messiri";font-size:30px;color:#2F4D50}.activityFlowHero p{margin:0;color:#7D8B8D;font-size:13px}
+.activityTeacherPicker{width:min(640px,92%);margin:-32px auto 0;position:relative;z-index:2;padding:20px;border:1px solid #E0E7E5;border-radius:22px;background:#fff;box-shadow:0 16px 34px rgba(35,64,66,.10);display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
+.activityTeacherPicker label{display:grid;gap:7px}.activityTeacherPicker label span{font-size:11px;font-weight:900;color:#4E6467}.activityTeacherPicker select{min-height:46px;border:1px solid #D8E3E1;border-radius:13px;padding:9px 12px;background:#fff;font-size:13px}
+.activityFlowBar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:14px;padding:16px 18px;border:1px solid #E1E8E7;border-radius:20px;background:#fff;box-shadow:0 8px 20px rgba(35,64,66,.055)}
+.activityFlowBar h2{margin:5px 0 2px;font-family:"El Messiri";font-size:22px;color:#334F52}.activityFlowBar p{margin:0;color:#879496;font-size:10px}.activityBackBtn{border:0;background:transparent;color:#8A1538;font-weight:900;cursor:pointer;padding:0;font-size:11px}
+.activityClassCards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.activityClassCard{min-height:170px;padding:18px;border:1px solid #DEE7E5;border-radius:23px;background:linear-gradient(180deg,#FFF,#F7FAF9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;cursor:pointer;box-shadow:0 10px 24px rgba(35,64,66,.06);transition:.2s}
+.activityClassCard:hover{transform:translateY(-4px);box-shadow:0 17px 30px rgba(35,64,66,.11)}.activityClassCard.saved{border-color:#BDDCD6;background:linear-gradient(180deg,#FFF,#F2FAF8)}
+.activityClassCardIcon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#E8F5F3;color:#0E7478;font-size:25px}.activityClassCard strong{font-family:"El Messiri";font-size:18px;color:#35575A}.activityClassCard small{font-size:10px;color:#7D8D8F}.activityClassCard em{margin-top:5px;font-style:normal;font-size:9px;font-weight:900;color:#8A1538}
+.activityExcelFiltersDetail{grid-template-columns:1fr 1fr!important}
+#activityDetailStep>.card{margin-bottom:14px}
+@media(max-width:800px){.activityClassCards{grid-template-columns:1fr 1fr}.activityFlowHero{min-height:210px;padding:25px}.activityFlowHero h1{font-size:24px}.activityTeacherPicker{grid-template-columns:1fr}.activityFlowIcon{width:78px;height:78px;font-size:36px}}
+@media(max-width:520px){.activityClassCards{grid-template-columns:1fr}.activityFlowHero{flex-direction:column;text-align:center}.activityFlowBar{align-items:flex-start}.activityExcelFiltersDetail{grid-template-columns:1fr!important}}
+</style>
+
+
+<style id="ACTIVITY_LIVE_TABLE_V66">
+#activityDetailStep .activityExcelHero{
+  padding:18px 20px!important;
+  border-radius:24px!important;
+  border:1px solid #DDE8E6!important;
+  background:
+    radial-gradient(circle at 92% 3%,rgba(138,21,56,.045),transparent 24%),
+    radial-gradient(circle at 8% 5%,rgba(14,122,126,.055),transparent 27%),
+    linear-gradient(180deg,#FFFFFF,#FBFDFC)!important;
+  box-shadow:0 14px 34px rgba(35,64,66,.075)!important;
+}
+#activityDetailStep .activityExcelFiltersDetail{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(220px,1fr))!important;
+  gap:12px!important;
+  margin:0 0 12px!important;
+}
+#activityDetailStep .activityExcelConfig{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(180px,1fr))!important;
+  gap:12px!important;
+  margin:0 0 12px!important;
+}
+#activityDetailStep .activityExcelFiltersDetail label,
+#activityDetailStep .activityExcelConfig label{
+  padding:10px 12px!important;
+  border:1px solid #E3EAE8!important;
+  border-radius:15px!important;
+  background:#FFFFFF!important;
+  box-shadow:0 4px 12px rgba(35,64,66,.035)!important;
+}
+#activityDetailStep .activityExcelFiltersDetail span,
+#activityDetailStep .activityExcelConfig span{
+  display:block!important;
+  margin-bottom:6px!important;
+  color:#496164!important;
+  font-size:10px!important;
+  font-weight:900!important;
+}
+#activityDetailStep input[type="date"],
+#activityDetailStep input[type="number"]{
+  width:100%!important;
+  min-height:42px!important;
+  padding:8px 10px!important;
+  border:1px solid #D8E3E1!important;
+  border-radius:11px!important;
+  background:#FAFCFC!important;
+  color:#2F474A!important;
+  font-size:13px!important;
+  font-weight:800!important;
+  outline:none!important;
+  direction:ltr!important;
+  text-align:left!important;
+  font-variant-numeric:tabular-nums!important;
+}
+#activityDetailStep .activityExcelManual{
+  margin:0 0 12px!important;
+}
+#activityDetailStep .activityExcelManual label{
+  display:block!important;
+  padding:10px 12px!important;
+  border:1px solid #E3EAE8!important;
+  border-radius:15px!important;
+  background:#FFF!important;
+}
+#activityDetailStep .activityExcelManual textarea{
+  width:100%!important;
+  min-height:88px!important;
+  max-height:120px!important;
+  padding:10px 12px!important;
+  border:1px solid #D9E4E2!important;
+  border-radius:11px!important;
+  background:#FBFCFC!important;
+  resize:vertical!important;
+  line-height:1.8!important;
+}
+#activityDetailStep .activityExcelActions{
+  display:flex!important;
+  justify-content:flex-start!important;
+  gap:9px!important;
+  flex-wrap:wrap!important;
+  margin-top:10px!important;
+}
+#activityDetailStep .activityExcelPreview{
+  overflow:auto!important;
+  max-height:560px!important;
+  border:1px solid #DCE6E4!important;
+  border-radius:20px!important;
+  background:#FFF!important;
+  box-shadow:inset 0 1px 0 #fff,0 8px 20px rgba(35,64,66,.05)!important;
+}
+#activityDetailStep .activityPreviewWrap{
+  min-width:max-content!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+#activityDetailStep .activityPreviewTable{
+  border-collapse:separate!important;
+  border-spacing:0!important;
+  min-width:1300px!important;
+  width:max-content!important;
+  table-layout:fixed!important;
+  direction:rtl!important;
+  font-variant-numeric:tabular-nums!important;
+}
+#activityDetailStep .activityPreviewTable th{
+  position:sticky!important;
+  top:0!important;
+  z-index:4!important;
+  min-width:96px!important;
+  height:62px!important;
+  padding:8px 7px!important;
+  border-left:1px solid rgba(255,255,255,.15)!important;
+  border-bottom:2px solid #C7A052!important;
+  background:linear-gradient(180deg,#0E777B,#0A6367)!important;
+  color:#FFF!important;
+  font-family:"El Messiri","Noto Kufi Arabic",sans-serif!important;
+  font-size:9px!important;
+  font-weight:900!important;
+  line-height:1.55!important;
+  text-align:center!important;
+  white-space:normal!important;
+}
+#activityDetailStep .activityPreviewTable th.nameHead{
+  min-width:245px!important;
+  background:linear-gradient(180deg,#8A1538,#70102D)!important;
+}
+#activityDetailStep .activityPreviewTable th.numberHead{min-width:48px!important;width:48px!important}
+#activityDetailStep .activityPreviewTable th.avgHead{
+  min-width:125px!important;
+  background:linear-gradient(180deg,#8A1538,#6F102D)!important;
+}
+#activityDetailStep .activityPreviewTable th.manualHead{
+  min-width:120px!important;
+  background:linear-gradient(180deg,#A27A24,#80601C)!important;
+}
+#activityDetailStep .activityPreviewTable td{
+  height:44px!important;
+  padding:7px 8px!important;
+  border-left:1px solid #E2E8E7!important;
+  border-bottom:1px solid #E4EAE9!important;
+  background:#FFF!important;
+  color:#364D50!important;
+  font-size:9px!important;
+  font-weight:700!important;
+  text-align:center!important;
+  font-variant-numeric:tabular-nums!important;
+}
+#activityDetailStep .activityPreviewTable tbody tr:nth-child(even) td{
+  background:#FAFCFB!important;
+}
+#activityDetailStep .activityNameCell{
+  position:sticky!important;
+  right:48px!important;
+  z-index:2!important;
+  min-width:245px!important;
+  background:#FFF7EA!important;
+  color:#641831!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  text-align:right!important;
+  box-shadow:-5px 0 10px rgba(42,55,58,.035)!important;
+}
+#activityDetailStep .activityNumberCell{
+  position:sticky!important;
+  right:0!important;
+  z-index:3!important;
+  width:48px!important;
+  min-width:48px!important;
+  background:#F3F8F7!important;
+  color:#0C6D71!important;
+  font-weight:900!important;
+}
+#activityDetailStep .activityAverageCell{
+  background:#FAEDF2!important;
+  color:#7B1737!important;
+  font-weight:900!important;
+}
+#activityDetailStep .activityProjectCell{
+  background:#EDF7F5!important;
+  color:#0D696D!important;
+  font-weight:900!important;
+}
+#activityDetailStep .activityManualCell{
+  background:#FFF8DF!important;
+  min-width:115px!important;
+}
+#activityDetailStep .activityLiveEmpty{
+  min-height:220px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  color:#6D8082!important;
+}
+#activityDetailStep .activityLiveEmpty span{font-size:34px!important}
+#activityDetailStep .activityLiveEmpty strong{
+  font-family:"El Messiri"!important;
+  font-size:16px!important;
+  color:#36595C!important;
+}
+#activityDetailStep .activityLiveEmpty small{font-size:10px!important}
+@media(max-width:820px){
+  #activityDetailStep .activityExcelFiltersDetail,
+  #activityDetailStep .activityExcelConfig{grid-template-columns:1fr!important}
+  #activityDetailStep .activityPreviewTable{min-width:1150px!important}
+}
+</style>
+
+
+<style id="ACTIVITY_CUMULATIVE_V67">
+#activityDetailStep .activityTableToolbar{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;
+  margin-bottom:14px!important;padding:14px 16px!important;border:1px solid #DDE7E5!important;border-radius:20px!important;
+  background:linear-gradient(180deg,#FFF,#F8FBFA)!important;box-shadow:0 8px 20px rgba(35,64,66,.055)!important;
+}
+#activityDetailStep .activityTableInfo strong{display:block!important;font-family:"El Messiri"!important;font-size:17px!important;color:#314F52!important}
+#activityDetailStep .activityTableInfo span{display:block!important;margin-top:3px!important;font-size:9px!important;color:#7B8B8D!important}
+#activityDetailStep .activityLiveTableCard{padding:14px!important;border:1px solid #DDE8E6!important;border-radius:23px!important;background:#FFF!important;box-shadow:0 14px 30px rgba(35,64,66,.065)!important}
+#activityDetailStep .activityManualInput{
+  width:100%!important;min-width:92px!important;min-height:32px!important;margin:0!important;padding:6px 7px!important;
+  border:1px solid #E6D7A5!important;border-radius:8px!important;background:#FFFDF4!important;color:#4F452B!important;
+  font-family:"IBM Plex Sans Arabic","Noto Kufi Arabic",sans-serif!important;font-size:9px!important;font-weight:800!important;
+  outline:none!important;text-align:center!important;
+}
+#activityDetailStep textarea.activityManualInput{min-height:44px!important;resize:vertical!important;text-align:right!important}
+#activityDetailStep .activityManualInput:focus{border-color:#C7A052!important;box-shadow:0 0 0 3px rgba(199,160,82,.12)!important;background:#FFF!important}
+#activityDetailStep .activityPrintRange{
+  position:fixed!important;inset:0!important;z-index:9999!important;display:grid!important;place-items:center!important;
+  padding:20px!important;background:rgba(26,39,41,.38)!important;backdrop-filter:blur(7px)!important;
+}
+#activityDetailStep .activityPrintRange[hidden]{display:none!important}
+#activityDetailStep .activityPrintRangeBox{
+  width:min(620px,94vw)!important;padding:20px!important;border:1px solid #E2E8E7!important;border-radius:24px!important;
+  background:#FFF!important;box-shadow:0 28px 70px rgba(20,36,38,.20)!important;
+}
+#activityDetailStep .activityPrintRangeFields{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;margin:15px 0!important}
+#activityDetailStep .activityPrintRangeFields label{display:grid!important;gap:6px!important}
+#activityDetailStep .activityPrintRangeFields span{font-size:10px!important;font-weight:900!important;color:#465F62!important}
+#activityDetailStep .activityPrintRangeFields input{
+  width:100%!important;min-height:44px!important;padding:8px 10px!important;border:1px solid #D8E3E1!important;border-radius:12px!important;
+  background:#FAFCFC!important;direction:ltr!important;text-align:left!important;font-size:13px!important;font-weight:800!important;
+}
+#activityDetailStep .activityRangeClose{
+  width:34px!important;height:34px!important;border:1px solid #E2E8E7!important;border-radius:50%!important;background:#FFF!important;
+  color:#8A1538!important;font-size:20px!important;cursor:pointer!important;
+}
+@media(max-width:760px){
+  #activityDetailStep .activityTableToolbar{align-items:flex-start!important;flex-direction:column!important}
+  #activityDetailStep .activityPrintRangeFields{grid-template-columns:1fr!important}
+}
+</style>
+
+
+<style id="TEACHER_FIRST_SETUP_V68">
+#p-classSetup .teacherFirstSetup{display:grid;gap:14px}
+#p-classSetup .teacherSetupHero{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;padding:19px 21px;
+  border:1px solid #DFE8E6;border-radius:24px;
+  background:radial-gradient(circle at 10% 10%,rgba(14,122,126,.06),transparent 28%),radial-gradient(circle at 92% 8%,rgba(138,21,56,.055),transparent 28%),linear-gradient(180deg,#FFF,#FAFCFB);
+  box-shadow:0 13px 30px rgba(35,64,66,.07)
+}
+#p-classSetup .teacherSetupHero span{font-size:9px;font-weight:900;color:#8A1538}
+#p-classSetup .teacherSetupHero h2{margin:3px 0;font-family:"El Messiri";font-size:23px;color:#304F52}
+#p-classSetup .teacherSetupHero p{margin:0;font-size:10px;color:#7C8B8D}
+#p-classSetup .teacherSetupHeroActions{display:flex;gap:8px;flex-wrap:wrap}
+#p-classSetup .teacherAssignmentList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#p-classSetup .teacherAssignmentCard{
+  padding:16px;border:1px solid #DFE7E5;border-radius:22px;background:linear-gradient(180deg,#FFF,#FBFCFC);
+  box-shadow:0 8px 20px rgba(35,64,66,.055)
+}
+#p-classSetup .teacherAssignmentHead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+#p-classSetup .teacherIdentityBadge{display:flex;align-items:center;gap:10px}
+#p-classSetup .teacherIdentityBadge>span{
+  width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#F9EDF1,#F2E0E6);
+  color:#8A1538;font-family:"El Messiri";font-size:20px;font-weight:900
+}
+#p-classSetup .teacherIdentityBadge h3{margin:0;font-family:"El Messiri";font-size:16px;color:#35575A}
+#p-classSetup .teacherIdentityBadge p{margin:2px 0 0;font-size:8px;color:#8A9698}
+#p-classSetup .teacherAssignmentCount{padding:6px 9px;border-radius:999px;background:#EAF6F4;color:#0D7074;font-size:8px;font-weight:900}
+#p-classSetup .teacherAssignmentRows{display:grid;gap:8px}
+#p-classSetup .teacherAssignmentRow{
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(120px,.8fr) auto;gap:8px;align-items:end;
+  padding:9px;border:1px solid #E5EBEA;border-radius:14px;background:#F9FBFA
+}
+#p-classSetup .assignmentClassField{display:grid;gap:5px}
+#p-classSetup .assignmentClassField label,#p-classSetup .assignmentSubjectFixed span{font-size:7px;font-weight:900;color:#7D8B8D}
+#p-classSetup .assignmentClassField select{
+  width:100%;min-height:38px;border:1px solid #D9E3E1;border-radius:10px;background:#FFF;padding:7px 9px;font-size:10px;font-weight:800;color:#3E595C
+}
+#p-classSetup .assignmentSubjectFixed{display:grid;gap:5px}
+#p-classSetup .assignmentSubjectFixed strong{
+  min-height:38px;display:flex;align-items:center;padding:7px 9px;border:1px solid #E6DDD0;border-radius:10px;background:#FFF9EA;color:#705A2C;font-size:9px
+}
+#p-classSetup .assignmentDelete{
+  min-height:38px;padding:0 10px;border:1px solid #E7CCD4;border-radius:10px;background:#FFF3F6;color:#8A1538;font-size:8px;font-weight:900;cursor:pointer
+}
+#p-classSetup .teacherAddClassBtn{
+  width:100%;min-height:39px;margin-top:9px;border:1px dashed #BFD7D3;border-radius:12px;background:#F3FAF8;color:#0C7074;font-size:9px;font-weight:900;cursor:pointer
+}
+#p-classSetup .teacherNoAssignments{padding:14px;text-align:center;border:1px dashed #E1E7E6;border-radius:12px;color:#8A9496;font-size:8px}
+#p-classSetup .teacherSetupSummaryCard{padding:16px}
+#p-classSetup .teacherSummaryMini{min-height:92px}
+#p-classSetup .teacherSummaryClasses{margin-top:7px;color:#0D7074;font-size:8px;font-weight:800;line-height:1.8}
+@media(max-width:900px){
+  #p-classSetup .teacherAssignmentList{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  #p-classSetup .teacherSetupHero{align-items:flex-start;flex-direction:column}
+  #p-classSetup .teacherAssignmentRow{grid-template-columns:1fr}
+}
+</style>
+
+
+<style id="QUALITY_CONTROL_V69">
+#p-quality .qualityControlShell{display:grid;gap:14px}
+#p-quality .qualityHero{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid #DEE7E5;border-radius:24px;
+  background:radial-gradient(circle at 10% 8%,rgba(14,122,126,.06),transparent 26%),radial-gradient(circle at 90% 8%,rgba(138,21,56,.055),transparent 28%),linear-gradient(180deg,#FFF,#FAFCFB);
+  box-shadow:0 12px 28px rgba(35,64,66,.065)
+}
+#p-quality .qualityHero>div:first-child>span{font-size:9px;font-weight:900;color:#8A1538}
+#p-quality .qualityHero h2{margin:3px 0;font-family:"El Messiri";font-size:24px;color:#315154}
+#p-quality .qualityHero p{margin:0;font-size:10px;color:#7B8A8C}
+#p-quality .qualityHeroTools{display:flex;align-items:end;gap:8px;flex-wrap:wrap}
+#p-quality .qualityHeroTools label{display:grid;gap:5px}
+#p-quality .qualityHeroTools label span{font-size:8px;font-weight:900;color:#586B6E}
+#p-quality .qualityHeroTools select{min-height:39px;border:1px solid #D8E3E1;border-radius:10px;padding:7px 9px;background:#FFF;font-size:9px}
+#p-quality .qualityLegend{display:flex;gap:8px;flex-wrap:wrap}
+#p-quality .qLegend{padding:7px 10px;border-radius:999px;font-size:8px;font-weight:900;border:1px solid transparent}
+#p-quality .qDone{background:#EAF7EF!important;color:#24714E!important;border-color:#CBE6D6!important}
+#p-quality .qPartial{background:#FFF6D9!important;color:#8A6B16!important;border-color:#EEDC9B!important}
+#p-quality .qMissing{background:#FCE8EC!important;color:#9A2A43!important;border-color:#F0CAD4!important}
+#p-quality .qualityKpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+#p-quality .qualityKpi{padding:13px;border:1px solid #E1E8E7;border-radius:16px;background:#FFF;text-align:center;box-shadow:0 5px 14px rgba(35,64,66,.04)}
+#p-quality .qualityKpi span{display:block;font-size:7px;color:#7D8D8F}.qualityKpi b{display:block;margin-top:3px;font-size:20px;color:#315457}
+#p-quality .qualityTableWrap{overflow:auto;border:1px solid #DFE7E5;border-radius:19px;background:#FFF;box-shadow:0 8px 20px rgba(35,64,66,.05)}
+#p-quality .qualityTable{width:100%;min-width:1050px;border-collapse:separate;border-spacing:0}
+#p-quality .qualityTable th{padding:11px 8px;background:linear-gradient(180deg,#0F777B,#0B6468);color:#FFF;font-family:"El Messiri";font-size:9px;border-left:1px solid rgba(255,255,255,.12);position:sticky;top:0;z-index:2}
+#p-quality .qualityTable td{padding:9px 8px;border-bottom:1px solid #E6ECEB;border-left:1px solid #EDF1F0;text-align:center;font-size:8px;color:#465D60}
+#p-quality .qualityTeacherName strong{font-family:"El Messiri";font-size:10px;color:#6B1A37}
+#p-quality .qualityStatus{min-width:88px;padding:7px 5px;border-radius:12px}
+#p-quality .qualityStatus strong{display:block;font-size:13px}.qualityStatus span{display:block;font-size:7px;font-weight:900}.qualityStatus small{display:block;margin-top:2px;font-size:6px}
+#p-quality .qualityOverall{width:58px;height:58px;margin:auto;display:grid;place-items:center;border-radius:50%;border:1px solid transparent}
+#p-quality .qualityOverall b{font-size:12px}
+#p-quality .qualityDetailsBtn{min-height:32px;padding:0 10px;border:1px solid #D7E4E2;border-radius:10px;background:#FFF;color:#0D6F73;font-size:8px;font-weight:900;cursor:pointer}
+#p-quality .qualityDetails{padding:14px;border:1px solid #DFE7E5;border-radius:20px;background:#FFF;box-shadow:0 10px 25px rgba(35,64,66,.07)}
+#p-quality .qualityDetailsHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.qualityDetailsHead strong{display:block;font-family:"El Messiri";font-size:15px;color:#315457}.qualityDetailsHead span{font-size:8px;color:#899596}.qualityDetailsHead button{width:31px;height:31px;border:1px solid #E4D9DC;border-radius:50%;background:#FFF;color:#8A1538;font-size:18px}
+#p-quality .qualityDetailGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.qualityDetailGrid section{padding:10px;border:1px solid #E6ECEB;border-radius:14px;background:#FAFCFB;max-height:260px;overflow:auto}.qualityDetailGrid h3{margin:0 0 7px;font-size:9px;color:#6B1A37}.qualityDetailGrid section>div{padding:6px 0;border-bottom:1px solid #EDF1F0;font-size:7px}.qualityAllDone{color:#24714E;font-weight:900;font-size:8px}
+@media(max-width:800px){#p-quality .qualityHero{align-items:flex-start;flex-direction:column}#p-quality .qualityKpis{grid-template-columns:1fr 1fr}#p-quality .qualityDetailGrid{grid-template-columns:1fr}}
+</style>
+
+
+<style id="ARCHIVE_BANK_V70">
+#p-archiveBank .archiveBankShell{display:grid;gap:14px}
+#p-archiveBank .archiveBankHero{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid #DFE8E6;border-radius:24px;background:radial-gradient(circle at 10% 10%,rgba(14,122,126,.06),transparent 28%),radial-gradient(circle at 90% 8%,rgba(138,21,56,.06),transparent 28%),linear-gradient(180deg,#FFF,#FAFCFB);box-shadow:0 12px 28px rgba(35,64,66,.07)}
+#p-archiveBank .archiveBankHero span{font-size:9px;font-weight:900;color:#8A1538}
+#p-archiveBank .archiveBankHero h2{margin:3px 0;font-family:"El Messiri";font-size:24px;color:#315154}
+#p-archiveBank .archiveBankHero p{margin:0;font-size:10px;color:#7C8B8D}
+#p-archiveBank .archiveBankStats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+#p-archiveBank .archiveBankStats>div{padding:13px;border:1px solid #E1E8E7;border-radius:16px;background:#FFF;text-align:center;box-shadow:0 5px 14px rgba(35,64,66,.04)}
+#p-archiveBank .archiveBankStats span{display:block;font-size:7px;color:#7D8D8F}
+#p-archiveBank .archiveBankStats b{display:block;margin-top:3px;font-size:20px;color:#315457}
+#p-archiveBank .archivePrintBar{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr)) auto auto;gap:9px;align-items:end;padding:13px;border:1px solid #E0E7E6;border-radius:18px;background:#FFF}
+#p-archiveBank .archivePrintBar label{display:grid;gap:5px}
+#p-archiveBank .archivePrintBar label span{font-size:7px;font-weight:900;color:#66787A}
+#p-archiveBank .archivePrintBar select{min-height:38px;border:1px solid #D9E3E1;border-radius:10px;background:#FFF;padding:7px;font-size:8px}
+#p-archiveBank .archiveBankTree{display:grid;gap:10px}
+#p-archiveBank details{border:1px solid #E0E8E6;border-radius:16px;background:#FFF;overflow:hidden}
+#p-archiveBank details>summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:"El Messiri";color:#36575A}
+#p-archiveBank .archiveMonth>summary{background:linear-gradient(180deg,#F2F9F8,#EAF4F2);font-size:14px}
+#p-archiveBank .archiveWeek{margin:9px}.archiveWeek>summary{background:#FBF4F6;color:#7A1938!important;font-size:12px!important}
+#p-archiveBank .archiveSubject{margin:8px}.archiveSubject>summary{background:#FFF9E8;color:#755B20!important;font-size:11px!important}
+#p-archiveBank .archiveTeacherBlock{margin:8px;padding:10px;border:1px solid #E7ECEB;border-radius:13px;background:#FBFCFC}
+#p-archiveBank .archiveTeacherHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;color:#36575A;font-size:9px}
+#p-archiveBank .archiveFileCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+#p-archiveBank .archiveFileCard{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:9px;border:1px solid #E2E8E7;border-radius:12px;background:#FFF}
+#p-archiveBank .archiveFileCard strong{display:block;font-size:9px;color:#6D1B38}.archiveFileCard small{display:block;margin-top:2px;font-size:6.5px;color:#899496}
+#p-archiveBank .archiveFileActions{display:flex;gap:5px}.archiveFileActions button{min-height:30px;border:1px solid #D8E4E2;border-radius:9px;background:#FFF;color:#0D6F73;font-size:7px;font-weight:900;cursor:pointer}
+#p-archiveBank .archiveOpenPreview{padding:13px;border:2px solid #C9DDD9;border-radius:18px;background:#FFF;box-shadow:0 13px 30px rgba(35,64,66,.10)}
+#p-archiveBank .archiveOpenPreviewHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+#p-archiveBank .archiveOpenPreviewHead button{width:30px;height:30px;border:1px solid #E4D9DC;border-radius:50%;background:#FFF;color:#8A1538;font-size:18px}
+.archiveFileSheet{direction:rtl;background:#FFF}
+.archiveFileHead{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid #8A1538}
+.archiveFileHead h2{margin:0;font-family:"El Messiri";color:#8A1538;font-size:18px}.archiveFileHead p{margin:3px 0 0;font-size:9px;color:#495E61}.archiveFileMeta{display:flex;gap:5px;flex-wrap:wrap}.archiveFileMeta span{padding:5px 7px;border-radius:999px;background:#EEF7F5;color:#0D6D71;font-size:7px;font-weight:800}
+.archiveTableScroll{overflow:auto}.archiveDataTable{width:100%;min-width:900px;border-collapse:collapse}.archiveDataTable th,.archiveDataTable td{border:1px solid #C9D1D0;padding:5px 4px;text-align:center;font-size:7px}.archiveDataTable th{background:#0F7477;color:#FFF;font-weight:900}.archiveDataTable .archiveNameCell{text-align:right;background:#FFF6E5;color:#681A36;font-weight:900;min-width:170px}
+@media(max-width:950px){#p-archiveBank .archivePrintBar{grid-template-columns:1fr 1fr}#p-archiveBank .archiveFileCards{grid-template-columns:1fr}}
+@media print{
+  body.print-archive-bank>*{display:none!important}
+  body.print-archive-bank #activityPrint{display:block!important;direction:rtl;background:#FFF;color:#222}
+  body.print-archive-bank .archivePrintCover{page-break-after:always;text-align:center;padding-top:80mm}
+  body.print-archive-bank .archivePrintCover h1{font-family:"El Messiri";font-size:28pt;color:#8A1538;margin:0}
+  body.print-archive-bank .archivePrintCover p{font-size:14pt;margin:8px 0}
+  body.print-archive-bank .archivePrintCover small{font-size:10pt}
+  body.print-archive-bank .archivePrintPage{page-break-after:always}
+  body.print-archive-bank .archivePrintPage:last-child{page-break-after:auto}
+  body.print-archive-bank .archiveTableScroll{overflow:visible!important}
+  body.print-archive-bank .archiveDataTable{width:100%!important;min-width:0!important;table-layout:auto!important}
+  body.print-archive-bank .archiveDataTable th,
+  body.print-archive-bank .archiveDataTable td{font-size:6.2pt!important;padding:3px 2px!important}
+  body.print-archive-bank .archiveFileHead h2{font-size:16pt!important}
+  body.print-archive-bank .archiveFileHead p{font-size:8pt!important}
+  @page{size:A4 landscape;margin:6mm}
+}
+</style>
+
+<div id="analyticsPrintArea"></div>
+
+<style id="ANALYTICS_CENTER_V71">
+#p-analytics{direction:rtl}
+.analyticsShell{display:grid;gap:14px}
+.analyticsHero{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 24px;border:1px solid #d9e8e5;border-radius:24px;background:linear-gradient(135deg,#fff 0%,#f1f9f7 55%,#fff7f9 100%);box-shadow:0 18px 45px rgba(36,75,76,.10)}
+.analyticsEyebrow{display:block;font:800 11px "Noto Kufi Arabic";color:#0c7778;margin-bottom:5px}
+.analyticsHero h2{margin:0;font:800 27px "El Messiri";color:#681a36}.analyticsHero p{margin:6px 0 0;color:#66777a;font-size:11px}
+.analyticsPrintBtn,.luxuryStarBtn{border:0;border-radius:15px;padding:12px 16px;font:800 10px "Noto Kufi Arabic";cursor:pointer;box-shadow:0 7px 0 rgba(104,26,54,.14),0 14px 28px rgba(104,26,54,.12);transition:.18s transform;background:linear-gradient(180deg,#9b2850,#741737);color:#fff}
+.analyticsPrintBtn:active,.luxuryStarBtn:active{transform:translateY(5px);box-shadow:0 2px 0 rgba(104,26,54,.15)}
+.analyticsFilters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:12px;border:1px solid #e2ecea;border-radius:18px;background:#fff}
+.analyticsFilters label span{display:block;font:800 8px "Noto Kufi Arabic";color:#64787a;margin:0 3px 4px}.analyticsFilters select{width:100%;min-height:40px;border:1px solid #d8e5e3;border-radius:11px;background:#fbfdfd;padding:5px 8px;font-size:9px}
+.analyticsKpis{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.analyticsKpis>div{padding:12px;border-radius:16px;background:#fff;border:1px solid #e0e9e7;text-align:center;box-shadow:0 8px 22px rgba(45,76,77,.06)}.analyticsKpis span{display:block;font-size:8px;color:#748487}.analyticsKpis b{display:block;margin-top:4px;font:800 19px "El Messiri";color:#0b7274}
+.analyticsButtons{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.analyticsButtons button{min-height:82px;border:1px solid #dfe9e7;border-radius:17px;background:linear-gradient(180deg,#fff,#f9fcfb);cursor:pointer;text-align:right;padding:12px;box-shadow:0 7px 18px rgba(36,66,67,.06);transition:.18s}.analyticsButtons button:hover,.analyticsButtons button.active{transform:translateY(-2px);border-color:#b9d7d1;box-shadow:0 12px 25px rgba(26,104,104,.12)}.analyticsButtons b{font-size:20px;float:right;margin-left:8px}.analyticsButtons span{display:block;font:800 10px "Noto Kufi Arabic";color:#681a36}.analyticsButtons small{display:block;margin-top:3px;font-size:7px;color:#829092}
+.analyticsStage{padding:15px;border:1px solid #dce8e6;border-radius:22px;background:#fff;box-shadow:0 15px 35px rgba(42,75,76,.08)}.analyticsStageHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.analyticsStageHead span:first-child{font-size:7px;color:#8a9698}.analyticsStageHead h3{margin:2px 0 0;font:800 17px "El Messiri";color:#681a36}.analyticsCanvasWrap{height:330px;position:relative}.analyticsInsight{margin-top:10px;padding:11px 14px;border-radius:13px;background:#f3f9f8;color:#476365;font-size:9px;line-height:1.8}
+.luxuryStarBtn{background:linear-gradient(180deg,#d5a92f,#a77a12);box-shadow:0 6px 0 rgba(135,95,7,.18),0 12px 24px rgba(164,118,11,.13)}
+@media(max-width:1000px){.analyticsFilters{grid-template-columns:repeat(2,1fr)}.analyticsButtons{grid-template-columns:repeat(2,1fr)}.analyticsKpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.analyticsHero{align-items:stretch;flex-direction:column}.analyticsFilters,.analyticsButtons{grid-template-columns:1fr 1fr}.analyticsKpis{grid-template-columns:1fr 1fr}.analyticsCanvasWrap{height:280px}}
+@media print{
+ body.print-analytics>*{display:none!important}
+ body.print-analytics #analyticsPrintArea{display:block!important;direction:rtl;background:#fff;color:#222}
+ #analyticsPrintArea .anPrintHead{text-align:center;border-bottom:2px solid #8A1538;padding-bottom:8mm;margin-bottom:7mm}
+ #analyticsPrintArea h1{font-family:"El Messiri";color:#8A1538;margin:0}
+ #analyticsPrintArea .anPrintKpis{display:grid;grid-template-columns:repeat(5,1fr);gap:4mm;margin:5mm 0}
+ #analyticsPrintArea .anPrintKpis div{border:1px solid #ccd8d6;border-radius:3mm;padding:3mm;text-align:center}
+ #analyticsPrintArea img{display:block;width:100%;max-height:125mm;object-fit:contain}
+ #analyticsPrintArea .anPrintInsight{border:1px solid #dce5e3;padding:4mm;border-radius:3mm;margin-top:5mm}
+ @page{size:A4 landscape;margin:9mm}
+}
+</style>
+
+
+<script id="ANALYTICS_CENTER_V71_JS">
+let analyticsChartInstance=null;
+let analyticsMode="classes";
+
+function anNum(v){const n=Number(toWesternDigits(clean(v)));return Number.isFinite(n)?n:null}
+function anPercent(f,type){
+  const map={
+    classroom:["classroomGrade","classroomMax","app1",20],
+    electronic:["electronicGrade","electronicMax","app2",20],
+    homework:["homeworkGrade","homeworkMax","projectGrade",10],
+    project:["projectWorkGrade","projectWorkMax",null,15]
+  };
+  const m=map[type], raw=anNum(f?.[m[0]] ?? (m[2]?f?.[m[2]]:null)), mx=anNum(f?.[m[1]]) ?? m[3];
+  return raw!==null&&mx>0?Math.max(0,Math.min(100,raw/mx*100)):null;
+}
+function anClassKeyForFollowup(f){
+  if(f?.classKey)return f.classKey;
+  const s=db.students.find(x=>String(x.id)===String(f?.studentId));
+  return s?classKey(s.gradeNo,s.section):"";
+}
+function anGradeFromClassKey(k){
+  const s=db.students.find(x=>classKey(x.gradeNo,x.section)===k);
+  return s?String(s.gradeNo):"";
+}
+function analyticsFiltersValue(){
+  return {period:$("anPeriod")?.value||"",grade:$("anGrade")?.value||"",classKey:$("anClass")?.value||"",subject:$("anSubject")?.value||"",teacher:$("anTeacher")?.value||""};
+}
+function analyticsFilteredFollowups(){
+  const q=analyticsFiltersValue();
+  return (db.followups||[]).filter(f=>{
+    const ck=anClassKeyForFollowup(f);
+    return (!q.period||f.periodId===q.period)&&(!q.grade||anGradeFromClassKey(ck)===q.grade)&&(!q.classKey||ck===q.classKey)&&(!q.subject||norm(f.subject)===norm(q.subject))&&(!q.teacher||String(f.teacherId)===String(q.teacher));
+  });
+}
+function analyticsStudentIds(fs=analyticsFilteredFollowups()){return [...new Set(fs.map(f=>String(f.studentId)).filter(Boolean))]}
+function analyticsScores(fs=analyticsFilteredFollowups()){
+  const arr=[]; fs.forEach(f=>["classroom","electronic","homework","project"].forEach(t=>{const p=anPercent(f,t);if(p!==null)arr.push(p)})); return arr;
+}
+function analyticsApplications(fs=analyticsFilteredFollowups()){
+  let n=0;fs.forEach(f=>["classroom","electronic"].forEach(t=>{if(anPercent(f,t)!==null)n++}));return n;
+}
+function anAvg(a){return a.length?a.reduce((x,y)=>x+y,0)/a.length:null}
+function anLabelClass(k){
+  const s=db.students.find(x=>classKey(x.gradeNo,x.section)===k);
+  return s?classLabel(s.gradeNo,s.section):k||"—";
+}
+function anGroup(fs,keyFn,valueFn){
+  const m={};fs.forEach(f=>{const k=keyFn(f);if(!k)return;(m[k]??=[]).push(...valueFn(f));});return m;
+}
+function anScoreValues(f){return ["classroom","electronic","homework","project"].map(t=>anPercent(f,t)).filter(v=>v!==null)}
+function analyticsScopeText(){
+  const q=analyticsFiltersValue(), bits=[];
+  if(q.period)bits.push($("anPeriod").selectedOptions[0]?.textContent);
+  if(q.grade)bits.push("الصف "+q.grade);
+  if(q.classKey)bits.push(anLabelClass(q.classKey));
+  if(q.subject)bits.push(q.subject);
+  if(q.teacher)bits.push(teacherName(q.teacher,""));
+  return bits.filter(Boolean).join(" • ")||"كل البيانات";
+}
+function analyticsFillFilters(){
+  if(!$("anPeriod"))return;
+  const keep=analyticsFiltersValue();
+  $("anPeriod").innerHTML='<option value="">كل الفترات</option>'+AUTO_PERIODS.map(p=>`<option value="${esc(p.id)}">${esc(pLabel(p))}</option>`).join("");
+  const grades=[...new Set(db.students.map(s=>String(s.gradeNo)).filter(Boolean))].sort();
+  $("anGrade").innerHTML='<option value="">كل الصفوف</option>'+grades.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join("");
+  const classes=[...new Set(db.students.map(s=>classKey(s.gradeNo,s.section)))].sort();
+  $("anClass").innerHTML='<option value="">كل الشعب</option>'+classes.map(k=>`<option value="${esc(k)}">${esc(anLabelClass(k))}</option>`).join("");
+  const subjects=[...new Set((db.followups||[]).map(f=>clean(f.subject)).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ar"));
+  $("anSubject").innerHTML='<option value="">كل المواد</option>'+subjects.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join("");
+  $("anTeacher").innerHTML='<option value="">كل المعلمات</option>'+db.teachers.map(t=>`<option value="${esc(t.id)}">${esc(t.name)}</option>`).join("");
+  Object.entries(keep).forEach(([k,v])=>{const el={period:$("anPeriod"),grade:$("anGrade"),classKey:$("anClass"),subject:$("anSubject"),teacher:$("anTeacher")}[k];if(el&&[...el.options].some(o=>o.value===v))el.value=v});
+}
+function analyticsKpis(){
+  const fs=analyticsFilteredFollowups(), scores=analyticsScores(fs), ids=analyticsStudentIds(fs);
+  const classes=new Set(fs.map(anClassKeyForFollowup).filter(Boolean));
+  $("anStudents").textContent=ids.length;
+  $("anAverage").textContent=scores.length?anAvg(scores).toFixed(1)+"%":"—";
+  $("anAssessments").textContent=scores.length;
+  $("anApplications").textContent=analyticsApplications(fs);
+  $("anClasses").textContent=classes.size;
+  $("analyticsScope").textContent=analyticsScopeText();
+}
+function analyticsSpec(mode){
+  const fs=analyticsFilteredFollowups();
+  let labels=[],datasets=[],title="",insight="";
+  const avgGroup=(group)=>Object.entries(group).map(([k,v])=>({k,v:anAvg(v)})).filter(x=>x.v!==null).sort((a,b)=>b.v-a.v);
+
+  if(mode==="classes"||mode==="compare"){
+    const rows=avgGroup(anGroup(fs,anClassKeyForFollowup,anScoreValues));
+    labels=rows.map(x=>anLabelClass(x.k));datasets=[{label:"متوسط الدرجات %",data:rows.map(x=>+x.v.toFixed(1))}];
+    title=mode==="compare"?"مقارنة متوسطات الشعب":"تحليل الصفوف والشعب";
+    insight=rows.length?`يعرض الرسم متوسط التحصيل النسبي لكل شعبة ضمن الفلاتر المحددة. عدد الشعب الظاهرة: ${rows.length}.`:"لا توجد درجات مرصودة ضمن الاختيار الحالي.";
+  }else if(mode==="applications"){
+    const group={};fs.forEach(f=>{const k=anClassKeyForFollowup(f);if(!k)return;group[k]=(group[k]||0)+["classroom","electronic"].filter(t=>anPercent(f,t)!==null).length});
+    const rows=Object.entries(group).sort((a,b)=>b[1]-a[1]);labels=rows.map(x=>anLabelClass(x[0]));datasets=[{label:"عدد التطبيقات المرصودة",data:rows.map(x=>x[1])}];title="عدد التطبيقات حسب الشعبة";insight=`إجمالي عمليات رصد التطبيقات الظاهرة: ${rows.reduce((a,x)=>a+x[1],0)}.`;
+  }else if(mode==="subjects"){
+    const rows=avgGroup(anGroup(fs,f=>clean(f.subject),anScoreValues));labels=rows.map(x=>x.k);datasets=[{label:"متوسط المادة %",data:rows.map(x=>+x.v.toFixed(1))}];title="متوسط الدرجات حسب المادة";insight="المتوسطات محسوبة كنسب مئوية حتى يمكن مقارنة تقييمات ذات درجات عظمى مختلفة.";
+  }else if(mode==="teachers"){
+    const group={};fs.forEach(f=>{const k=String(f.teacherId||"");if(!k)return;group[k]=(group[k]||0)+anScoreValues(f).length});
+    const rows=Object.entries(group).sort((a,b)=>b[1]-a[1]);labels=rows.map(x=>teacherName(x[0],"—"));datasets=[{label:"عمليات الرصد",data:rows.map(x=>x[1])}];title="حجم الرصد حسب المعلمة";insight="هذا الرسم يصف حجم الرصد المسجل فقط، ولا يمثل تقييمًا أو ترتيبًا لأداء المعلمات.";
+  }else if(mode==="grades"){
+    const scores=analyticsScores(fs), bins=[["أقل من 50",0,49.999],["50–64",50,64.999],["65–79",65,79.999],["80–89",80,89.999],["90–100",90,100]];
+    labels=bins.map(x=>x[0]);datasets=[{label:"عدد الدرجات",data:bins.map(x=>scores.filter(v=>v>=x[1]&&v<=x[2]).length)}];title="توزيع الدرجات";insight=`التوزيع مبني على ${scores.length} درجة مرصودة بعد تحويلها إلى نسبة مئوية.`;
+  }else if(mode==="trend"){
+    const group=anGroup(fs,f=>f.periodId||"",anScoreValues);const rows=AUTO_PERIODS.map(p=>({p,v:anAvg(group[p.id]||[])})).filter(x=>x.v!==null);
+    labels=rows.map(x=>pLabel(x.p));datasets=[{label:"متوسط الدرجات %",data:rows.map(x=>+x.v.toFixed(1)),type:"line"}];title="تطور النتائج عبر الفترات";insight="يوضح اتجاه متوسط الدرجات عبر الفترات الأكاديمية التي تحتوي على رصد.";
+  }else{
+    const classCount={};fs.forEach(f=>{const k=anClassKeyForFollowup(f);if(k)classCount[k]=(classCount[k]||0)+anScoreValues(f).length});
+    const rows=Object.entries(classCount).sort((a,b)=>b[1]-a[1]);labels=rows.map(x=>anLabelClass(x[0]));datasets=[{label:"إجمالي عمليات الرصد",data:rows.map(x=>x[1])}];title="الصورة العامة للمدرسة";insight=`يعرض حجم البيانات المرصودة عبر ${rows.length} شعبة ضمن النطاق المحدد.`;
+  }
+  return {labels,datasets,title,insight};
+}
+function renderAnalytics(mode=analyticsMode){
+  if(!$("analyticsChart"))return;
+  analyticsMode=mode;analyticsKpis();
+  const spec=analyticsSpec(mode);$("analyticsTitle").textContent=spec.title;$("analyticsInsight").textContent=spec.insight;
+  document.querySelectorAll("[data-analysis]").forEach(b=>b.classList.toggle("active",b.dataset.analysis===mode));
+  if(analyticsChartInstance)analyticsChartInstance.destroy();
+  const ctx=$("analyticsChart").getContext("2d");
+  const isLine=mode==="trend";
+  analyticsChartInstance=new Chart(ctx,{type:isLine?"line":"bar",data:{labels:spec.labels,datasets:spec.datasets.map(d=>({...d,type:undefined}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"bottom"}},scales:{y:{beginAtZero:true,suggestedMax:(["classes","compare","subjects","trend"].includes(mode)?100:undefined)}}}});
+}
+function analyticsPrint(){
+  if(!analyticsChartInstance)return;
+  const fs=analyticsFilteredFollowups(), scores=analyticsScores(fs);
+  $("analyticsPrintArea").innerHTML=`<div class="anPrintHead"><h1>${esc(schoolName())}</h1><h2>${esc($("analyticsTitle").textContent)}</h2><p>${esc(analyticsScopeText())}</p></div>
+  <div class="anPrintKpis"><div>الطالبات<br><b>${analyticsStudentIds(fs).length}</b></div><div>متوسط الدرجات<br><b>${scores.length?anAvg(scores).toFixed(1)+"%":"—"}</b></div><div>عمليات الرصد<br><b>${scores.length}</b></div><div>التطبيقات<br><b>${analyticsApplications(fs)}</b></div><div>الشعب<br><b>${new Set(fs.map(anClassKeyForFollowup).filter(Boolean)).size}</b></div></div>
+  <img src="${analyticsChartInstance.toBase64Image()}" alt="الرسم البياني"><div class="anPrintInsight">${esc($("analyticsInsight").textContent)}</div>`;
+  document.body.classList.add("print-analytics");window.print();setTimeout(()=>document.body.classList.remove("print-analytics"),300);
+}
+function printTeacherCurrentStars(){
+  const k=rosterContext();
+  if(!k.teacherId||!k.classKey||!k.subject||!k.periodId){alert("اختاري المعلمة والشعبة والمادة أولًا.");return}
+  const star=getWeeklyStar(k.classKey,k.subject,k.periodId);
+  if(!star?.studentIds?.length){alert("لا توجد طالبات مفعّل لهن ⭐ في الأسبوع الحالي.");return}
+  const filtered={...star,studentIds:star.studentIds.filter(id=>{
+    const s=db.students.find(x=>String(x.id)===String(id));return !!s;
+  })};
+  printStarCards(filtered);
+}
+function initAnalyticsCenter(){
+  if(!$("anPeriod"))return;
+  analyticsFillFilters();
+  ["anPeriod","anGrade","anClass","anSubject","anTeacher"].forEach(id=>$(id)?.addEventListener("change",()=>renderAnalytics()));
+  document.querySelectorAll("[data-analysis]").forEach(b=>b.addEventListener("click",()=>renderAnalytics(b.dataset.analysis)));
+  $("analyticsPrint")?.addEventListener("click",analyticsPrint);
+  $("printCurrentStars")?.addEventListener("click",printTeacherCurrentStars);
+  renderAnalytics();
+}
+document.addEventListener("DOMContentLoaded",()=>setTimeout(initAnalyticsCenter,120));
+</script>
+
 </body>
 </html>
