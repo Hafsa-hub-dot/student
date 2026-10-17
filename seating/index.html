@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>مخطط جلوس الطالبات | حفصة طيبي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Lateef:wght@400;500;600;700;800&family=Markazi+Text:wght@400;500;600;700&display=swap');
+:root{--wine:#792346;--wine-dark:#5b1835;--teal:#176e70;--gold:#c9a05e;--ink:#243343;--muted:#6c7b87;--line:#e5e5e7;--paper:#fff;--mist:#f7faf9;--print-row:17mm;--print-name:12.5pt;--col-count:5}
+*{box-sizing:border-box}html{background:#fff}body{margin:0;background:#fff;color:var(--ink);font-family:'El Messiri',Tahoma,Arial,sans-serif;line-height:1.45}
+button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #6cbab6;outline-offset:2px}
+.page{max-width:1640px;margin:0 auto;padding:20px 25px 35px}
+.masthead{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:3px solid var(--wine);padding-bottom:14px}
+.school{font-size:15px;color:var(--wine);font-weight:700}.masthead h1{font-size:clamp(27px,3.5vw,43px);margin:1px 0;line-height:1.3;color:#253646;font-weight:700}
+.subtitle{font-family:'Lateef','El Messiri',serif;color:#647481;font-size:24px;line-height:1.1}.year{color:var(--wine);background:#fcf7f9;border:1px solid #ebdae2;border-radius:30px;padding:8px 18px;font-weight:700;white-space:nowrap}
+.panel{border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:0 7px 26px #2b394509}
+.profile{display:flex;gap:12px;align-items:end;flex-wrap:wrap;padding:14px 16px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:5px;color:#596574;font-size:13px;font-weight:700}.field input,.field select,textarea,.search{background:#fff;color:#243343;border:1px solid #cfd9dc;border-radius:9px;outline:none;padding:8px 11px}
+.field input{width:205px}.field select{min-width:112px}.field input:focus,.field select:focus,textarea:focus,.search:focus{border-color:var(--teal);box-shadow:0 0 0 3px #e3f4f1}
+.editor{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 17px;margin-top:10px}
+.editor-heading{font-size:16px;font-weight:700;color:var(--wine);margin-left:4px;white-space:nowrap}
+.editor-divider{height:35px;width:1px;background:#e7e0e4}
+.toolgroup{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.toolgroup .text{font-size:12px;font-weight:700;color:#626b79}
+.pill{padding:8px 9px;border-radius:9px;border:1px solid #dddde0;background:#fcfcfd;min-height:40px;font-weight:700;color:var(--ink);white-space:nowrap}
+.pill:hover{background:#f2f8f7;border-color:#a5d0cc}.pill.positive{background:#eaf7f4;border-color:#c6e3da;color:#0f6866}.pill.negative{background:#fff4f5;border-color:#f2d2d9;color:#8a314b}
+.pill.mode-active{background:var(--wine);border-color:var(--wine);color:#fff}.pill.mode-active.positive{background:var(--teal);border-color:var(--teal);color:#fff}
+.select-small{min-height:39px;border:1px solid #d7dfe1;border-radius:8px;padding:5px 8px;background:#fff;font-weight:700;color:#384959;min-width:77px}
+.edithelp{font-family:'Lateef',serif;font-size:20px;color:var(--muted);line-height:1.15;padding:0 17px 12px}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 12px}.btn{min-height:41px;border:1px solid var(--line);border-radius:10px;background:white;color:#344757;padding:8px 14px;font-size:13px;font-weight:700}.btn:hover{background:#f2f7f7}.btn.primary{background:var(--wine);border-color:var(--wine);color:#fff}.btn.primary:hover{background:var(--wine-dark)}.btn.teal{background:var(--teal);border-color:var(--teal);color:#fff}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px}.stat{padding:7px 14px;background:#fafbfc;border:1px solid #e9ebee;border-radius:10px;font-size:13px}.stat strong{color:var(--wine);font-size:21px;font-family:'Markazi Text',serif;margin:0 7px}
+.workspace{display:grid;grid-template-columns:minmax(265px,320px) minmax(0,1fr);gap:16px;align-items:start}
+.side{padding:15px}.side h2{color:var(--wine);margin:0 0 6px;font-size:19px}.hint{color:#6c7781;font-size:13px;margin:0 0 9px}textarea{width:100%;height:137px;min-height:120px;resize:vertical;font-size:15px}.wide{width:100%;margin-top:8px}
+.bulk-editor{border:1px solid #e9e1e7;border-radius:11px;margin:7px 0 12px;background:#fffdfd;padding:2px 10px 11px}.bulk-editor summary{font-weight:700;color:var(--wine);cursor:pointer;padding:9px 3px;user-select:none}.bulk-editor:not([open]){padding-bottom:2px}.bulk-editor textarea{margin-top:6px}.roster-head{display:flex;justify-content:space-between;gap:10px;margin-top:16px;font-size:14px;font-weight:700}.search{width:100%;margin:8px 0 5px;font-size:13px}.roster{max-height:580px;overflow-y:auto;padding:3px 1px;display:flex;flex-direction:column;gap:6px}
+.student{width:100%;min-height:43px;border:1px solid #e2e6e8;background:white;border-radius:9px;display:flex;align-items:center;gap:8px;text-align:right;padding:7px 9px;color:var(--ink)}.student:hover{border-color:#93cbc8;background:#f7fbfb}.student.selected{border:2px solid var(--teal);background:#eaf6f4;padding:6px 8px}.student .idx{background:#f5edf0;color:var(--wine);border-radius:6px;min-width:27px;padding:3px;text-align:center;font-size:12px;font-weight:700}.student .sname{flex:1;min-width:0;font-weight:700;font-size:13px;overflow-wrap:anywhere}.student .where{color:#75838b;font-size:10px;white-space:nowrap}.student.assigned .where{color:var(--teal);font-weight:700}.empty{padding:24px 8px;color:#82909a;text-align:center;font-size:13px}.tip{margin-top:13px;background:#f5f9f8;border-radius:11px;padding:11px;border:1px solid #e0eeea;font-size:12px;line-height:1.8;color:#42616a}
+.room-viewport{min-width:0}.room{min-height:620px;border:2px solid #e5e7e4;border-radius:18px;background:linear-gradient(135deg,#fff,#fcfdfd);padding:15px 17px 19px;box-shadow:0 6px 25px #33404d0a;overflow:hidden}
+.print-only{display:none}.room-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;border-bottom:1px solid #e5e9e9;padding-bottom:9px}.class-title{font-weight:700;color:var(--wine);font-size:16px}.teacher-title{font-size:13px;color:#596c76;font-weight:700}
+.front{direction:ltr;display:grid;grid-template-columns:minmax(95px,1fr) minmax(220px,3.6fr) minmax(95px,1fr);gap:11px;align-items:stretch;margin-bottom:14px}
+.front-item{direction:rtl;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;border:1.5px solid #e2dce2;border-radius:12px;background:#fff;color:var(--wine);min-height:103px;text-align:center;padding:7px}.front-item .em{font-size:31px;line-height:1.1}.front-item strong{font-size:12px}.front-item.door{background:#fffaf2;border-color:#dfc69d;color:#8b6033}.front-item.podium{background:#fbf7fa;border-color:#dfc8d4}
+.board{direction:rtl;display:flex;justify-content:center;align-items:center;flex-direction:column;border:7px solid #d1b17d;background:#1d5658;border-radius:10px;color:#fff;box-shadow:inset 0 0 0 1px #eee9cd3f;text-align:center;padding:8px}.board strong{font-size:29px}.board span{color:#eaf5ed;font-size:12px}
+.front-note,.back-note{text-align:center;color:#7c8b93;font-size:11px;font-weight:700;margin:9px 0 11px}.front-note:before,.front-note:after{content:'';display:inline-block;background:#dde6e5;height:1px;width:9%;margin:0 9px;vertical-align:middle}.back-note{border-top:1px solid #e6eaea;margin:15px 0 0;padding-top:8px}
+.seats{display:grid;grid-template-columns:var(--grid-cols,repeat(4,minmax(0,1fr)));gap:10px;direction:rtl}.aisle{pointer-events:none;min-width:0;min-height:76px}
+.seat{min-width:0;position:relative;border:2px dashed #cbd7da;background:#fff;border-radius:12px;min-height:76px;padding:17px 5px 7px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;user-select:none;transition:.13s}.seat:hover,.seat.drop-target{border-color:#168681;background:#eff9f6}.seat.occupied{background:linear-gradient(135deg,#eaf7f5,#fff);border:2px solid #aed6ce}.seat.chosen{border:3px solid var(--wine);background:#fff1f6}.seat .desk-id{position:absolute;top:3px;right:6px;color:#839096;font:700 10px Arial,sans-serif}.seat .name{font-family:'Markazi Text','El Messiri',serif;font-size:clamp(18px,1.7vw,24px);font-weight:700;line-height:1.05;overflow-wrap:anywhere;max-height:48px;overflow:hidden}.seat .placeholder{color:#abb8bf;font-family:'Lateef',serif;font-size:20px}.seat .unseat{position:absolute;left:4px;top:3px;background:transparent;border:0;color:#a75e73;font:700 18px Arial;line-height:19px;border-radius:5px;width:23px;height:23px}.seat .unseat:hover{background:#f9e7ec}
+.seat-gap{min-width:0;min-height:76px;border:1px solid transparent;border-radius:12px;display:flex;justify-content:center;align-items:center;color:#bdc6c8;font-family:'Lateef',serif;font-size:18px;text-align:center}
+.seat-gap.restore{cursor:pointer;border:2px dashed #8fcfbe;background:#f1fbf5;color:#166e60;font-size:20px}.seat-gap.restore:hover{background:#e0f6eb}.seat.erase{border-color:#efa1a7;background:#fff4f5}.seat.erase:hover{border:2px solid #b72e52;background:#ffeaef}.seat.erase:after{content:'−';position:absolute;left:5px;top:2px;background:#fff0f3;border-radius:50%;color:#b33352;width:18px;height:18px;font:700 17px Arial,sans-serif}
+.mode-caption{margin-top:10px;text-align:center;color:#647984;font-size:12px}.mode-caption strong{color:var(--wine)}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:50;max-width:90vw;padding:10px 18px;border-radius:12px;background:#1e4d4f;color:#fff;text-align:center;box-shadow:0 8px 25px #0002;opacity:0;pointer-events:none;transition:opacity .2s;font-weight:700;font-size:14px}.toast.show{opacity:1}
+@media(max-width:1150px){.workspace{grid-template-columns:270px minmax(0,1fr)}.seats{gap:7px}.room{padding:11px}.seat{min-height:74px}.front{grid-template-columns:90px minmax(170px,1fr) 90px;gap:7px}}
+@media(max-width:850px){.page{padding:12px}.workspace{grid-template-columns:1fr}.roster{max-height:240px}.room-viewport{overflow-x:auto}.room{min-width:650px}.year{display:none}.editor{gap:10px}.editor-divider{display:none}}
+@media(max-width:520px){.profile .field input{width:147px}.masthead h1{font-size:29px}.subtitle{font-size:20px}.actions .btn{flex:1 1 42%}.room{min-width:660px}}
+@page{size:A4 landscape;margin:7mm}
+@media print{
+ html,body{width:100%;height:auto;margin:0;padding:0;background:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+ .page{max-width:none;width:100%;margin:0;padding:0}.no-print,.toast,.masthead,.profile,.editor,.actions,.stats,.side,.mode-caption{display:none!important}
+ .workspace,.room-viewport{display:block!important;margin:0!important;padding:0!important;overflow:visible!important}
+ .room{min-width:0!important;min-height:0!important;box-shadow:none;border:0;border-radius:0;padding:0;overflow:visible;break-inside:avoid;page-break-inside:avoid;background:#fff!important}
+ .print-only{display:block!important}
+ .print-banner{background:var(--wine)!important;color:#fff!important;border-bottom:3px solid var(--gold);border-radius:7px 7px 0 0;padding:7px 13px;display:flex!important;justify-content:space-between;align-items:center}
+ .print-banner .org{font:700 14pt 'El Messiri',Tahoma,sans-serif;color:#fff}.print-banner .org small{display:block;font:500 9pt 'El Messiri',Tahoma,sans-serif;color:#faeaf0}.print-banner .academic-year{font:700 11pt 'El Messiri',Tahoma,sans-serif;color:#fff;border:1px solid #ffffff77;padding:2px 12px;border-radius:30px}
+ .print-center{text-align:center;padding:4px 0 1px}.print-center .main-title{font:700 19pt 'El Messiri',Tahoma,sans-serif;color:var(--wine)}.print-center .sub-title{font:500 11pt 'Lateef',serif;color:#687b84}
+ .room-top{display:flex!important;margin:1px 0 5px;border-bottom:1px solid #dfd8de;padding:3px 8px 5px;background:#f9f4f7;border-radius:4px}.class-title{font-size:11pt}.teacher-title{font-size:10pt}
+ .front{grid-template-columns:1fr 4.1fr 1fr;gap:6px;margin:0 0 5px}.front-item{min-height:var(--print-front,20mm);padding:2px 4px;border-radius:6px;gap:1px}.front-item .em{font-size:17pt}.front-item strong{font-size:9pt}.board{border-width:4px;border-radius:5px;padding:2px}.board strong{font-size:20pt}.board span{font-size:9pt}
+ .front-note{font-size:8pt;margin:3px 0 6px}.back-note{margin:5px 0 0;padding-top:3px;font-size:8pt}
+ .seats{gap:var(--print-gap,1.75mm)!important;grid-template-columns:var(--print-cols)!important}.aisle{min-height:var(--print-row)!important;height:var(--print-row)!important;visibility:hidden!important}.seat,.seat-gap{height:var(--print-row)!important;min-height:var(--print-row)!important;max-height:var(--print-row)!important;border-radius:5px;box-shadow:none!important;break-inside:avoid}
+ .seat{overflow:hidden!important;border:1px solid #b8cccb!important;background:#fff!important;padding:4px 3px 2px!important}.seat.occupied{background:#eaf5f3!important;border:1.2px solid #7fb9af!important}.seat .desk-id{font-size:6pt;right:3px;top:2px;color:#7f9298}.seat .name{font-size:var(--print-name)!important;line-height:1.05!important;max-height:none!important;overflow:visible!important;color:#263c49!important}.seat .placeholder{font-size:9pt!important;color:#a3adb2!important}.seat .unseat,.seat.erase:after{display:none!important}
+ .seat-gap{border:none!important;background:white!important;color:transparent!important}.seat:not(.occupied){visibility:hidden!important}.print-footer{display:flex!important;justify-content:space-between;gap:6px;font:500 9pt 'Lateef',serif;color:#61737f;padding:5px 5px 0;border-top:2px solid var(--gold);margin-top:5px}.print-footer span{white-space:nowrap}
+ }
+</style>
+</head>
+<body>
+<div class="page">
+<header class="masthead no-print">
+  <div><div class="school">مدرسة العب الثانوية للبنات · قسم الفيزياء</div><h1>خريطة جلوس الطالبات</h1><div class="subtitle">مساحة مرنة لتنظيم كل طاولة واسم وفق ترتيب الصف الحقيقي</div></div>
+  <div class="year">2026 / 2027</div>
+</header>
+<section class="profile panel no-print" aria-label="بيانات الفصل">
+  <label class="field">الصف / الشعبة<input id="className" value="11 علمي 2" autocomplete="off"></label>
+  <label class="field">المعلمة<input id="teacherName" value="حفصة طيبي" autocomplete="off"></label>
+  <div class="field">توزيع الصف<div style="font-size:13px;color:var(--teal);font-weight:700;min-height:35px;display:flex;align-items:center">السبورة وسط · الباب يمين · المنبر يسار</div></div>
+</section>
+<section class="editor panel no-print" aria-label="تعديل شكل الطاولات">
+  <strong class="editor-heading">تصميم المقاعد</strong>
+  <div class="toolgroup">
+    <span class="text">الصف رقم</span><select class="select-small" id="rowPick" aria-label="اختيار صف من المقاعد"></select>
+    <button class="pill positive" id="addRow" title="إضافة صف جديد خلف الصف المحدد">+ صف</button>
+    <button class="pill negative" id="removeRow" title="حذف الصف المحدد من المقاعد">− صف</button>
+  </div>
+  <div class="editor-divider"></div>
+  <div class="toolgroup">
+    <span class="text">العمود رقم</span><select class="select-small" id="colPick" aria-label="اختيار عمود من المقاعد"></select>
+    <button class="pill positive" id="addCol" title="إضافة عمود إلى يسار العمود المحدد">+ عمود</button>
+    <button class="pill negative" id="removeCol" title="حذف العمود المحدد">− عمود</button>
+  </div>
+  <div class="editor-divider"></div>
+  <div class="toolgroup"><span class="text">الممر بعد العمود</span><select class="select-small" id="aislePick" aria-label="موضع الممر بين مجموعتي الطاولات"></select></div>
+  <div class="editor-divider"></div>
+  <div class="toolgroup" aria-label="إضافة أو حذف طاولة منفردة">
+    <button class="pill mode-active" id="placeMode" aria-pressed="true">↔ توزيع الأسماء</button>
+    <button class="pill negative" id="eraseMode" aria-pressed="false">− حذف طاولة</button>
+    <button class="pill positive" id="restoreMode" aria-pressed="false">+ إضافة طاولة</button>
+  </div>
+</section>
+<div class="edithelp no-print" id="editHelp">6 صفوف افتراضيًا، والطاولات في مجموعتين يفصل بينهما ممر صغير. اختاري صفًا أو عمودًا أو غيّري موضع الممر، ويمكن حذف طاولة بعينها ثم استعادتها.</div>
+<div class="actions no-print">
+  <button class="btn teal" id="autofill">تعبئة المقاعد المتاحة تلقائيًا</button>
+  <button class="btn" id="undo">↶ تراجع</button>
+  <button class="btn" id="clear">إخلاء مقاعد الطالبات</button>
+  <button class="btn primary" id="print">طباعة فاخرة بالألوان</button>
+  <button class="btn" id="png">حفظ صورة PNG</button>
+  <button class="btn teal" id="share">مشاركة الصورة / واتساب</button>
+  <button class="btn" id="export">حفظ نسخة قابلة للتعديل</button>
+  <button class="btn" id="import">فتح نسخة سابقة</button>
+  <input type="file" id="file" accept=".json,application/json" hidden>
+</div>
+<div class="stats no-print" aria-live="polite">
+  <div class="stat">الطالبات <strong id="total">0</strong></div>
+  <div class="stat">تم توزيعهن <strong id="placed">0</strong></div>
+  <div class="stat">بانتظار التوزيع <strong id="waiting">0</strong></div>
+  <div class="stat">الطاولات المتاحة <strong id="capacity">30</strong></div>
+  <div class="stat">صفوف المقاعد <strong id="rowsCount">6</strong></div>
+  <div class="stat">الأعمدة <strong id="colsCount">5</strong></div>
+</div>
+<main class="workspace">
+<aside class="side panel no-print">
+  <h2>قائمة الطالبات</h2>
+  <p class="hint">تظهر هنا الأسماء التي لم تضعيها بعد في المقاعد. عند توزيع اسم يختفي فورًا؛ وعند إخلاء مقعد يعود للقائمة.</p>
+  <details class="bulk-editor" id="bulkEditor" open><summary>إدخال قائمة الطالبات أو تعديلها</summary>
+  <textarea id="names" placeholder="فاطمة أحمد&#10;مريم محمد&#10;عائشة خالد" spellcheck="false"></textarea>
+  <button class="btn primary wide" id="apply">اعتماد القائمة وإظهار غير الموزَّعات</button>
+  </details>
+  <div class="roster-head"><span>بانتظار توزيعهن</span><span id="listCount">0 طالبة</span></div>
+  <input class="search" id="search" type="search" placeholder="بحث عن طالبة..." aria-label="البحث في أسماء الطالبات">
+  <div class="roster" id="roster" aria-label="قائمة الطالبات"></div>
+  <div class="tip"><strong>الطريقة:</strong> اسحبي اسم الطالبة إلى الطاولة، فيختفي من هذه القائمة تلقائيًا. لإعادته، اضغطي × فوق مقعدها. يمكنك تبديل طالبتين بالسحب من طاولة إلى أخرى. لحذف طاولة فقط استخدمي وضع «حذف طاولة»، ولإعادتها وضع «إضافة طاولة».</div>
+</aside>
+<div class="room-viewport">
+  <section class="room" id="room" aria-label="المخطط الفعلي للصف">
+    <div class="print-banner print-only"><div class="org">مدرسة العب الثانوية للبنات <small>قسم الفيزياء</small></div><div class="academic-year">2026 / 2027</div></div>
+    <div class="print-center print-only"><div class="main-title">مخطط جلوس الطالبات</div><div class="sub-title">تنظيم البيئة الصفية وتوزيع المقاعد</div></div>
+    <div class="room-top"><span class="class-title" id="roomClass">الصف / الشعبة: 11 علمي 2</span><span class="teacher-title" id="roomTeacher">المعلمة: حفصة طيبي</span></div>
+    <div class="front" aria-label="الواجهة الأمامية: المنبر يسار والباب يمين والسبورة في الوسط">
+      <div class="front-item podium"><span class="em" aria-hidden="true">♜</span><strong>منبر المعلمة<br>يسارًا</strong></div>
+      <div class="board"><strong>السبورة</strong><span>مقدمة الصف</span></div>
+      <div class="front-item door"><span class="em" aria-hidden="true">🚪</span><strong>الباب<br>يمينًا</strong></div>
+    </div>
+    <div class="front-note">الصف الأمامي — الأقرب إلى السبورة</div>
+    <div class="seats" id="seats" role="group" aria-label="طاولات الطالبات"></div>
+    <div class="back-note">مؤخرة الصف</div>
+    <div class="mode-caption no-print" id="modeCaption">اختاري اسم طالبة ثم اضغطي على طاولتها.</div>
+    <div class="print-footer print-only"><span>إعداد وتنظيم: حفصة طيبي</span><span>مدرسة العب الثانوية للبنات | العام الأكاديمي 2026 / 2027</span></div>
+  </section>
+</div>
+</main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id), STORE='hafsa-classroom-seating-v3', OLD_STORE='hafsa-classroom-seating-v2', LEGACY_STORE='hafsa-classroom-seating-v1', MAX_ROWS=18, MAX_COLS=14;
+const fresh=()=>({version:3,className:'11 علمي 2',teacher:'حفصة طيبي',rows:6,cols:4,aisleAfter:2,inactive:[],students:[]});
+let state=fresh(),mode='place',selected=null,undoStack=[],studentCounter=1,toastTimer;
+function valid(raw){return !!raw&&typeof raw==='object'&&Number.isInteger(raw.rows)&&raw.rows>=1&&raw.rows<=MAX_ROWS&&Number.isInteger(raw.cols)&&raw.cols>=1&&raw.cols<=MAX_COLS&&Array.isArray(raw.students)&&raw.students.length<=500&&typeof raw.className==='string'&&typeof raw.teacher==='string'&&raw.students.every(s=>s&&typeof s.id==='string'&&typeof s.name==='string'&&s.name.length<=150&&(s.seat===null||(Number.isInteger(s.seat)&&s.seat>=0&&s.seat<raw.rows*raw.cols)))&&(!raw.inactive||(Array.isArray(raw.inactive)&&raw.inactive.every(n=>Number.isInteger(n)&&n>=0&&n<raw.rows*raw.cols)));}
+function normalized(raw){if(!valid(raw))throw Error('ملف غير صالح');const s=JSON.parse(JSON.stringify(raw));s.version=3;s.aisleAfter=s.cols>1?Math.max(1,Math.min(s.cols-1,Number.isInteger(s.aisleAfter)?s.aisleAfter:Math.floor(s.cols/2))):0;s.inactive=Array.from(new Set(s.inactive||[]));const holes=new Set(s.inactive),taken=new Set();for(const v of s.students){if(v.seat!==null){if(holes.has(v.seat)||taken.has(v.seat))v.seat=null;else taken.add(v.seat)}}return s}
+try{const saved=JSON.parse(localStorage.getItem(STORE)||localStorage.getItem(OLD_STORE)||localStorage.getItem(LEGACY_STORE)||'null');if(saved)state=normalized(saved)}catch(_){state=fresh()}
+studentCounter=Math.max(0,...state.students.map(s=>Number(String(s.id).replace(/^p/,''))||0))+1;
+const unavailable=()=>new Set(state.inactive);
+function save(){try{localStorage.setItem(STORE,JSON.stringify(state))}catch(_){}}
+function snapshot(){undoStack.push(JSON.stringify(state));if(undoStack.length>40)undoStack.shift()}
+function update(action){snapshot();action();save();render()}
+function notify(message){const t=$('toast');t.textContent=message;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2500)}
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
+function seated(id){return state.students.find(s=>s.seat===id)}
+function seatLabel(i){return 'صف '+(Math.floor(i/state.cols)+1)+' · عمود '+(i%state.cols+1)}
+function syncFields(){$('className').value=state.className;$('teacherName').value=state.teacher;$('names').value=state.students.map(s=>s.name).join('\n')}
+function renderSelectors(){for(const [id,count] of [['rowPick',state.rows],['colPick',state.cols]]){const node=$(id),before=node.value;node.replaceChildren();for(let n=1;n<=count;n++){const opt=document.createElement('option');opt.value=String(n-1);opt.textContent=String(n);node.append(opt)}node.value=before!==''&&Number(before)<count?before:String(count-1)}$('removeRow').disabled=state.rows<=1;$('addRow').disabled=state.rows>=MAX_ROWS;$('removeCol').disabled=state.cols<=1;$('addCol').disabled=state.cols>=MAX_COLS;const aisle=$('aislePick');aisle.replaceChildren();if(state.cols<=1){const opt=new Option('بلا ممر','0');aisle.add(opt);aisle.disabled=true}else{aisle.disabled=false;for(let i=1;i<state.cols;i++)aisle.add(new Option(String(i),String(i)));aisle.value=String(state.aisleAfter)}}
+function render(){const holes=unavailable(),placed=state.students.filter(s=>s.seat!==null).length;
+ $('total').textContent=state.students.length;$('placed').textContent=placed;$('waiting').textContent=state.students.length-placed;
+ $('capacity').textContent=state.rows*state.cols-holes.size;$('rowsCount').textContent=state.rows;$('colsCount').textContent=state.cols;
+ $('roomClass').textContent='الصف / الشعبة: '+(state.className||'—');$('roomTeacher').textContent='المعلمة: '+(state.teacher||'—');$('listCount').textContent=(state.students.length-placed)+' طالبة';
+ const before=state.cols>1?state.aisleAfter:state.cols,after=state.cols-before;
+ $('seats').style.setProperty('--grid-cols',after?`repeat(${before},minmax(0,1fr)) 18px repeat(${after},minmax(0,1fr))`:`repeat(${state.cols},minmax(0,1fr))`);
+ $('seats').style.setProperty('--print-cols',after?`repeat(${before},minmax(0,1fr)) 5mm repeat(${after},minmax(0,1fr))`:`repeat(${state.cols},minmax(0,1fr))`);
+
+ const tall=state.rows>=12;const rowMm=state.rows<=9?Math.min(17.5,(117-(state.rows-1)*1.75)/state.rows):Math.max(4.3,(114-(state.rows-1)*1.05)/state.rows);
+ $('room').style.setProperty('--print-row',rowMm+'mm');$('room').style.setProperty('--print-gap',tall?'1.05mm':'1.75mm');$('room').style.setProperty('--print-front',tall?'15mm':state.rows>=9?'18mm':'20mm');
+ $('room').style.setProperty('--print-name',(state.rows>=14||state.cols>=11?7:state.rows>=11||state.cols>=9?8:state.rows>=8||state.cols>=7?9.5:12.2)+'pt');
+ 
+ for(const [id,val] of [['placeMode','place'],['eraseMode','erase'],['restoreMode','restore']]){$(id).classList.toggle('mode-active',mode===val);$(id).setAttribute('aria-pressed',String(mode===val))}
+ const guide=mode==='erase'?'انقري على أي طاولة لحذف الطاولة نفسها. ستبقى خانتها فارغة ويمكن استعادتها.':mode==='restore'?'انقري على أي فراغ محذوف لإضافة طاولة واحدة في مكانه.':'اختاري اسم طالبة ثم اضغطي على طاولتها، أو اسحبي الاسم إليها.';
+ $('modeCaption').textContent=guide;$('editHelp').textContent=state.rows+' صفوف و'+state.cols+' أعمدة. '+guide;
+ $('undo').disabled=undoStack.length===0;
+ renderSelectors();renderRoster();renderSeats();
+}
+function renderRoster(){const host=$('roster'),pos=host.scrollTop,term=$('search').value.trim().toLocaleLowerCase('ar');host.replaceChildren();const list=state.students.filter(s=>s.seat===null&&s.name.toLocaleLowerCase('ar').includes(term));
+ if(!list.length){host.append(el('div','empty',state.students.length?(state.students.every(s=>s.seat!==null)?'رائع! وُزِّعت جميع الطالبات على مقاعدهن.':'لا توجد أسماء مطابقة للبحث.'):'أضيفي قائمة الطالبات للبدء.'));return}
+ list.forEach(s=>{const b=el('button','student'+(selected===s.id?' selected':'')+(s.seat!==null?' assigned':''));b.type='button';b.title='اختاري الطالبة ثم طاولتها';b.append(el('span','idx',String(state.students.indexOf(s)+1)),el('span','sname',s.name),el('span','where',s.seat===null?'بانتظار التوزيع':seatLabel(s.seat)));b.addEventListener('click',()=>{if(mode!=='place')setMode('place');selected=selected===s.id?null:s.id;render();if(selected)notify('حددي طاولة '+s.name)});draggable(b,s.id);host.append(b)});host.scrollTop=pos;
+}
+function renderSeats(){const host=$('seats');host.replaceChildren();const holes=unavailable();for(let i=0;i<state.rows*state.cols;i++){
+ if(holes.has(i)){const gap=el('div','seat-gap'+(mode==='restore'?' restore':''),mode==='restore'?'+ إضافة طاولة':'');gap.setAttribute('aria-label','موضع طاولة محذوفة، '+seatLabel(i));if(mode==='restore'){gap.role='button';gap.tabIndex=0;gap.addEventListener('click',()=>restoreDesk(i));gap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();restoreDesk(i)}})}host.append(gap);if(state.cols>1&&i%state.cols===state.aisleAfter-1)host.append(el('div','aisle'));continue}
+ const student=seated(i);const card=el('div','seat'+(student?' occupied':'')+(student&&selected===student.id?' chosen':'')+(mode==='erase'?' erase':''));card.tabIndex=0;card.role='button';card.setAttribute('aria-label',seatLabel(i)+(student?'، '+student.name:'، طاولة فارغة'));card.append(el('span','desk-id',String(Math.floor(i/state.cols)+1)+'-'+String(i%state.cols+1)));card.append(el('span',student?'name':'placeholder',student?student.name:'طاولة فارغة'));
+ if(student&&mode==='place'){const unseat=el('button','unseat','×');unseat.type='button';unseat.title='إعادة الاسم إلى القائمة مع إبقاء الطاولة';unseat.setAttribute('aria-label','إخلاء مكان '+student.name);unseat.addEventListener('click',e=>{e.stopPropagation();update(()=>{student.seat=null;selected=null});notify('بقيت الطاولة فارغة، وعاد الاسم إلى القائمة')});card.append(unseat);draggable(card,student.id)}
+ card.addEventListener('click',()=>{if(mode==='erase'){deleteDesk(i);return}if(mode==='restore'){notify('هذه الطاولة موجودة بالفعل؛ اختاري موضعًا محذوفًا');return}if(selected)place(selected,i);else if(student){selected=student.id;render();notify('اختاري طاولة جديدة لتبديل مكان الطالبة')}else notify('اختاري اسم الطالبة أولًا')});
+ card.addEventListener('keydown',e=>{if(e.target!==card)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();card.click()}});
+ if(mode==='place'){card.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='move';card.classList.add('drop-target')});card.addEventListener('dragleave',()=>card.classList.remove('drop-target'));card.addEventListener('drop',e=>{e.preventDefault();card.classList.remove('drop-target');place(e.dataTransfer.getData('text/plain'),i)})}host.append(card);if(state.cols>1&&i%state.cols===state.aisleAfter-1)host.append(el('div','aisle')); 
+ }}
+function draggable(node,id){node.draggable=true;node.addEventListener('dragstart',e=>{if(mode!=='place')return e.preventDefault();e.dataTransfer.setData('text/plain',id);e.dataTransfer.effectAllowed='move'})}
+function setMode(next){mode=next;selected=null;render();if(next==='restore'&&!state.inactive.length)notify('لا توجد طاولات محذوفة؛ لزيادة المساحة أضيفي صفًا أو عمودًا')}
+function place(id,index){if(unavailable().has(index))return;const student=state.students.find(s=>s.id===id);if(!student)return;update(()=>{const other=seated(index);if(other&&other.id!==id)other.seat=student.seat;student.seat=index;selected=null})}
+function deleteDesk(index){const s=seated(index);update(()=>{if(s)s.seat=null;state.inactive.push(index);selected=null});notify(s?'حُذفت الطاولة وأُعيد اسم الطالبة إلى القائمة':'تم حذف طاولة واحدة — يمكنك استعادتها لاحقًا')}
+function restoreDesk(index){if(!unavailable().has(index))return;update(()=>{state.inactive=state.inactive.filter(i=>i!==index)});notify('أُضيفت طاولة واحدة في موضعها')}
+function transformGrid(type,axis,at){const oldRows=state.rows,oldCols=state.cols;let newRows=oldRows,newCols=oldCols;if(axis==='row')newRows+=type==='insert'?1:-1;else newCols+=type==='insert'?1:-1;
+ const map=i=>{let r=Math.floor(i/oldCols),c=i%oldCols;if(axis==='row'){if(type==='remove'&&r===at)return null;if(type==='insert'&&r>at)r++;if(type==='remove'&&r>at)r--}else{if(type==='remove'&&c===at)return null;if(type==='insert'&&c>at)c++;if(type==='remove'&&c>at)c--}return r*newCols+c};
+ const impacted=type==='remove'?state.students.filter(s=>s.seat!==null&&map(s.seat)===null):[];
+ if(impacted.length&&!confirm('يوجد '+impacted.length+' من الطالبات على هذا '+(axis==='row'?'الصف':'العمود')+'. سيتم إعادة أسمائهن إلى القائمة دون حذفها. متابعة؟'))return;
+ update(()=>{state.inactive=state.inactive.map(map).filter(i=>i!==null);for(const s of state.students)if(s.seat!==null)s.seat=map(s.seat);state.rows=newRows;state.cols=newCols;if(axis==='col'){if(newCols===1)state.aisleAfter=0;else if(type==='insert'&&at<state.aisleAfter)state.aisleAfter++;else if(type==='remove'&&at<state.aisleAfter)state.aisleAfter--;state.aisleAfter=Math.max(1,Math.min(newCols-1,state.aisleAfter||1))}selected=null});
+ // أبقي الاختيار على العنصر المعدّل لتسهيل التحرير المتكرر
+ $(axis==='row'?'rowPick':'colPick').value=String(Math.min(at,(axis==='row'?state.rows:state.cols)-1));
+ notify((type==='insert'?'تمت إضافة ':'تم حذف ')+(axis==='row'?'صف':'عمود')+' في الموقع المحدد');
+}
+function parseNames(input){let parts=input.split(/\r?\n/);if(parts.length===1)parts=input.split(/[،,;؛]/);return parts.map(v=>v.replace(/^\s*[•*\-–]*\s*(?:[0-9٠-٩۰-۹]+\s*[.)\-:،]?\s*)?/u,'').trim().replace(/\s+/g,' ')).filter(x=>x&&!/^(م|الرقم|اسم الطالبة|الاسم)$/i.test(x))}
+$('apply').addEventListener('click',()=>{const names=parseNames($('names').value);if(names.length>500)return notify('الحد الأقصى 500 اسم');if(!names.length&&state.students.length&&!confirm('هل تريدين حذف جميع أسماء الطالبات؟'))return;
+ update(()=>{const pool=new Map();for(const s of state.students){if(!pool.has(s.name))pool.set(s.name,[]);pool.get(s.name).push(s)}state.students=names.map(name=>(pool.get(name)||[]).shift()||{id:'p'+(studentCounter++),name,seat:null});selected=null});$('bulkEditor').open=false;notify('تم اعتماد '+names.length+' اسمًا')});
+$('search').addEventListener('input',renderRoster);
+$('className').addEventListener('input',e=>{state.className=e.target.value;save();$('roomClass').textContent='الصف / الشعبة: '+(state.className||'—')});
+$('teacherName').addEventListener('input',e=>{state.teacher=e.target.value;save();$('roomTeacher').textContent='المعلمة: '+(state.teacher||'—')});
+$('addRow').addEventListener('click',()=>{if(state.rows>=MAX_ROWS)return notify('الحد الأقصى '+MAX_ROWS+' صفًا');transformGrid('insert','row',Number($('rowPick').value))});
+$('removeRow').addEventListener('click',()=>{if(state.rows<=1)return notify('يجب إبقاء صف واحد على الأقل');transformGrid('remove','row',Number($('rowPick').value))});
+$('addCol').addEventListener('click',()=>{if(state.cols>=MAX_COLS)return notify('الحد الأقصى '+MAX_COLS+' عمودًا');transformGrid('insert','col',Number($('colPick').value))});
+$('removeCol').addEventListener('click',()=>{if(state.cols<=1)return notify('يجب إبقاء عمود واحد على الأقل');transformGrid('remove','col',Number($('colPick').value))});
+$('aislePick').addEventListener('change',e=>update(()=>{state.aisleAfter=Number(e.target.value)}));
+$('placeMode').addEventListener('click',()=>setMode('place'));$('eraseMode').addEventListener('click',()=>setMode('erase'));$('restoreMode').addEventListener('click',()=>setMode('restore'));
+$('undo').addEventListener('click',()=>{if(!undoStack.length)return;state=normalized(JSON.parse(undoStack.pop()));selected=null;syncFields();save();render();notify('تم التراجع عن آخر تعديل')});
+$('autofill').addEventListener('click',()=>{const holes=unavailable(),taken=new Set(state.students.filter(s=>s.seat!==null).map(s=>s.seat)),free=Array.from({length:state.rows*state.cols},(_,i)=>i).filter(i=>!holes.has(i)&&!taken.has(i));let filled=0;update(()=>{state.students.filter(s=>s.seat===null).forEach(s=>{if(free.length){s.seat=free.shift();filled++}});selected=null;mode='place'});notify(filled?'تم توزيع '+filled+' طالبة':'لا توجد طاولات متاحة أو أسماء بانتظار التوزيع')});
+$('clear').addEventListener('click',()=>{if(!state.students.some(s=>s.seat!==null))return notify('لا توجد أسماء موزعة');if(!confirm('إخلاء جميع الطاولات من الأسماء مع الاحتفاظ بشكل الصف والطاولات؟'))return;update(()=>{for(const s of state.students)s.seat=null;selected=null});notify('أُخليت الطاولات، مع الاحتفاظ بشكل المخطط')});
+$('print').addEventListener('click',()=>window.print());
+function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1800)}
+function safeName(){return (state.className||'الصف').replace(/[\\/:*?"<>|]/g,'-').trim()}
+$('export').addEventListener('click',()=>download(new Blob([JSON.stringify(state,null,2)],{type:'application/json;charset=utf-8'}),'مخطط_جلوس_'+safeName()+'.json'));
+$('import').addEventListener('click',()=>$('file').click());
+$('file').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const next=normalized(JSON.parse(await f.text()));if(!confirm('سيحل المخطط الموجود في الملف محل المخطط الحالي. هل تريدين المتابعة؟'))return;undoStack.push(JSON.stringify(state));state=next;selected=null;mode='place';studentCounter=Math.max(0,...state.students.map(s=>Number(String(s.id).replace(/^p/,''))||0))+1;syncFields();save();render();notify('تم فتح المخطط بنجاح')}catch(err){notify('تعذر فتح الملف: '+err.message)}finally{e.target.value=''}});
+// تصدير الصورة عالي الدقة دون مكتبات خارجية، ومشاركة ملف الصورة عند دعم الجهاز.
+async function createImageBlob(){
+ if(document.fonts?.ready)await document.fonts.ready;
+ const W=2100,H=1485,canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;
+ const ctx=canvas.getContext('2d');if(!ctx)throw Error('المتصفح لا يدعم الرسم');
+ ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,H);ctx.textAlign='center';ctx.direction='rtl';
+ function rounded(x,y,w,h,r,fill,stroke='#dbe4e4',lw=2){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.lineWidth=lw;ctx.strokeStyle=stroke;ctx.stroke()}}
+ function txt(t,x,y,size,col='#273b48',family='El Messiri',weight=700){ctx.font=`${weight} ${size}px "${family}",Tahoma,Arial,sans-serif`;ctx.fillStyle=col;ctx.fillText(t,x,y)}
+ // رأس أنيق بخطوط وألوان المدرسة.
+ rounded(47,27,W-94,122,17,'#792346','#c9a05e',5);
+ txt('مدرسة العب الثانوية للبنات',W/2,79,37,'#ffffff');txt('قسم الفيزياء   •   العام الأكاديمي 2026 / 2027',W/2,123,25,'#ffe9f1');
+ txt('مخطط جلوس الطالبات',W/2,220,53,'#792346');
+ rounded(72,241,W-144,53,10,'#f9f2f6','#ead9e3',2);
+ txt(`الصف / الشعبة: ${state.className||'—'}        |        المعلمة: ${state.teacher||'—'}`,W/2,277,27);
+ rounded(72,314,285,120,12,'#fcf5f9','#dbbbcd',3);txt('منبر المعلمة',215,380,29,'#792346');
+ rounded(379,314,1342,120,12,'#1d5658','#c9a05e',7);txt('السبورة',1050,386,48,'#ffffff');
+ rounded(1743,314,285,120,12,'#fff8ec','#dfc69e',3);txt('الباب',1885,383,31,'#926536');
+ txt('الصف الأمامي — الأقرب إلى السبورة',W/2,472,21,'#83949b');
+ const left=72,right=72,cols=state.cols,rows=state.rows,gap=cols>=11?8:13,vgap=rows>=12?7:12;
+ const aisleW=cols>1?42:0,areaW=W-left-right,seatW=(areaW-gap*(cols-1)-aisleW)/cols;
+ const yStart=488,yEnd=1373,seatH=(yEnd-yStart-vgap*(rows-1))/rows;
+ const holes=unavailable();
+ // فرز النص إلى أسطر دون إسقاط أي جزء من اسم الطالبة.
+ function splitLines(words,maxWidth){const lines=[];let line='';for(const word of words){const next=line?line+' '+word:word;if(line&&ctx.measureText(next).width>maxWidth){lines.push(line);line=word}else line=next}if(line)lines.push(line);return lines}
+ function studentName(str,cx,cy,maxWidth,maxHeight){
+  const words=str.trim().split(/\s+/),base=Math.min(30,Math.max(13,seatW*.105));let font=base,lines=[];
+  for(;font>=10;font-=1){ctx.font=`700 ${font}px "Markazi Text",Tahoma,Arial,sans-serif`;lines=splitLines(words,maxWidth);const widest=Math.max(...lines.map(l=>ctx.measureText(l).width),0);if(widest<=maxWidth && lines.length*font*1.13<=maxHeight)break}
+  font=Math.max(9,font);ctx.font=`700 ${font}px "Markazi Text",Tahoma,Arial,sans-serif`;lines=splitLines(words,maxWidth);
+  ctx.fillStyle='#233d47';const lineHeight=font*1.13;
+  const textStart=cy-((lines.length-1)*lineHeight)/2+font*.33;
+  lines.forEach((line,j)=>ctx.fillText(line,cx,textStart+j*lineHeight));
+ }
+ for(let i=0;i<rows*cols;i++){
+  if(holes.has(i))continue;
+  const r=Math.floor(i/cols),col=i%cols,student=seated(i);
+  if(!student)continue; // لا تظهر المقاعد الفارغة أو الإضافية في الصورة أو الطباعة
+  const x=left+(cols-1-col)*(seatW+gap)+(col<state.aisleAfter?aisleW:0),y=yStart+r*(seatH+vgap);
+  rounded(x,y,seatW,seatH,Math.min(13,seatH/5),student?'#e7f5f2':'#ffffff',student?'#87bfb5':'#cedbdc',2);
+  ctx.textAlign='right';txt(`${r+1}–${col+1}`,x+seatW-9,y+Math.min(17,seatH*.28),Math.max(10,Math.min(17,seatH*.27)),'#7c8c98','El Messiri',500);ctx.textAlign='center';
+  studentName(student.name,x+seatW/2,y+seatH*.59,seatW-20,Math.max(24,seatH*.75));
+ }
+ ctx.fillStyle='#c9a05e';ctx.fillRect(72,1410,W-144,5);
+ txt('إعداد وتنظيم: حفصة طيبي     •     مدرسة العب الثانوية للبنات',W/2,1454,23,'#792346','Lateef',700);
+ return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(Error('تعذر تجهيز الصورة')),'image/png'));
+}
+$('png').addEventListener('click',async()=>{try{const blob=await createImageBlob();download(blob,'مخطط_جلوس_'+safeName()+'.png');notify('تم حفظ صورة ملونة عالية الدقة')}catch(e){notify('تعذر إنشاء الصورة: '+e.message)}});
+$('share').addEventListener('click',async()=>{
+ try{
+  const blob=await createImageBlob(),file=new File([blob],'مخطط_جلوس_'+safeName()+'.png',{type:'image/png'});
+  if(typeof navigator.share==='function'&&typeof navigator.canShare==='function'&&navigator.canShare({files:[file]})){
+   try{await navigator.share({files:[file],title:'مخطط جلوس الطالبات',text:'مخطط جلوس الطالبات — '+(state.className||'')})}catch(e){if(e.name!=='AbortError')throw e}
+  }else{
+   download(blob,file.name);
+   alert('تم حفظ صورة المخطط على جهازك. افتحي واتساب أو البريد الإلكتروني وأرفقي صورة PNG لإرسالها إلى زميلتك. المشاركة المباشرة للصور تعتمد على دعم جهازك ومتصفحك.');
+  }
+ }catch(e){notify('تعذرت المشاركة: '+e.message)}
+});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&selected){selected=null;render()}});
+syncFields();render();
+})();
+</script>
+</body>
+</html>
