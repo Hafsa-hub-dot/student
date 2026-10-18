@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f9fbfb">
+<title>تحدّي المعتصم | اختر الإجابة</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Markazi+Text:wght@500;600;700&display=swap');
+:root{--ink:#142a37;--teal:#087b80;--tealDark:#066369;--edge:#d7e9e7;--soft:#f0f8f7}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:'El Messiri',Tahoma,Arial,sans-serif;background:radial-gradient(ellipse at 20% 20%,#eaf7f4 0%,transparent 37%),radial-gradient(ellipse at 90% 85%,#f8f1df 0%,transparent 31%),#fbfcfc;color:var(--ink)}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+button:focus-visible{outline:3px solid #d4a046;outline-offset:3px}
+.app{height:100dvh;max-width:1700px;margin:0 auto;padding:clamp(8px,1.5vh,17px) clamp(10px,2vw,32px);display:flex;flex-direction:column;gap:clamp(7px,1.3vh,16px);overflow:hidden}
+.top{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:40px}
+.brand{font-size:clamp(16px,1.55vw,23px);font-weight:700;color:#3b656e;white-space:nowrap}.brand b{color:var(--teal)}
+.status{display:flex;align-items:center;gap:clamp(8px,1.4vw,17px);font-size:clamp(13px,1.23vw,17px);color:#4f7178;font-weight:700}
+.music{border:1px solid var(--edge);background:white;color:var(--teal);border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:38px;padding:5px 12px;font-size:clamp(13px,1.15vw,17px);font-weight:700}
+.music.off{color:#899a9d}
+.progress{height:5px;flex-shrink:0;background:#e3efed;border-radius:10px;overflow:hidden}
+.progressfill{height:100%;width:0;background:linear-gradient(90deg,#0c8f89,#57c1ac);transition:width .42s}
+.screen{flex:1;min-height:0;display:flex;flex-direction:column}
+.game{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(10px,2vh,26px);background:#fff;border:1px solid #e7eeee;box-shadow:0 16px 52px #123c4410;border-radius:clamp(16px,2vw,26px);padding:clamp(12px,2.4vh,32px) clamp(12px,3vw,50px);overflow:hidden}
+.questionbox{display:flex;flex:0 1 42%;min-height:0;align-items:center;justify-content:center;text-align:center}
+.question{margin:0;max-width:1270px;font-weight:700;line-height:1.5;font-size:clamp(34px,4vw,67px);text-wrap:balance}
+.question.long{font-size:clamp(29px,3.55vw,55px)}
+.question.verylong{font-size:clamp(25px,3vw,45px)}
+.choices{flex:1;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(9px,1.7vh,20px)}
+.choice{display:flex;align-items:center;justify-content:center;text-align:center;gap:clamp(9px,1.8vw,19px);border:2px solid #d5e7e4;background:linear-gradient(180deg,#fff,#f7fbfa);color:#143640;border-radius:clamp(13px,1.6vw,22px);padding:clamp(7px,1vw,17px);min-width:0;min-height:0;position:relative;transition:background .18s,border-color .18s,transform .18s;font-weight:700}
+.choice:not(:disabled):hover{border-color:#4b9e99;background:#edf8f5;transform:translateY(-2px)}
+.choice:active{transform:scale(.985)}
+.choice:disabled{cursor:default}
+.choice-index{flex:0 0 clamp(31px,3vw,43px);height:clamp(31px,3vw,43px);display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e1f0ec;color:#19777a;font:bold clamp(15px,1.4vw,21px) Tahoma,Arial,sans-serif}
+.choice-text{flex:1;font-family:'Markazi Text','El Messiri',serif;font-size:clamp(31px,3vw,49px);line-height:1.22;font-weight:700;overflow-wrap:break-word}
+.choice.compact .choice-text{font-size:clamp(26px,2.55vw,41px)}
+.choice.correct{border-color:#22a573;background:#dff8e9;color:#0a684d;animation:win .45s ease-out}
+.choice.correct .choice-index{background:#2daa7e;color:white}
+.choice.wrong{border-color:#dc7e78;background:#fff0ed;color:#b03c35}
+.choice.wrong .choice-index{background:#ca665f;color:white}
+@keyframes win{35%{transform:scale(1.025)}}
+.feedback{display:flex;align-items:center;justify-content:center;text-align:center;flex-shrink:0;min-height:clamp(25px,4vh,39px);color:#138467;font-weight:700;font-size:clamp(16px,1.6vw,24px)}
+.feedback.bad{color:#b45442}
+.welcome,.results{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,3vh,34px);text-align:center}
+.welcome .mark{width:clamp(80px,11vw,138px);height:clamp(80px,11vw,138px);display:flex;align-items:center;justify-content:center;border-radius:30px;background:#e4f4ed;border:1px solid #cfebe1;font-size:clamp(46px,6vw,78px)}
+.welcome h1,.results h1{margin:0;font-size:clamp(40px,5.7vw,80px);line-height:1.35}
+.welcome h1 b{color:var(--teal)}
+.welcome p,.results p{margin:0;font-size:clamp(18px,2.2vw,31px);color:#52737b;line-height:1.6}
+.start{background:var(--teal);border:0;color:#fff;border-radius:18px;font-size:clamp(23px,2.5vw,36px);font-weight:700;padding:clamp(11px,2vh,19px) clamp(32px,5vw,79px);box-shadow:0 9px 28px #107a7c31}
+.start:active{transform:scale(.98)}
+.resultscore{font:bold clamp(76px,10vw,150px)/1 Tahoma,Arial,sans-serif;color:var(--teal);direction:ltr}
+.resultsmall{font-size:clamp(17px,1.6vw,25px);color:#5e7881}
+@media(max-width:700px){
+.app{padding:6px;gap:7px}.top{min-height:34px}
+.brand{font-size:15px}.status{gap:5px;font-size:12px}.music{min-width:36px;min-height:33px;padding:4px 7px;font-size:13px}
+.game{padding:10px 8px;border-radius:15px;gap:8px}
+.questionbox{flex:0 1 38%}.question{font-size:clamp(27px,7.4vw,41px);line-height:1.4}
+.question.long{font-size:clamp(23px,6.25vw,34px)}
+.question.verylong{font-size:clamp(20px,5.4vw,31px)}
+.choices{gap:8px}.choice{padding:5px 4px;border-radius:13px;flex-direction:column;gap:5px}
+.choice-index{flex:0 0 26px;width:26px;height:26px;font-size:14px}
+.choice-text{flex:none;font-size:clamp(25px,6.7vw,34px);line-height:1.1}
+.choice.compact .choice-text{font-size:clamp(21px,5.3vw,29px)}
+.feedback{font-size:15px;min-height:24px}
+.welcome h1,.results h1{font-size:clamp(35px,8.9vw,52px)}
+.welcome p,.results p{font-size:clamp(17px,4.4vw,24px)}
+}
+@media(max-height:600px){
+.app{padding-top:4px;padding-bottom:4px;gap:4px}.top{min-height:28px}
+.game{padding:7px;gap:5px}
+.questionbox{flex-basis:37%}.question{font-size:clamp(26px,3vw,44px);line-height:1.25}
+.question.long{font-size:clamp(23px,2.8vw,38px)}.question.verylong{font-size:clamp(20px,2.5vw,34px)}
+.choice-text{font-size:clamp(24px,2.8vw,37px);line-height:1.08}
+.choice.compact .choice-text{font-size:clamp(21px,2.5vw,31px)}
+.choice-index{height:26px;flex-basis:26px;width:26px;font-size:13px}
+.choice{padding:4px}.feedback{min-height:18px;font-size:13px}
+}
+@media(max-width:360px){.brand{font-size:13px}.choice-text{font-size:23px}.question{font-size:26px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="brand">✦ <b>تحدّي المعتصم</b></div>
+ <div class="status"><span id="counter"></span><button class="music" id="musicBtn" aria-label="تشغيل أو إيقاف موسيقى التحدي" title="موسيقى التحدي">♫ <span id="musicLabel">موسيقى</span></button></div>
+</header>
+<div class="progress"><div class="progressfill" id="progressfill"></div></div>
+<main class="screen" id="screen"></main>
+</div>
+<script>
+const DATA=[{"q":"ما الوصف الصحيح لخطوط الطول؟","options":["دوائر أفقية تحيط بالأرض","أنصاف دوائر تصل بين القطبين","خطوط تصل المدن المتجاورة","دوائر متوازية مع خط الاستواء"],"correct":"أنصاف دوائر تصل بين القطبين","lesson":"الطول والعرض"},{"q":"كم عدد خطوط الطول؟","options":["180","90","360","24"],"correct":"360","lesson":"الطول والعرض"},{"q":"أيّ استخدام يرتبط بخطوط الطول؟","options":["حساب فروق التوقيت","معرفة نوع التربة","تحديد كمية الأمطار","قياس ارتفاع الجبال"],"correct":"حساب فروق التوقيت","lesson":"الطول والعرض"},{"q":"ما المقصود بدوائر العرض؟","options":["أنصاف دوائر تصل القطبين","خطوط ترسم حدود الدول","خطوط ساحلية متعرجة","دوائر وهمية أفقية متوازية"],"correct":"دوائر وهمية أفقية متوازية","lesson":"الطول والعرض"},{"q":"كم عدد دوائر العرض؟","options":["360","180","365","24"],"correct":"180","lesson":"الطول والعرض"},{"q":"تساعد دوائر العرض في تقسيم الأرض بحسب...","options":["التوقيت المحلي","عدد السكان","المناطق الحارة والباردة","الحدود السياسية"],"correct":"المناطق الحارة والباردة","lesson":"الطول والعرض"},{"q":"كم ساعة تستغرق الأرض للدوران حول نفسها تقريباً؟","options":["12 ساعة","365 ساعة","48 ساعة","24 ساعة"],"correct":"24 ساعة","lesson":"الطول والعرض"},{"q":"كم تستغرق الأرض للدوران حول الشمس تقريباً؟","options":["365 يوماً وربع اليوم","180 يوماً","24 يوماً","360 ساعة"],"correct":"365 يوماً وربع اليوم","lesson":"الطول والعرض"},{"q":"ما الدولة التي تتصل بها قطر برّياً من الجنوب؟","options":["البحرين","الإمارات العربية المتحدة","المملكة العربية السعودية","سلطنة عُمان"],"correct":"المملكة العربية السعودية","lesson":"أشكال سطح قطر"},{"q":"أيّ شكل من الأشكال التالية يُعدّ من التضاريس الداخلية في قطر؟","options":["الخلجان","الكثبان الرملية","الجزر","الرؤوس الأرضية"],"correct":"الكثبان الرملية","lesson":"أشكال سطح قطر"},{"q":"أيّ شكل من الأشكال التالية ساحلي؟","options":["الروضات","التلال","الدحول","السبخات الأرضية"],"correct":"السبخات الأرضية","lesson":"أشكال سطح قطر"},{"q":"أيّ وصف يُعبّر عن الروضات؟","options":["أرض منخفضة تجمع مياه الأمطار","كتل رملية صنعتها الرياح","مياه تتوغل داخل اليابس","أرض تحيط بها المياه"],"correct":"أرض منخفضة تجمع مياه الأمطار","lesson":"أشكال سطح قطر"},{"q":"ما العامل الأساسي في تكوّن الكثبان الرملية؟","options":["جريان الأنهار","المدّ والجزر","الرياح","الزلازل"],"correct":"الرياح","lesson":"أشكال سطح قطر"},{"q":"ما المقصود بالجزر؟","options":["يابسة تتصل بثلاث دول","أرض تحيط بها المياه من كل الجهات","أرض منخفضة تتجمع فيها الأمطار","امتداد صخري داخل البحر"],"correct":"أرض تحيط بها المياه من كل الجهات","lesson":"أشكال سطح قطر"},{"q":"ما المقصود بالخلجان؟","options":["ارتفاع التلال قرب الساحل","امتداد الرمال نحو البر","انخفاض التربة داخل الصحراء","توغل مياه البحر داخل اليابس"],"correct":"توغل مياه البحر داخل اليابس","lesson":"أشكال سطح قطر"},{"q":"أيّ مجموعة كلها من أشكال السطح الداخلية؟","options":["الدحول والتلال والروضات","الجزر والخلجان والروضات","الرؤوس والسبخات والتلال","الخلجان والكثبان والجزر"],"correct":"الدحول والتلال والروضات","lesson":"أشكال سطح قطر"},{"q":"بماذا يتميز فصل الشتاء في قطر؟","options":["ارتفاع الحرارة وجفاف الهواء","انخفاض الحرارة وسقوط الأمطار","ارتفاع الحرارة وانعدام المطر","ثبات الحرارة على مدار اليوم"],"correct":"انخفاض الحرارة وسقوط الأمطار","lesson":"مناخ قطر"},{"q":"كيف يوصف صيف قطر في الدرس؟","options":["بارد وجاف","معتدل وغزير الأمطار","منخفض الرطوبة","حار ورطب وقليل الأمطار"],"correct":"حار ورطب وقليل الأمطار","lesson":"مناخ قطر"},{"q":"أيّ النباتات الآتية من النباتات المعمرة؟","options":["السدر","الفقع","الحميض","نباتات موسمية قصيرة العمر"],"correct":"السدر","lesson":"مناخ قطر"},{"q":"أيّ زوج من النباتات الحولية؟","options":["السدر والعوسج","السدر والفقع","الفقع والحميض","العوسج والحميض"],"correct":"الفقع والحميض","lesson":"مناخ قطر"},{"q":"أيّ الحيوانين من الزواحف المذكورة في الدرس؟","options":["المها والإبل","الثعابين والضب","الأرانب والمها","الكروان واليمام"],"correct":"الثعابين والضب","lesson":"مناخ قطر"},{"q":"أيّ مجموعة تمثل حيوانات آكلة للعشب؟","options":["الصقور والكروان واليمام","الثعابين والضب والمها","الصقور والأرانب والضب","المها والأرانب والإبل"],"correct":"المها والأرانب والإبل","lesson":"مناخ قطر"},{"q":"أيّ الطيور التالية ذُكر في الدرس؟","options":["الكروان","الضب","المها","العوسج"],"correct":"الكروان","lesson":"مناخ قطر"},{"q":"أيّ النباتات الآتية معمّر أيضاً؟","options":["الفقع","الحميض","العوسج","نبات موسمي حولي"],"correct":"العوسج","lesson":"مناخ قطر"},{"q":"إلى أين اتجهت القبائل العربية المهاجرة في الدرس؟","options":["من السواحل إلى الداخل","من شبه الجزيرة إلى أوروبا","من الداخل إلى سواحل شبه الجزيرة","من المدن إلى الجبال فقط"],"correct":"من الداخل إلى سواحل شبه الجزيرة","lesson":"أسرة آل ثاني"},{"q":"ما سبب هجرة القبائل العربية إلى سواحل شبه الجزيرة؟","options":["سوء الأحوال الاقتصادية","زيادة الأراضي الزراعية","اعتدال الجو طوال السنة","وفرة المعادن في الداخل"],"correct":"سوء الأحوال الاقتصادية","lesson":"أسرة آل ثاني"},{"q":"عن ماذا كانت القبائل تبحث؟","options":["مواقع للمصانع","الثلوج الدائمة","الموانئ الجوية","موارد المياه وأماكن الرعي"],"correct":"موارد المياه وأماكن الرعي","lesson":"أسرة آل ثاني"},{"q":"أين ولد الشيخ محمد بن ثاني؟","options":["الدوحة","فويرط","لوسيل","الوكرة"],"correct":"فويرط","lesson":"أسرة آل ثاني"},{"q":"ما العمل الذي قام به الشيخ محمد بن ثاني؟","options":["وحد القبائل القطرية","قسم القبائل إلى إمارات","نقل قطر إلى مدينة أخرى","أوقف أنشطة الرعي"],"correct":"وحد القبائل القطرية","lesson":"أسرة آل ثاني"},{"q":"ما الإنجاز السياسي المذكور للشيخ محمد بن ثاني؟","options":["انضمام قطر إلى دولة أخرى","إلغاء جميع المدن الساحلية","الحصول على اعتراف بريطانيا بقطر إمارة مستقلة","إعلان اتحاد جميع دول الخليج"],"correct":"الحصول على اعتراف بريطانيا بقطر إمارة مستقلة","lesson":"أسرة آل ثاني"},{"q":"من أول حاكم يظهر في تسلسل حكام قطر في الملخص؟","options":["الشيخ حمد بن خليفة آل ثاني","الشيخ جاسم بن محمد آل ثاني","الشيخ عبد الله بن جاسم آل ثاني","الشيخ محمد بن ثاني"],"correct":"الشيخ محمد بن ثاني","lesson":"أسرة آل ثاني"},{"q":"من الذي تولّى حكم قطر عام 2013؟","options":["الشيخ خليفة بن حمد آل ثاني","الشيخ تميم بن حمد آل ثاني","الشيخ علي بن عبد الله آل ثاني","الشيخ أحمد بن علي آل ثاني"],"correct":"الشيخ تميم بن حمد آل ثاني","lesson":"أسرة آل ثاني"},{"q":"أين نشأ الشيخ جاسم بن محمد بن ثاني؟","options":["لوسيل","فويرط","الدوحة","دخان"],"correct":"الدوحة","lesson":"نشأة إمارة قطر"},{"q":"في أيّ تجارة عمل الشيخ جاسم مع والده؟","options":["اللؤلؤ","القمح","الأخشاب","الحرير"],"correct":"اللؤلؤ","lesson":"نشأة إمارة قطر"},{"q":"متى تولّى الشيخ جاسم حكم قطر؟","options":["1913م","1949م","1851م","18 ديسمبر 1878م"],"correct":"18 ديسمبر 1878م","lesson":"نشأة إمارة قطر"},{"q":"ما اللقب الذي منحته الدولة العثمانية للشيخ جاسم؟","options":["سلطان","قائمقام","والٍ","وزير"],"correct":"قائمقام","lesson":"نشأة إمارة قطر"},{"q":"أين دُفن الشيخ جاسم بعد وفاته عام 1913م؟","options":["الدوحة","فويرط","لوسيل","الوكرة"],"correct":"لوسيل","lesson":"نشأة إمارة قطر"},{"q":"أيّ موقف كان أحد أسباب معركة الوجبة؟","options":["محاولة فرض ضرائب على تجار اللؤلؤ","إلغاء الأسواق الأسبوعية","نقل العاصمة إلى الخارج","إغلاق جميع الموانئ القطرية"],"correct":"محاولة فرض ضرائب على تجار اللؤلؤ","lesson":"نشأة إمارة قطر"},{"q":"أيّ حدث آخر أشعل معركة الوجبة؟","options":["توقف الصيد في الشتاء","انتقال قبائل إلى الصحراء","انقطاع المطر","اعتقال الشيخ أحمد ومن معه"],"correct":"اعتقال الشيخ أحمد ومن معه","lesson":"نشأة إمارة قطر"},{"q":"من طرفا معركة الوجبة؟","options":["قطر وبريطانيا","القبائل القطرية والدولة العثمانية","بريطانيا والدولة العثمانية","قبائل قطر والبرتغاليون"],"correct":"القبائل القطرية والدولة العثمانية","lesson":"نشأة إمارة قطر"},{"q":"ما إحدى نتائج معركة الوجبة؟","options":["انتصار القوات العثمانية","نقل السكان إلى الداخل","انتصار القوات القطرية","إلغاء تجارة اللؤلؤ"],"correct":"انتصار القوات القطرية","lesson":"نشأة إمارة قطر"},{"q":"ما النتيجة الأخرى لمعركة الوجبة؟","options":["فك أسر الشيخ أحمد ومن معه","اعتقال جميع التجار","إغلاق المساجد","إلغاء الرعي"],"correct":"فك أسر الشيخ أحمد ومن معه","lesson":"نشأة إمارة قطر"},{"q":"بماذا عُرف الشيخ جاسم من الصفات؟","options":["التردد والعزلة","الاهتمام بالتجارة وحدها","الابتعاد عن العلم","الشجاعة وحب العلم"],"correct":"الشجاعة وحب العلم","lesson":"نشأة إمارة قطر"},{"q":"ما أحد أعماله الدينية؟","options":["إغلاق حلقات العلم","بناء المساجد واستضافة العلماء","منع بناء المساجد","إيقاف التعليم"],"correct":"بناء المساجد واستضافة العلماء","lesson":"نشأة إمارة قطر"},{"q":"بماذا تميّز عهد الشيخ جاسم؟","options":["تراجع التجارة والأمن","انقطاع وسائل الرزق","الأمن والعدل والرخاء وازدهار التجارة","توقف النشاط الاقتصادي"],"correct":"الأمن والعدل والرخاء وازدهار التجارة","lesson":"نشأة إمارة قطر"}];
+const TOTAL=DATA.length;
+const $=x=>document.querySelector(x);
+const escape=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+let index=0,score=0,locked=false,state='welcome',order=[],answeredCount=0,muted=false;
+let audio=null,master=null,musicLoop=null,musicStep=0,nextMusic=0,noise=null;
+const BPM=118,stepLength=60/BPM/2;
+function shuffle(array){const out=[...array];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
+function tone(frequency,time,duration,volume,shape='triangle'){
+ if(!audio||!master)return;
+ const osc=audio.createOscillator(),g=audio.createGain();
+ osc.type=shape;osc.frequency.setValueAtTime(frequency,time);
+ g.gain.setValueAtTime(.0001,time);
+ g.gain.exponentialRampToValueAtTime(Math.max(.001,volume),time+.012);
+ g.gain.exponentialRampToValueAtTime(.0001,time+duration);
+ osc.connect(g);g.connect(master);osc.start(time);osc.stop(time+duration+.02);
+}
+function kick(t){
+ if(!audio||!master)return;
+ const o=audio.createOscillator(),g=audio.createGain();
+ o.type='sine';o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(48,t+.16);
+ g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.0001,t+.19);
+ o.connect(g);g.connect(master);o.start(t);o.stop(t+.2);
+}
+function hat(t){
+ if(!audio||!master||!noise)return;
+ const source=audio.createBufferSource(),hp=audio.createBiquadFilter(),gain=audio.createGain();
+ source.buffer=noise;hp.type='highpass';hp.frequency.value=5500;
+ gain.gain.setValueAtTime(.0001,t);gain.gain.linearRampToValueAtTime(.045,t+.003);
+ gain.gain.exponentialRampToValueAtTime(.0001,t+.065);
+ source.connect(hp);hp.connect(gain);gain.connect(master);
+ source.start(t);source.stop(t+.07);
+}
+const lead=[440,523.25,659.26,523.25,392,493.88,587.33,493.88,349.23,440,523.25,440,392,493.88,587.33,659.26];
+const bass=[110,98,87.31,98];
+function scheduleBeat(step,t){
+ const p=step%16,phrase=Math.floor(step/16)%4;
+ if(p%2===0)tone(lead[p],t,.18,.05,'triangle');
+ if(p%4===0){tone(bass[phrase],t,.42,.076,'sine');kick(t)}
+ if(p%4===2)hat(t);
+ if(p%2===1&&p%4===3)hat(t);
+}
+function scheduleMusic(){
+ if(!audio||muted||audio.state!=='running')return;
+ if(nextMusic<audio.currentTime)nextMusic=audio.currentTime+.04;
+ while(nextMusic<audio.currentTime+.14){
+  scheduleBeat(musicStep++,nextMusic);
+  nextMusic+=stepLength;
+ }
+}
+async function startMusic(){
+ if(muted)return;
+ try{
+  if(!audio){
+   const AudioType=window.AudioContext||window.webkitAudioContext;
+   if(!AudioType)throw Error('Sound is not supported');
+   audio=new AudioType();
+   master=audio.createGain();master.gain.value=.37;master.connect(audio.destination);
+   noise=audio.createBuffer(1,Math.round(audio.sampleRate*.13),audio.sampleRate);
+   let channel=noise.getChannelData(0);
+   for(let i=0;i<channel.length;i++)channel[i]=(Math.random()*2-1)*(.8-i/channel.length*.65);
+  }
+  if(audio.state==='suspended')await audio.resume();
+  nextMusic=audio.currentTime+.02;
+  if(musicLoop===null)musicLoop=setInterval(scheduleMusic,65);
+  scheduleMusic();
+ }catch(e){muted=true;updateMusicButton()}
+}
+function stopMusic(){
+ if(musicLoop!==null){clearInterval(musicLoop);musicLoop=null}
+ if(audio&&audio.state==='running')audio.suspend().catch(()=>{});
+}
+function updateMusicButton(){
+ $('#musicBtn').classList.toggle('off',muted);
+ $('#musicBtn').setAttribute('aria-pressed',String(!muted));
+ $('#musicLabel').textContent=muted?'صامت':'موسيقى';
+}
+function toggleMusic(){
+ muted=!muted;
+ updateMusicButton();
+ if(muted)stopMusic();else if(state!=='welcome'&&state!=='result')startMusic();
+}
+function ping(correct){
+ if(muted||!audio||audio.state!=='running')return;
+ const t=audio.currentTime;
+ if(correct){tone(783.99,t,.1,.09,'sine');tone(1046.5,t+.13,.19,.07,'sine')}
+ else{tone(190,t,.14,.08,'sawtooth')}
+}
+function shell(body){$('#screen').innerHTML=body}
+function welcome(){
+ state='welcome';stopMusic();
+ $('#counter').textContent='';$('#progressfill').style.width='0%';
+ shell(`<section class="game">
+ <div class="welcome">
+  <div class="mark">⚡</div>
+  <h1>تَحَدِّي <b>الْمُعْتَصِمِ</b></h1>
+  <p>${TOTAL} سُؤَالًا · اخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ</p>
+  <button class="start" id="startBtn">اِبْدَأِ التَّحَدِّي ▶</button>
+ </div></section>`);
+ $('#startBtn').onclick=()=>startGame();
+}
+function startGame(){
+ index=0;score=0;locked=false;answeredCount=0;state='question';
+ startMusic();renderQuestion();
+}
+function renderQuestion(){
+ if(index>=TOTAL){finishGame();return}
+ locked=false;state='question';
+ const q=DATA[index];
+ order=shuffle(q.options);
+ $('#counter').textContent=`${index+1} / ${TOTAL}`;
+ $('#progressfill').style.width=`${Math.round(index/TOTAL*100)}%`;
+ const len=q.q.length;
+ const size=len>95?'verylong':len>63?'long':'';
+ shell(`<section class="game">
+  <div class="questionbox"><h1 class="question ${size}">${escape(q.q)}</h1></div>
+  <div class="choices" id="choices">
+    ${order.map((answer,i)=>`<button class="choice ${answer.length>49?'compact':''}" data-option="${i}" type="button">
+      <span class="choice-index">${i+1}</span>
+      <span class="choice-text">${escape(answer)}</span>
+    </button>`).join('')}
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+ </section>`);
+ document.querySelectorAll('[data-option]').forEach((button,i)=>button.onclick=()=>choose(i));
+}
+function choose(picked){
+ if(state!=='question'||locked)return;
+ locked=true;
+ const q=DATA[index];
+ const selected=order[picked],right=selected===q.correct;
+ if(right)score++;
+ answeredCount++;
+ const buttons=[...document.querySelectorAll('[data-option]')];
+ buttons.forEach((b,i)=>{
+  b.disabled=true;
+  if(order[i]===q.correct)b.classList.add('correct');
+  else if(i===picked)b.classList.add('wrong');
+ });
+ $('#feedback').textContent=right?'أَحْسَنْتَ! إِجَابَةٌ صَحِيحَةٌ ✓':'الْإِجَابَةُ الصَّحِيحَةُ بِالْأَخْضَرِ';
+ $('#feedback').classList.toggle('bad',!right);
+ ping(right);
+ setTimeout(()=>{
+  if(state!=='question')return;
+  index++;renderQuestion();
+ },right?1050:1700);
+}
+function finishGame(){
+ state='result';
+ $('#counter').textContent='';$('#progressfill').style.width='100%';
+ stopMusic();
+ const pct=Math.round(score/TOTAL*100);
+ const greeting=pct>=90?'بَطَلٌ يَا مُعْتَصِمُ! 🏆':pct>=65?'أَحْسَنْتَ يَا مُعْتَصِمُ! 🌟':'مُحَاوَلَةٌ جَيِّدَةٌ! 👏';
+ shell(`<section class="game"><div class="results">
+  <h1>${greeting}</h1>
+  <div class="resultscore">${score} / ${TOTAL}</div>
+  <p>إِجَابَاتُكَ الصَّحِيحَةُ</p>
+  <button class="start" id="againBtn">أَعِدِ التَّحَدِّي ↺</button>
+ </div></section>`);
+ $('#againBtn').onclick=startGame;
+}
+$('#musicBtn').onclick=toggleMusic;
+window.addEventListener('keydown',event=>{
+ if(state==='question'&&/^[1-4]$/.test(event.key)){
+  document.querySelector(`[data-option="${Number(event.key)-1}"]`)?.click();
+ }
+});
+document.addEventListener('visibilitychange',()=>{
+ if(document.hidden&&audio?.state==='running')audio.suspend().catch(()=>{});
+ else if(!document.hidden&&!muted&&state==='question'&&audio?.state==='suspended'){
+   audio.resume().catch(()=>{});
+ }
+});
+updateMusicButton();
+welcome();
+</script>
+</body></html>
