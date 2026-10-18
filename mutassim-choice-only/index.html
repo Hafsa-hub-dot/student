@@ -395,6 +395,13 @@ function landWrite(){
 }
 function landRefresh(){
  const index=4-landRound+landFilled;
+ // The last chosen answer completes all four slots; there is no fifth item.
+ if(index>=landData().items.length){
+  if($('#landList'))$('#landList').innerHTML=landLines(false);
+  if($('#landPrompt'))$('#landPrompt').textContent='أَحْسَنْتَ! أَكْمَلْتَ الْأَشْكَالَ كُلَّهَا ✓';
+  if($('#landOptions'))$('#landOptions').innerHTML='';
+  return;
+ }
  const current=landData().items[index][0];
  const own=landData().items.map(x=>x[0]).filter(x=>landNorm(x)!==landNorm(current));
  const alternate=LANDFORMS[card===1?2:1].items.map(x=>x[0]);
@@ -419,6 +426,12 @@ function landPick(chosen,button){
  button.classList.add('correct');
  const destination=document.querySelector(`.land-row[data-land-row="${idx}"] .land-value`);
  const from=button.getBoundingClientRect(),to=destination?.getBoundingClientRect();
+ // Place the selected text inside the blank immediately, not only in the flying decoration.
+ if(destination){
+   destination.textContent=landData().items[idx][1];
+   const row=destination.closest('.land-row');
+   if(row){row.classList.remove('missing','active');row.classList.add('complete')}
+ }
  if(to&&from.width>0){
   const flying=document.createElement('span');
   flying.className='land-fly';flying.textContent=chosen;
@@ -444,7 +457,7 @@ function landPick(chosen,button){
   timer=setTimeout(()=>{
    timer=null;if(view!=='landforms'||landPhase!=='between'||!isLandformCard())return;
    if(landRound<4){landRound++;landFilled=0;landReveal()}else landFinish();
-  },650);
+  },1900);
  },235);
 }
 function landFinish(){
