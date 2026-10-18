@@ -78,6 +78,40 @@ button:focus-visible{outline:3px solid #d4a046;outline-offset:3px}
 }
 @media(max-width:360px){.brand{font-size:13px}.choice-text{font-size:23px}.question{font-size:26px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Big, always-visible remaining questions, mistakes, retries, and countdown. */
+.metrics{display:flex;flex-shrink:0;align-items:stretch;gap:clamp(4px,.8vw,11px);width:100%;min-height:clamp(40px,6vh,60px)}
+.metric{flex:1;min-width:0;background:#fff;border:1px solid #d7e9e4;border-radius:12px;padding:clamp(3px,.4vh,5px) clamp(5px,.9vw,12px);display:flex;align-items:center;justify-content:center;gap:clamp(4px,.7vw,10px);color:#5b7a7d;white-space:nowrap}
+.metric span{font-size:clamp(12px,1.15vw,17px);font-weight:700}
+.metric strong{font:bold clamp(19px,2.05vw,32px) Tahoma,Arial,sans-serif;color:var(--teal);font-variant-numeric:tabular-nums}
+.metric.time-metric{flex:1.15;border-color:#c4e3dd;background:#ebf8f4}
+.metric.time-metric strong{font-size:clamp(23px,2.55vw,39px);color:#086d75}
+.metric.time-metric.warning{background:#fff5e4;border-color:#d9af6d}
+.metric.time-metric.warning strong{color:#bb6b22}
+.metric.time-metric.expired{background:#fff0ec;border-color:#df9e9d}
+.metric.time-metric.expired strong{color:#b04442}
+.welcome .duration-picker{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.duration-text{font-size:clamp(16px,1.4vw,22px);font-weight:700;color:#4d7376}
+.durbtn{background:#fff;color:#317479;border:2px solid #d2e7e2;border-radius:999px;min-width:clamp(66px,6vw,93px);font-size:clamp(16px,1.6vw,24px);font-weight:700;padding:7px 16px}
+.durbtn.active{background:#e1f5ed;border-color:#168b80;color:#065b60}
+.feedback .retry-time{background:#fff6e4;border:2px solid #d1a65f;border-radius:12px;color:#885923;font-size:clamp(15px,1.4vw,22px);font-weight:700;padding:5px 20px}
+.results .statsgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(6px,1.2vw,13px);width:min(850px,100%)}
+.results .statcard{background:#f1f8f6;border:1px solid #d3e8e1;border-radius:15px;padding:clamp(9px,1.5vh,17px) 7px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;color:#3f7373;font-size:clamp(15px,1.5vw,22px);font-weight:700}
+.results .statcard strong{font:bold clamp(37px,4.4vw,64px) Tahoma,Arial,sans-serif;color:#086f77}
+@media(max-width:700px){
+.metrics{gap:4px;min-height:45px}
+.metric{flex-direction:column;gap:0;padding:3px 2px;border-radius:8px}
+.metric span{font-size:clamp(11px,2.8vw,13px)}
+.metric strong{font-size:clamp(18px,5vw,24px)}
+.metric.time-metric{flex:1.25}
+.metric.time-metric strong{font-size:clamp(22px,5.7vw,31px)}
+.welcome .duration-picker{gap:5px}.duration-text{width:100%;font-size:17px}
+.durbtn{font-size:17px;min-width:65px;padding:5px 10px}
+.results .statcard{font-size:clamp(11px,3.3vw,16px)}.results .statcard strong{font-size:34px}
+}
+@media(max-height:620px){.metrics{min-height:33px}.metric{padding:2px}.metric strong{font-size:19px}.metric.time-metric strong{font-size:22px}.metric span{font-size:11px}.app{gap:4px}.results .statsgrid{gap:4px}.results .statcard{padding:5px}}
+@media(max-height:490px){.metric{flex-direction:row}.results{gap:5px}.results .statcard strong{font-size:27px}}
+
 </style>
 </head>
 <body>
@@ -86,15 +120,23 @@ button:focus-visible{outline:3px solid #d4a046;outline-offset:3px}
  <div class="brand">✦ <b>تحدّي المعتصم</b></div>
  <div class="status"><span id="counter"></span><button class="music" id="musicBtn" aria-label="تشغيل أو إيقاف موسيقى التحدي" title="موسيقى التحدي">♫ <span id="musicLabel">موسيقى</span></button></div>
 </header>
+<div class="metrics" id="metrics" style="display:none">
+ <div class="metric"><span>الْمُتَبَقِّي</span><strong id="remainingCount">57</strong></div>
+ <div class="metric"><span>أَخْطَاء</span><strong id="wrongCount">0</strong></div>
+ <div class="metric"><span>إِعَادَات</span><strong id="retryCount">0</strong></div>
+ <div class="metric time-metric" id="timeMetric"><span>الْوَقْتُ</span><strong id="timeCount" role="timer">00:45</strong></div>
+</div>
 <div class="progress"><div class="progressfill" id="progressfill"></div></div>
 <main class="screen" id="screen"></main>
 </div>
 <script>
-const DATA=[{"q":"ما الوصف الصحيح لخطوط الطول؟","options":["دوائر أفقية تحيط بالأرض","أنصاف دوائر تصل بين القطبين","خطوط تصل المدن المتجاورة","دوائر متوازية مع خط الاستواء"],"correct":"أنصاف دوائر تصل بين القطبين","lesson":"الطول والعرض"},{"q":"كم عدد خطوط الطول؟","options":["180","90","360","24"],"correct":"360","lesson":"الطول والعرض"},{"q":"أيّ استخدام يرتبط بخطوط الطول؟","options":["حساب فروق التوقيت","معرفة نوع التربة","تحديد كمية الأمطار","قياس ارتفاع الجبال"],"correct":"حساب فروق التوقيت","lesson":"الطول والعرض"},{"q":"ما المقصود بدوائر العرض؟","options":["أنصاف دوائر تصل القطبين","خطوط ترسم حدود الدول","خطوط ساحلية متعرجة","دوائر وهمية أفقية متوازية"],"correct":"دوائر وهمية أفقية متوازية","lesson":"الطول والعرض"},{"q":"كم عدد دوائر العرض؟","options":["360","180","365","24"],"correct":"180","lesson":"الطول والعرض"},{"q":"تساعد دوائر العرض في تقسيم الأرض بحسب...","options":["التوقيت المحلي","عدد السكان","المناطق الحارة والباردة","الحدود السياسية"],"correct":"المناطق الحارة والباردة","lesson":"الطول والعرض"},{"q":"كم ساعة تستغرق الأرض للدوران حول نفسها تقريباً؟","options":["12 ساعة","365 ساعة","48 ساعة","24 ساعة"],"correct":"24 ساعة","lesson":"الطول والعرض"},{"q":"كم تستغرق الأرض للدوران حول الشمس تقريباً؟","options":["365 يوماً وربع اليوم","180 يوماً","24 يوماً","360 ساعة"],"correct":"365 يوماً وربع اليوم","lesson":"الطول والعرض"},{"q":"ما الدولة التي تتصل بها قطر برّياً من الجنوب؟","options":["البحرين","الإمارات العربية المتحدة","المملكة العربية السعودية","سلطنة عُمان"],"correct":"المملكة العربية السعودية","lesson":"أشكال سطح قطر"},{"q":"أيّ شكل من الأشكال التالية يُعدّ من التضاريس الداخلية في قطر؟","options":["الخلجان","الكثبان الرملية","الجزر","الرؤوس الأرضية"],"correct":"الكثبان الرملية","lesson":"أشكال سطح قطر"},{"q":"أيّ شكل من الأشكال التالية ساحلي؟","options":["الروضات","التلال","الدحول","السبخات الأرضية"],"correct":"السبخات الأرضية","lesson":"أشكال سطح قطر"},{"q":"أيّ وصف يُعبّر عن الروضات؟","options":["أرض منخفضة تجمع مياه الأمطار","كتل رملية صنعتها الرياح","مياه تتوغل داخل اليابس","أرض تحيط بها المياه"],"correct":"أرض منخفضة تجمع مياه الأمطار","lesson":"أشكال سطح قطر"},{"q":"ما العامل الأساسي في تكوّن الكثبان الرملية؟","options":["جريان الأنهار","المدّ والجزر","الرياح","الزلازل"],"correct":"الرياح","lesson":"أشكال سطح قطر"},{"q":"ما المقصود بالجزر؟","options":["يابسة تتصل بثلاث دول","أرض تحيط بها المياه من كل الجهات","أرض منخفضة تتجمع فيها الأمطار","امتداد صخري داخل البحر"],"correct":"أرض تحيط بها المياه من كل الجهات","lesson":"أشكال سطح قطر"},{"q":"ما المقصود بالخلجان؟","options":["ارتفاع التلال قرب الساحل","امتداد الرمال نحو البر","انخفاض التربة داخل الصحراء","توغل مياه البحر داخل اليابس"],"correct":"توغل مياه البحر داخل اليابس","lesson":"أشكال سطح قطر"},{"q":"أيّ مجموعة كلها من أشكال السطح الداخلية؟","options":["الدحول والتلال والروضات","الجزر والخلجان والروضات","الرؤوس والسبخات والتلال","الخلجان والكثبان والجزر"],"correct":"الدحول والتلال والروضات","lesson":"أشكال سطح قطر"},{"q":"بماذا يتميز فصل الشتاء في قطر؟","options":["ارتفاع الحرارة وجفاف الهواء","انخفاض الحرارة وسقوط الأمطار","ارتفاع الحرارة وانعدام المطر","ثبات الحرارة على مدار اليوم"],"correct":"انخفاض الحرارة وسقوط الأمطار","lesson":"مناخ قطر"},{"q":"كيف يوصف صيف قطر في الدرس؟","options":["بارد وجاف","معتدل وغزير الأمطار","منخفض الرطوبة","حار ورطب وقليل الأمطار"],"correct":"حار ورطب وقليل الأمطار","lesson":"مناخ قطر"},{"q":"أيّ النباتات الآتية من النباتات المعمرة؟","options":["السدر","الفقع","الحميض","نباتات موسمية قصيرة العمر"],"correct":"السدر","lesson":"مناخ قطر"},{"q":"أيّ زوج من النباتات الحولية؟","options":["السدر والعوسج","السدر والفقع","الفقع والحميض","العوسج والحميض"],"correct":"الفقع والحميض","lesson":"مناخ قطر"},{"q":"أيّ الحيوانين من الزواحف المذكورة في الدرس؟","options":["المها والإبل","الثعابين والضب","الأرانب والمها","الكروان واليمام"],"correct":"الثعابين والضب","lesson":"مناخ قطر"},{"q":"أيّ مجموعة تمثل حيوانات آكلة للعشب؟","options":["الصقور والكروان واليمام","الثعابين والضب والمها","الصقور والأرانب والضب","المها والأرانب والإبل"],"correct":"المها والأرانب والإبل","lesson":"مناخ قطر"},{"q":"أيّ الطيور التالية ذُكر في الدرس؟","options":["الكروان","الضب","المها","العوسج"],"correct":"الكروان","lesson":"مناخ قطر"},{"q":"أيّ النباتات الآتية معمّر أيضاً؟","options":["الفقع","الحميض","العوسج","نبات موسمي حولي"],"correct":"العوسج","lesson":"مناخ قطر"},{"q":"إلى أين اتجهت القبائل العربية المهاجرة في الدرس؟","options":["من السواحل إلى الداخل","من شبه الجزيرة إلى أوروبا","من الداخل إلى سواحل شبه الجزيرة","من المدن إلى الجبال فقط"],"correct":"من الداخل إلى سواحل شبه الجزيرة","lesson":"أسرة آل ثاني"},{"q":"ما سبب هجرة القبائل العربية إلى سواحل شبه الجزيرة؟","options":["سوء الأحوال الاقتصادية","زيادة الأراضي الزراعية","اعتدال الجو طوال السنة","وفرة المعادن في الداخل"],"correct":"سوء الأحوال الاقتصادية","lesson":"أسرة آل ثاني"},{"q":"عن ماذا كانت القبائل تبحث؟","options":["مواقع للمصانع","الثلوج الدائمة","الموانئ الجوية","موارد المياه وأماكن الرعي"],"correct":"موارد المياه وأماكن الرعي","lesson":"أسرة آل ثاني"},{"q":"أين ولد الشيخ محمد بن ثاني؟","options":["الدوحة","فويرط","لوسيل","الوكرة"],"correct":"فويرط","lesson":"أسرة آل ثاني"},{"q":"ما العمل الذي قام به الشيخ محمد بن ثاني؟","options":["وحد القبائل القطرية","قسم القبائل إلى إمارات","نقل قطر إلى مدينة أخرى","أوقف أنشطة الرعي"],"correct":"وحد القبائل القطرية","lesson":"أسرة آل ثاني"},{"q":"ما الإنجاز السياسي المذكور للشيخ محمد بن ثاني؟","options":["انضمام قطر إلى دولة أخرى","إلغاء جميع المدن الساحلية","الحصول على اعتراف بريطانيا بقطر إمارة مستقلة","إعلان اتحاد جميع دول الخليج"],"correct":"الحصول على اعتراف بريطانيا بقطر إمارة مستقلة","lesson":"أسرة آل ثاني"},{"q":"من أول حاكم يظهر في تسلسل حكام قطر في الملخص؟","options":["الشيخ حمد بن خليفة آل ثاني","الشيخ جاسم بن محمد آل ثاني","الشيخ عبد الله بن جاسم آل ثاني","الشيخ محمد بن ثاني"],"correct":"الشيخ محمد بن ثاني","lesson":"أسرة آل ثاني"},{"q":"من الذي تولّى حكم قطر عام 2013؟","options":["الشيخ خليفة بن حمد آل ثاني","الشيخ تميم بن حمد آل ثاني","الشيخ علي بن عبد الله آل ثاني","الشيخ أحمد بن علي آل ثاني"],"correct":"الشيخ تميم بن حمد آل ثاني","lesson":"أسرة آل ثاني"},{"q":"أين نشأ الشيخ جاسم بن محمد بن ثاني؟","options":["لوسيل","فويرط","الدوحة","دخان"],"correct":"الدوحة","lesson":"نشأة إمارة قطر"},{"q":"في أيّ تجارة عمل الشيخ جاسم مع والده؟","options":["اللؤلؤ","القمح","الأخشاب","الحرير"],"correct":"اللؤلؤ","lesson":"نشأة إمارة قطر"},{"q":"متى تولّى الشيخ جاسم حكم قطر؟","options":["1913م","1949م","1851م","18 ديسمبر 1878م"],"correct":"18 ديسمبر 1878م","lesson":"نشأة إمارة قطر"},{"q":"ما اللقب الذي منحته الدولة العثمانية للشيخ جاسم؟","options":["سلطان","قائمقام","والٍ","وزير"],"correct":"قائمقام","lesson":"نشأة إمارة قطر"},{"q":"أين دُفن الشيخ جاسم بعد وفاته عام 1913م؟","options":["الدوحة","فويرط","لوسيل","الوكرة"],"correct":"لوسيل","lesson":"نشأة إمارة قطر"},{"q":"أيّ موقف كان أحد أسباب معركة الوجبة؟","options":["محاولة فرض ضرائب على تجار اللؤلؤ","إلغاء الأسواق الأسبوعية","نقل العاصمة إلى الخارج","إغلاق جميع الموانئ القطرية"],"correct":"محاولة فرض ضرائب على تجار اللؤلؤ","lesson":"نشأة إمارة قطر"},{"q":"أيّ حدث آخر أشعل معركة الوجبة؟","options":["توقف الصيد في الشتاء","انتقال قبائل إلى الصحراء","انقطاع المطر","اعتقال الشيخ أحمد ومن معه"],"correct":"اعتقال الشيخ أحمد ومن معه","lesson":"نشأة إمارة قطر"},{"q":"من طرفا معركة الوجبة؟","options":["قطر وبريطانيا","القبائل القطرية والدولة العثمانية","بريطانيا والدولة العثمانية","قبائل قطر والبرتغاليون"],"correct":"القبائل القطرية والدولة العثمانية","lesson":"نشأة إمارة قطر"},{"q":"ما إحدى نتائج معركة الوجبة؟","options":["انتصار القوات العثمانية","نقل السكان إلى الداخل","انتصار القوات القطرية","إلغاء تجارة اللؤلؤ"],"correct":"انتصار القوات القطرية","lesson":"نشأة إمارة قطر"},{"q":"ما النتيجة الأخرى لمعركة الوجبة؟","options":["فك أسر الشيخ أحمد ومن معه","اعتقال جميع التجار","إغلاق المساجد","إلغاء الرعي"],"correct":"فك أسر الشيخ أحمد ومن معه","lesson":"نشأة إمارة قطر"},{"q":"بماذا عُرف الشيخ جاسم من الصفات؟","options":["التردد والعزلة","الاهتمام بالتجارة وحدها","الابتعاد عن العلم","الشجاعة وحب العلم"],"correct":"الشجاعة وحب العلم","lesson":"نشأة إمارة قطر"},{"q":"ما أحد أعماله الدينية؟","options":["إغلاق حلقات العلم","بناء المساجد واستضافة العلماء","منع بناء المساجد","إيقاف التعليم"],"correct":"بناء المساجد واستضافة العلماء","lesson":"نشأة إمارة قطر"},{"q":"بماذا تميّز عهد الشيخ جاسم؟","options":["تراجع التجارة والأمن","انقطاع وسائل الرزق","الأمن والعدل والرخاء وازدهار التجارة","توقف النشاط الاقتصادي"],"correct":"الأمن والعدل والرخاء وازدهار التجارة","lesson":"نشأة إمارة قطر"}];
+const DATA=[{"q":"أَكْمِلِ التَّعْرِيفَ: خُطُوطُ الطُّولِ هِيَ ______.","options":["دوائر أفقية تحيط بالأرض","أنصاف دوائر تصل بين القطبين","خطوط تصل المدن المتجاورة","دوائر متوازية مع خط الاستواء"],"correct":"أنصاف دوائر تصل بين القطبين","lesson":"الطول والعرض"},{"q":"أَكْمِلْ: عَدَدُ خُطُوطِ الطُّولِ ______ خَطًّا.","options":["180","90","360","24"],"correct":"360","lesson":"الطول والعرض"},{"q":"أيّ استخدام يرتبط بخطوط الطول؟","options":["حساب فروق التوقيت","معرفة نوع التربة","تحديد كمية الأمطار","قياس ارتفاع الجبال"],"correct":"حساب فروق التوقيت","lesson":"الطول والعرض"},{"q":"أَكْمِلِ التَّعْرِيفَ: دَوَائِرُ الْعَرْضِ هِيَ ______.","options":["أنصاف دوائر تصل القطبين","خطوط ترسم حدود الدول","خطوط ساحلية متعرجة","دوائر وهمية أفقية متوازية"],"correct":"دوائر وهمية أفقية متوازية","lesson":"الطول والعرض"},{"q":"أَكْمِلْ: عَدَدُ دَوَائِرِ الْعَرْضِ ______ دَائِرَةً.","options":["360","180","365","24"],"correct":"180","lesson":"الطول والعرض"},{"q":"أَكْمِلْ: تُسَاعِدُ دَوَائِرُ الْعَرْضِ فِي مَعْرِفَةِ ______.","options":["التوقيت المحلي","عدد السكان","المناطق الحارة والباردة","الحدود السياسية"],"correct":"المناطق الحارة والباردة","lesson":"الطول والعرض"},{"q":"أَكْمِلْ: تَسْتَغْرِقُ الْحَرَكَةُ الْيَوْمِيَّةُ لِلْأَرْضِ ______.","options":["12 ساعة","365 ساعة","48 ساعة","24 ساعة"],"correct":"24 ساعة","lesson":"الطول والعرض"},{"q":"أَكْمِلْ: تَسْتَغْرِقُ الْأَرْضُ لِتَدُورَ حَوْلَ الشَّمْسِ ______.","options":["365 يوماً وربع اليوم","180 يوماً","24 يوماً","360 ساعة"],"correct":"365 يوماً وربع اليوم","lesson":"الطول والعرض"},{"lesson":"الطول والعرض","q":"مَا الْمُصْطَلَحُ؟ أَنْصَافُ دَوَائِرَ وَهْمِيَّةٍ تَصِلُ بَيْنَ الْقُطْبَيْنِ.","options":["خطوط الطول","دوائر العرض","خط الاستواء","خطوط السواحل"],"correct":"خطوط الطول"},{"lesson":"الطول والعرض","q":"أَكْمِلْ: تُسْتَخْدَمُ خُطُوطُ الطُّولِ فِي تَحْدِيدِ الْمَوَاقِعِ وَحِسَابِ ______.","options":["فروق التوقيت","كمية الأمطار","درجة ملوحة البحر","عدد السكان"],"correct":"فروق التوقيت"},{"q":"ما الدولة التي تتصل بها قطر برّياً من الجنوب؟","options":["البحرين","الإمارات العربية المتحدة","المملكة العربية السعودية","سلطنة عُمان"],"correct":"المملكة العربية السعودية","lesson":"أشكال سطح قطر"},{"q":"أيّ شكل من الأشكال التالية يُعدّ من التضاريس الداخلية في قطر؟","options":["الخلجان","الكثبان الرملية","الجزر","الرؤوس الأرضية"],"correct":"الكثبان الرملية","lesson":"أشكال سطح قطر"},{"q":"أَكْمِلْ: مِنْ أَشْكَالِ سَطْحِ قَطَرَ السَّاحِلِيَّةِ ______.","options":["الروضات","التلال","الدحول","السبخات الأرضية"],"correct":"السبخات الأرضية","lesson":"أشكال سطح قطر"},{"q":"مَا الْمُصْطَلَحُ؟ أَرْضٌ مُنْخَفِضَةٌ تَتَجَمَّعُ فِيهَا مِيَاهُ الْأَمْطَارِ.","options":["الروضات","التلال","الجزر","الخلجان"],"correct":"الروضات","lesson":"أشكال سطح قطر"},{"q":"أَكْمِلْ: تَتَكَوَّنُ الْكُثْبَانُ الرَّمْلِيَّةُ بِفِعْلِ ______.","options":["جريان الأنهار","المدّ والجزر","الرياح","الزلازل"],"correct":"الرياح","lesson":"أشكال سطح قطر"},{"q":"مَا الْمُصْطَلَحُ؟ أَرْضٌ تُحِيطُ بِهَا الْمِيَاهُ مِنْ جَمِيعِ الْجِهَاتِ.","options":["الروضات","الجزر","الخلجان","التلال"],"correct":"الجزر","lesson":"أشكال سطح قطر"},{"q":"مَا الْمُصْطَلَحُ؟ تَوَغُّلُ مِيَاهِ الْبَحْرِ دَاخِلَ الْيَابِسَةِ.","options":["الرؤوس الأرضية","الخلجان","الروضات","الكثبان الرملية"],"correct":"الخلجان","lesson":"أشكال سطح قطر"},{"q":"أَكْمِلْ: تَشْمَلُ أَشْكَالُ السَّطْحِ الدَّاخِلِيَّةِ فِي قَطَرَ ______.","options":["الدحول والتلال والروضات","الجزر والخلجان والروضات","الرؤوس والسبخات والتلال","الخلجان والكثبان والجزر"],"correct":"الدحول والتلال والروضات","lesson":"أشكال سطح قطر"},{"lesson":"أشكال سطح قطر","q":"أَكْمِلْ: الدُّحُولُ وَالتِّلَالُ وَالْكُثْبَانُ الرَّمْلِيَّةُ وَ______ مِنْ أَشْكَالِ السَّطْحِ الدَّاخِلِيَّةِ.","options":["الخلجان","الروضات","الجزر","الرؤوس الأرضية"],"correct":"الروضات"},{"lesson":"أشكال سطح قطر","q":"أَكْمِلْ: الْجُزُرُ وَالْخُلْجَانُ وَالرُّؤُوسُ الْأَرْضِيَّةُ وَ______ مِنْ أَشْكَالِ السَّطْحِ السَّاحِلِيَّةِ.","options":["التلال","الروضات","السبخات الأرضية","الدحول"],"correct":"السبخات الأرضية"},{"lesson":"أشكال سطح قطر","q":"مَا الْمُصْطَلَحُ؟ كُتَلٌ مِنَ الرِّمَالِ تَكَوَّنَتْ بِفِعْلِ الرِّيَاحِ.","options":["الروضات","الكثبان الرملية","الجزر","الخلجان"],"correct":"الكثبان الرملية"},{"q":"أَكْمِلْ: مِنْ صِفَاتِ شِتَاءِ قَطَرَ ______.","options":["ارتفاع الحرارة وجفاف الهواء","انخفاض الحرارة وسقوط الأمطار","ارتفاع الحرارة وانعدام المطر","ثبات الحرارة على مدار اليوم"],"correct":"انخفاض الحرارة وسقوط الأمطار","lesson":"مناخ قطر"},{"q":"أَكْمِلْ: يَكُونُ صَيْفُ قَطَرَ ______.","options":["بارد وجاف","معتدل وغزير الأمطار","منخفض الرطوبة","حار ورطب وقليل الأمطار"],"correct":"حار ورطب وقليل الأمطار","lesson":"مناخ قطر"},{"q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْمُعَمَّرَةِ فِي قَطَرَ ______.","options":["السدر","الفقع","الحميض","نباتات موسمية قصيرة العمر"],"correct":"السدر","lesson":"مناخ قطر"},{"q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْحَوْلِيَّةِ ______.","options":["السدر والعوسج","السدر والفقع","الفقع والحميض","العوسج والحميض"],"correct":"الفقع والحميض","lesson":"مناخ قطر"},{"q":"أَكْمِلْ: مِنَ الزَّوَاحِفِ فِي قَطَرَ ______.","options":["المها والإبل","الثعابين والضب","الأرانب والمها","الكروان واليمام"],"correct":"الثعابين والضب","lesson":"مناخ قطر"},{"q":"أيّ مجموعة تمثل حيوانات آكلة للعشب؟","options":["الصقور والكروان واليمام","الثعابين والضب والمها","الصقور والأرانب والضب","المها والأرانب والإبل"],"correct":"المها والأرانب والإبل","lesson":"مناخ قطر"},{"q":"أيّ الطيور التالية ذُكر في الدرس؟","options":["الكروان","الضب","المها","العوسج"],"correct":"الكروان","lesson":"مناخ قطر"},{"q":"أيّ النباتات الآتية معمّر أيضاً؟","options":["الفقع","الحميض","العوسج","نبات موسمي حولي"],"correct":"العوسج","lesson":"مناخ قطر"},{"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنْ صِفَاتِ شِتَاءِ قَطَرَ انْخِفَاضُ دَرَجَاتِ الْحَرَارَةِ وَسُقُوطُ الْأَمْطَارِ وَ______.","options":["حدوث الضباب","انعدام الأمطار","ارتفاع الحرارة","الجفاف الشديد"],"correct":"حدوث الضباب"},{"lesson":"مناخ قطر","q":"أَكْمِلْ: يَتَمَيَّزُ صَيْفُ قَطَرَ بِارْتِفَاعِ الْحَرَارَةِ وَالرُّطُوبَةِ وَ______.","options":["سقوط الثلوج","انعدام سقوط الأمطار","انخفاض الرطوبة","البرودة الشديدة"],"correct":"انعدام سقوط الأمطار"},{"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْمُعَمَّرَةِ السِّدْرُ وَ______.","options":["الفقع","الحميض","العوسج","الكروان"],"correct":"العوسج"},{"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْحَوْلِيَّةِ الْفَقْعُ وَ______.","options":["السدر","الحميض","العوسج","اليمام"],"correct":"الحميض"},{"q":"إلى أين اتجهت القبائل العربية المهاجرة في الدرس؟","options":["من السواحل إلى الداخل","من شبه الجزيرة إلى أوروبا","من الداخل إلى سواحل شبه الجزيرة","من المدن إلى الجبال فقط"],"correct":"من الداخل إلى سواحل شبه الجزيرة","lesson":"أسرة آل ثاني"},{"q":"أَكْمِلْ: هَاجَرَتِ الْقَبَائِلُ بِسَبَبِ ______.","options":["سوء الأحوال الاقتصادية","زيادة الأراضي الزراعية","اعتدال الجو طوال السنة","وفرة المعادن في الداخل"],"correct":"سوء الأحوال الاقتصادية","lesson":"أسرة آل ثاني"},{"q":"أَكْمِلْ: كَانَتِ الْقَبَائِلُ تَبْحَثُ عَنْ ______.","options":["مواقع للمصانع","الثلوج الدائمة","الموانئ الجوية","موارد المياه وأماكن الرعي"],"correct":"موارد المياه وأماكن الرعي","lesson":"أسرة آل ثاني"},{"q":"أين ولد الشيخ محمد بن ثاني؟","options":["الدوحة","فويرط","لوسيل","الوكرة"],"correct":"فويرط","lesson":"أسرة آل ثاني"},{"q":"ما العمل الذي قام به الشيخ محمد بن ثاني؟","options":["وحد القبائل القطرية","قسم القبائل إلى إمارات","نقل قطر إلى مدينة أخرى","أوقف أنشطة الرعي"],"correct":"وحد القبائل القطرية","lesson":"أسرة آل ثاني"},{"q":"ما الإنجاز السياسي المذكور للشيخ محمد بن ثاني؟","options":["انضمام قطر إلى دولة أخرى","إلغاء جميع المدن الساحلية","الحصول على اعتراف بريطانيا بقطر إمارة مستقلة","إعلان اتحاد جميع دول الخليج"],"correct":"الحصول على اعتراف بريطانيا بقطر إمارة مستقلة","lesson":"أسرة آل ثاني"},{"q":"من أول حاكم يظهر في تسلسل حكام قطر في الملخص؟","options":["الشيخ حمد بن خليفة آل ثاني","الشيخ جاسم بن محمد آل ثاني","الشيخ عبد الله بن جاسم آل ثاني","الشيخ محمد بن ثاني"],"correct":"الشيخ محمد بن ثاني","lesson":"أسرة آل ثاني"},{"q":"من الذي تولّى حكم قطر عام 2013؟","options":["الشيخ خليفة بن حمد آل ثاني","الشيخ تميم بن حمد آل ثاني","الشيخ علي بن عبد الله آل ثاني","الشيخ أحمد بن علي آل ثاني"],"correct":"الشيخ تميم بن حمد آل ثاني","lesson":"أسرة آل ثاني"},{"lesson":"أسرة آل ثاني","q":"أَكْمِلْ: تَوَلَّى الشَّيْخُ تَمِيمُ بْنُ حَمَدٍ آلِ ثَانِي حُكْمَ قَطَرَ عَامَ ______.","options":["1878","1913","2013","1893"],"correct":"2013"},{"q":"أين نشأ الشيخ جاسم بن محمد بن ثاني؟","options":["لوسيل","فويرط","الدوحة","دخان"],"correct":"الدوحة","lesson":"نشأة إمارة قطر"},{"q":"في أيّ تجارة عمل الشيخ جاسم مع والده؟","options":["اللؤلؤ","القمح","الأخشاب","الحرير"],"correct":"اللؤلؤ","lesson":"نشأة إمارة قطر"},{"q":"أَكْمِلْ: تَوَلَّى الشَّيْخُ جَاسِمٌ حُكْمَ قَطَرَ فِي ______.","options":["1913م","1949م","1851م","18 ديسمبر 1878م"],"correct":"18 ديسمبر 1878م","lesson":"نشأة إمارة قطر"},{"q":"أَكْمِلْ: مَنَحَتِ الدَّوْلَةُ الْعُثْمَانِيَّةُ الشَّيْخَ جَاسِمًا لَقَبَ ______.","options":["سلطان","قائمقام","والٍ","وزير"],"correct":"قائمقام","lesson":"نشأة إمارة قطر"},{"q":"أَكْمِلْ: تُوُفِّيَ الشَّيْخُ جَاسِمٌ عَامَ 1913م وَدُفِنَ فِي ______.","options":["الدوحة","فويرط","لوسيل","الوكرة"],"correct":"لوسيل","lesson":"نشأة إمارة قطر"},{"q":"أيّ موقف كان أحد أسباب معركة الوجبة؟","options":["محاولة فرض ضرائب على تجار اللؤلؤ","إلغاء الأسواق الأسبوعية","نقل العاصمة إلى الخارج","إغلاق جميع الموانئ القطرية"],"correct":"محاولة فرض ضرائب على تجار اللؤلؤ","lesson":"نشأة إمارة قطر"},{"q":"أَكْمِلْ: كَانَ مِنْ أَسْبَابِ مَعْرَكَةِ الْوَجْبَةِ ______.","options":["توقف الصيد في الشتاء","انتقال قبائل إلى الصحراء","انقطاع المطر","اعتقال الشيخ أحمد ومن معه"],"correct":"اعتقال الشيخ أحمد ومن معه","lesson":"نشأة إمارة قطر"},{"q":"من طرفا معركة الوجبة؟","options":["قطر وبريطانيا","القبائل القطرية والدولة العثمانية","بريطانيا والدولة العثمانية","قبائل قطر والبرتغاليون"],"correct":"القبائل القطرية والدولة العثمانية","lesson":"نشأة إمارة قطر"},{"q":"أَكْمِلْ: مِنْ نَتَائِجِ مَعْرَكَةِ الْوَجْبَةِ ______.","options":["انتصار القوات العثمانية","نقل السكان إلى الداخل","انتصار القوات القطرية","إلغاء تجارة اللؤلؤ"],"correct":"انتصار القوات القطرية","lesson":"نشأة إمارة قطر"},{"q":"ما النتيجة الأخرى لمعركة الوجبة؟","options":["فك أسر الشيخ أحمد ومن معه","اعتقال جميع التجار","إغلاق المساجد","إلغاء الرعي"],"correct":"فك أسر الشيخ أحمد ومن معه","lesson":"نشأة إمارة قطر"},{"q":"أَكْمِلْ: مِنْ صِفَاتِ الشَّيْخِ جَاسِمٍ ______.","options":["التردد والعزلة","الاهتمام بالتجارة وحدها","الابتعاد عن العلم","الشجاعة وحب العلم"],"correct":"الشجاعة وحب العلم","lesson":"نشأة إمارة قطر"},{"q":"أَكْمِلْ: مِنْ أَعْمَالِ الشَّيْخِ جَاسِمٍ الدِّينِيَّةِ ______.","options":["إغلاق حلقات العلم","بناء المساجد واستضافة العلماء","منع بناء المساجد","إيقاف التعليم"],"correct":"بناء المساجد واستضافة العلماء","lesson":"نشأة إمارة قطر"},{"q":"بماذا تميّز عهد الشيخ جاسم؟","options":["تراجع التجارة والأمن","انقطاع وسائل الرزق","الأمن والعدل والرخاء وازدهار التجارة","توقف النشاط الاقتصادي"],"correct":"الأمن والعدل والرخاء وازدهار التجارة","lesson":"نشأة إمارة قطر"},{"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: تُوُفِّيَ الشَّيْخُ جَاسِمٌ بْنُ مُحَمَّدٍ بْنِ ثَانِي عَامَ ______.","options":["1878","2013","1913","1923"],"correct":"1913"},{"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: مِنْ نَتَائِجِ مَعْرَكَةِ الْوَجْبَةِ انْتِصَارُ الْقُوَّاتِ الْقَطَرِيَّةِ وَ______.","options":["اعتقال تجار اللؤلؤ","فك أسر الشيخ أحمد ومن معه","خسارة القوات القطرية","إغلاق الموانئ"],"correct":"فك أسر الشيخ أحمد ومن معه"}];
 const TOTAL=DATA.length;
 const $=x=>document.querySelector(x);
 const escape=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 let index=0,score=0,locked=false,state='welcome',order=[],answeredCount=0,muted=false;
+let wrongTotal=0,retryTotal=0,timeouts=0,firstTryCount=0,questionAttempts=0,questionTimeouts=0,questionWrong=0;
+let remaining=45,questionDuration=45,deadline=0,questionTicker=null,transitionTimer=null;
 let audio=null,master=null,musicLoop=null,musicStep=0,nextMusic=0,noise=null;
 const BPM=118,stepLength=60/BPM/2;
 function shuffle(array){const out=[...array];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
@@ -178,75 +220,146 @@ function ping(correct){
  if(correct){tone(783.99,t,.1,.09,'sine');tone(1046.5,t+.13,.19,.07,'sine')}
  else{tone(190,t,.14,.08,'sawtooth')}
 }
+
 function shell(body){$('#screen').innerHTML=body}
+function stopQuestionClock(){if(questionTicker!==null){clearInterval(questionTicker);questionTicker=null}}
+function stopTransition(){if(transitionTimer!==null){clearTimeout(transitionTimer);transitionTimer=null}}
+function formatRemaining(sec){return `00:${String(Math.max(0,sec)).padStart(2,'0')}`}
+function updateMetrics(){
+ $('#remainingCount').textContent=String(Math.max(0,TOTAL-index));
+ $('#wrongCount').textContent=String(wrongTotal);
+ $('#retryCount').textContent=String(retryTotal);
+ $('#timeCount').textContent=formatRemaining(remaining);
+ $('#timeMetric').classList.toggle('warning',remaining<=10&&remaining>0);
+ $('#timeMetric').classList.toggle('expired',remaining===0);
+}
+function startQuestionClock(){
+ stopQuestionClock();
+ remaining=questionDuration;
+ deadline=Date.now()+questionDuration*1000;
+ updateMetrics();
+ questionTicker=setInterval(()=>{
+   if(state!=='question'||locked){stopQuestionClock();return}
+   remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));
+   updateMetrics();
+   if(remaining===0)expireQuestion();
+ },200);
+}
+function expireQuestion(){
+ if(state!=='question'||locked)return;
+ stopQuestionClock();locked=true;timeouts++;questionTimeouts++;
+ const message=$('#feedback');
+ message.innerHTML='<button class="retry-time" id="retryTime" type="button">اِنْتَهَى الْوَقْتُ! أَعِدْ مُحَاوَلَةَ السُّؤَالِ ↺</button>';
+ message.classList.add('bad');
+ document.querySelectorAll('[data-option]').forEach(el=>el.disabled=true);
+ $('#retryTime').onclick=()=>{
+  if(state!=='question')return;
+  locked=false;
+  message.textContent='حَاوِلْ مِنْ جَدِيدٍ!';
+  message.classList.remove('bad');
+  document.querySelectorAll('[data-option]').forEach(el=>{if(!el.classList.contains('wrong'))el.disabled=false});
+  startQuestionClock();
+ };
+ updateMetrics();
+}
 function welcome(){
- state='welcome';stopMusic();
+ stopQuestionClock();stopTransition();
+ state='welcome';stopMusic();$('#metrics').style.display='none';
  $('#counter').textContent='';$('#progressfill').style.width='0%';
  shell(`<section class="game">
  <div class="welcome">
   <div class="mark">⚡</div>
   <h1>تَحَدِّي <b>الْمُعْتَصِمِ</b></h1>
-  <p>${TOTAL} سُؤَالًا · اخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ</p>
+  <p>${TOTAL} سُؤَالًا · أَكْمِلْ وَاخْتَرْ وَتَذَكَّرِ التَّوَارِيخَ</p>
+  <div class="duration-picker">
+   <span class="duration-text">وَقْتُ كُلِّ سُؤَالٍ</span>
+   <button class="durbtn" data-duration="30">30 ث</button>
+   <button class="durbtn active" data-duration="45">45 ث</button>
+   <button class="durbtn" data-duration="60">60 ث</button>
+  </div>
   <button class="start" id="startBtn">اِبْدَأِ التَّحَدِّي ▶</button>
  </div></section>`);
- $('#startBtn').onclick=()=>startGame();
+ document.querySelectorAll('[data-duration]').forEach(b=>b.onclick=()=>{
+  questionDuration=Number(b.dataset.duration);
+  document.querySelectorAll('[data-duration]').forEach(x=>x.classList.toggle('active',x===b));
+ });
+ $('#startBtn').onclick=startGame;
 }
 function startGame(){
- index=0;score=0;locked=false;answeredCount=0;state='question';
+ stopQuestionClock();stopTransition();
+ index=0;score=0;locked=false;answeredCount=0;
+ wrongTotal=0;retryTotal=0;timeouts=0;firstTryCount=0;
+ state='question';$('#metrics').style.display='flex';
  startMusic();renderQuestion();
 }
 function renderQuestion(){
+ stopQuestionClock();stopTransition();
  if(index>=TOTAL){finishGame();return}
- locked=false;state='question';
- const q=DATA[index];
- order=shuffle(q.options);
+ locked=false;state='question';questionAttempts=0;questionWrong=0;questionTimeouts=0;
+ const q=DATA[index];order=shuffle(q.options);
  $('#counter').textContent=`${index+1} / ${TOTAL}`;
  $('#progressfill').style.width=`${Math.round(index/TOTAL*100)}%`;
- const len=q.q.length;
- const size=len>95?'verylong':len>63?'long':'';
+ const len=q.q.length,size=len>115?'verylong':len>74?'long':'';
  shell(`<section class="game">
   <div class="questionbox"><h1 class="question ${size}">${escape(q.q)}</h1></div>
   <div class="choices" id="choices">
-    ${order.map((answer,i)=>`<button class="choice ${answer.length>49?'compact':''}" data-option="${i}" type="button">
+    ${order.map((answer,i)=>`<button class="choice ${answer.length>47?'compact':''}" data-option="${i}" type="button">
       <span class="choice-index">${i+1}</span>
       <span class="choice-text">${escape(answer)}</span>
     </button>`).join('')}
   </div>
   <div class="feedback" id="feedback" aria-live="polite"></div>
  </section>`);
- document.querySelectorAll('[data-option]').forEach((button,i)=>button.onclick=()=>choose(i));
+ document.querySelectorAll('[data-option]').forEach((b,i)=>b.onclick=()=>choose(i));
+ startQuestionClock();
 }
 function choose(picked){
  if(state!=='question'||locked)return;
- locked=true;
- const q=DATA[index];
- const selected=order[picked],right=selected===q.correct;
- if(right)score++;
- answeredCount++;
+ const q=DATA[index],selected=order[picked],right=selected===q.correct;
  const buttons=[...document.querySelectorAll('[data-option]')];
- buttons.forEach((b,i)=>{
-  b.disabled=true;
-  if(order[i]===q.correct)b.classList.add('correct');
-  else if(i===picked)b.classList.add('wrong');
+ const b=buttons[picked];
+ if(!b||b.disabled)return;
+ if(questionAttempts>0)retryTotal++;
+ questionAttempts++;answeredCount++;
+ if(!right){
+  wrongTotal++;questionWrong++;
+  b.disabled=true;b.classList.add('wrong');
+  $('#feedback').textContent='حَاوِلْ مَرَّةً أُخْرَى 💪';
+  $('#feedback').classList.add('bad');
+  ping(false);updateMetrics();
+  return;
+ }
+ locked=true;stopQuestionClock();
+ score++;
+ if(questionAttempts===1&&questionTimeouts===0)firstTryCount++;
+ buttons.forEach((el,i)=>{
+  el.disabled=true;
+  if(order[i]===q.correct)el.classList.add('correct');
  });
- $('#feedback').textContent=right?'أَحْسَنْتَ! إِجَابَةٌ صَحِيحَةٌ ✓':'الْإِجَابَةُ الصَّحِيحَةُ بِالْأَخْضَرِ';
- $('#feedback').classList.toggle('bad',!right);
- ping(right);
- setTimeout(()=>{
+ $('#feedback').textContent=questionAttempts===1&&questionTimeouts===0?'أَحْسَنْتَ! مِنْ أَوَّلِ مُحَاوَلَةٍ ✓':'بَطَلٌ! وَصَلْتَ لِلصَّوَابِ ✓';
+ $('#feedback').classList.remove('bad');
+ ping(true);updateMetrics();
+ transitionTimer=setTimeout(()=>{
+  transitionTimer=null;
   if(state!=='question')return;
   index++;renderQuestion();
- },right?1050:1700);
+ },1300);
 }
 function finishGame(){
- state='result';
- $('#counter').textContent='';$('#progressfill').style.width='100%';
- stopMusic();
- const pct=Math.round(score/TOTAL*100);
- const greeting=pct>=90?'بَطَلٌ يَا مُعْتَصِمُ! 🏆':pct>=65?'أَحْسَنْتَ يَا مُعْتَصِمُ! 🌟':'مُحَاوَلَةٌ جَيِّدَةٌ! 👏';
+ stopQuestionClock();stopTransition();
+ state='result';$('#metrics').style.display='none';
+ $('#counter').textContent='';$('#progressfill').style.width='100%';stopMusic();
+ const pct=Math.round(firstTryCount/TOTAL*100);
+ const greeting=pct>=85?'بَطَلٌ يَا مُعْتَصِمُ! 🏆':pct>=60?'أَحْسَنْتَ يَا مُعْتَصِمُ! 🌟':'أَكْمَلْتَ التَّحَدِّي! 👏';
  shell(`<section class="game"><div class="results">
   <h1>${greeting}</h1>
-  <div class="resultscore">${score} / ${TOTAL}</div>
-  <p>إِجَابَاتُكَ الصَّحِيحَةُ</p>
+  <div class="resultscore">${firstTryCount} / ${TOTAL}</div>
+  <p>إِجَابَاتٌ صَحِيحَةٌ مِنْ أَوَّلِ مُحَاوَلَةٍ</p>
+  <div class="statsgrid">
+   <div class="statcard"><strong>${wrongTotal}</strong><span>مَرَّاتِ الْخَطَأِ</span></div>
+   <div class="statcard"><strong>${retryTotal}</strong><span>مُحَاوَلَاتٌ إِضَافِيَّةٌ</span></div>
+   <div class="statcard"><strong>${timeouts}</strong><span>انْتِهَاءِ الْوَقْتِ</span></div>
+  </div>
   <button class="start" id="againBtn">أَعِدِ التَّحَدِّي ↺</button>
  </div></section>`);
  $('#againBtn').onclick=startGame;
