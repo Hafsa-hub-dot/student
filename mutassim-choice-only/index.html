@@ -456,7 +456,7 @@ function landPick(chosen,button){
   $('#landFeedback').textContent='أَحْسَنْتَ! أَكْمَلْتَ هَذِهِ الْجَوْلَةَ 🌟';
   timer=setTimeout(()=>{
    timer=null;if(view!=='landforms'||landPhase!=='between'||!isLandformCard())return;
-   if(landRound<4){landRound++;landFilled=0;landReveal()}else landFinish();
+   if(landRound<4){landRound++;landFilled=0;landWrite()}else landFinish();
   },1900);
  },235);
 }
