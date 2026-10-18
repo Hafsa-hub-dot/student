@@ -1,0 +1,108 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>أوراق عمل المعتصم | 4 محاولات</title><style>
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Markazi+Text:wght@500;600;700&display=swap');
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:'El Messiri',Tahoma,Arial,sans-serif;background:#edf4f2;color:#203a3d}
+button,select{font:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:default}button:focus-visible,select:focus-visible{outline:3px solid #c8a34f}
+header{background:white;border-bottom:1px solid #d8e7e1;padding:15px 3vw;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+header h1{font-size:clamp(22px,2.8vw,37px);color:#087a7b;margin:0}header p{font-size:clamp(12px,1.3vw,18px);margin:0;color:#567979;font-weight:700}
+.tools{display:flex;flex-wrap:wrap;gap:9px;align-items:center;background:white;padding:12px 3vw;border-bottom:1px solid #dce8e4}
+.tools select,.tools button{border:1px solid #c7e0d9;border-radius:12px;background:#f7fbfa;min-height:44px;color:#205f62;padding:7px 14px;font-weight:700}
+.tools select{flex:1;min-width:210px;max-width:450px;background:white}
+.tools button.primary{background:#0c7478;color:white;border-color:#0c7478}
+.nav{display:flex;justify-content:center;align-items:center;gap:12px;margin:13px 0 5px}.nav button{background:white;border:1px solid #d1e2dc;border-radius:12px;padding:7px 20px;color:#216b6c;font-weight:700}.nav strong{font:700 22px Tahoma,Arial;color:#126e73;min-width:100px;text-align:center}
+.info{text-align:center;color:#618081;font-size:clamp(13px,1.3vw,18px);font-weight:700;margin:8px 0 14px}
+.preview{display:flex;justify-content:center;padding:0 10px 35px}
+.paper{width:210mm;height:297mm;min-height:297mm;background:white;box-shadow:0 7px 30px #253b3825;padding:12mm 14mm 11mm;display:flex;flex-direction:column;overflow:hidden;color:#000}
+.sheet-head{border-bottom:2px solid #222;padding-bottom:4mm;display:flex;flex-direction:column;gap:3mm;flex:0 0 auto}
+.head-row,.sub-row,.meta-row,.foot{display:flex;align-items:center;justify-content:space-between;gap:7mm}
+.head-title{font-size:20pt;font-weight:700}.page-count{border:1px solid #444;border-radius:3mm;padding:1mm 3mm;font:700 11pt Tahoma,Arial;white-space:nowrap}
+.sub-row{font-size:12pt;font-weight:700}.meta-row{font-size:11pt;font-weight:600}
+.attempts{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:3mm;padding-top:4mm}
+.attempt{border:1.25px solid #555;border-radius:2mm;min-height:0;display:flex;flex-direction:column;padding:3mm 4mm 2mm;gap:1mm;overflow:hidden;break-inside:avoid}
+.try-head{display:flex;align-items:center;justify-content:space-between;font-size:12pt;font-weight:700}
+.try-label{background:#fafafa;border:1px solid #777;border-radius:2mm;padding:0.7mm 3.5mm}
+.try-judge{font-size:10pt;font-weight:600}
+.box{display:inline-block;width:4mm;height:4mm;border:1px solid #444;vertical-align:middle}
+.prompt{font-family:'Markazi Text','El Messiri',Tahoma,serif;font-size:22pt;font-weight:700;line-height:1.13;min-height:11mm;flex:0 0 auto;overflow-wrap:anywhere;display:flex;align-items:center}
+.blank-lines{display:grid;grid-template-rows:repeat(3,1fr);flex:1;min-height:0}.blank-lines div{border-bottom:1px solid #888}
+.foot{border-top:1px solid #aaa;margin-top:3mm;padding-top:3mm;font-size:10pt;font-weight:600;flex-shrink:0}
+#printArea{display:none}
+@media(max-width:800px){
+header{padding:10px}header h1{font-size:24px}.tools{padding:7px;gap:6px}.tools select{max-width:none;flex-basis:100%}.tools button{font-size:13px;padding:6px 9px;min-height:38px}
+.preview{padding:0 5px 20px}.paper{width:100%;height:calc((100vw - 10px)*1.414);min-height:0;padding:4% 4.5% 3%}
+.sheet-head{gap:1.5%;padding-bottom:1.5%}.head-title{font-size:clamp(13px,4vw,25px)}.page-count{font-size:10px;padding:3px}.sub-row{font-size:clamp(9px,2.7vw,13px)}.meta-row{font-size:clamp(9px,2.4vw,12px)}
+.attempts{padding-top:1.5%;gap:1.3%}.attempt{padding:1.1% 1.4%;gap:1%}.try-head{font-size:clamp(9px,2.5vw,13px)}.try-judge{font-size:clamp(8px,2vw,11px)}.try-label{border-radius:3px;padding:1px 4px}.box{width:10px;height:10px}.prompt{font-size:clamp(16px,4.55vw,27px);line-height:1.04;min-height:0}.foot{font-size:clamp(8px,2.1vw,11px);margin-top:1%;padding-top:1%}
+}
+@page{size:A4 portrait;margin:0}
+@media print{
+html,body{margin:0!important;padding:0!important;background:#fff!important;width:210mm!important}
+header,.tools,.nav,.info,.preview{display:none!important}#printArea{display:block!important}
+.paper{width:210mm!important;height:297mm!important;min-height:297mm!important;max-height:297mm!important;box-shadow:none!important;margin:0!important;padding:12mm 14mm 11mm!important;break-after:page;page-break-after:always;break-inside:avoid}
+.paper:last-child{break-after:auto;page-break-after:auto}
+.head-title{font-size:20pt!important}.sub-row{font-size:12pt!important}.meta-row{font-size:11pt!important}
+.attempts{gap:3mm!important;padding-top:4mm!important}.attempt{padding:3mm 4mm 2mm!important;gap:1mm!important}
+.prompt{font-size:22pt!important;min-height:11mm!important;line-height:1.13!important}
+.try-head{font-size:12pt!important}.try-judge,.foot{font-size:10pt!important}
+.box{width:4mm!important;height:4mm!important}
+}
+</style></head><body><header><h1>✦ أوراق عمل المعتصم</h1><p>4 محاولات لكتابة الإجابة · سؤال واحد في كل ورقة A4</p></header>
+<div class="tools">
+<select id="lesson" aria-label="اختر الدرس"></select>
+<button class="primary" id="printOne">🖨 طباعة السؤال الحالي</button>
+<button id="printLesson">طباعة هذا الدرس</button>
+<button id="printAll">طباعة كل الأسئلة</button>
+</div>
+<div class="nav"><button id="prev">السابق</button><strong id="counter"></strong><button id="next">التالي</button></div>
+<p class="info" id="info"></p>
+<main class="preview" id="preview"></main><div id="printArea" aria-hidden="true"></div><script>
+const DATA=[{"no":1,"lesson":"الطول والعرض","q":"أَكْمِلِ التَّعْرِيفَ: خُطُوطُ الطُّولِ هِيَ ______."},{"no":2,"lesson":"الطول والعرض","q":"أَكْمِلْ: عَدَدُ خُطُوطِ الطُّولِ ______ خَطًّا."},{"no":3,"lesson":"الطول والعرض","q":"اُذْكُرِ اسْتِخْدَامًا وَاحِدًا لِخُطُوطِ الطُّولِ."},{"no":4,"lesson":"الطول والعرض","q":"أَكْمِلِ التَّعْرِيفَ: دَوَائِرُ الْعَرْضِ هِيَ ______."},{"no":5,"lesson":"الطول والعرض","q":"أَكْمِلْ: عَدَدُ دَوَائِرِ الْعَرْضِ ______ دَائِرَةً."},{"no":6,"lesson":"الطول والعرض","q":"أَكْمِلْ: تُسَاعِدُ دَوَائِرُ الْعَرْضِ فِي مَعْرِفَةِ ______."},{"no":7,"lesson":"الطول والعرض","q":"أَكْمِلْ: تَسْتَغْرِقُ الْحَرَكَةُ الْيَوْمِيَّةُ لِلْأَرْضِ ______."},{"no":8,"lesson":"الطول والعرض","q":"أَكْمِلْ: تَسْتَغْرِقُ الْأَرْضُ لِتَدُورَ حَوْلَ الشَّمْسِ ______."},{"no":9,"lesson":"الطول والعرض","q":"مَا الْمُصْطَلَحُ؟ أَنْصَافُ دَوَائِرَ وَهْمِيَّةٍ تَصِلُ بَيْنَ الْقُطْبَيْنِ."},{"no":10,"lesson":"الطول والعرض","q":"أَكْمِلْ: تُسْتَخْدَمُ خُطُوطُ الطُّولِ فِي تَحْدِيدِ الْمَوَاقِعِ وَحِسَابِ ______."},{"no":11,"lesson":"أشكال سطح قطر","q":"ما الدولة التي تتصل بها قطر برّياً من الجنوب؟"},{"no":12,"lesson":"أشكال سطح قطر","q":"اُذْكُرْ شَكْلًا مِنْ أَشْكَالِ السَّطْحِ الدَّاخِلِيَّةِ فِي قَطَرَ."},{"no":13,"lesson":"أشكال سطح قطر","q":"أَكْمِلْ: مِنْ أَشْكَالِ سَطْحِ قَطَرَ السَّاحِلِيَّةِ ______."},{"no":14,"lesson":"أشكال سطح قطر","q":"مَا الْمُصْطَلَحُ؟ أَرْضٌ مُنْخَفِضَةٌ تَتَجَمَّعُ فِيهَا مِيَاهُ الْأَمْطَارِ."},{"no":15,"lesson":"أشكال سطح قطر","q":"أَكْمِلْ: تَتَكَوَّنُ الْكُثْبَانُ الرَّمْلِيَّةُ بِفِعْلِ ______."},{"no":16,"lesson":"أشكال سطح قطر","q":"مَا الْمُصْطَلَحُ؟ أَرْضٌ تُحِيطُ بِهَا الْمِيَاهُ مِنْ جَمِيعِ الْجِهَاتِ."},{"no":17,"lesson":"أشكال سطح قطر","q":"مَا الْمُصْطَلَحُ؟ تَوَغُّلُ مِيَاهِ الْبَحْرِ دَاخِلَ الْيَابِسَةِ."},{"no":18,"lesson":"أشكال سطح قطر","q":"أَكْمِلْ: تَشْمَلُ أَشْكَالُ السَّطْحِ الدَّاخِلِيَّةِ فِي قَطَرَ ______."},{"no":19,"lesson":"أشكال سطح قطر","q":"أَكْمِلْ: الدُّحُولُ وَالتِّلَالُ وَالْكُثْبَانُ الرَّمْلِيَّةُ وَ______ مِنْ أَشْكَالِ السَّطْحِ الدَّاخِلِيَّةِ."},{"no":20,"lesson":"أشكال سطح قطر","q":"أَكْمِلْ: الْجُزُرُ وَالْخُلْجَانُ وَالرُّؤُوسُ الْأَرْضِيَّةُ وَ______ مِنْ أَشْكَالِ السَّطْحِ السَّاحِلِيَّةِ."},{"no":21,"lesson":"أشكال سطح قطر","q":"مَا الْمُصْطَلَحُ؟ كُتَلٌ مِنَ الرِّمَالِ تَكَوَّنَتْ بِفِعْلِ الرِّيَاحِ."},{"no":22,"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنْ صِفَاتِ شِتَاءِ قَطَرَ ______."},{"no":23,"lesson":"مناخ قطر","q":"أَكْمِلْ: يَكُونُ صَيْفُ قَطَرَ ______."},{"no":24,"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْمُعَمَّرَةِ فِي قَطَرَ ______."},{"no":25,"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْحَوْلِيَّةِ ______."},{"no":26,"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنَ الزَّوَاحِفِ فِي قَطَرَ ______."},{"no":27,"lesson":"مناخ قطر","q":"اُذْكُرْ 3 أَمْثِلَةٍ لِلْحَيَوَانَاتِ الْآكِلَةِ لِلْعُشْبِ."},{"no":28,"lesson":"مناخ قطر","q":"اُذْكُرْ مِثَالًا لِلطُّيُورِ فِي قَطَرَ."},{"no":29,"lesson":"مناخ قطر","q":"اُذْكُرْ مِثَالًا لِنَبَاتٍ مُعَمَّرٍ فِي قَطَرَ."},{"no":30,"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنْ صِفَاتِ شِتَاءِ قَطَرَ انْخِفَاضُ دَرَجَاتِ الْحَرَارَةِ وَسُقُوطُ الْأَمْطَارِ وَ______."},{"no":31,"lesson":"مناخ قطر","q":"أَكْمِلْ: يَتَمَيَّزُ صَيْفُ قَطَرَ بِارْتِفَاعِ الْحَرَارَةِ وَالرُّطُوبَةِ وَ______."},{"no":32,"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْمُعَمَّرَةِ السِّدْرُ وَ______."},{"no":33,"lesson":"مناخ قطر","q":"أَكْمِلْ: مِنَ النَّبَاتَاتِ الْحَوْلِيَّةِ الْفَقْعُ وَ______."},{"no":34,"lesson":"أسرة آل ثاني","q":"إلى أين اتجهت القبائل العربية المهاجرة في الدرس؟"},{"no":35,"lesson":"أسرة آل ثاني","q":"أَكْمِلْ: هَاجَرَتِ الْقَبَائِلُ بِسَبَبِ ______."},{"no":36,"lesson":"أسرة آل ثاني","q":"أَكْمِلْ: كَانَتِ الْقَبَائِلُ تَبْحَثُ عَنْ ______."},{"no":37,"lesson":"أسرة آل ثاني","q":"أين ولد الشيخ محمد بن ثاني؟"},{"no":38,"lesson":"أسرة آل ثاني","q":"ما العمل الذي قام به الشيخ محمد بن ثاني؟"},{"no":39,"lesson":"أسرة آل ثاني","q":"ما الإنجاز السياسي المذكور للشيخ محمد بن ثاني؟"},{"no":40,"lesson":"أسرة آل ثاني","q":"من أول حاكم يظهر في تسلسل حكام قطر في الملخص؟"},{"no":41,"lesson":"أسرة آل ثاني","q":"من الذي تولّى حكم قطر عام 2013؟"},{"no":42,"lesson":"أسرة آل ثاني","q":"أَكْمِلْ: تَوَلَّى الشَّيْخُ تَمِيمُ بْنُ حَمَدٍ آلِ ثَانِي حُكْمَ قَطَرَ عَامَ ______."},{"no":43,"lesson":"نشأة إمارة قطر","q":"أين نشأ الشيخ جاسم بن محمد بن ثاني؟"},{"no":44,"lesson":"نشأة إمارة قطر","q":"في أيّ تجارة عمل الشيخ جاسم مع والده؟"},{"no":45,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: تَوَلَّى الشَّيْخُ جَاسِمٌ حُكْمَ قَطَرَ فِي ______."},{"no":46,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: مَنَحَتِ الدَّوْلَةُ الْعُثْمَانِيَّةُ الشَّيْخَ جَاسِمًا لَقَبَ ______."},{"no":47,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: تُوُفِّيَ الشَّيْخُ جَاسِمٌ عَامَ 1913م وَدُفِنَ فِي ______."},{"no":48,"lesson":"نشأة إمارة قطر","q":"اُذْكُرْ سَبَبًا مِنْ أَسْبَابِ مَعْرَكَةِ الْوَجْبَةِ."},{"no":49,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: كَانَ مِنْ أَسْبَابِ مَعْرَكَةِ الْوَجْبَةِ ______."},{"no":50,"lesson":"نشأة إمارة قطر","q":"من طرفا معركة الوجبة؟"},{"no":51,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: مِنْ نَتَائِجِ مَعْرَكَةِ الْوَجْبَةِ ______."},{"no":52,"lesson":"نشأة إمارة قطر","q":"ما النتيجة الأخرى لمعركة الوجبة؟"},{"no":53,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: مِنْ صِفَاتِ الشَّيْخِ جَاسِمٍ ______."},{"no":54,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: مِنْ أَعْمَالِ الشَّيْخِ جَاسِمٍ الدِّينِيَّةِ ______."},{"no":55,"lesson":"نشأة إمارة قطر","q":"بماذا تميّز عهد الشيخ جاسم؟"},{"no":56,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: تُوُفِّيَ الشَّيْخُ جَاسِمٌ بْنُ مُحَمَّدٍ بْنِ ثَانِي عَامَ ______."},{"no":57,"lesson":"نشأة إمارة قطر","q":"أَكْمِلْ: مِنْ نَتَائِجِ مَعْرَكَةِ الْوَجْبَةِ انْتِصَارُ الْقُوَّاتِ الْقَطَرِيَّةِ وَ______."}];
+const LESSONS=[...new Set(DATA.map(q=>q.lesson))];
+const $=sel=>document.querySelector(sel);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let selected='all',visible=DATA,idx=0;
+function sheet(q,n,total){
+ const repeated=Array.from({length:4},(_,i)=>`<section class="attempt">
+  <div class="try-head"><span class="try-label">المحاولة ${i+1}</span><span class="try-judge">صحيحة؟ <span class="box"></span></span></div>
+  <div class="prompt">${esc(q.q)}</div>
+  <div class="blank-lines"><div></div><div></div><div></div></div>
+ </section>`).join('');
+ return `<article class="paper">
+  <div class="sheet-head">
+   <div class="head-row"><b class="head-title">المعتصم | تدريب كتابي</b><span class="page-count">${n} / ${total}</span></div>
+   <div class="sub-row"><span>${esc(q.lesson)}</span><span>السؤال ${q.no} من ${DATA.length}</span></div>
+   <div class="meta-row"><span>الاسم: المعتصم</span><span>التاريخ: .............................</span></div>
+  </div>
+  <div class="attempts">${repeated}</div>
+  <div class="foot"><span>بعد المحاولة الرابعة:</span><span><span class="box"></span> أتقنت الإجابة</span><span><span class="box"></span> أحتاج مراجعة</span></div>
+ </article>`;
+}
+function render(){
+ const q=visible[idx];if(!q)return;
+ $('#preview').innerHTML=sheet(q,idx+1,visible.length);
+ $('#counter').textContent=`${idx+1} / ${visible.length}`;
+ $('#prev').disabled=idx===0;$('#next').disabled=idx>=visible.length-1;
+ $('#info').textContent=`السؤال ${q.no} · السؤال مكتوب 4 مرات · مساحة مستقلة للإجابة في كل محاولة`;
+}
+function filter(){
+ selected=$('#lesson').value;
+ visible=selected==='all'?DATA:DATA.filter(q=>q.lesson===selected);
+ idx=0;render();
+}
+function printPages(kind){
+ const pages=kind==='all'?DATA:kind==='lesson'?
+ DATA.filter(q=>q.lesson===(selected==='all'?visible[idx].lesson:selected)):
+ [visible[idx]];
+ $('#printArea').innerHTML=pages.map((q,i)=>sheet(q,i+1,pages.length)).join('');
+ requestAnimationFrame(()=>requestAnimationFrame(()=>window.print()));
+}
+$('#lesson').innerHTML=`<option value="all">كل الدروس (${DATA.length} سؤالًا)</option>`+
+ LESSONS.map(l=>`<option value="${esc(l)}">${esc(l)} (${DATA.filter(x=>x.lesson===l).length} سؤالًا)</option>`).join('');
+$('#lesson').onchange=filter;
+$('#prev').onclick=()=>{if(idx>0){idx--;render()}};
+$('#next').onclick=()=>{if(idx+1<visible.length){idx++;render()}};
+$('#printOne').onclick=()=>printPages('one');
+$('#printLesson').onclick=()=>printPages('lesson');
+$('#printAll').onclick=()=>printPages('all');
+window.addEventListener('afterprint',()=>{$('#printArea').innerHTML=''});
+window.addEventListener('keydown',event=>{if(event.key==='ArrowLeft')$('#next').click();else if(event.key==='ArrowRight')$('#prev').click()});
+render();
+</script></body></html>
