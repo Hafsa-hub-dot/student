@@ -40,6 +40,49 @@ h1{font-size:clamp(27px,3vw,46px);line-height:1.45;margin:clamp(10px,2vh,25px) a
 .match-points{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:.88em;line-height:1.17}
 @media(max-width:700px){.words.multi-words{gap:5px}.point-row{padding:6px 7px;gap:7px;border-radius:9px}.point-content{font-size:clamp(23px,6vw,31px);line-height:1.08}.multi-words[data-points='4'] .point-content{font-size:clamp(20px,5.3vw,27px)}.point-number{flex-basis:27px;width:27px;height:27px;font-size:14px}.match-points{font-size:.84em;line-height:1.08}}
 @media(max-height:660px){.words.multi-words{gap:3px}.point-row{padding:4px 6px}.point-content{font-size:clamp(21px,2.8vw,33px)}.multi-words[data-points='4'] .point-content{font-size:clamp(18px,2.4vw,27px)}}
+
+/* The curtain-and-writing landform challenge is limited to two geography cards. */
+.land-card h1{margin:4px auto 7px;line-height:1.35;font-size:clamp(27px,3.2vw,44px)}
+.land-stage{display:flex;flex:1;min-height:0;flex-direction:column;gap:clamp(6px,1vh,12px);max-width:1100px;width:100%;margin:auto}
+.land-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-shrink:0;font-size:clamp(14px,1.4vw,19px);font-weight:700;color:#246c70}
+.land-badge{background:#e8f6f2;border:1px solid #d2e7e1;padding:3px 13px;border-radius:999px;white-space:nowrap}
+.land-timer{font:bold clamp(24px,2.8vw,35px) Tahoma,Arial,sans-serif;color:#006875}
+.land-board{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(7px,1.2vh,13px);padding:clamp(10px,1.7vh,20px) clamp(9px,2.5vw,28px);background:#f7faf9;border:1px solid #d9e9e5;border-radius:17px;position:relative;overflow:hidden}
+.land-title{text-align:center;font-size:clamp(21px,2.25vw,33px);color:#125b60;line-height:1.35;font-weight:700;margin:0;flex-shrink:0}
+.land-list{display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:clamp(5px,1.2vh,11px);flex:1;min-height:0;width:100%;max-width:930px;margin:auto}
+.land-row{border:2px solid #d5e9e4;background:white;border-radius:14px;display:flex;align-items:center;gap:clamp(10px,1.7vw,19px);padding:3px clamp(7px,1.5vw,16px);min-height:0;text-align:right;font-family:'Markazi Text','El Messiri',serif;font-size:clamp(29px,3.25vw,46px);font-weight:700;line-height:1.1}
+.land-number{display:flex;justify-content:center;align-items:center;flex:0 0 clamp(32px,3.5vw,46px);height:clamp(32px,3.5vw,46px);border-radius:50%;background:#e2f2ee;color:#116d72;font:bold clamp(16px,1.75vw,24px) Tahoma,Arial,sans-serif}
+.land-value{flex:1;min-width:0}
+.land-row.missing{border-style:dashed;background:#f7fbfa}
+.land-row.active{border-style:solid;border-color:#b88637;background:#fff9ef}
+.land-row.complete{border-color:#a4d4b9;background:#eff9f2;color:#0b7351;animation:place .25s ease-out}
+.land-gap{display:block;min-width:40%;max-width:440px;height:.85em;background:#e7f0ee;border-bottom:3px dashed #9dbfbd;border-radius:8px}
+.land-row.active .land-gap{background:#fff0cc;border-color:#b88637}
+.land-help{text-align:center;color:#58777c;font-size:clamp(13px,1.25vw,17px);font-weight:700;margin:0;flex-shrink:0}
+.land-typing{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
+.land-typing-line{width:100%;max-width:730px;display:flex;gap:9px}
+.land-input{flex:1;min-width:0;border:2px solid #70b3a8;background:white;border-radius:12px;padding:7px 12px;font:700 clamp(20px,2.2vw,30px) 'El Messiri',Tahoma,Arial,sans-serif;text-align:center;direction:rtl;outline:none}
+.land-input:focus{border-color:#b88637;box-shadow:0 0 0 3px #f6e5c5}
+.land-check{white-space:nowrap;font-size:clamp(16px,1.6vw,22px);padding:7px 18px}
+.land-note{color:#0a8061;font-weight:700;min-height:20px;font-size:clamp(13px,1.35vw,18px);text-align:center}
+.land-track{width:100%;max-width:650px;height:6px;background:#dbeae7;border-radius:999px;overflow:hidden;margin:auto;flex-shrink:0}
+.land-track>span{display:block;height:100%;width:100%;background:#229c91;transition:width .2s}
+.land-curtain{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.land-curtain span{position:absolute;top:0;bottom:0;width:50%;background:repeating-linear-gradient(90deg,#983f4c,#aa4553 24px,#862d40 48px,#aa4553 65px)}
+.land-curtain span:first-child{right:0;animation:lc-right .8s ease forwards}
+.land-curtain span:last-child{left:0;animation:lc-left .8s ease forwards}
+.land-curtain.closing span:first-child{animation:lc-right-in .5s ease forwards}
+.land-curtain.closing span:last-child{animation:lc-left-in .5s ease forwards}
+@keyframes lc-right{to{transform:translateX(103%)}}
+@keyframes lc-left{to{transform:translateX(-103%)}}
+@keyframes lc-right-in{from{transform:translateX(103%)}to{transform:translateX(0)}}
+@keyframes lc-left-in{from{transform:translateX(-103%)}to{transform:translateX(0)}}
+.land-finished{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;min-height:0;gap:12px}
+.land-finished .land-list{flex:none;max-height:none;grid-template-rows:repeat(4,auto)}
+.land-finished .land-row{min-height:clamp(50px,7.5vh,78px)}
+@media(max-width:700px){.land-card{padding:8px}.land-card h1{font-size:clamp(23px,6.1vw,31px);margin:4px auto}.land-stage{gap:5px}.land-board{padding:7px 8px;gap:6px;border-radius:11px}.land-title{font-size:clamp(19px,5.2vw,25px)}.land-list{gap:5px}.land-row{border-radius:10px;padding:3px 7px;gap:8px;font-size:clamp(25px,6.8vw,35px)}.land-number{flex-basis:30px;height:30px;font-size:17px}.land-badge{padding:3px 8px}.land-meta{font-size:13px}.land-timer{font-size:23px}.land-input{padding:6px;font-size:21px}.land-check{padding:5px 11px;font-size:16px}.land-help{font-size:12px}.land-typing{gap:4px}.land-note{min-height:18px;font-size:13px}}
+@media(max-height:640px){.land-board{padding:5px 8px;gap:4px}.land-title{font-size:clamp(17px,2vw,24px)}.land-list{gap:4px}.land-row{font-size:clamp(22px,2.5vw,33px)}.land-number{height:27px;flex-basis:27px;font-size:15px}.land-input{padding:4px 6px;font-size:20px}}
+@media(max-height:460px){.land-help{display:none}}
 </style></head><body><div class="shell"><header><div class="identity">✦ <b>المعتصم</b> | أَحْفَظُ وَأَنْجَحُ</div><div class="actions"><button onclick="home()">الرئيسية</button><button onclick="resetCard()" id="restart">إعادة العبارة ↺</button><button onclick="document.documentElement.requestFullscreen?.()">ملء الشاشة ⛶</button></div></header><nav class="lessons" id="lessons"></nav><main id="screen"></main></div>
 <script>
 const LESSONS=[
@@ -228,17 +271,18 @@ const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll
 const clean=s=>String(s).normalize('NFKC').replace(/[\u064b-\u065f\u0670]/g,'').replace(/[.,،؛!؟]/g,'').trim();
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let lesson=0,card=0,pointIndex=0,round=1,filled=0,busy=false,view='home',quizIndex=0,score=0,quizChoice=null,quizSet=[],timer=null,quickRound=1,matchOffset=0,matchPairs=[],matchSelection=null,matchBusy=false;
+let landRound=1,landFilled=0,landPhase='idle';
 const saved={};
-function stopTimer(){if(timer){clearTimeout(timer);timer=null}}
+function stopTimer(){if(timer){clearTimeout(timer);clearInterval(timer);timer=null}}
 function nowLesson(){return LESSONS[lesson]};function words(){return (pointsFor()?.[pointIndex]||nowLesson().cards[card][1]).split(/\s+/).filter(Boolean)}
 function scramble(list,seed){let arr=[...list],x=seed>>>0;for(let i=arr.length-1;i>0;i--){x=(1664525*x+1013904223)>>>0;const j=x%(i+1);[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
 function updateNav(){let s=LESSONS.map((l,i)=>`<button class="lesson ${i===lesson&&view!=='home'?'on':''} ${saved[i]?.quizDone?'done':''}" data-lesson="${i}">${i+1}. ${escape(l.short)}</button>`).join('');$('#lessons').innerHTML=s;$$('[data-lesson]').forEach(b=>b.onclick=()=>startLesson(+b.dataset.lesson))}
 function home(){stopTimer();view='home';updateNav();$('#screen').innerHTML=`<section class="card home"><h1>هَيَّا يَا مُعْتَصِمُ! ✨</h1><p>تَعَلَّمْ بِالْخِيَارَاتِ وَالْكَلِمَاتِ النَّاقِصَةِ، ثُمَّ ارْبِطِ السُّؤَالَ بِإِجَابَتِهِ.</p><button class="primary" id="start">اِبْدَأِ الْحِفْظَ ←</button></section>`;$('#start').onclick=()=>startLesson(lesson)}
-function startLesson(i){stopTimer();lesson=i;card=0;pointIndex=0;round=1;filled=0;quickRound=1;busy=false;view='study';updateNav();renderStudy()}
-function resetCard(){if(view!=='study')return;stopTimer();pointIndex=0;round=1;filled=0;quickRound=1;busy=false;renderStudy()}
+function startLesson(i){stopTimer();lesson=i;card=0;pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;view='study';updateNav();renderStudy()}
+function resetCard(){if(view!=='study'&&view!=='landforms')return;stopTimer();pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;renderStudy()}
 function lastCard(){return card>=nowLesson().cards.length-1}
-function nextCard(){stopTimer();if(lastCard()){startQuiz()}else{card++;pointIndex=0;round=1;filled=0;quickRound=1;busy=false;renderStudy()}}
-function prevCard(){stopTimer();if(card>0){card--;pointIndex=0;round=1;filled=0;quickRound=1;busy=false;renderStudy()}}
+function nextCard(){stopTimer();if(lastCard()){startQuiz()}else{card++;pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;renderStudy()}}
+function prevCard(){stopTimer();if(card>0){card--;pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;renderStudy()}}
 function poolFor(target){const pool=[...new Set(LESSONS.flatMap(l=>l.cards.flatMap(c=>c[1].split(/\s+/))))].filter(w=>clean(w)!==clean(target)&&clean(w).length>1);const isNum=/\d/.test(target);const filtered=pool.filter(w=>/\d/.test(w)===isNum).sort((a,b)=>Math.abs(clean(a).length-clean(target).length)-Math.abs(clean(b).length-clean(target).length));const choices=[];for(let i=0;i<filtered.length&&choices.length<3;i++){const w=filtered[(i*7+card*11+round*3)%filtered.length];if(!choices.some(v=>clean(v)===clean(w)))choices.push(w)}for(let i=0;choices.length<3&&i<filtered.length;i++)if(!choices.some(v=>clean(v)===clean(filtered[i])))choices.push(filtered[i]);return scramble([target,...choices],(lesson+1)*199+(card+1)*367+round*719+filled*101).slice(0,4)}
 function targetIndex(){return words().length-round+filled}
 function wordSize(){const n=words().length;return `font-size:${n>20?'clamp(23px,2.3vw,37px)':n>14?'clamp(27px,2.8vw,47px)':n>9?'clamp(32px,3.5vw,54px)':'clamp(37px,4.4vw,68px)'}`}
@@ -260,7 +304,122 @@ function renderWords(){
  $('#words').innerHTML=w.map(makeToken).join('');
  $('#round').textContent=`${round} / ${w.length} · ${round===1?'كَلِمَةٌ نَاقِصَةٌ':`${round} كَلِمَاتٍ نَاقِصَةٍ`}`;
 }
-function renderStudy(){if(QUICK_FACTS[lesson]?.[card]){renderQuick();return}view='study';busy=false;updateNav();const q=nowLesson().cards[card][0];$('#screen').innerHTML=`<section class="card"><div class="caption"><span class="count">السُّؤَالُ ${card+1} مِنْ ${nowLesson().cards.length}</span><span>${escape(nowLesson().title)}</span></div><h1>${escape(q)}</h1><div class="sentence"><div class="round" id="round"></div><div class="words" id="words" style="${wordSize()}"></div></div><div class="pick-area"><div class="pick-title" id="pickTitle">اِخْتَرِ الْكَلِمَةَ النَّاقِصَةَ ↓</div><div class="answers" id="answers"></div><div class="status" id="status" aria-live="polite"></div></div><div class="bottom"><div class="group"><button class="small" id="prev">السابق</button><button class="small" id="skip">التالي</button></div><div class="group"><button class="primary" id="advance" style="display:none"></button></div></div></section>`;$('#prev').disabled=card===0;$('#prev').onclick=prevCard;$('#skip').onclick=nextCard;$('#advance').onclick=nextCard;renderWords();refreshOptions()}
+
+const LANDFORMS={
+ 1:{question:'مَا أَشْكَالُ السَّطْحِ الدَّاخِلِيَّةُ فِي قَطَرَ؟',items:[['الدحول','الدُّحُولُ'],['التلال','التِّلَالُ'],['الكثبان الرملية','الْكُثْبَانُ الرَّمْلِيَّةُ'],['الروضات','الرَّوْضَاتُ']]},
+ 2:{question:'مَا أَشْكَالُ السَّطْحِ السَّاحِلِيَّةُ فِي قَطَرَ؟',items:[['الجزر','الْجُزُرُ'],['الخلجان','الْخُلْجَانُ'],['الرؤوس الأرضية','الرُّؤُوسُ الْأَرْضِيَّةُ'],['السبخات الأرضية','السَّبَخَاتُ الْأَرْضِيَّةُ']]}
+};
+function isLandformCard(){return lesson===1&&(card===1||card===2)}
+function landData(){return LANDFORMS[card]}
+function landNorm(v){return clean(v).replace(/[\u0640\u064b-\u065f\u0670]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/\s+/g,' ').trim()}
+function landLines(showAll){
+ const begin=4-landRound;
+ return landData().items.map(([raw,shown],i)=>{
+  const known=showAll||i<begin||i<begin+landFilled;
+  const recalled=!showAll&&i>=begin&&i<begin+landFilled;
+  const active=!showAll&&i===begin+landFilled;
+  const kind=recalled?' complete':known?'':active?' missing active':' missing';
+  return `<div class="land-row${kind}" data-land-row="${i}"><span class="land-number">${i+1}</span><span class="land-value">${known?escape(shown):'<span class="land-gap" aria-label="اسم ناقص"></span>'}</span></div>`;
+ }).join('');
+}
+function landFrame(content){
+ const data=landData();
+ $('#screen').innerHTML=`<section class="card land-card">
+   <div class="caption"><span class="count">السُّؤَالُ ${card+1} مِنْ ${nowLesson().cards.length}</span><span>أَشْكَالُ سَطْحِ قَطَرَ</span></div>
+   <h1>${escape(data.question)}</h1>
+   ${content}
+   <div class="bottom"><button class="small" id="landPrev">السَّابِقُ</button><button class="primary" id="landNext" style="display:none">السُّؤَالُ التَّالِي ←</button></div>
+ </section>`;
+ $('#landPrev').onclick=prevCard;
+ $('#landNext').onclick=nextCard;
+}
+function landReveal(){
+ stopTimer();view='landforms';landPhase='reveal';landFilled=0;busy=true;updateNav();
+ landFrame(`<section class="land-stage">
+   <div class="land-meta"><span class="land-badge">الْجَوْلَةُ ${landRound} مِنْ 4</span><span class="land-badge">الْوَقْتُ الْمُتَبَقِّي: <b class="land-timer" id="landClock">20</b> ثَانِيَةً</span></div>
+   <div class="land-board">
+      <h2 class="land-title">اِقْرَأِ السُّؤَالَ وَالْإِجَابَةَ أَوَّلًا</h2>
+      <div class="land-list">${landLines(true)}</div>
+      <div class="land-curtain" id="landCurtain"><span></span><span></span></div>
+   </div>
+   <p class="land-help">اِحْفَظِ الْأَسْمَاءَ الْأَرْبَعَةَ، ثُمَّ أَكْمِلْهَا مِنْ ذَاكِرَتِكَ.</p>
+   <div class="land-track"><span id="landTrack"></span></div>
+ </section>`);
+ // Read for 20 FULL seconds, after the opening animation.
+ timer=setTimeout(()=>{
+  timer=null;if(view!=='landforms'||landPhase!=='reveal'||!isLandformCard())return;
+  let left=20;
+  timer=setInterval(()=>{
+   left--;
+   if($('#landClock'))$('#landClock').textContent=String(Math.max(0,left));
+   if($('#landTrack'))$('#landTrack').style.width=`${Math.max(0,left)*5}%`;
+   if(left<=0){
+    clearInterval(timer);timer=null;
+    if(view!=='landforms'||landPhase!=='reveal')return;
+    landPhase='closing';
+    $('#landCurtain')?.classList.add('closing');
+    timer=setTimeout(()=>{timer=null;if(view==='landforms'&&landPhase==='closing'&&isLandformCard())landWrite()},550);
+   }
+  },1000);
+ },850);
+}
+function landWrite(){
+ stopTimer();view='landforms';landPhase='writing';landFilled=0;busy=false;updateNav();
+ landFrame(`<section class="land-stage">
+   <div class="land-meta"><span class="land-badge">الْجَوْلَةُ ${landRound} مِنْ 4</span><span class="land-badge">${landRound} أَسْمَاءٍ نَاقِصَةٍ</span></div>
+   <div class="land-board">
+    <h2 class="land-title">اُكْتُبِ الْأَسْمَاءَ النَّاقِصَةَ فِي مَكَانِهَا</h2>
+    <div class="land-list" id="landList">${landLines(false)}</div>
+   </div>
+   <div class="land-typing">
+    <label class="land-help" for="landInput" id="landPrompt">اُكْتُبِ الِاسْمَ النَّاقِصَ</label>
+    <div class="land-typing-line"><input class="land-input" id="landInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="اُكْتُبِ الْإِجَابَةَ هُنَا" aria-describedby="landFeedback"><button id="landCheck" class="primary land-check">تَحَقَّقْ ✓</button></div>
+    <div class="land-note" id="landFeedback" aria-live="polite"></div>
+   </div>
+ </section>`);
+ $('#landInput').addEventListener('input',()=>landCheck(false));
+ $('#landInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();landCheck(true)}});
+ $('#landCheck').onclick=()=>landCheck(true);
+ landRefresh();
+ if(window.matchMedia('(pointer:fine)').matches)$('#landInput').focus({preventScroll:true});
+}
+function landRefresh(){
+ const idx=4-landRound+landFilled;
+ if($('#landList'))$('#landList').innerHTML=landLines(false);
+ if($('#landPrompt'))$('#landPrompt').textContent=`اُكْتُبِ اسْمَ الشَّكْلِ رَقْمَ ${idx+1}`;
+}
+function landCheck(submit){
+ if(view!=='landforms'||landPhase!=='writing'||busy)return;
+ const input=$('#landInput'),idx=4-landRound+landFilled;
+ if(!input)return;
+ if(landNorm(input.value)!==landNorm(landData().items[idx][0])){
+  if(submit){$('#landFeedback').textContent='حَاوِلْ مَرَّةً أُخْرَى يَا بَطَلُ';input.focus({preventScroll:true})}
+  return;
+ }
+ input.value='';landFilled++;
+ $('#landFeedback').textContent='أَحْسَنْتَ! ظَهَرَ الِاسْمُ فِي مَكَانِهِ ✓';
+ landRefresh();
+ if(landFilled<landRound){input.focus({preventScroll:true});return}
+ busy=true;landPhase='between';input.disabled=true;$('#landCheck').disabled=true;
+ $('#landFeedback').textContent='أَتْقَنْتَ هَذِهِ الْجَوْلَةَ! 🌟';
+ timer=setTimeout(()=>{
+  timer=null;
+  if(view!=='landforms'||landPhase!=='between'||!isLandformCard())return;
+  if(landRound<4){landRound++;landFilled=0;landReveal()}
+  else landFinish();
+ },950);
+}
+function landFinish(){
+ stopTimer();view='landforms';landPhase='done';busy=false;updateNav();
+ landFrame(`<div class="land-stage land-finished">
+   <h2 class="land-title">مُمْتَازٌ يَا مُعْتَصِمُ! كَتَبْتَ الْأَشْكَالَ الْأَرْبَعَةَ 🎉</h2>
+   <div class="land-list">${landData().items.map(([raw,shown],i)=>`<div class="land-row complete"><span class="land-number">${i+1}</span><span class="land-value">${escape(shown)}</span></div>`).join('')}</div>
+ </div>`);
+ $('#landNext').style.display='';
+ const s=saved[lesson]||(saved[lesson]={});s.lastCard=card;s.mastered=(s.mastered||0)+1;
+}
+
+function renderStudy(){if(isLandformCard()){landReveal();return}if(QUICK_FACTS[lesson]?.[card]){renderQuick();return}view='study';busy=false;updateNav();const q=nowLesson().cards[card][0];$('#screen').innerHTML=`<section class="card"><div class="caption"><span class="count">السُّؤَالُ ${card+1} مِنْ ${nowLesson().cards.length}</span><span>${escape(nowLesson().title)}</span></div><h1>${escape(q)}</h1><div class="sentence"><div class="round" id="round"></div><div class="words" id="words" style="${wordSize()}"></div></div><div class="pick-area"><div class="pick-title" id="pickTitle">اِخْتَرِ الْكَلِمَةَ النَّاقِصَةَ ↓</div><div class="answers" id="answers"></div><div class="status" id="status" aria-live="polite"></div></div><div class="bottom"><div class="group"><button class="small" id="prev">السابق</button><button class="small" id="skip">التالي</button></div><div class="group"><button class="primary" id="advance" style="display:none"></button></div></div></section>`;$('#prev').disabled=card===0;$('#prev').onclick=prevCard;$('#skip').onclick=nextCard;$('#advance').onclick=nextCard;renderWords();refreshOptions()}
 function refreshOptions(){if(view!=='study')return;const w=words();if(filled>=round)return;const choices=poolFor(w[targetIndex()]);$('#answers').innerHTML=choices.map((x,i)=>`<button class="option" data-pick="${i}" draggable="true">${escape(x)}</button>`).join('');$$('[data-pick]').forEach((b,i)=>{b.onclick=()=>pick(choices[i],b);b.ondragstart=e=>{e.dataTransfer.setData('text/plain',String(i))}});const active=$('.word.gap.active');if(active){active.ondragover=e=>e.preventDefault();active.ondrop=e=>{e.preventDefault();const k=Number(e.dataTransfer.getData('text/plain'));if(Number.isInteger(k)&&choices[k])pick(choices[k],$$('[data-pick]')[k])}}}
 function pick(chosen,button){if(view!=='study'||busy)return;const w=words(),idx=targetIndex();if(clean(chosen)!==clean(w[idx])){button.classList.add('wrong');$('#status').textContent='حاوِلْ مَرَّةً أُخْرَى يا بَطَلُ';setTimeout(()=>{if(button.isConnected)button.classList.remove('wrong')},330);return}
  // The chosen word goes visibly INTO its blank immediately; do not rebuild the sentence here.
