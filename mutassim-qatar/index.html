@@ -83,6 +83,18 @@ h1{font-size:clamp(27px,3vw,46px);line-height:1.45;margin:clamp(10px,2vh,25px) a
 @media(max-width:700px){.land-card{padding:8px}.land-card h1{font-size:clamp(23px,6.1vw,31px);margin:4px auto}.land-stage{gap:5px}.land-board{padding:7px 8px;gap:6px;border-radius:11px}.land-title{font-size:clamp(19px,5.2vw,25px)}.land-list{gap:5px}.land-row{border-radius:10px;padding:3px 7px;gap:8px;font-size:clamp(25px,6.8vw,35px)}.land-number{flex-basis:30px;height:30px;font-size:17px}.land-badge{padding:3px 8px}.land-meta{font-size:13px}.land-timer{font-size:23px}.land-input{padding:6px;font-size:21px}.land-check{padding:5px 11px;font-size:16px}.land-help{font-size:12px}.land-typing{gap:4px}.land-note{min-height:18px;font-size:13px}}
 @media(max-height:640px){.land-board{padding:5px 8px;gap:4px}.land-title{font-size:clamp(17px,2vw,24px)}.land-list{gap:4px}.land-row{font-size:clamp(22px,2.5vw,33px)}.land-number{height:27px;flex-basis:27px;font-size:15px}.land-input{padding:4px 6px;font-size:20px}}
 @media(max-height:460px){.land-help{display:none}}
+
+/* Landforms: four large touch choices under the question, no input fields. */
+.land-choose{max-width:990px;width:100%;margin:auto;gap:5px}
+.land-options{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(5px,1vh,10px)}
+.land-choice{border:2px solid #c8e2de;border-radius:13px;background:white;color:#173940;font:700 clamp(24px,2.65vw,38px)/1.1 'Markazi Text','El Messiri',Tahoma,serif;min-height:clamp(49px,7vh,73px);padding:5px 8px;cursor:pointer;touch-action:manipulation;min-width:0}
+.land-choice:hover,.land-choice:focus-visible{background:#eaf8f4;border-color:#258c87}
+.land-choice:active{transform:scale(.98)}
+.land-choice.wrong{background:#fff1ee;border-color:#d77c7c}
+.land-choice.correct{background:#e0f7ea;border-color:#23936e;color:#0b7151}
+.land-fly{position:fixed;z-index:9999;display:flex;align-items:center;justify-content:center;pointer-events:none;white-space:nowrap;border:2px solid #23936e;border-radius:12px;background:#e0f7ea;color:#0b7151;font:700 clamp(21px,2.5vw,34px)/1.1 'Markazi Text','El Messiri',Tahoma,serif;box-shadow:0 4px 18px #1255391e}
+@media(max-width:700px){.land-options{gap:5px}.land-choose{gap:3px}.land-choice{font-size:clamp(21px,5.5vw,29px);min-height:clamp(43px,7vh,59px);padding:4px 3px;border-radius:10px}}
+@media(max-height:600px){.land-choose{gap:2px}.land-options{gap:4px}.land-choice{min-height:34px;font-size:clamp(18px,2.2vw,27px);padding:2px}}
 </style></head><body><div class="shell"><header><div class="identity">✦ <b>المعتصم</b> | أَحْفَظُ وَأَنْجَحُ</div><div class="actions"><button onclick="home()">الرئيسية</button><button onclick="resetCard()" id="restart">إعادة العبارة ↺</button><button onclick="document.documentElement.requestFullscreen?.()">ملء الشاشة ⛶</button></div></header><nav class="lessons" id="lessons"></nav><main id="screen"></main></div>
 <script>
 const LESSONS=[
@@ -363,51 +375,77 @@ function landReveal(){
   },1000);
  },850);
 }
+
+/* No writing: tap the answer; it flies into its blank, then new choices appear. */
 function landWrite(){
- stopTimer();view='landforms';landPhase='writing';landFilled=0;busy=false;updateNav();
+ stopTimer();view='landforms';landPhase='choices';landFilled=0;busy=false;updateNav();
  landFrame(`<section class="land-stage">
-   <div class="land-meta"><span class="land-badge">الْجَوْلَةُ ${landRound} مِنْ 4</span><span class="land-badge">${landRound} أَسْمَاءٍ نَاقِصَةٍ</span></div>
-   <div class="land-board">
-    <h2 class="land-title">اُكْتُبِ الْأَسْمَاءَ النَّاقِصَةَ فِي مَكَانِهَا</h2>
-    <div class="land-list" id="landList">${landLines(false)}</div>
-   </div>
-   <div class="land-typing">
-    <label class="land-help" for="landInput" id="landPrompt">اُكْتُبِ الِاسْمَ النَّاقِصَ</label>
-    <div class="land-typing-line"><input class="land-input" id="landInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="اُكْتُبِ الْإِجَابَةَ هُنَا" aria-describedby="landFeedback"><button id="landCheck" class="primary land-check">تَحَقَّقْ ✓</button></div>
-    <div class="land-note" id="landFeedback" aria-live="polite"></div>
-   </div>
+  <div class="land-meta"><span class="land-badge">الْجَوْلَةُ ${landRound} مِنْ 4</span><span class="land-badge">${landRound} أَسْمَاءٍ نَاقِصَةٍ</span></div>
+  <div class="land-board">
+   <h2 class="land-title">اِخْتَرِ الشَّكْلَ النَّاقِصَ وَضَعْهُ فِي مَكَانِهِ</h2>
+   <div class="land-list" id="landList">${landLines(false)}</div>
+  </div>
+  <div class="land-typing land-choose">
+   <p class="land-help" id="landPrompt">اِخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ</p>
+   <div class="land-options" id="landOptions"></div>
+   <div class="land-note" id="landFeedback" aria-live="polite"></div>
+  </div>
  </section>`);
- $('#landInput').addEventListener('input',()=>landCheck(false));
- $('#landInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();landCheck(true)}});
- $('#landCheck').onclick=()=>landCheck(true);
  landRefresh();
- if(window.matchMedia('(pointer:fine)').matches)$('#landInput').focus({preventScroll:true});
 }
 function landRefresh(){
- const idx=4-landRound+landFilled;
+ const index=4-landRound+landFilled;
+ const current=landData().items[index][0];
+ const own=landData().items.map(x=>x[0]).filter(x=>landNorm(x)!==landNorm(current));
+ const alternate=LANDFORMS[card===1?2:1].items.map(x=>x[0]);
+ const wrong=scramble([...own,...alternate],(lesson+1)*431+(card+1)*233+landRound*79+landFilled*137).slice(0,3);
+ const options=scramble([current,...wrong],(card+1)*907+landRound*113+landFilled*467);
  if($('#landList'))$('#landList').innerHTML=landLines(false);
- if($('#landPrompt'))$('#landPrompt').textContent=`اُكْتُبِ اسْمَ الشَّكْلِ رَقْمَ ${idx+1}`;
+ if($('#landPrompt'))$('#landPrompt').textContent=`أَكْمِلِ الشَّكْلَ رَقْمَ ${index+1}`;
+ const holder=$('#landOptions');if(!holder)return;
+ holder.innerHTML=options.map((x,i)=>`<button class="land-choice" data-land-option="${i}" type="button">${escape(x)}</button>`).join('');
+ $$('[data-land-option]').forEach((el,i)=>el.onclick=()=>landPick(options[i],el));
 }
-function landCheck(submit){
- if(view!=='landforms'||landPhase!=='writing'||busy)return;
- const input=$('#landInput'),idx=4-landRound+landFilled;
- if(!input)return;
- if(landNorm(input.value)!==landNorm(landData().items[idx][0])){
-  if(submit){$('#landFeedback').textContent='حَاوِلْ مَرَّةً أُخْرَى يَا بَطَلُ';input.focus({preventScroll:true})}
+function landPick(chosen,button){
+ if(view!=='landforms'||landPhase!=='choices'||busy)return;
+ const idx=4-landRound+landFilled;
+ if(landNorm(chosen)!==landNorm(landData().items[idx][0])){
+  button.classList.add('wrong');
+  $('#landFeedback').textContent='حَاوِلْ مَرَّةً أُخْرَى يَا بَطَلُ';
+  setTimeout(()=>{if(button.isConnected)button.classList.remove('wrong')},280);
   return;
  }
- input.value='';landFilled++;
- $('#landFeedback').textContent='أَحْسَنْتَ! ظَهَرَ الِاسْمُ فِي مَكَانِهِ ✓';
- landRefresh();
- if(landFilled<landRound){input.focus({preventScroll:true});return}
- busy=true;landPhase='between';input.disabled=true;$('#landCheck').disabled=true;
- $('#landFeedback').textContent='أَتْقَنْتَ هَذِهِ الْجَوْلَةَ! 🌟';
+ busy=true;
+ button.classList.add('correct');
+ const destination=document.querySelector(`.land-row[data-land-row="${idx}"] .land-value`);
+ const from=button.getBoundingClientRect(),to=destination?.getBoundingClientRect();
+ if(to&&from.width>0){
+  const flying=document.createElement('span');
+  flying.className='land-fly';flying.textContent=chosen;
+  flying.style.left=`${from.left}px`;flying.style.top=`${from.top}px`;
+  flying.style.width=`${from.width}px`;flying.style.height=`${from.height}px`;
+  document.body.appendChild(flying);
+  const dx=to.left+to.width/2-from.left-from.width/2;
+  const dy=to.top+to.height/2-from.top-from.height/2;
+  if(flying.animate){
+   flying.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${dx}px,${dy}px) scale(.75)`,opacity:.8}],{duration:230,easing:'ease-out',fill:'forwards'});
+  }
+  setTimeout(()=>flying.remove(),235);
+ }
  timer=setTimeout(()=>{
-  timer=null;
-  if(view!=='landforms'||landPhase!=='between'||!isLandformCard())return;
-  if(landRound<4){landRound++;landFilled=0;landReveal()}
-  else landFinish();
- },950);
+  timer=null;if(view!=='landforms'||landPhase!=='choices'||!isLandformCard())return;
+  landFilled++;
+  $('#landFeedback').textContent='مُمْتَازٌ! ظَهَرَتِ الْإِجَابَةُ فِي مَكَانِهَا ✓';
+  landRefresh();
+  busy=false;
+  if(landFilled<landRound)return;
+  busy=true;landPhase='between';$('#landOptions').innerHTML='';
+  $('#landFeedback').textContent='أَحْسَنْتَ! أَكْمَلْتَ هَذِهِ الْجَوْلَةَ 🌟';
+  timer=setTimeout(()=>{
+   timer=null;if(view!=='landforms'||landPhase!=='between'||!isLandformCard())return;
+   if(landRound<4){landRound++;landFilled=0;landReveal()}else landFinish();
+  },650);
+ },235);
 }
 function landFinish(){
  stopTimer();view='landforms';landPhase='done';busy=false;updateNav();
@@ -508,5 +546,5 @@ function startQuiz(){stopTimer();view='quiz';quizIndex=0;score=0;quizChoice=null
 function renderQuiz(){updateNav();if(quizIndex>=nowLesson().quiz.length){startMatch();return}const q=nowLesson().quiz[quizIndex];quizChoice=null;$('#screen').innerHTML=`<section class="card"><div class="caption"><span class="count">الِاخْتِبَارُ · السُّؤَالُ ${quizIndex+1} مِنْ ${nowLesson().quiz.length}</span><span>${escape(nowLesson().title)}</span></div><h1 class="quiz-q">${escape(q[0])}</h1><div style="flex:1;min-height:8px"></div><div class="pick-area"><div class="pick-title">اِخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ</div><div class="answers" id="answers">${quizSet[quizIndex].map((x,i)=>`<button class="option" data-quiz="${i}">${escape(x)}</button>`).join('')}</div><div class="quiz-feedback" id="quizFeedback"></div></div><div class="bottom"><span>النَّتِيجَةُ: <b>${score}</b></span><button class="small" onclick="startQuiz()">إعادة الاختبار ↺</button></div></section>`;$$('[data-quiz]').forEach((b,i)=>b.onclick=()=>chooseQuiz(i))}
 function chooseQuiz(i){if(quizChoice!==null)return;quizChoice=i;const q=nowLesson().quiz[quizIndex],chosen=quizSet[quizIndex][i],ok=clean(chosen)===clean(q[2]);if(ok)score++;$$('[data-quiz]').forEach((b,j)=>{b.disabled=true;if(clean(quizSet[quizIndex][j])===clean(q[2]))b.classList.add('correct');else if(j===i)b.classList.add('incorrect')});$('#quizFeedback').textContent=ok?'صَحِيحٌ! أَحْسَنْتَ! ✓':`الْإِجَابَةُ الصَّحِيحَةُ: ${q[2]}`;$('#quizFeedback').className='quiz-feedback '+(ok?'good':'bad');timer=setTimeout(()=>{timer=null;quizIndex++;renderQuiz()},950)}
 function endQuiz(){view='result';(saved[lesson]||(saved[lesson]={})).quizDone=true;updateNav();$('#screen').innerHTML=`<section class="card result"><h2>أَحْسَنْتَ يَا مُعْتَصِمُ! 🌟</h2><div class="score">${score} / ${nowLesson().quiz.length}</div><p>أَتْمَمْتَ الْحِفْظَ وَالِاخْتِبَارَ وَتَوْصِيلَ الْأَسْئِلَةِ بِالْإِجَابَاتِ!</p><div class="group"><button class="primary" onclick="${lesson<4?'startLesson(lesson+1)':'home()'}">${lesson<4?'الدَّرْسُ التَّالِي ←':'الرَّئِيسِيَّةُ'}</button><button class="small" onclick="startQuiz()">أَعِدِ الِاخْتِبَارَ ↺</button></div></section>`}
-document.addEventListener('keydown',e=>{if(view==='study'&&/^[1-4]$/.test(e.key)){const b=$$('[data-pick], [data-quick]')[Number(e.key)-1];b?.click()}else if(view==='study'&&e.key==='Enter'&&!busy&&$('#advance')?.style.display!=='none')nextCard()});home();
+document.addEventListener('keydown',e=>{if((view==='study'||(view==='landforms'&&landPhase==='choices'))&&/^[1-4]$/.test(e.key)){const b=$('[data-pick], [data-quick], [data-land-option]')[Number(e.key)-1];b?.click()}else if(view==='study'&&e.key==='Enter'&&!busy&&$('#advance')?.style.display!=='none')nextCard()});home();
 </script></body></html>
