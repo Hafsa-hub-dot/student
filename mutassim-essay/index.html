@@ -45,6 +45,48 @@ button{font:inherit;cursor:pointer;touch-action:manipulation}button:focus-visibl
 @media(max-width:700px) and (max-height:700px){.question-text{font-size:clamp(25px,6.5vw,31px)}.review .question-text{font-size:clamp(21px,5.6vw,28px)}.answer-body{font-size:clamp(23px,6vw,30px)}.answer-point{font-size:clamp(21px,5.8vw,29px)}.timer{font-size:clamp(72px,19vw,91px)}.grade{font-size:12px}.answer-heading{font-size:16px}}
 @media(max-height:475px){.time-tip{display:none}.question-text{font-size:clamp(22px,3vw,35px)}.timer{font-size:70px}.answering-zone{gap:3px}.review .question-text{font-size:clamp(17px,2.3vw,26px)}.review .answer-body{font-size:clamp(19px,2.1vw,29px)}.review .answer-point{font-size:clamp(17px,2vw,25px)}.self-title{font-size:13px}.grades .grade{font-size:11px}.review-next{padding:4px;font-size:14px}}
 @media(max-height:475px){.review .answer-point{font-size:16px!important;padding:1px 3px!important;line-height:1!important;min-height:0!important}.review .answer-points{gap:1px!important}.review .answer-point .bullet{height:19px;flex-basis:19px;font-size:11px}.review .answer-card{padding:4px!important}.review .answer-heading{font-size:14px}}
+
+/* Optional 60-second answer memorization, never graded as a response. */
+.question-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(6px,1.2vw,14px);width:min(900px,100%)}
+.question-actions .cta{width:100%;min-width:0;font-size:clamp(15px,1.7vw,24px);line-height:1.38;padding:clamp(8px,1.3vh,13px) 5px}
+.study-button{background:white!important;color:#0b7174!important;border:2px solid #b6dcd5!important;box-shadow:none!important}
+.studying .essay-screen{gap:clamp(5px,1.1vh,11px)}.studying .question-zone{padding:clamp(3px,.7vh,8px) 5px}
+.studying .question-text{font-size:clamp(27px,3.2vw,48px);line-height:1.28}
+.studying .answer-card{background:#f3faf7;gap:clamp(4px,.8vh,9px);padding:clamp(7px,1.3vh,17px) clamp(8px,2vw,22px)}
+.studying .answer-heading{font-size:clamp(17px,1.55vw,23px)}
+.studying .answer-body{font-size:clamp(26px,3vw,43px);line-height:1.2;gap:clamp(3px,.65vh,8px)}
+.studying .answer-point{font-size:clamp(23px,2.7vw,37px);padding:clamp(3px,.55vh,7px) 8px}
+.study-bottom{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1vh,11px)}
+.study-clock-row{display:flex;align-items:center;justify-content:center;gap:clamp(10px,2vw,22px);font-size:clamp(17px,1.65vw,24px);font-weight:700;color:#34696e}
+.study-clock{font:bold clamp(45px,5.7vw,84px)/1 Tahoma,Arial,sans-serif;color:#087b78;direction:ltr;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.study-clock.warn{color:#b57624}.study-clock.paused{color:#8c5971}
+.study-controls{display:flex;gap:clamp(6px,1vw,11px);width:100%;max-width:600px}
+.study-controls button{flex:1;min-width:0;border:2px solid #c8e0da;background:white;color:#1f696c;border-radius:12px;font-size:clamp(14px,1.5vw,21px);font-weight:700;padding:clamp(6px,1vh,10px) 3px;line-height:1.3}
+.study-controls button:disabled{opacity:.35}.study-controls button:hover{background:#e8f7f2;border-color:#358e88}
+.study-retry{width:min(610px,100%);font-size:clamp(17px,1.9vw,26px);padding:clamp(8px,1.3vh,13px) 12px;line-height:1.22}
+.study-footer-label{font-size:clamp(12px,1vw,15px);color:#607e80;text-align:center;font-weight:600;margin:0}
+@media(max-width:700px){
+.question-actions .cta{font-size:clamp(14px,3.7vw,19px);padding:9px 4px;border-radius:11px}
+.studying .essay-screen{gap:5px}.studying .question-text{font-size:clamp(23px,5.8vw,33px)}
+.studying .answer-card{padding:7px 8px;gap:5px}.studying .answer-heading{font-size:16px}
+.studying .answer-body{font-size:clamp(24px,6.3vw,32px);line-height:1.17}
+.studying .answer-point{font-size:clamp(21px,5.55vw,29px);padding:3px 5px;border-radius:8px}
+.studying .answer-point .bullet{flex-basis:24px;height:24px;font-size:14px}
+.study-bottom{gap:5px}.study-clock{font-size:clamp(44px,11vw,58px)}.study-clock-row{font-size:16px}
+.study-controls button{font-size:clamp(13px,3.7vw,17px);padding:6px 2px;border-radius:9px}
+.study-retry{font-size:clamp(18px,4.6vw,22px);padding:7px}
+.study-footer-label{font-size:11px}
+}
+@media(max-height:640px){
+.studying .essay-screen{gap:3px}.studying .question-zone{padding:1px 2px}
+.studying .question-text{font-size:clamp(20px,2.7vw,32px);line-height:1.15}
+.studying .answer-card{padding:5px 7px;gap:2px}.studying .answer-heading{font-size:15px}
+.studying .answer-body{font-size:clamp(19px,2.5vw,30px);line-height:1.12}
+.studying .answer-point{font-size:clamp(17px,2.25vw,27px);padding:2px 4px}
+.studying .answer-point .bullet{flex-basis:22px;height:22px;font-size:12px}
+.study-bottom{gap:4px}.study-clock{font-size:43px}.study-controls button{padding:4px;font-size:14px}
+.study-retry{padding:6px;font-size:17px}.study-footer-label{display:none}
+}
 @media(prefers-reduced-motion:reduce){.timer.over{animation:none}*{transition:none!important}}
 </style>
 </head>
@@ -57,12 +99,13 @@ const $=s=>document.querySelector(s);
 const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let questions=DATA.map((item,i)=>({...item,id:i}));
 let index=0,remaining=DURATION,deadline=0,ticker=null,step='home',grades={},sequence=questions.map(q=>q.id),activeId=null;
+let studyRemaining=60,studyDeadline=0,studyPaused=false;
 function safeRead(){try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch{return null}}
 function safeSave(){try{localStorage.setItem(KEY,JSON.stringify({index,grades,sequence,step:step==='result'?'result':'exam'}))}catch{}}
 function stopTimer(){if(ticker!==null){clearInterval(ticker);ticker=null}}
 function formatTime(s){return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`}
 function active(){return questions.find(q=>q.id===sequence[index])}
-function home(){stopTimer();step='home';document.body.classList.remove('review');const old=safeRead();const canResume=old&&Array.isArray(old.sequence)&&old.sequence.length>0&&old.step!=='result';const completed=old&&Object.keys(old.grades||{}).length||0;
+function home(){stopTimer();step='home';document.body.classList.remove('review','studying');const old=safeRead();const canResume=old&&Array.isArray(old.sequence)&&old.sequence.length>0&&old.step!=='result';const completed=old&&Object.keys(old.grades||{}).length||0;
  $('#screen').innerHTML=`<div class="start-page"><div class="start-symbol" aria-hidden="true">📝</div><h1>تَحَدِّي <b>القَلَمِ وَالوَرَقَةِ</b></h1><p class="start-desc">اِقْرَأِ السُّؤَالَ، وَأَجِبْ عَلَى وَرَقَتِكَ، ثُمَّ صَحِّحْ إِجَابَتَكَ بِنَفْسِكَ.</p><div class="start-stats"><div class="start-stat">42 سُؤَالًا مَقَالِيًّا</div><div class="start-stat">5 دُرُوسٍ</div><div class="start-stat">3 دَقَائِقَ لِكُلِّ سُؤَالٍ</div></div><div class="start-actions"><button class="start-action" id="begin">${canResume?'اِسْتَكْمِلِ الِاخْتِبَارَ':'اِبْدَأِ الِاخْتِبَارَ'} ←</button>${canResume?'<button class="start-action secondary-action" id="fresh">مِنَ الْبِدَايَةِ ↺</button>':''}</div>${canResume?`<p class="tiny">حُفِظَ تَقَدُّمُكَ سَابِقًا · ${completed} سُؤَالًا مُصَحَّحًا</p>`:''}</div>`;
  $('#begin').onclick=()=>{if(canResume){const seq=old.sequence.filter(id=>Number.isInteger(id)&&id>=0&&id<questions.length);sequence=seq.length?seq:questions.map(q=>q.id);index=Math.max(0,Math.min(old.index||0,sequence.length-1));grades=old.grades||{}}else freshStart();renderQuestion()};
  if($('#fresh'))$('#fresh').onclick=()=>{freshStart();renderQuestion()};
@@ -71,11 +114,82 @@ function freshStart(){stopTimer();index=0;grades={};sequence=questions.map(q=>q.
 function startClock(){stopTimer();remaining=DURATION;deadline=Date.now()+DURATION*1000;updateClock();ticker=setInterval(()=>{remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));updateClock();if(remaining===0)stopTimer()},220)}
 function updateClock(){const clock=$('#clock'),fill=$('#clockfill'),hint=$('#timeHint');if(!clock)return;clock.textContent=formatTime(remaining);clock.classList.toggle('warn',remaining<=30&&remaining>0);clock.classList.toggle('over',remaining===0);if(fill)fill.style.width=(remaining/DURATION*100)+'%';if(hint)hint.textContent=remaining===0?'انْتَهَى الْوَقْتُ. اِضْغَطْ «تَمَّ» لِتُصَحِّحَ إِجَابَتَكَ.':'اُكْتُبْ إِجَابَتَكَ عَلَى الْوَرَقَةِ بِقَلَمِكَ.'}
 function progress(){const q=active();return `<div class="progress-top"><span class="progress-current">السُّؤَالُ ${index+1} مِنْ ${sequence.length}</span><span>${escapeHTML(q.title)}</span></div><div class="progress-bar"><div class="progress-fill" style="width:${(index/sequence.length)*100}%"></div></div>`}
-function renderQuestion(){stopTimer();if(index>=sequence.length){showResults();return}const q=active();activeId=q.id;step='question';document.body.classList.remove('review');
- $('#screen').innerHTML=`<section class="essay-screen">${progress()}<div class="question-zone"><span class="question-label">أَجِبْ عَنِ السُّؤَالِ الْآتِي</span><h1 class="question-text">${escapeHTML(q.q)}</h1></div><div class="answering-zone"><div class="time-title">الْوَقْتُ الْمُتَبَقِّي</div><div class="timer" id="clock" role="timer" aria-label="الوقت المتبقي" aria-live="off">03:00</div><div class="clockline"><div class="clockfill" id="clockfill"></div></div><p class="time-tip" id="timeHint">اُكْتُبْ إِجَابَتَكَ عَلَى الْوَرَقَةِ بِقَلَمِكَ.</p></div><div class="bottom-action"><button class="cta" id="doneBtn">تَمَّ ✓ أَظْهِرِ الْإِجَابَةَ</button><p class="tiny">لَنْ تَظْهَرَ الْإِجَابَةُ قَبْلَ الضَّغْطِ عَلَى «تَمَّ».</p></div></section>`;
+function renderQuestion(){stopTimer();if(index>=sequence.length){showResults();return}const q=active();activeId=q.id;step='question';document.body.classList.remove('review','studying');
+ $('#screen').innerHTML=`<section class="essay-screen">${progress()}<div class="question-zone"><span class="question-label">أَجِبْ عَنِ السُّؤَالِ الْآتِي</span><h1 class="question-text">${escapeHTML(q.q)}</h1></div><div class="answering-zone"><div class="time-title">الْوَقْتُ الْمُتَبَقِّي</div><div class="timer" id="clock" role="timer" aria-label="الوقت المتبقي" aria-live="off">03:00</div><div class="clockline"><div class="clockfill" id="clockfill"></div></div><p class="time-tip" id="timeHint">اُكْتُبْ إِجَابَتَكَ عَلَى الْوَرَقَةِ بِقَلَمِكَ.</p></div><div class="bottom-action"><div class="question-actions"><button class="cta" id="doneBtn">تَمَّ ✓ صَحِّحْ إِجَابَتَكَ</button><button class="cta study-button" id="studyBtn">لَا أَعْرِفُهَا · أُرِيدُ الْحِفْظَ</button></div><p class="tiny">إِذَا تَعَثَّرْتَ، احْفَظِ الْإِجَابَةَ لِدَقِيقَةٍ ثُمَّ حَاوِلِ السُّؤَالَ نَفْسَهُ.</p></div></section>`;
  $('#doneBtn').onclick=revealAnswer;
+  $('#studyBtn').onclick=beginStudy;
  safeSave();startClock()}
 function answerHTML(q){return q.points.length?`<ol class="answer-points">${q.points.map((x,i)=>`<li class="answer-point"><span class="bullet">${i+1}</span><span>${escapeHTML(x)}</span></li>`).join('')}</ol>`:`<div class="answer-text">${escapeHTML(q.answer)}</div>`}
+
+/* An independent 60-second learning clock, adjustable in 15s increments.
+   On expiry or manual finish, the SAME question restarts with 3 fresh minutes. */
+function beginStudy(){
+ if(step!=='question')return;
+ stopTimer();step='study';
+ studyRemaining=60;studyPaused=false;studyDeadline=Date.now()+60000;
+ document.body.classList.remove('review');document.body.classList.add('studying');
+ const q=active();
+ $('#screen').innerHTML=`<section class="essay-screen">${progress()}
+   <div class="question-zone"><span class="question-label">اِقْرَأِ السُّؤَالَ وَاحْفَظِ الْإِجَابَةَ</span><h1 class="question-text">${escapeHTML(q.q)}</h1></div>
+   <div class="answer-card"><div class="answer-heading">الْإِجَابَةُ الصَّحِيحَةُ — احْفَظْهَا</div><div class="answer-body">${answerHTML(q)}</div></div>
+   <div class="study-bottom">
+     <div class="study-clock-row"><span>وَقْتُ الْحِفْظِ</span><strong class="study-clock" id="studyClock" role="timer" aria-label="وقت الحفظ المتبقي">01:00</strong></div>
+     <div class="study-controls">
+       <button id="studyMinus" type="button">− 15 ثَانِيَةً</button>
+       <button id="studyPause" type="button">⏸ إِيقَافٌ مُؤَقَّتٌ</button>
+       <button id="studyPlus" type="button">+ 15 ثَانِيَةً</button>
+     </div>
+     <button class="cta study-retry" id="studyRetry">حَفِظْتُهَا ✓ أَعِدِ السُّؤَالَ</button>
+     <p class="study-footer-label">عِنْدَ انْتِهَاءِ الْوَقْتِ تُخْفَى الْإِجَابَةُ وَيَعُودُ السُّؤَالُ نَفْسُهُ.</p>
+   </div></section>`;
+ $('#studyMinus').onclick=()=>adjustStudy(-15);
+ $('#studyPlus').onclick=()=>adjustStudy(15);
+ $('#studyPause').onclick=toggleStudyPause;
+ $('#studyRetry').onclick=retryAfterStudy;
+ updateStudyClock();startStudyTicker();
+}
+function startStudyTicker(){
+ stopTimer();if(step!=='study'||studyPaused)return;
+ studyDeadline=Date.now()+studyRemaining*1000;
+ ticker=setInterval(()=>{
+  if(step!=='study'||studyPaused){stopTimer();return}
+  studyRemaining=Math.max(0,Math.ceil((studyDeadline-Date.now())/1000));
+  updateStudyClock();
+  if(studyRemaining===0)retryAfterStudy();
+ },200);
+}
+function updateStudyClock(){
+ const clock=$('#studyClock');if(!clock)return;
+ clock.textContent=formatTime(studyRemaining);
+ clock.classList.toggle('warn',studyRemaining<=15&&!studyPaused);
+ clock.classList.toggle('paused',studyPaused);
+ if($('#studyMinus'))$('#studyMinus').disabled=studyRemaining<=15;
+ if($('#studyPlus'))$('#studyPlus').disabled=studyRemaining>=300;
+ if($('#studyPause'))$('#studyPause').textContent=studyPaused?'▶ مُتَابَعَةُ الْحِفْظِ':'⏸ إِيقَافٌ مُؤَقَّتٌ';
+}
+function adjustStudy(delta){
+ if(step!=='study')return;
+ if(!studyPaused)studyRemaining=Math.max(0,Math.ceil((studyDeadline-Date.now())/1000));
+ studyRemaining=Math.max(15,Math.min(300,studyRemaining+delta));
+ if(!studyPaused)studyDeadline=Date.now()+studyRemaining*1000;
+ updateStudyClock();
+}
+function toggleStudyPause(){
+ if(step!=='study')return;
+ if(studyPaused){studyPaused=false;startStudyTicker()}
+ else{
+  studyRemaining=Math.max(0,Math.ceil((studyDeadline-Date.now())/1000));
+  studyPaused=true;stopTimer();
+ }
+ updateStudyClock();
+}
+function retryAfterStudy(){
+ if(step!=='study')return;
+ stopTimer();studyPaused=false;
+ // Erase the answer and display exactly the same question, with 03:00 again.
+ renderQuestion();
+}
+
 function revealAnswer(){if(step!=='question')return;stopTimer();step='review';document.body.classList.add('review');const q=active();const previous=grades[q.id];
  $('#screen').innerHTML=`<section class="essay-screen">${progress()}<div class="question-zone"><span class="question-label">السُّؤَالُ ${index+1}</span><h1 class="question-text">${escapeHTML(q.q)}</h1></div><div class="answer-card"><div class="answer-heading">الْإِجَابَةُ النَّمُوذَجِيَّةُ ✓</div><div class="answer-body">${answerHTML(q)}</div></div><div class="selfcheck"><div class="self-title"><span class="pen" aria-hidden="true">🖊️</span> صَحِّحْ بِقَلَمِكَ عَلَى وَرَقَتِكَ، ثُمَّ قَيِّمْ إِجَابَتَكَ</div><div class="grades"><button class="grade" data-grade="yes">✓ صَحِيحَةٌ</button><button class="grade" data-grade="part">◐ نَاقِصَةٌ</button><button class="grade" data-grade="again">↻ أُرَاجِعُهَا</button></div><button class="cta review-next" id="nextBtn">${index===sequence.length-1?'عَرْضُ النَّتِيجَةِ ←':'السُّؤَالُ التَّالِي ←'}</button></div></section>`;
  $$('[data-grade]').forEach(btn=>btn.onclick=()=>chooseGrade(btn.dataset.grade));
@@ -85,12 +199,12 @@ const $$=s=>Array.from(document.querySelectorAll(s));
 function highlightGrade(g){$$('[data-grade]').forEach(b=>{b.classList.toggle('selected',b.dataset.grade===g);b.classList.toggle('review-later',b.dataset.grade===g&&g==='again')})}
 function chooseGrade(g){if(step!=='review')return;grades[active().id]=g;highlightGrade(g);safeSave()}
 function nextQuestion(){if(step!=='review')return;index++;if(index>=sequence.length){showResults();return}renderQuestion()}
-function showResults(){stopTimer();step='result';document.body.classList.remove('review');safeSave();const ids=sequence;const counts={yes:0,part:0,again:0,blank:0};ids.forEach(id=>{const mark=grades[id];if(mark&&counts[mark]!==undefined)counts[mark]++;else counts.blank++});const need=questions.filter(q=>grades[q.id]==='part'||grades[q.id]==='again');
+function showResults(){stopTimer();step='result';document.body.classList.remove('review','studying');safeSave();const ids=sequence;const counts={yes:0,part:0,again:0,blank:0};ids.forEach(id=>{const mark=grades[id];if(mark&&counts[mark]!==undefined)counts[mark]++;else counts.blank++});const need=questions.filter(q=>grades[q.id]==='part'||grades[q.id]==='again');
  $('#screen').innerHTML=`<div class="results-page"><div class="start-symbol" aria-hidden="true">🏅</div><h1>أَحْسَنْتَ يَا مُعْتَصِمُ!</h1><p class="message">أَتْمَمْتَ ${ids.length} سُؤَالًا مَقَالِيًّا، وَصَحَّحْتَ إِجَابَاتِكَ عَلَى الْوَرَقَةِ.</p><div class="score-boxes"><div class="score-box"><span class="score-number">${counts.yes}</span>صَحِيحَةٌ</div><div class="score-box"><span class="score-number">${counts.part}</span>نَاقِصَةٌ</div><div class="score-box"><span class="score-number">${counts.again}</span>أَحْتَاجُ مُرَاجَعَتَهَا</div></div>${counts.blank?`<p class="revise">${counts.blank} أَسْئِلَةٍ لَمْ تُقَيَّمْ بَعْدُ.</p>`:''}<div class="start-actions">${need.length?`<button class="start-action" id="retryWeak">أُرَاجِعُ ${need.length} سُؤَالًا ←</button>`:''}<button class="start-action secondary-action" id="redoAll">أُعِيدُ الِاخْتِبَارَ كَامِلًا ↺</button></div></div>`;
  if($('#retryWeak'))$('#retryWeak').onclick=()=>{sequence=need.map(x=>x.id);index=0;renderQuestion()};$('#redoAll').onclick=()=>{freshStart();renderQuestion()}
 }
 $('#homeBtn').onclick=home;
-window.addEventListener('keydown',e=>{if(e.key==='Enter'&&step==='question'&&!e.repeat){revealAnswer()}else if(e.key==='ArrowLeft'&&step==='review'){nextQuestion()}});
+window.addEventListener('keydown',e=>{if(e.key==='Enter'&&step==='question'&&!e.repeat){revealAnswer()}else if(e.key==='ArrowLeft'&&step==='review'){nextQuestion()}else if(e.key==='Escape'&&step==='study'){retryAfterStudy()}});
 home();
 </script>
 </body></html>
