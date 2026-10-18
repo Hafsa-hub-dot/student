@@ -1,0 +1,550 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>المعتصم | اختر الإجابة فقط</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Markazi+Text:wght@500;600;700&display=swap');
+:root{--ink:#142d38;--teal:#006875;--line:#dce7e8;--soft:#f6faf9;--gold:#b98129}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{font-family:'El Messiri',Tahoma,Arial,sans-serif;background:#fafafa;color:var(--ink)}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #dfb463;outline-offset:2px}button:disabled{opacity:.55;cursor:default}
+.shell{height:100dvh;display:flex;flex-direction:column;padding:12px clamp(10px,3vw,42px);gap:10px;max-width:1680px;margin:auto;min-height:0}
+header{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-shrink:0;min-height:45px}header .identity{font-size:clamp(18px,1.7vw,24px);font-weight:700;white-space:nowrap}header .identity b{color:var(--teal)}header .actions{display:flex;align-items:center;gap:7px}header button,.light{border:1px solid var(--line);background:#fff;border-radius:12px;padding:5px 12px;color:#49636b;font-size:clamp(12px,1vw,14px)}
+.lessons{display:flex;gap:6px;flex-shrink:0;overflow:hidden}.lesson{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;background:#fff;color:#51636a;border:1px solid var(--line);border-radius:10px;padding:7px 4px;font-size:clamp(10px,1vw,14px);font-weight:700}.lesson.on{background:#eaf5f3;border-color:#258e91;color:#075c65}.lesson.done:after{content:' ✓';color:#11825a}
+#screen{flex:1;min-height:0;display:flex;flex-direction:column}.card{flex:1;min-height:0;background:#fff;border:1px solid #e9eeee;border-radius:22px;display:flex;flex-direction:column;padding:clamp(12px,2.3vh,22px) clamp(14px,3vw,46px);box-shadow:0 7px 22px #123c4309;overflow:hidden}
+.caption{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:clamp(12px,1.2vw,16px);color:#70838b;flex-shrink:0}.caption .count{color:var(--teal);font-weight:700}
+h1{font-size:clamp(27px,3vw,46px);line-height:1.45;margin:clamp(10px,2vh,25px) auto 12px;text-align:center;font-weight:700;max-width:1150px;flex-shrink:0}h1.quiz-q{font-size:clamp(25px,2.7vw,42px)}
+.sentence{flex:1;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #e5eeec;border-radius:18px;background:var(--soft);padding:14px clamp(7px,2.5vw,36px);position:relative;gap:6px}
+.round{color:#4a8186;font-size:clamp(12px,1.1vw,17px);font-weight:700;flex-shrink:0}.words{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;direction:rtl;max-width:1200px;gap:.10em .19em;font-family:'Markazi Text','El Messiri',serif;font-size:var(--sentence-size,clamp(37px,4vw,68px));font-weight:700;line-height:1.38;text-align:center;max-height:100%;overflow:hidden}.word{white-space:nowrap;display:inline-flex;align-items:baseline;justify-content:center}.word.gap{min-width:1.4em;height:.9em;border:2px dashed #aacac8;background:#e9f2f2;border-radius:9px;align-self:center;vertical-align:middle;color:transparent}.word.gap.active{border:3px solid #bf8124;background:#fff0d2;box-shadow:0 0 0 3px #f3e3c6;min-width:1.7em}.word.filled{color:#086b50;background:#dff3e8;border-radius:9px;padding:0 .1em;animation:place .27s ease-out}.word.glow{background:#dff3e8;color:#086b50;border-radius:9px;padding:0 .1em}
+@keyframes place{0%{opacity:.2;transform:translateY(-18px) scale(1.15)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.pick-area{flex-shrink:0;padding-top:clamp(8px,1.7vh,15px)}.pick-title{text-align:center;color:#557580;font-size:clamp(15px,1.5vw,20px);font-weight:700;margin-bottom:8px;min-height:22px}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(6px,1.3vh,13px);max-width:1020px;margin:auto;width:100%}.option{background:white;border:2px solid #dae8e6;min-height:clamp(48px,8vh,81px);border-radius:16px;color:var(--ink);font-family:'Markazi Text','El Messiri',serif;font-size:clamp(24px,3vw,42px);font-weight:700;padding:6px 15px;line-height:1.25;touch-action:manipulation}.option:hover,.option:focus-visible{background:#e9f8f4;border-color:#258b91}.option.wrong{border-color:#d98c8c;background:#fff3f3;animation:shake .23s linear}@keyframes shake{25%{transform:translateX(3px)}75%{transform:translateX(-3px)}}.option:active{transform:scale(.98)}.status{text-align:center;min-height:23px;font-size:clamp(12px,1.2vw,17px);color:#087b5a;font-weight:700;margin-top:3px}
+.bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:clamp(9px,1.4vh,17px);flex-shrink:0}.bottom .group{display:flex;gap:7px;align-items:center}.primary{background:var(--teal);color:white;border:1px solid var(--teal);border-radius:12px;padding:9px 22px;font-weight:700;font-size:clamp(14px,1.3vw,18px)}.primary:disabled{opacity:.3}.small{border:1px solid var(--line);background:white;color:#5c7178;padding:8px 12px;border-radius:12px;font-size:clamp(12px,1.1vw,14px)}
+.home{margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:15px}.home h1{font-size:clamp(34px,4.5vw,63px);margin:0}.home p{font-size:clamp(17px,2vw,24px);color:#59747c;margin:0;max-width:680px}.home .primary{font-size:22px;padding:13px 46px;margin-top:10px}.result{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;text-align:center}.result h2{font-size:clamp(30px,3vw,55px);margin:0}.result .score{font:bold clamp(50px,7vw,100px) Tahoma;color:#0d7b71}.result p{font-size:22px;margin:0}.quiz-feedback{font-size:clamp(13px,1.2vw,18px);text-align:center;margin-top:8px;min-height:22px;color:#587d7d}.quiz-feedback.good{color:#07845d}.quiz-feedback.bad{color:#b14b49}.option.correct{border-color:#139061;background:#e4f8ee;color:#08734c}.option.incorrect{border-color:#cf7c7c;background:#fff0f0;color:#a34242}
+@media(max-height:710px){.shell{gap:5px;padding-top:5px;padding-bottom:5px}.lessons .lesson{padding:4px}header{min-height:35px}h1{font-size:clamp(24px,2.6vw,37px);margin:4px auto 5px}.sentence{min-height:70px;padding:7px}.round{font-size:13px}.option{min-height:42px;font-size:clamp(22px,2.4vw,32px)}.pick-area{padding-top:6px}.pick-title{margin-bottom:4px}.bottom{margin-top:5px}.card{padding:9px 15px}.words{line-height:1.15}}
+@media(max-width:700px){.shell{padding:5px;gap:5px}header .identity{font-size:17px}header button{font-size:11px;padding:4px 7px}.lesson{font-size:10px}.card{border-radius:15px;padding:10px}.caption{font-size:11px}h1{font-size:clamp(22px,5.5vw,31px);margin:8px 0 6px}.words{font-size:var(--sentence-size,clamp(30px,7vw,46px));line-height:1.25}.sentence{padding:8px;min-height:75px}.word.gap{min-width:1em}.word.gap.active{min-width:1.4em}.answers{gap:6px}.option{font-size:clamp(24px,6.6vw,33px);min-height:clamp(48px,7.9vh,65px);padding:3px 5px;border-radius:12px}.pick-title{font-size:14px}.bottom{gap:4px}.small{font-size:11px;padding:6px}.primary{padding:7px 10px;font-size:12px}.round{font-size:12px}.result p{font-size:17px}}
+@media(max-width:360px){header .identity{font-size:14px}.caption{font-size:10px}h1{font-size:21px}.option{font-size:23px}}
+@media print{html,body{height:auto;overflow:visible}.shell{display:none}}
+
+/* Short-fact choice rounds and one-to-one matching, no sidebars */
+.quick-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:#f6faf9;border:1px solid #e5eeec;border-radius:17px;padding:10px}
+.quick-count{font-size:clamp(17px,1.5vw,23px);color:#277478;font-weight:700}.quick-mark{font-family:'Markazi Text',serif;font-size:clamp(35px,5vw,74px);color:#075e68;font-weight:700;text-align:center;line-height:1.15}.quick-mark:empty{display:none}
+.match-board{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px}.match-guide{text-align:center;font-size:clamp(14px,1.5vw,20px);color:#426a72;font-weight:700}.match-grid{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(20px,6vw,90px);direction:rtl;isolation:isolate}.match-side{min-height:0;display:grid;grid-template-rows:repeat(var(--match-count,4),minmax(0,1fr));gap:clamp(6px,1vh,10px);position:relative;z-index:2}.match-col-label{font-size:clamp(12px,1.2vw,17px);color:#42757a;text-align:center}.match-item{border:2px solid #d9e6e5;background:#fff;border-radius:12px;padding:4px 9px;display:flex;align-items:center;justify-content:center;text-align:center;min-height:0;line-height:1.35;font-size:clamp(15px,1.5vw,23px);font-weight:700;color:#193944;overflow:hidden;overflow-wrap:anywhere;touch-action:manipulation}.match-item.answer{background:#f8fbfa}.match-item.selected{border-color:#bf8427;background:#fff0d5;box-shadow:0 0 0 2px #ffe3a7}.match-item.matched{border-color:#54a988;background:#e6f7ed;color:#146249}.match-item.bad{border-color:#d75e5e;background:#fff0ef}.match-item:disabled{opacity:1;cursor:default}.match-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:visible;pointer-events:none}.match-progress{text-align:center;color:#16715d;font-size:clamp(13px,1.2vw,18px);font-weight:700;min-height:25px}.match-cta{font-size:clamp(13px,1vw,15px);color:#6a8589}.quick-stage ~ .pick-area{padding-top:7px}
+@media(max-width:700px){.quick-stage{padding:7px;gap:5px}.quick-mark{font-size:clamp(34px,9vw,58px)}.match-grid{column-gap:15px}.match-side{gap:6px}.match-item{font-size:clamp(13px,3.55vw,18px);padding:2px 4px;line-height:1.25;border-radius:9px}.match-guide{font-size:13px}.match-col-label{font-size:12px}.match-board{gap:6px}.match-cta{font-size:12px}}
+@media(max-height:650px){.match-item{font-size:clamp(12px,1.5vw,17px)}.match-board{gap:4px}.quick-stage{gap:3px}}
+/* Numbered separate points: one idea per line, with its own progressive blanks */
+.words.multi-words{display:flex;flex-direction:column;align-items:stretch;justify-content:center;flex-wrap:nowrap;width:100%;max-width:1050px;gap:clamp(6px,1.3vh,12px);line-height:1.18;overflow:hidden}
+.point-row{display:flex;align-items:center;gap:clamp(9px,1.7vw,18px);width:100%;text-align:right;border:1px solid #e0eae6;background:#fff;border-radius:13px;padding:clamp(5px,1vh,10px) clamp(9px,1.4vw,17px);min-height:0}
+.point-row.active{border:2px solid #3b9291;background:#fff;box-shadow:0 2px 12px #0068750d}
+.point-row.mastered{border-color:#c7e4d5;background:#edf9f1}
+.point-row.waiting{border-style:dashed;background:#f6faf8;color:#7c9a99}
+.point-number{font-family:Tahoma,Arial,sans-serif;font-size:clamp(15px,1.6vw,23px);font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 clamp(29px,3vw,43px);width:clamp(29px,3vw,43px);height:clamp(29px,3vw,43px);border-radius:50%;background:#d8efeb;color:#075e69}
+.point-row.mastered .point-number{background:#c8ebd8;color:#17684c}
+.point-content{display:flex;align-items:baseline;flex-wrap:wrap;gap:.11em .23em;min-width:0;font-size:clamp(24px,3.15vw,44px);font-weight:700;line-height:1.13}
+.multi-words[data-points='4'] .point-content{font-size:clamp(22px,2.65vw,35px)}
+.point-content .word.gap{height:.86em;min-width:1em}
+.match-points{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:.88em;line-height:1.17}
+@media(max-width:700px){.words.multi-words{gap:5px}.point-row{padding:6px 7px;gap:7px;border-radius:9px}.point-content{font-size:clamp(23px,6vw,31px);line-height:1.08}.multi-words[data-points='4'] .point-content{font-size:clamp(20px,5.3vw,27px)}.point-number{flex-basis:27px;width:27px;height:27px;font-size:14px}.match-points{font-size:.84em;line-height:1.08}}
+@media(max-height:660px){.words.multi-words{gap:3px}.point-row{padding:4px 6px}.point-content{font-size:clamp(21px,2.8vw,33px)}.multi-words[data-points='4'] .point-content{font-size:clamp(18px,2.4vw,27px)}}
+
+/* The curtain-and-writing landform challenge is limited to two geography cards. */
+.land-card h1{margin:4px auto 7px;line-height:1.35;font-size:clamp(27px,3.2vw,44px)}
+.land-stage{display:flex;flex:1;min-height:0;flex-direction:column;gap:clamp(6px,1vh,12px);max-width:1100px;width:100%;margin:auto}
+.land-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-shrink:0;font-size:clamp(14px,1.4vw,19px);font-weight:700;color:#246c70}
+.land-badge{background:#e8f6f2;border:1px solid #d2e7e1;padding:3px 13px;border-radius:999px;white-space:nowrap}
+.land-timer{font:bold clamp(24px,2.8vw,35px) Tahoma,Arial,sans-serif;color:#006875}
+.land-board{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(7px,1.2vh,13px);padding:clamp(10px,1.7vh,20px) clamp(9px,2.5vw,28px);background:#f7faf9;border:1px solid #d9e9e5;border-radius:17px;position:relative;overflow:hidden}
+.land-title{text-align:center;font-size:clamp(21px,2.25vw,33px);color:#125b60;line-height:1.35;font-weight:700;margin:0;flex-shrink:0}
+.land-list{display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:clamp(5px,1.2vh,11px);flex:1;min-height:0;width:100%;max-width:930px;margin:auto}
+.land-row{border:2px solid #d5e9e4;background:white;border-radius:14px;display:flex;align-items:center;gap:clamp(10px,1.7vw,19px);padding:3px clamp(7px,1.5vw,16px);min-height:0;text-align:right;font-family:'Markazi Text','El Messiri',serif;font-size:clamp(29px,3.25vw,46px);font-weight:700;line-height:1.1}
+.land-number{display:flex;justify-content:center;align-items:center;flex:0 0 clamp(32px,3.5vw,46px);height:clamp(32px,3.5vw,46px);border-radius:50%;background:#e2f2ee;color:#116d72;font:bold clamp(16px,1.75vw,24px) Tahoma,Arial,sans-serif}
+.land-value{flex:1;min-width:0}
+.land-row.missing{border-style:dashed;background:#f7fbfa}
+.land-row.active{border-style:solid;border-color:#b88637;background:#fff9ef}
+.land-row.complete{border-color:#a4d4b9;background:#eff9f2;color:#0b7351;animation:place .25s ease-out}
+.land-gap{display:block;min-width:40%;max-width:440px;height:.85em;background:#e7f0ee;border-bottom:3px dashed #9dbfbd;border-radius:8px}
+.land-row.active .land-gap{background:#fff0cc;border-color:#b88637}
+.land-help{text-align:center;color:#58777c;font-size:clamp(13px,1.25vw,17px);font-weight:700;margin:0;flex-shrink:0}
+.land-typing{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
+.land-typing-line{width:100%;max-width:730px;display:flex;gap:9px}
+.land-input{flex:1;min-width:0;border:2px solid #70b3a8;background:white;border-radius:12px;padding:7px 12px;font:700 clamp(20px,2.2vw,30px) 'El Messiri',Tahoma,Arial,sans-serif;text-align:center;direction:rtl;outline:none}
+.land-input:focus{border-color:#b88637;box-shadow:0 0 0 3px #f6e5c5}
+.land-check{white-space:nowrap;font-size:clamp(16px,1.6vw,22px);padding:7px 18px}
+.land-note{color:#0a8061;font-weight:700;min-height:20px;font-size:clamp(13px,1.35vw,18px);text-align:center}
+.land-track{width:100%;max-width:650px;height:6px;background:#dbeae7;border-radius:999px;overflow:hidden;margin:auto;flex-shrink:0}
+.land-track>span{display:block;height:100%;width:100%;background:#229c91;transition:width .2s}
+.land-curtain{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.land-curtain span{position:absolute;top:0;bottom:0;width:50%;background:repeating-linear-gradient(90deg,#983f4c,#aa4553 24px,#862d40 48px,#aa4553 65px)}
+.land-curtain span:first-child{right:0;animation:lc-right .8s ease forwards}
+.land-curtain span:last-child{left:0;animation:lc-left .8s ease forwards}
+.land-curtain.closing span:first-child{animation:lc-right-in .5s ease forwards}
+.land-curtain.closing span:last-child{animation:lc-left-in .5s ease forwards}
+@keyframes lc-right{to{transform:translateX(103%)}}
+@keyframes lc-left{to{transform:translateX(-103%)}}
+@keyframes lc-right-in{from{transform:translateX(103%)}to{transform:translateX(0)}}
+@keyframes lc-left-in{from{transform:translateX(-103%)}to{transform:translateX(0)}}
+.land-finished{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;min-height:0;gap:12px}
+.land-finished .land-list{flex:none;max-height:none;grid-template-rows:repeat(4,auto)}
+.land-finished .land-row{min-height:clamp(50px,7.5vh,78px)}
+@media(max-width:700px){.land-card{padding:8px}.land-card h1{font-size:clamp(23px,6.1vw,31px);margin:4px auto}.land-stage{gap:5px}.land-board{padding:7px 8px;gap:6px;border-radius:11px}.land-title{font-size:clamp(19px,5.2vw,25px)}.land-list{gap:5px}.land-row{border-radius:10px;padding:3px 7px;gap:8px;font-size:clamp(25px,6.8vw,35px)}.land-number{flex-basis:30px;height:30px;font-size:17px}.land-badge{padding:3px 8px}.land-meta{font-size:13px}.land-timer{font-size:23px}.land-input{padding:6px;font-size:21px}.land-check{padding:5px 11px;font-size:16px}.land-help{font-size:12px}.land-typing{gap:4px}.land-note{min-height:18px;font-size:13px}}
+@media(max-height:640px){.land-board{padding:5px 8px;gap:4px}.land-title{font-size:clamp(17px,2vw,24px)}.land-list{gap:4px}.land-row{font-size:clamp(22px,2.5vw,33px)}.land-number{height:27px;flex-basis:27px;font-size:15px}.land-input{padding:4px 6px;font-size:20px}}
+@media(max-height:460px){.land-help{display:none}}
+
+/* Landforms: four large touch choices under the question, no input fields. */
+.land-choose{max-width:990px;width:100%;margin:auto;gap:5px}
+.land-options{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(5px,1vh,10px)}
+.land-choice{border:2px solid #c8e2de;border-radius:13px;background:white;color:#173940;font:700 clamp(24px,2.65vw,38px)/1.1 'Markazi Text','El Messiri',Tahoma,serif;min-height:clamp(49px,7vh,73px);padding:5px 8px;cursor:pointer;touch-action:manipulation;min-width:0}
+.land-choice:hover,.land-choice:focus-visible{background:#eaf8f4;border-color:#258c87}
+.land-choice:active{transform:scale(.98)}
+.land-choice.wrong{background:#fff1ee;border-color:#d77c7c}
+.land-choice.correct{background:#e0f7ea;border-color:#23936e;color:#0b7151}
+.land-fly{position:fixed;z-index:9999;display:flex;align-items:center;justify-content:center;pointer-events:none;white-space:nowrap;border:2px solid #23936e;border-radius:12px;background:#e0f7ea;color:#0b7151;font:700 clamp(21px,2.5vw,34px)/1.1 'Markazi Text','El Messiri',Tahoma,serif;box-shadow:0 4px 18px #1255391e}
+@media(max-width:700px){.land-options{gap:5px}.land-choose{gap:3px}.land-choice{font-size:clamp(21px,5.5vw,29px);min-height:clamp(43px,7vh,59px);padding:4px 3px;border-radius:10px}}
+@media(max-height:600px){.land-choose{gap:2px}.land-options{gap:4px}.land-choice{min-height:34px;font-size:clamp(18px,2.2vw,27px);padding:2px}}
+</style></head><body><div class="shell"><header><div class="identity">✦ <b>المعتصم</b> | أَحْفَظُ وَأَنْجَحُ</div><div class="actions"><button onclick="home()">الرئيسية</button><button onclick="resetCard()" id="restart">إعادة العبارة ↺</button><button onclick="document.documentElement.requestFullscreen?.()">ملء الشاشة ⛶</button></div></header><nav class="lessons" id="lessons"></nav><main id="screen"></main></div>
+<script>
+const LESSONS=[
+{
+ title:'خطوط الطول ودوائر العرض', short:'الطول والعرض', subtitle:'حركة الأرض وأهمية الخطوط الوهمية', icon:'◎',
+ cards:[
+  ['ما المقصود بخطوط الطول؟','أنصاف دوائر وهمية تصل بين القطبين.'],
+  ['كم عدد خطوط الطول؟','عدد خطوط الطول 360 خطاً.'],
+  ['ما أهمية خطوط الطول؟','تحديد مواقع البلدان وحساب فروق التوقيت بين المدن والدول.'],
+  ['ما المقصود بدوائر العرض؟','دوائر وهمية أفقية متوازية تحيط بالكرة الأرضية.'],
+  ['كم عدد دوائر العرض؟','عدد دوائر العرض 180 دائرة.'],
+  ['ما أهمية دوائر العرض؟','تحديد الأماكن على سطح الأرض وتقسيم المناطق إلى حارة وباردة.'],
+  ['كم تستغرق حركة الأرض اليومية؟','تستغرق حركة الأرض اليومية 24 ساعة.'],
+  ['كم تستغرق حركة الأرض السنوية؟','تستغرق حركة الأرض السنوية 365 يوماً وربع اليوم.']
+ ],
+ quiz:[
+  ['ما الوصف الصحيح لخطوط الطول؟',['دوائر أفقية تحيط بالأرض','أنصاف دوائر تصل بين القطبين','خطوط تصل المدن المتجاورة','دوائر متوازية مع خط الاستواء'],'أنصاف دوائر تصل بين القطبين','خطوط الطول أنصاف دوائر وهمية تمتد من القطب الشمالي إلى القطب الجنوبي.'],
+  ['كم عدد خطوط الطول؟',['180','90','360','24'],'360','يبلغ عدد خطوط الطول 360 خطاً.'],
+  ['أيّ استخدام يرتبط بخطوط الطول؟',['حساب فروق التوقيت','معرفة نوع التربة','تحديد كمية الأمطار','قياس ارتفاع الجبال'],'حساب فروق التوقيت','تُستخدم خطوط الطول في حساب فرق التوقيت بين المدن والدول.'],
+  ['ما المقصود بدوائر العرض؟',['أنصاف دوائر تصل القطبين','خطوط ترسم حدود الدول','خطوط ساحلية متعرجة','دوائر وهمية أفقية متوازية'],'دوائر وهمية أفقية متوازية','دوائر العرض دوائر أفقية وهمية متوازية تحيط بالكرة الأرضية.'],
+  ['كم عدد دوائر العرض؟',['360','180','365','24'],'180','يبلغ عدد دوائر العرض 180 دائرة.'],
+  ['تساعد دوائر العرض في تقسيم الأرض بحسب...',['التوقيت المحلي','عدد السكان','المناطق الحارة والباردة','الحدود السياسية'],'المناطق الحارة والباردة','تساعد دوائر العرض في تقسيم سطح الأرض إلى مناطق حرارية.'],
+  ['كم ساعة تستغرق الأرض للدوران حول نفسها تقريباً؟',['12 ساعة','365 ساعة','48 ساعة','24 ساعة'],'24 ساعة','تستغرق حركة الأرض اليومية حول محورها نحو 24 ساعة.'],
+  ['كم تستغرق الأرض للدوران حول الشمس تقريباً؟',['365 يوماً وربع اليوم','180 يوماً','24 يوماً','360 ساعة'],'365 يوماً وربع اليوم','تستغرق الحركة السنوية نحو 365 يوماً وربع اليوم.']
+ ]
+},
+{
+ title:'قطر طبيعيًا | أشكال السطح',short:'أشكال سطح قطر',subtitle:'الموقع والتضاريس الداخلية والساحلية',icon:'⌁',
+ cards:[
+  ['ما الدولة التي تتصل بها قطر من جهة الجنوب؟','تتصل دولة قطر جنوباً بالمملكة العربية السعودية.'],
+  ['ما أشكال السطح الداخلية في قطر؟','الدحول والتلال والكثبان الرملية والروضات.'],
+  ['ما أشكال السطح الساحلية في قطر؟','الجزر والخلجان والرؤوس الأرضية والسبخات الأرضية.'],
+  ['ما المقصود بالروضات؟','أرض منخفضة تتجمع فيها مياه الأمطار وتربتها طينية خصبة.'],
+  ['ما المقصود بالكثبان الرملية؟','كتل من الرمال تكونت بفعل الرياح.'],
+  ['ما المقصود بالجزر؟','أرض تحيط بها المياه من جميع الجهات.'],
+  ['ما المقصود بالخلجان؟','توغل مياه البحر داخل اليابس.']
+ ],
+ quiz:[
+  ['ما الدولة التي تتصل بها قطر برّياً من الجنوب؟',['البحرين','الإمارات العربية المتحدة','المملكة العربية السعودية','سلطنة عُمان'],'المملكة العربية السعودية','تتصل قطر برّياً بالمملكة العربية السعودية من جهة الجنوب.'],
+  ['أيّ شكل من الأشكال التالية يُعدّ من التضاريس الداخلية في قطر؟',['الخلجان','الكثبان الرملية','الجزر','الرؤوس الأرضية'],'الكثبان الرملية','الكثبان الرملية من أشكال السطح الداخلية.'],
+  ['أيّ شكل من الأشكال التالية ساحلي؟',['الروضات','التلال','الدحول','السبخات الأرضية'],'السبخات الأرضية','السبخات الأرضية مذكورة ضمن أشكال السطح الساحلية في الدرس.'],
+  ['أيّ وصف يُعبّر عن الروضات؟',['أرض منخفضة تجمع مياه الأمطار','كتل رملية صنعتها الرياح','مياه تتوغل داخل اليابس','أرض تحيط بها المياه'],'أرض منخفضة تجمع مياه الأمطار','الروضات أراض منخفضة تتجمع فيها الأمطار وتمتاز بتربة طينية خصبة.'],
+  ['ما العامل الأساسي في تكوّن الكثبان الرملية؟',['جريان الأنهار','المدّ والجزر','الرياح','الزلازل'],'الرياح','تنقل الرياح الرمال وتراكمها لتكوين الكثبان.'],
+  ['ما المقصود بالجزر؟',['يابسة تتصل بثلاث دول','أرض تحيط بها المياه من كل الجهات','أرض منخفضة تتجمع فيها الأمطار','امتداد صخري داخل البحر'],'أرض تحيط بها المياه من كل الجهات','الجزيرة مساحة من اليابسة محاطة بالمياه من جميع الجهات.'],
+  ['ما المقصود بالخلجان؟',['ارتفاع التلال قرب الساحل','امتداد الرمال نحو البر','انخفاض التربة داخل الصحراء','توغل مياه البحر داخل اليابس'],'توغل مياه البحر داخل اليابس','الخليج هو امتداد مياه البحر إلى داخل اليابسة.'],
+  ['أيّ مجموعة كلها من أشكال السطح الداخلية؟',['الدحول والتلال والروضات','الجزر والخلجان والروضات','الرؤوس والسبخات والتلال','الخلجان والكثبان والجزر'],'الدحول والتلال والروضات','الدحول والتلال والروضات كلها من الأشكال الداخلية المذكورة في الملخص.']
+ ]
+},
+{
+ title:'قطر طبيعيًا | المناخ والحياة',short:'مناخ قطر',subtitle:'الشتاء والصيف والنبات الطبيعي والحياة البرية',icon:'❃',
+ cards:[
+  ['بماذا يتميز شتاء قطر؟','انخفاض درجات الحرارة وسقوط الأمطار وحدوث الضباب.'],
+  ['بماذا يتميز صيف قطر؟','ارتفاع درجات الحرارة والرطوبة وانعدام سقوط الأمطار.'],
+  ['ما أمثلة النباتات المعمرة في قطر؟','السدر والعوسج.'],
+  ['ما أمثلة النباتات الحولية في قطر؟','الفقع والحميض.'],
+  ['ما أمثلة الزواحف في قطر؟','الثعابين والضب.'],
+  ['ما أمثلة الحيوانات الآكلة للعشب في قطر؟','المها والأرانب والإبل.'],
+  ['ما أمثلة الطيور في قطر؟','الصقور والكروان واليمام.']
+ ],
+ quiz:[
+  ['بماذا يتميز فصل الشتاء في قطر؟',['ارتفاع الحرارة وجفاف الهواء','انخفاض الحرارة وسقوط الأمطار','ارتفاع الحرارة وانعدام المطر','ثبات الحرارة على مدار اليوم'],'انخفاض الحرارة وسقوط الأمطار','يتميز الشتاء بانخفاض درجات الحرارة وهطول الأمطار، وقد يحدث الضباب.'],
+  ['كيف يوصف صيف قطر في الدرس؟',['بارد وجاف','معتدل وغزير الأمطار','منخفض الرطوبة','حار ورطب وقليل الأمطار'],'حار ورطب وقليل الأمطار','يمتاز الصيف بارتفاع درجات الحرارة والرطوبة وندرة الأمطار.'],
+  ['أيّ النباتات الآتية من النباتات المعمرة؟',['السدر','الفقع','الحميض','نباتات موسمية قصيرة العمر'],'السدر','السدر من النباتات المعمرة المذكورة، وكذلك العوسج.'],
+  ['أيّ زوج من النباتات الحولية؟',['السدر والعوسج','السدر والفقع','الفقع والحميض','العوسج والحميض'],'الفقع والحميض','يعرض الملخص الفقع والحميض ضمن النباتات الحولية.'],
+  ['أيّ الحيوانين من الزواحف المذكورة في الدرس؟',['المها والإبل','الثعابين والضب','الأرانب والمها','الكروان واليمام'],'الثعابين والضب','الثعابين والضب أمثلة الزواحف الواردة في الدرس.'],
+  ['أيّ مجموعة تمثل حيوانات آكلة للعشب؟',['الصقور والكروان واليمام','الثعابين والضب والمها','الصقور والأرانب والضب','المها والأرانب والإبل'],'المها والأرانب والإبل','المها والأرانب والإبل أمثلة الحيوانات الآكلة للعشب.'],
+  ['أيّ الطيور التالية ذُكر في الدرس؟',['الكروان','الضب','المها','العوسج'],'الكروان','الكروان من الطيور المذكورة، إلى جانب الصقور واليمام.'],
+  ['أيّ النباتات الآتية معمّر أيضاً؟',['الفقع','الحميض','العوسج','نبات موسمي حولي'],'العوسج','العوسج من النباتات المعمرة الواردة في الملخص.']
+ ]
+},
+{
+ title:'أسرة آل ثاني',short:'أسرة آل ثاني',subtitle:'الهجرة والشيخ محمد بن ثاني وحكام قطر',icon:'✧',
+ cards:[
+  ['من أين هاجرت القبائل العربية وإلى أين؟','هاجرت من داخل شبه الجزيرة العربية إلى سواحلها.'],
+  ['ما السبب الرئيس لهجرة القبائل العربية إلى السواحل؟','سوء الأحوال الاقتصادية.'],
+  ['عمّ كانت القبائل العربية تبحث؟','موارد المياه وأماكن الرعي.'],
+  ['أين ولد الشيخ محمد بن ثاني؟','ولد الشيخ محمد بن ثاني في فويرط.'],
+  ['ما أحد أهم أعمال الشيخ محمد بن ثاني؟','وحد الشيخ محمد بن ثاني القبائل القطرية.'],
+  ['ما الإنجاز السياسي للشيخ محمد بن ثاني؟','نجح في الحصول على اعتراف بريطانيا بقطر إمارة مستقلة.'],
+  ['من أول حاكم يظهر في التسلسل التاريخي بالملخص؟','الشيخ محمد بن ثاني.'],
+  ['من الحاكم الذي تولّى الحكم عام 2013؟','الشيخ تميم بن حمد آل ثاني.']
+ ],
+ quiz:[
+  ['إلى أين اتجهت القبائل العربية المهاجرة في الدرس؟',['من السواحل إلى الداخل','من شبه الجزيرة إلى أوروبا','من الداخل إلى سواحل شبه الجزيرة','من المدن إلى الجبال فقط'],'من الداخل إلى سواحل شبه الجزيرة','تحركت قبائل عربية من داخل شبه الجزيرة العربية إلى سواحلها.'],
+  ['ما سبب هجرة القبائل العربية إلى سواحل شبه الجزيرة؟',['سوء الأحوال الاقتصادية','زيادة الأراضي الزراعية','اعتدال الجو طوال السنة','وفرة المعادن في الداخل'],'سوء الأحوال الاقتصادية','يذكر الملخص سوء الأحوال الاقتصادية سبباً للهجرة.'],
+  ['عن ماذا كانت القبائل تبحث؟',['مواقع للمصانع','الثلوج الدائمة','الموانئ الجوية','موارد المياه وأماكن الرعي'],'موارد المياه وأماكن الرعي','هاجرت القبائل بحثاً عن موارد للمياه ومناطق للرعي.'],
+  ['أين ولد الشيخ محمد بن ثاني؟',['الدوحة','فويرط','لوسيل','الوكرة'],'فويرط','ولد الشيخ محمد بن ثاني في فويرط وفق الملخص.'],
+  ['ما العمل الذي قام به الشيخ محمد بن ثاني؟',['وحد القبائل القطرية','قسم القبائل إلى إمارات','نقل قطر إلى مدينة أخرى','أوقف أنشطة الرعي'],'وحد القبائل القطرية','كان من أبرز أعماله توحيد القبائل القطرية.'],
+  ['ما الإنجاز السياسي المذكور للشيخ محمد بن ثاني؟',['انضمام قطر إلى دولة أخرى','إلغاء جميع المدن الساحلية','الحصول على اعتراف بريطانيا بقطر إمارة مستقلة','إعلان اتحاد جميع دول الخليج'],'الحصول على اعتراف بريطانيا بقطر إمارة مستقلة','ورد في الملخص أنه نجح في الحصول على اعتراف بريطانيا بقطر إمارة مستقلة.'],
+  ['من أول حاكم يظهر في تسلسل حكام قطر في الملخص؟',['الشيخ حمد بن خليفة آل ثاني','الشيخ جاسم بن محمد آل ثاني','الشيخ عبد الله بن جاسم آل ثاني','الشيخ محمد بن ثاني'],'الشيخ محمد بن ثاني','يبدأ التسلسل الزمني في الملخص بالشيخ محمد بن ثاني.'],
+  ['من الذي تولّى حكم قطر عام 2013؟',['الشيخ خليفة بن حمد آل ثاني','الشيخ تميم بن حمد آل ثاني','الشيخ علي بن عبد الله آل ثاني','الشيخ أحمد بن علي آل ثاني'],'الشيخ تميم بن حمد آل ثاني','تولى الشيخ تميم بن حمد آل ثاني الحكم عام 2013.']
+ ]
+},
+{
+ title:'نشأة إمارة قطر',short:'نشأة إمارة قطر',subtitle:'الشيخ جاسم بن محمد ومعركة الوجبة',icon:'✦',
+ cards:[
+  ['أين نشأ الشيخ جاسم بن محمد بن ثاني؟','نشأ في مدينة الدوحة.'],
+  ['في أيّ تجارة عمل الشيخ جاسم مع والده؟','عمل مع والده في تجارة اللؤلؤ.'],
+  ['متى تولّى الشيخ جاسم حكم قطر؟','تولى حكم قطر في 18 ديسمبر 1878م.'],
+  ['ما اللقب الذي منحته الدولة العثمانية للشيخ جاسم؟','منحته الدولة العثمانية لقب قائمقام.'],
+  ['متى توفي الشيخ جاسم وأين دفن؟','توفي عام 1913م ودفن في لوسيل.'],
+  ['ما السبب الأول لمعركة الوجبة؟','محاولة فرض الضرائب على تجار اللؤلؤ.'],
+  ['ما السبب الثاني لمعركة الوجبة؟','اعتقال الوالي العثماني للشيخ أحمد ومن معه.'],
+  ['بين من دارت معركة الوجبة؟','القبائل القطرية والدولة العثمانية.'],
+  ['ما نتائج معركة الوجبة؟','انتصار القوات القطرية وفك أسر الشيخ أحمد ومن معه.'],
+  ['ما أبرز صفات الشيخ جاسم بن محمد؟','الشجاعة وحب العلم.'],
+  ['ما أبرز أعمال الشيخ جاسم الدينية؟','بناء المساجد واستضافة العلماء.'],
+  ['بماذا تميز عهد الشيخ جاسم؟','انتشار الأمن والعدل والرخاء وازدهار التجارة.']
+ ],
+ quiz:[
+  ['أين نشأ الشيخ جاسم بن محمد بن ثاني؟',['لوسيل','فويرط','الدوحة','دخان'],'الدوحة','نشأ الشيخ جاسم بن محمد بن ثاني في مدينة الدوحة.'],
+  ['في أيّ تجارة عمل الشيخ جاسم مع والده؟',['اللؤلؤ','القمح','الأخشاب','الحرير'],'اللؤلؤ','عمل مع والده في تجارة اللؤلؤ التي كانت من الأنشطة الاقتصادية المهمة.'],
+  ['متى تولّى الشيخ جاسم حكم قطر؟',['1913م','1949م','1851م','18 ديسمبر 1878م'],'18 ديسمبر 1878م','تولّى حكم قطر في 18 ديسمبر 1878م.'],
+  ['ما اللقب الذي منحته الدولة العثمانية للشيخ جاسم؟',['سلطان','قائمقام','والٍ','وزير'],'قائمقام','تلقى الشيخ جاسم لقب قائمقام من الدولة العثمانية.'],
+  ['أين دُفن الشيخ جاسم بعد وفاته عام 1913م؟',['الدوحة','فويرط','لوسيل','الوكرة'],'لوسيل','توفي عام 1913م ودُفن في لوسيل وفق الملخص.'],
+  ['أيّ موقف كان أحد أسباب معركة الوجبة؟',['محاولة فرض ضرائب على تجار اللؤلؤ','إلغاء الأسواق الأسبوعية','نقل العاصمة إلى الخارج','إغلاق جميع الموانئ القطرية'],'محاولة فرض ضرائب على تجار اللؤلؤ','محاولة فرض الضرائب على تجار اللؤلؤ من أسباب المعركة.'],
+  ['أيّ حدث آخر أشعل معركة الوجبة؟',['توقف الصيد في الشتاء','انتقال قبائل إلى الصحراء','انقطاع المطر','اعتقال الشيخ أحمد ومن معه'],'اعتقال الشيخ أحمد ومن معه','من أسبابها اعتقال الوالي العثماني للشيخ أحمد ومن معه.'],
+  ['من طرفا معركة الوجبة؟',['قطر وبريطانيا','القبائل القطرية والدولة العثمانية','بريطانيا والدولة العثمانية','قبائل قطر والبرتغاليون'],'القبائل القطرية والدولة العثمانية','دارت المعركة بين القبائل القطرية والقوات التابعة للدولة العثمانية.'],
+  ['ما إحدى نتائج معركة الوجبة؟',['انتصار القوات العثمانية','نقل السكان إلى الداخل','انتصار القوات القطرية','إلغاء تجارة اللؤلؤ'],'انتصار القوات القطرية','انتصرت القوات القطرية في معركة الوجبة.'],
+  ['ما النتيجة الأخرى لمعركة الوجبة؟',['فك أسر الشيخ أحمد ومن معه','اعتقال جميع التجار','إغلاق المساجد','إلغاء الرعي'],'فك أسر الشيخ أحمد ومن معه','أُطلق سراح الشيخ أحمد ومن معه بعد انتصار القوات القطرية.'],
+  ['بماذا عُرف الشيخ جاسم من الصفات؟',['التردد والعزلة','الاهتمام بالتجارة وحدها','الابتعاد عن العلم','الشجاعة وحب العلم'],'الشجاعة وحب العلم','ورد في الملخص أن من صفاته الشجاعة وحب العلم.'],
+  ['ما أحد أعماله الدينية؟',['إغلاق حلقات العلم','بناء المساجد واستضافة العلماء','منع بناء المساجد','إيقاف التعليم'],'بناء المساجد واستضافة العلماء','اهتم الشيخ جاسم ببناء المساجد واستضافة العلماء.'],
+  ['بماذا تميّز عهد الشيخ جاسم؟',['تراجع التجارة والأمن','انقطاع وسائل الرزق','الأمن والعدل والرخاء وازدهار التجارة','توقف النشاط الاقتصادي'],'الأمن والعدل والرخاء وازدهار التجارة','تميّز عهده بالأمن والعدل والرخاء وازدهار التجارة.']
+ ]
+}
+];
+
+const STUDY_ANSWERS=[["أَنْصافُ دَوائِرَ وَهْمِيَّةٍ تَصِلُ بَيْنَ القُطْبَيْنِ.", "عَدَدُ خُطُوطِ الطُّولِ 360 خَطًّا.", "تَحْدِيدُ مَواقِعِ البُلْدانِ وَحِسابُ فُرُوقِ التَّوْقِيتِ بَيْنَ المُدُنِ وَالدُّوَلِ.", "دَوائِرُ وَهْمِيَّةٌ أُفُقِيَّةٌ مُتَوازِيَةٌ تُحِيطُ بِالكُرَةِ الأَرْضِيَّةِ.", "عَدَدُ دَوائِرِ العَرْضِ 180 دائِرَةً.", "تَحْدِيدُ الأَماكِنِ عَلى سَطْحِ الأَرْضِ وَتَقْسِيمُ المَناطِقِ إِلى حارَّةٍ وَبارِدَةٍ.", "تَسْتَغْرِقُ حَرَكَةُ الأَرْضِ اليَوْمِيَّةُ 24 ساعَةً.", "تَسْتَغْرِقُ حَرَكَةُ الأَرْضِ السَّنَوِيَّةُ 365 يَوْمًا وَرُبْعَ اليَوْمِ."], ["تَتَّصِلُ دَوْلَةُ قَطَرَ جَنُوبًا بِالمَمْلَكَةِ العَرَبِيَّةِ السُّعُودِيَّةِ.", "الدُّحُولُ وَالتِّلالُ وَالكُثْبانُ الرَّمْلِيَّةُ وَالرَّوْضاتُ.", "الجُزُرُ وَالخُلْجانُ وَالرُّؤُوسُ الأَرْضِيَّةُ وَالسَّبَخاتُ الأَرْضِيَّةُ.", "أَرْضٌ مُنْخَفِضَةٌ تَتَجَمَّعُ فِيها مِياهُ الأَمْطارِ وَتُرْبَتُها طِينِيَّةٌ خَصْبَةٌ.", "كُتَلٌ مِنَ الرِّمالِ تَكَوَّنَتْ بِفِعْلِ الرِّياحِ.", "أَرْضٌ تُحِيطُ بِها المِياهُ مِنْ جَمِيعِ الجِهاتِ.", "تَوَغُّلُ مِياهِ البَحْرِ داخِلَ اليابِسِ."], ["انْخِفاضُ دَرَجاتِ الحَرارَةِ وَسُقُوطُ الأَمْطارِ وَحُدُوثُ الضَّبابِ.", "ارْتِفاعُ دَرَجاتِ الحَرارَةِ وَالرُّطُوبَةِ وَانْعِدامُ سُقُوطِ الأَمْطارِ.", "السِّدْرُ وَالعَوْسَجُ.", "الفَقْعُ وَالحُمَّيْضُ.", "الثَّعابِينُ وَالضَّبُّ.", "المَها وَالأَرانِبُ وَالإِبِلُ.", "الصُّقُورُ وَالكَرَوانُ وَاليَمامُ."], ["هاجَرَتْ مِنْ داخِلِ شِبْهِ الجَزِيرَةِ العَرَبِيَّةِ إِلى سَواحِلِها.", "سُوءُ الأَحْوالِ الِاقْتِصادِيَّةِ.", "مَوارِدُ المِياهِ وَأَماكِنُ الرَّعْيِ.", "وُلِدَ الشَّيْخُ مُحَمَّدُ بْنُ ثانِي فِي فُوَيْرِطَ.", "وَحَّدَ الشَّيْخُ مُحَمَّدُ بْنُ ثانِي القَبائِلَ القَطَرِيَّةَ.", "نَجَحَ فِي الحُصُولِ عَلى اعْتِرافِ بِرِيطانِيا بِقَطَرَ إِمارَةً مُسْتَقِلَّةً.", "الشَّيْخُ مُحَمَّدُ بْنُ ثانِي.", "الشَّيْخُ تَمِيمُ بْنُ حَمَدٍ آل ثانِي."], ["نَشَأَ فِي مَدِينَةِ الدَّوْحَةِ.", "عَمِلَ مَعَ والِدِهِ فِي تِجارَةِ اللُّؤْلُؤِ.", "تَوَلَّى حُكْمَ قَطَرَ فِي 18 دِيسَمْبَرَ 1878م.", "مَنَحَتْهُ الدَّوْلَةُ العُثْمانِيَّةُ لَقَبَ قائِمَقام.", "تُوُفِّيَ عامَ 1913م وَدُفِنَ فِي لُوسَيْلَ.", "مُحاوَلَةُ فَرْضِ الضَّرائِبِ عَلى تُجَّارِ اللُّؤْلُؤِ.", "اعْتِقالُ الوالِي العُثْمانِيِّ لِلشَّيْخِ أَحْمَدَ وَمَنْ مَعَهُ.", "القَبائِلُ القَطَرِيَّةُ وَالدَّوْلَةُ العُثْمانِيَّةُ.", "انْتِصارُ القُوَّاتِ القَطَرِيَّةِ وَفَكُّ أَسْرِ الشَّيْخِ أَحْمَدَ وَمَنْ مَعَهُ.", "الشَّجاعَةُ وَحُبُّ العِلْمِ.", "بِناءُ المَساجِدِ وَاسْتِضافَةُ العُلَماءِ.", "انْتِشارُ الأَمْنِ وَالعَدْلِ وَالرَّخاءِ وَازْدِهارُ التِّجارَةِ."]];
+const STUDY_QUESTIONS=[["مَا الْمَقْصُودُ بِخُطُوطِ الطُّولِ؟", "كَمْ عَدَدُ خُطُوطِ الطُّولِ؟", "مَا أَهَمِّيَّةُ خُطُوطِ الطُّولِ؟", "مَا الْمَقْصُودُ بِدَوَائِرِ الْعَرْضِ؟", "كَمْ عَدَدُ دَوَائِرِ الْعَرْضِ؟", "مَا أَهَمِّيَّةُ دَوَائِرِ الْعَرْضِ؟", "كَمْ تَسْتَغْرِقُ حَرَكَةُ الْأَرْضِ الْيَوْمِيَّةُ؟", "كَمْ تَسْتَغْرِقُ حَرَكَةُ الْأَرْضِ السَّنَوِيَّةُ؟"], ["مَا الدَّوْلَةُ الَّتِي تَتَّصِلُ بِهَا قَطَرُ مِنْ جِهَةِ الْجَنُوبِ؟", "مَا أَشْكَالُ السَّطْحِ الدَّاخِلِيَّةُ فِي قَطَرَ؟", "مَا أَشْكَالُ السَّطْحِ السَّاحِلِيَّةُ فِي قَطَرَ؟", "مَا الْمَقْصُودُ بِالرَّوْضَاتِ؟", "مَا الْمَقْصُودُ بِالْكُثْبَانِ الرَّمْلِيَّةِ؟", "مَا الْمَقْصُودُ بِالْجُزُرِ؟", "مَا الْمَقْصُودُ بِالْخُلْجَانِ؟"], ["بِمَاذَا يَتَمَيَّزُ شِتَاءُ قَطَرَ؟", "بِمَاذَا يَتَمَيَّزُ صَيْفُ قَطَرَ؟", "مَا أَمْثِلَةُ النَّبَاتَاتِ الْمُعَمَّرَةِ فِي قَطَرَ؟", "مَا أَمْثِلَةُ النَّبَاتَاتِ الْحَوْلِيَّةِ فِي قَطَرَ؟", "مَا أَمْثِلَةُ الزَّوَاحِفِ فِي قَطَرَ؟", "مَا أَمْثِلَةُ الْحَيَوَانَاتِ الْآكِلَةِ لِلْعُشْبِ؟", "مَا أَمْثِلَةُ الطُّيُورِ فِي قَطَرَ؟"], ["مِنْ أَيْنَ هَاجَرَتِ الْقَبَائِلُ الْعَرَبِيَّةُ وَإِلَى أَيْنَ؟", "مَا السَّبَبُ الرَّئِيسُ لِهَجْرَةِ الْقَبَائِلِ؟", "عَمَّ كَانَتِ الْقَبَائِلُ تَبْحَثُ؟", "أَيْنَ وُلِدَ الشَّيْخُ مُحَمَّدُ بْنُ ثَانِي؟", "مَا أَحَدُ أَهَمِّ أَعْمَالِ الشَّيْخِ مُحَمَّدِ بْنِ ثَانِي؟", "مَا الْإِنْجَازُ السِّيَاسِيُّ لِلشَّيْخِ مُحَمَّدِ بْنِ ثَانِي؟", "مَنْ أَوَّلُ حَاكِمٍ يَظْهَرُ فِي التَّسَلْسُلِ؟", "مَنْ تَوَلَّى الْحُكْمَ عَامَ 2013؟"], ["أَيْنَ نَشَأَ الشَّيْخُ جَاسِمُ بْنُ مُحَمَّدٍ بْنِ ثَانِي؟", "فِي أَيِّ تِجَارَةٍ عَمِلَ الشَّيْخُ جَاسِمٌ مَعَ وَالِدِهِ؟", "مَتَى تَوَلَّى الشَّيْخُ جَاسِمٌ حُكْمَ قَطَرَ؟", "مَا اللَّقَبُ الَّذِي مَنَحَتْهُ الدَّوْلَةُ الْعُثْمَانِيَّةُ لِلشَّيْخِ جَاسِمٍ؟", "مَتَى تُوُفِّيَ الشَّيْخُ جَاسِمٌ وَأَيْنَ دُفِنَ؟", "مَا السَّبَبُ الْأَوَّلُ لِمَعْرَكَةِ الْوَجْبَةِ؟", "مَا السَّبَبُ الثَّانِي لِمَعْرَكَةِ الْوَجْبَةِ؟", "بَيْنَ مَنْ دَارَتْ مَعْرَكَةُ الْوَجْبَةِ؟", "مَا نَتَائِجُ مَعْرَكَةِ الْوَجْبَةِ؟", "مَا أَبْرَزُ صِفَاتِ الشَّيْخِ جَاسِمٍ؟", "مَا أَبْرَزُ أَعْمَالِ الشَّيْخِ جَاسِمٍ الدِّينِيَّةِ؟", "بِمَاذَا تَمَيَّزَ عَهْدُ الشَّيْخِ جَاسِمٍ؟"]];
+LESSONS.forEach((l,i)=>l.cards.forEach((card,j)=>{card[0]=STUDY_QUESTIONS[i][j];card[1]=STUDY_ANSWERS[i][j]}));
+
+
+
+// Only factual short answers use repeated multiple choice; definitions keep word-by-word recall.
+const QUICK_FACTS={
+ 0:{1:['360',['360','180','90','24']],4:['180',['360','180','24','365']],6:['24 ساعة',['24 ساعة','12 ساعة','48 ساعة','365 ساعة']],7:['365 يومًا وربع اليوم',['365 يومًا وربع اليوم','360 يومًا','180 يومًا','24 يومًا']]},
+ 1:{0:['المملكة العربية السعودية',['المملكة العربية السعودية','البحرين','سلطنة عُمان','الإمارات العربية المتحدة']]},
+ 2:{2:['السدر والعوسج',['السدر والعوسج','الفقع والحميض','الثعابين والضب','المها والأرانب']],3:['الفقع والحميض',['الفقع والحميض','السدر والعوسج','الصقور واليمام','الأرانب والإبل']],4:['الثعابين والضب',['الثعابين والضب','المها والإبل','الصقور واليمام','الفقع والحميض']],5:['المها والأرانب والإبل',['المها والأرانب والإبل','الصقور والكروان واليمام','السدر والعوسج','الثعابين والضب']],6:['الصقور والكروان واليمام',['الصقور والكروان واليمام','المها والأرانب والإبل','الثعابين والضب','السدر والعوسج']]},
+ 3:{1:['سوء الأحوال الاقتصادية',['سوء الأحوال الاقتصادية','ارتفاع درجات الحرارة','وفرة الأراضي الزراعية','كثرة الأمطار']],2:['موارد المياه وأماكن الرعي',['موارد المياه وأماكن الرعي','المصانع والطرق','الثلوج والجبال','المعادن والغابات']],3:['فويرط',['فويرط','الدوحة','لوسيل','الوكرة']],6:['الشيخ محمد بن ثاني',['الشيخ محمد بن ثاني','الشيخ جاسم بن محمد','الشيخ تميم بن حمد','الشيخ حمد بن خليفة']],7:['الشيخ تميم بن حمد آل ثاني',['الشيخ تميم بن حمد آل ثاني','الشيخ محمد بن ثاني','الشيخ جاسم بن محمد آل ثاني','الشيخ حمد بن خليفة آل ثاني']]},
+ 4:{0:['الدوحة',['الدوحة','فويرط','لوسيل','الوكرة']],1:['اللؤلؤ',['اللؤلؤ','التمور','الأخشاب','الحرير']],2:['18 ديسمبر 1878م',['18 ديسمبر 1878م','18 ديسمبر 1913م','18 ديسمبر 1949م','18 ديسمبر 1960م']],3:['قائمقام',['قائمقام','والٍ','سلطان','وزير']],4:['عام 1913م في لوسيل',['عام 1913م في لوسيل','عام 1878م في الدوحة','عام 1949م في فويرط','عام 1960م في الوكرة']],7:['القبائل القطرية والدولة العثمانية',['القبائل القطرية والدولة العثمانية','القبائل القطرية وبريطانيا','بريطانيا والدولة العثمانية','قطر والبرتغال']],9:['الشجاعة وحب العلم',['الشجاعة وحب العلم','الانطواء والخوف','قلة الاهتمام بالعلم','ترك شؤون الدولة']],10:['بناء المساجد واستضافة العلماء',['بناء المساجد واستضافة العلماء','إغلاق المدارس والمساجد','منع حلقات العلم','إيقاف تدريس العلوم']]}
+};
+// Keep each enumerated idea in its own numbered line, memorized separately.
+const MULTI_POINTS={
+ 0:{
+  2:['تَحْدِيدُ مَوَاقِعِ الْبُلْدَانِ.','حِسَابُ فُرُوقِ التَّوْقِيتِ بَيْنَ الْمُدُنِ وَالدُّوَلِ.'],
+  5:['تَحْدِيدُ الْأَمَاكِنِ عَلَى سَطْحِ الْأَرْضِ.','تَقْسِيمُ الْمَنَاطِقِ إِلَى حَارَّةٍ وَبَارِدَةٍ.']
+ },
+ 1:{
+  1:['الدُّحُولُ.','التِّلَالُ.','الْكُثْبَانُ الرَّمْلِيَّةُ.','الرَّوْضَاتُ.'],
+  2:['الْجُزُرُ.','الْخُلْجَانُ.','الرُّؤُوسُ الْأَرْضِيَّةُ.','السَّبَخَاتُ الْأَرْضِيَّةُ.']
+ },
+ 2:{
+  0:['انْخِفَاضُ دَرَجَاتِ الْحَرَارَةِ.','سُقُوطُ الْأَمْطَارِ.','حُدُوثُ الضَّبَابِ.'],
+  1:['ارْتِفَاعُ دَرَجَاتِ الْحَرَارَةِ.','ارْتِفَاعُ الرُّطُوبَةِ.','انْعِدَامُ سُقُوطِ الْأَمْطَارِ.']
+ },
+ 4:{
+  8:['انْتِصَارُ الْقُوَّاتِ الْقَطَرِيَّةِ.','فَكُّ أَسْرِ الشَّيْخِ أَحْمَدَ وَمَنْ مَعَهُ.'],
+  11:['انْتِشَارُ الْأَمْنِ.','انْتِشَارُ الْعَدْلِ.','انْتِشَارُ الرَّخَاءِ.','ازْدِهَارُ التِّجَارَةِ.']
+ }
+};
+const MATCH_POINTS_SHORT={
+ 0:{2:['تحديد مواقع البلدان','حساب فروق التوقيت'],5:['تحديد الأماكن على سطح الأرض','تقسيم المناطق إلى حارة وباردة']},
+ 1:{1:['الدحول','التلال','الكثبان الرملية','الروضات'],2:['الجزر','الخلجان','الرؤوس الأرضية','السبخات الأرضية']},
+ 2:{0:['انخفاض درجات الحرارة','سقوط الأمطار','حدوث الضباب'],1:['ارتفاع درجات الحرارة','ارتفاع الرطوبة','انعدام سقوط الأمطار']},
+ 4:{8:['انتصار القوات القطرية','فك أسر الشيخ أحمد ومن معه'],11:['الأمن','العدل','الرخاء','ازدهار التجارة']}
+};
+function pointsFor(){return MULTI_POINTS[lesson]?.[card]||null}
+function matchAnswerHTML(i){const pts=MATCH_POINTS_SHORT[lesson]?.[i];return pts?`<span class='match-points'>${pts.map((p,n)=>`<span>${n+1}. ${escape(p)}</span>`).join('')}</span>`:escape(MATCH_TEXT[lesson][i])}
+const MATCH_TEXT=[
+ ['أنصاف دوائر تصل بين القطبين','360 خطًّا','تحديد المواقع وحساب فروق التوقيت','دوائر أفقية متوازية تحيط بالأرض','180 دائرة','تحديد الأماكن والمناطق الحارة والباردة','24 ساعة','365 يومًا وربع اليوم'],
+ ['المملكة العربية السعودية','الدحول والتلال والكثبان والروضات','الجزر والخلجان والرؤوس والسبخات','أرض منخفضة تجمع المطر وتربتها خصبة','كتل رملية تكوِّنها الرياح','أرض تحيط بها المياه من كل جهة','توغُّل مياه البحر في اليابسة'],
+ ['انخفاض الحرارة والأمطار والضباب','ارتفاع الحرارة والرطوبة وغياب المطر','السدر والعوسج','الفقع والحميض','الثعابين والضب','المها والأرانب والإبل','الصقور والكروان واليمام'],
+ ['من داخل شبه الجزيرة العربية إلى سواحلها','سوء الأحوال الاقتصادية','المياه وأماكن الرعي','فويرط','توحيد القبائل القطرية','الاعتراف البريطاني بقطر إمارة مستقلة','الشيخ محمد بن ثاني','الشيخ تميم بن حمد آل ثاني'],
+ ['الدوحة','تجارة اللؤلؤ','18 ديسمبر 1878م','قائمقام','1913م، ودُفن في لوسيل','محاولة فرض الضرائب على تجّار اللؤلؤ','اعتقال الشيخ أحمد ومن معه','القبائل القطرية والدولة العثمانية','انتصار قطر وفك أسر الشيخ أحمد ومن معه','الشجاعة وحب العلم','بناء المساجد واستضافة العلماء','الأمن والعدل والرخاء وازدهار التجارة']
+];
+const MATCH_QUESTION_SHORT=[
+ ['ما خطوط الطول؟','كم عدد خطوط الطول؟','ما أهمية خطوط الطول؟','ما دوائر العرض؟','كم عدد دوائر العرض؟','ما أهمية دوائر العرض؟','مدة حركة الأرض اليومية؟','مدة حركة الأرض السنوية؟'],
+ ['بم تتصل قطر جنوبًا؟','ما أشكال السطح الداخلية؟','ما أشكال السطح الساحلية؟','ما الروضات؟','ما الكثبان الرملية؟','ما الجزر؟','ما الخلجان؟'],
+ ['كيف يكون شتاء قطر؟','كيف يكون صيف قطر؟','أمثلة نباتات معمّرة؟','أمثلة نباتات حولية؟','أمثلة زواحف؟','حيوانات آكلة للعشب؟','أمثلة طيور؟'],
+ ['إلى أين هاجرت القبائل؟','ما سبب الهجرة؟','عمَّ كانت تبحث؟','أين وُلد الشيخ محمد؟','من وحَّد القبائل؟','ما إنجازه السياسي؟','من أول حاكم في التسلسل؟','من تولّى الحكم عام 2013؟'],
+ ['أين نشأ الشيخ جاسم؟','في أي تجارة عمل؟','متى تولّى الحكم؟','ما لقبه العثماني؟','متى تُوفي وأين دُفن؟','ما السبب الأول للوجبة؟','ما السبب الثاني للوجبة؟','من طرفا معركة الوجبة؟','ما نتائج المعركة؟','ما أبرز صفاته؟','ما عمله الديني؟','بم تميّز عهده؟']
+];
+const QUESTION_POOL=LESSONS.flatMap(l=>l.quiz.map(q=>q[1]));
+
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const clean=s=>String(s).normalize('NFKC').replace(/[\u064b-\u065f\u0670]/g,'').replace(/[.,،؛!؟]/g,'').trim();
+const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let lesson=0,card=0,pointIndex=0,round=1,filled=0,busy=false,view='home',quizIndex=0,score=0,quizChoice=null,quizSet=[],timer=null,quickRound=1,matchOffset=0,matchPairs=[],matchSelection=null,matchBusy=false;
+let landRound=1,landFilled=0,landPhase='idle';
+const saved={};
+function stopTimer(){if(timer){clearTimeout(timer);clearInterval(timer);timer=null}}
+function nowLesson(){return LESSONS[lesson]};function words(){return (pointsFor()?.[pointIndex]||nowLesson().cards[card][1]).split(/\s+/).filter(Boolean)}
+function scramble(list,seed){let arr=[...list],x=seed>>>0;for(let i=arr.length-1;i>0;i--){x=(1664525*x+1013904223)>>>0;const j=x%(i+1);[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+function updateNav(){let s=LESSONS.map((l,i)=>`<button class="lesson ${i===lesson&&view!=='home'?'on':''} ${saved[i]?.quizDone?'done':''}" data-lesson="${i}">${i+1}. ${escape(l.short)}</button>`).join('');$('#lessons').innerHTML=s;$$('[data-lesson]').forEach(b=>b.onclick=()=>startLesson(+b.dataset.lesson))}
+function home(){stopTimer();view='home';updateNav();$('#screen').innerHTML=`<section class="card home"><h1>هَيَّا يَا مُعْتَصِمُ! ✨</h1><p>تَعَلَّمْ بِالْخِيَارَاتِ وَالْكَلِمَاتِ النَّاقِصَةِ، ثُمَّ ارْبِطِ السُّؤَالَ بِإِجَابَتِهِ.</p><button class="primary" id="start">اِبْدَأِ الْحِفْظَ ←</button></section>`;$('#start').onclick=()=>startLesson(lesson)}
+function startLesson(i){stopTimer();lesson=i;card=0;pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;view='study';updateNav();renderStudy()}
+function resetCard(){if(view!=='study'&&view!=='landforms')return;stopTimer();pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;renderStudy()}
+function lastCard(){return card>=nowLesson().cards.length-1}
+function nextCard(){stopTimer();if(lastCard()){startQuiz()}else{card++;pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;renderStudy()}}
+function prevCard(){stopTimer();if(card>0){card--;pointIndex=0;round=1;filled=0;quickRound=1;landRound=1;landFilled=0;busy=false;renderStudy()}}
+function poolFor(target){const pool=[...new Set(LESSONS.flatMap(l=>l.cards.flatMap(c=>c[1].split(/\s+/))))].filter(w=>clean(w)!==clean(target)&&clean(w).length>1);const isNum=/\d/.test(target);const filtered=pool.filter(w=>/\d/.test(w)===isNum).sort((a,b)=>Math.abs(clean(a).length-clean(target).length)-Math.abs(clean(b).length-clean(target).length));const choices=[];for(let i=0;i<filtered.length&&choices.length<3;i++){const w=filtered[(i*7+card*11+round*3)%filtered.length];if(!choices.some(v=>clean(v)===clean(w)))choices.push(w)}for(let i=0;choices.length<3&&i<filtered.length;i++)if(!choices.some(v=>clean(v)===clean(filtered[i])))choices.push(filtered[i]);return scramble([target,...choices],(lesson+1)*199+(card+1)*367+round*719+filled*101).slice(0,4)}
+function targetIndex(){return words().length-round+filled}
+function wordSize(){const n=words().length;return `font-size:${n>20?'clamp(23px,2.3vw,37px)':n>14?'clamp(27px,2.8vw,47px)':n>9?'clamp(32px,3.5vw,54px)':'clamp(37px,4.4vw,68px)'}`}
+function renderWords(){
+ const ps=pointsFor(),w=words(),first=w.length-round;
+ const makeToken=(word,i)=>{if(i<first)return `<span class='word'>${escape(word)}</span>`;if(i<first+filled)return `<span class='word filled' data-index='${i}'>${escape(word)}</span>`;return `<span class='word gap ${i===first+filled?'active':''}' data-index='${i}' aria-label='مكان كلمة ناقصة'>&nbsp;</span>`};
+ if(ps){
+  const holder=$('#words');holder.classList.add('multi-words');holder.dataset.points=String(ps.length);
+  holder.innerHTML=ps.map((line,p)=>{
+   const label=`<span class='point-number'>${p+1}</span>`;
+   if(p<pointIndex)return `<div class='point-row mastered'>${label}<span class='point-content'>${escape(line)}</span></div>`;
+   if(p>pointIndex)return `<div class='point-row waiting'>${label}<span class='point-content'>النُّقْطَةُ التَّالِيَةُ</span></div>`;
+   return `<div class='point-row active'>${label}<span class='point-content tokens'>${w.map(makeToken).join('')}</span></div>`;
+  }).join('');
+  $('#round').textContent=`النُّقْطَةُ ${pointIndex+1} مِنْ ${ps.length} · ${round===1?'كَلِمَةٌ نَاقِصَةٌ':`${round} كَلِمَاتٍ نَاقِصَةٍ`}`;
+  return;
+ }
+ $('#words').classList.remove('multi-words');$('#words').removeAttribute('data-points');
+ $('#words').innerHTML=w.map(makeToken).join('');
+ $('#round').textContent=`${round} / ${w.length} · ${round===1?'كَلِمَةٌ نَاقِصَةٌ':`${round} كَلِمَاتٍ نَاقِصَةٍ`}`;
+}
+
+const LANDFORMS={
+ 1:{question:'مَا أَشْكَالُ السَّطْحِ الدَّاخِلِيَّةُ فِي قَطَرَ؟',items:[['الدحول','الدُّحُولُ'],['التلال','التِّلَالُ'],['الكثبان الرملية','الْكُثْبَانُ الرَّمْلِيَّةُ'],['الروضات','الرَّوْضَاتُ']]},
+ 2:{question:'مَا أَشْكَالُ السَّطْحِ السَّاحِلِيَّةُ فِي قَطَرَ؟',items:[['الجزر','الْجُزُرُ'],['الخلجان','الْخُلْجَانُ'],['الرؤوس الأرضية','الرُّؤُوسُ الْأَرْضِيَّةُ'],['السبخات الأرضية','السَّبَخَاتُ الْأَرْضِيَّةُ']]}
+};
+function isLandformCard(){return lesson===1&&(card===1||card===2)}
+function landData(){return LANDFORMS[card]}
+function landNorm(v){return clean(v).replace(/[\u0640\u064b-\u065f\u0670]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/\s+/g,' ').trim()}
+function landLines(showAll){
+ const begin=4-landRound;
+ return landData().items.map(([raw,shown],i)=>{
+  const known=showAll||i<begin||i<begin+landFilled;
+  const recalled=!showAll&&i>=begin&&i<begin+landFilled;
+  const active=!showAll&&i===begin+landFilled;
+  const kind=recalled?' complete':known?'':active?' missing active':' missing';
+  return `<div class="land-row${kind}" data-land-row="${i}"><span class="land-number">${i+1}</span><span class="land-value">${known?escape(shown):'<span class="land-gap" aria-label="اسم ناقص"></span>'}</span></div>`;
+ }).join('');
+}
+function landFrame(content){
+ const data=landData();
+ $('#screen').innerHTML=`<section class="card land-card">
+   <div class="caption"><span class="count">السُّؤَالُ ${card+1} مِنْ ${nowLesson().cards.length}</span><span>أَشْكَالُ سَطْحِ قَطَرَ</span></div>
+   <h1>${escape(data.question)}</h1>
+   ${content}
+   <div class="bottom"><button class="small" id="landPrev">السَّابِقُ</button><button class="primary" id="landNext" style="display:none">السُّؤَالُ التَّالِي ←</button></div>
+ </section>`;
+ $('#landPrev').onclick=prevCard;
+ $('#landNext').onclick=nextCard;
+}
+function landReveal(){
+ stopTimer();view='landforms';landPhase='reveal';landFilled=0;busy=true;updateNav();
+ landFrame(`<section class="land-stage">
+   <div class="land-meta"><span class="land-badge">الْجَوْلَةُ ${landRound} مِنْ 4</span><span class="land-badge">الْوَقْتُ الْمُتَبَقِّي: <b class="land-timer" id="landClock">20</b> ثَانِيَةً</span></div>
+   <div class="land-board">
+      <h2 class="land-title">اِقْرَأِ السُّؤَالَ وَالْإِجَابَةَ أَوَّلًا</h2>
+      <div class="land-list">${landLines(true)}</div>
+      <div class="land-curtain" id="landCurtain"><span></span><span></span></div>
+   </div>
+   <p class="land-help">اِحْفَظِ الْأَسْمَاءَ الْأَرْبَعَةَ، ثُمَّ أَكْمِلْهَا مِنْ ذَاكِرَتِكَ.</p>
+   <div class="land-track"><span id="landTrack"></span></div>
+ </section>`);
+ // Read for 20 FULL seconds, after the opening animation.
+ timer=setTimeout(()=>{
+  timer=null;if(view!=='landforms'||landPhase!=='reveal'||!isLandformCard())return;
+  let left=20;
+  timer=setInterval(()=>{
+   left--;
+   if($('#landClock'))$('#landClock').textContent=String(Math.max(0,left));
+   if($('#landTrack'))$('#landTrack').style.width=`${Math.max(0,left)*5}%`;
+   if(left<=0){
+    clearInterval(timer);timer=null;
+    if(view!=='landforms'||landPhase!=='reveal')return;
+    landPhase='closing';
+    $('#landCurtain')?.classList.add('closing');
+    timer=setTimeout(()=>{timer=null;if(view==='landforms'&&landPhase==='closing'&&isLandformCard())landWrite()},550);
+   }
+  },1000);
+ },850);
+}
+
+/* No writing: tap the answer; it flies into its blank, then new choices appear. */
+function landWrite(){
+ stopTimer();view='landforms';landPhase='choices';landFilled=0;busy=false;updateNav();
+ landFrame(`<section class="land-stage">
+  <div class="land-meta"><span class="land-badge">الْجَوْلَةُ ${landRound} مِنْ 4</span><span class="land-badge">${landRound} أَسْمَاءٍ نَاقِصَةٍ</span></div>
+  <div class="land-board">
+   <h2 class="land-title">اِخْتَرِ الْعِبَارَةَ الصَّحِيحَةَ مِنَ الْخِيَارَاتِ</h2>
+   <div class="land-list" id="landList">${landLines(false)}</div>
+  </div>
+  <div class="land-typing land-choose">
+   <p class="land-help" id="landPrompt">اِضْغَطْ عَلَى الْإِجَابَةِ الصَّحِيحَةِ</p>
+   <div class="land-options" id="landOptions"></div>
+   <div class="land-note" id="landFeedback" aria-live="polite"></div>
+  </div>
+ </section>`);
+ landRefresh();
+}
+function landRefresh(){
+ const index=4-landRound+landFilled;
+ const current=landData().items[index][0];
+ const own=landData().items.map(x=>x[0]).filter(x=>landNorm(x)!==landNorm(current));
+ const alternate=LANDFORMS[card===1?2:1].items.map(x=>x[0]);
+ const wrong=scramble([...own,...alternate],(lesson+1)*431+(card+1)*233+landRound*79+landFilled*137).slice(0,3);
+ const options=scramble([current,...wrong],(card+1)*907+landRound*113+landFilled*467);
+ if($('#landList'))$('#landList').innerHTML=landLines(false);
+ if($('#landPrompt'))$('#landPrompt').textContent=`اِخْتَرِ إِجَابَةَ الشَّكْلِ رَقْمَ ${index+1} مِنَ الْخِيَارَاتِ`;
+ const holder=$('#landOptions');if(!holder)return;
+ holder.innerHTML=options.map((x,i)=>`<button class="land-choice" data-land-option="${i}" type="button">${escape(x)}</button>`).join('');
+ $$('[data-land-option]').forEach((el,i)=>el.onclick=()=>landPick(options[i],el));
+}
+function landPick(chosen,button){
+ if(view!=='landforms'||landPhase!=='choices'||busy)return;
+ const idx=4-landRound+landFilled;
+ if(landNorm(chosen)!==landNorm(landData().items[idx][0])){
+  button.classList.add('wrong');
+  $('#landFeedback').textContent='حَاوِلْ مَرَّةً أُخْرَى يَا بَطَلُ';
+  setTimeout(()=>{if(button.isConnected)button.classList.remove('wrong')},280);
+  return;
+ }
+ busy=true;
+ button.classList.add('correct');
+ const destination=document.querySelector(`.land-row[data-land-row="${idx}"] .land-value`);
+ const from=button.getBoundingClientRect(),to=destination?.getBoundingClientRect();
+ if(to&&from.width>0){
+  const flying=document.createElement('span');
+  flying.className='land-fly';flying.textContent=chosen;
+  flying.style.left=`${from.left}px`;flying.style.top=`${from.top}px`;
+  flying.style.width=`${from.width}px`;flying.style.height=`${from.height}px`;
+  document.body.appendChild(flying);
+  const dx=to.left+to.width/2-from.left-from.width/2;
+  const dy=to.top+to.height/2-from.top-from.height/2;
+  if(flying.animate){
+   flying.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${dx}px,${dy}px) scale(.75)`,opacity:.8}],{duration:230,easing:'ease-out',fill:'forwards'});
+  }
+  setTimeout(()=>flying.remove(),235);
+ }
+ timer=setTimeout(()=>{
+  timer=null;if(view!=='landforms'||landPhase!=='choices'||!isLandformCard())return;
+  landFilled++;
+  $('#landFeedback').textContent='مُمْتَازٌ! ظَهَرَتِ الْإِجَابَةُ فِي مَكَانِهَا ✓';
+  landRefresh();
+  busy=false;
+  if(landFilled<landRound)return;
+  busy=true;landPhase='between';$('#landOptions').innerHTML='';
+  $('#landFeedback').textContent='أَحْسَنْتَ! أَكْمَلْتَ هَذِهِ الْجَوْلَةَ 🌟';
+  timer=setTimeout(()=>{
+   timer=null;if(view!=='landforms'||landPhase!=='between'||!isLandformCard())return;
+   if(landRound<4){landRound++;landFilled=0;landReveal()}else landFinish();
+  },650);
+ },235);
+}
+function landFinish(){
+ stopTimer();view='landforms';landPhase='done';busy=false;updateNav();
+ landFrame(`<div class="land-stage land-finished">
+   <h2 class="land-title">مُمْتَازٌ يَا مُعْتَصِمُ! اِخْتَرْتَ الْأَشْكَالَ الْأَرْبَعَةَ 🎉</h2>
+   <div class="land-list">${landData().items.map(([raw,shown],i)=>`<div class="land-row complete"><span class="land-number">${i+1}</span><span class="land-value">${escape(shown)}</span></div>`).join('')}</div>
+ </div>`);
+ $('#landNext').style.display='';
+ const s=saved[lesson]||(saved[lesson]={});s.lastCard=card;s.mastered=(s.mastered||0)+1;
+}
+
+function renderStudy(){if(isLandformCard()){landReveal();return}if(QUICK_FACTS[lesson]?.[card]){renderQuick();return}view='study';busy=false;updateNav();const q=nowLesson().cards[card][0];$('#screen').innerHTML=`<section class="card"><div class="caption"><span class="count">السُّؤَالُ ${card+1} مِنْ ${nowLesson().cards.length}</span><span>${escape(nowLesson().title)}</span></div><h1>${escape(q)}</h1><div class="sentence"><div class="round" id="round"></div><div class="words" id="words" style="${wordSize()}"></div></div><div class="pick-area"><div class="pick-title" id="pickTitle">اِخْتَرِ الْكَلِمَةَ النَّاقِصَةَ ↓</div><div class="answers" id="answers"></div><div class="status" id="status" aria-live="polite"></div></div><div class="bottom"><div class="group"><button class="small" id="prev">السابق</button><button class="small" id="skip">التالي</button></div><div class="group"><button class="primary" id="advance" style="display:none"></button></div></div></section>`;$('#prev').disabled=card===0;$('#prev').onclick=prevCard;$('#skip').onclick=nextCard;$('#advance').onclick=nextCard;renderWords();refreshOptions()}
+function refreshOptions(){if(view!=='study')return;const w=words();if(filled>=round)return;const choices=poolFor(w[targetIndex()]);$('#answers').innerHTML=choices.map((x,i)=>`<button class="option" data-pick="${i}" draggable="true">${escape(x)}</button>`).join('');$$('[data-pick]').forEach((b,i)=>{b.onclick=()=>pick(choices[i],b);b.ondragstart=e=>{e.dataTransfer.setData('text/plain',String(i))}});const active=$('.word.gap.active');if(active){active.ondragover=e=>e.preventDefault();active.ondrop=e=>{e.preventDefault();const k=Number(e.dataTransfer.getData('text/plain'));if(Number.isInteger(k)&&choices[k])pick(choices[k],$$('[data-pick]')[k])}}}
+function pick(chosen,button){if(view!=='study'||busy)return;const w=words(),idx=targetIndex();if(clean(chosen)!==clean(w[idx])){button.classList.add('wrong');$('#status').textContent='حاوِلْ مَرَّةً أُخْرَى يا بَطَلُ';setTimeout(()=>{if(button.isConnected)button.classList.remove('wrong')},330);return}
+ // The chosen word goes visibly INTO its blank immediately; do not rebuild the sentence here.
+ const slot=$(`.word.gap[data-index="${idx}"]`);if(slot){slot.className='word filled';slot.textContent=w[idx]};filled++;$('#status').textContent='أَحْسَنْتَ! ✓';
+ if(filled<round){refreshOptions();return}
+ busy=true;$('#answers').innerHTML='';$('#pickTitle').textContent='رَائِعٌ! أَكْمَلْتَ هَذِهِ الْجَوْلَةَ ✓';
+ timer=setTimeout(()=>{timer=null;if(view!=='study')return;if(round<w.length){round++;filled=0;busy=false;renderWords();$('#pickTitle').textContent='اِخْتَرِ الْكَلِمَةَ النَّاقِصَةَ ↓';$('#status').textContent='';refreshOptions()}else{finishCard()}},850)
+}
+function finishCard(){
+ const ps=pointsFor();
+ if(ps&&pointIndex<ps.length-1){
+  busy=true;$('#round').textContent=`أَتْقَنْتَ النُّقْطَةَ ${pointIndex+1} ✓`;
+  $('#answers').innerHTML='';$('#pickTitle').textContent='رَائِعٌ! النُّقْطَةُ التَّالِيَةُ';
+  timer=setTimeout(()=>{timer=null;if(view!=='study')return;pointIndex++;round=1;filled=0;busy=false;renderStudy()},720);
+  return;
+ }
+ busy=false;
+ $('#words').innerHTML=ps?ps.map((p,i)=>`<div class='point-row mastered'><span class='point-number'>${i+1}</span><span class='point-content'>${escape(p)}</span></div>`).join(''):words().map(w=>`<span class='word glow'>${escape(w)}</span>`).join('');
+ $('#round').textContent=ps?'أَتْقَنْتَ جَمِيعَ النِّقَاطِ 🌟':'أَتْقَنْتَ الْعِبَارَةَ كَامِلَةً 🌟';
+ $('#pickTitle').textContent='مُمْتَازٌ يَا مُعْتَصِمُ!';$('#status').textContent='';$('#answers').innerHTML='';
+ $('#advance').style.display='';$('#advance').textContent=lastCard()?'اِبْدَأِ الِاخْتِبَارَ ←':'السُّؤَالُ التَّالِي ←';
+ const s=saved[lesson]||(saved[lesson]={});s.lastCard=card;s.mastered=(s.mastered||0)+1
+}
+
+function renderQuick(){
+ stopTimer();view='study';busy=false;updateNav();const q=nowLesson().cards[card][0],data=QUICK_FACTS[lesson][card];
+ const order=scramble(data[1],(lesson+1)*1909+(card+1)*223+quickRound*531);
+ $('#screen').innerHTML=`<section class="card"><div class="caption"><span class="count">السُّؤَالُ ${card+1} مِنْ ${nowLesson().cards.length}</span><span>${escape(nowLesson().title)}</span></div><h1>${escape(q)}</h1><div class="quick-stage"><div class="quick-count">اِخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ · الْمُحَاوَلَةُ ${quickRound} مِنْ 3</div><div class="quick-mark" id="quickMark" aria-live="polite"></div></div><div class="pick-area"><div class="answers" id="answers">${order.map((v,k)=>`<button class="option" data-quick="${k}">${escape(v)}</button>`).join('')}</div><div class="status" id="status" aria-live="polite"></div></div><div class="bottom"><div class="group"><button class="small" id="prev">السابق</button><button class="small" id="skip">التالي</button></div><span class="match-cta">3 مُحَاوَلَاتٍ لِتَثْبِيتِ الْمَعْلُومَةِ</span></div></section>`;
+ $('#prev').disabled=card===0;$('#prev').onclick=prevCard;$('#skip').onclick=nextCard;
+ $$('[data-quick]').forEach((btn,i)=>btn.onclick=()=>pickQuick(order[i],btn,data[0]));
+}
+function pickQuick(chosen,button,correct){
+ if(busy||view!=='study')return;
+ if(clean(chosen)!==clean(correct)){button.classList.add('wrong');$('#status').textContent='جَرِّبْ خِيَارًا آخَرَ';timer=setTimeout(()=>{timer=null;if(button.isConnected)button.classList.remove('wrong')},310);return}
+ busy=true;button.classList.add('correct');$('#quickMark').textContent=correct;$('#status').textContent='أَحْسَنْتَ! ✓';
+ timer=setTimeout(()=>{timer=null;if(view!=='study')return; if(quickRound<3){quickRound++;renderQuick()}else{quickRound=1;nextCard()}},790)
+}
+function matchPageSize(){return window.innerWidth<=700?2:(window.innerHeight<760?3:4)}
+function startMatch(){stopTimer();view='match';matchOffset=0;matchSelection=null;matchPairs=[];matchBusy=false;renderMatch()}
+function renderMatch(){
+ stopTimer();view='match';matchSelection=null;matchBusy=false;updateNav();const max=nowLesson().cards.length;
+ if(matchOffset>=max){endQuiz();return}
+ const size=Math.min(matchPageSize(),max-matchOffset);
+ matchPairs=Array.from({length:size},(_,i)=>({id:matchOffset+i,done:false}));
+ const shuffled=scramble(matchPairs.map(p=>p.id),lesson*1411+matchOffset*77+421);
+ const qHTML=matchPairs.map(p=>`<button class="match-item question" data-qid="${p.id}">${escape(MATCH_QUESTION_SHORT[lesson][p.id])}</button>`).join('');
+ const aHTML=shuffled.map(i=>`<button class="match-item answer" data-aid="${i}">${matchAnswerHTML(i)}</button>`).join('');
+ $('#screen').innerHTML=`<section class="card"><div class="caption"><span class="count">مُطَابَقَةُ السُّؤَالِ وَالْإِجَابَةِ</span><span>${escape(nowLesson().title)}</span></div><h1 style="margin:6px auto 5px;font-size:clamp(26px,2.7vw,40px)">صِلِ السُّؤَالَ بِإِجَابَتِهِ</h1><div class="match-board"><div class="match-guide">اِلْمَسْ سُؤَالًا ثُمَّ الْإِجَابَةَ الَّتِي تُنَاسِبُهُ</div><div class="match-col-label" style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><span>الْأَسْئِلَةُ</span><span>الْإِجَابَاتُ</span></div><div class="match-grid" id="matchGrid" style="--match-count:${size}"><div class="match-side" id="questionSide">${qHTML}</div><div class="match-side" id="answerSide">${aHTML}</div><svg class="match-lines" id="matchLines" aria-hidden="true"></svg></div><div class="match-progress" id="matchProgress">0 / ${size}</div></div><div class="bottom"><div class="group"><button class="small" id="retryMatch">إعادة المجموعة ↺</button></div><span class="match-cta">المَجْمُوعَةُ ${Math.floor(matchOffset/matchPageSize())+1} مِنْ ${Math.ceil(max/matchPageSize())}</span></div></section>`;
+ $$('[data-qid]').forEach(b=>b.onclick=()=>chooseMatch('q',+b.dataset.qid));
+ $$('[data-aid]').forEach(b=>b.onclick=()=>chooseMatch('a',+b.dataset.aid));
+ $('#retryMatch').onclick=renderMatch;
+ redrawMatchLines();
+}
+function chooseMatch(side,id){
+ if(view!=='match'||matchBusy||matchPairs.find(p=>p.id===id)?.done)return;
+ if(matchSelection?.side===side){if(matchSelection.id===id){matchSelection=null}else{matchSelection={side,id}};markMatchSelection();return}
+ if(!matchSelection){matchSelection={side,id};markMatchSelection();return}
+ const qid=side==='q'?id:matchSelection.id;
+ const aid=side==='a'?id:matchSelection.id;
+ if(qid!==aid){
+ const b=$(`[data-${side==='q'?'qid':'aid'}="${id}"]`);b?.classList.add('bad');matchBusy=true;
+ timer=setTimeout(()=>{timer=null;matchBusy=false;b?.classList.remove('bad');matchSelection=null;markMatchSelection()},420);return;
+ }
+ matchPairs.find(p=>p.id===qid).done=true;matchSelection=null;
+ const q=$(`[data-qid="${qid}"]`),a=$(`[data-aid="${aid}"]`);q.disabled=true;a.disabled=true;q.classList.add('matched');a.classList.add('matched');markMatchSelection();redrawMatchLines();
+ const done=matchPairs.filter(p=>p.done).length;$('#matchProgress').textContent=`${done} / ${matchPairs.length} ✓`;
+ if(done===matchPairs.length){matchBusy=true;timer=setTimeout(()=>{timer=null;if(view!=='match')return;matchOffset+=matchPairs.length;renderMatch()},1000)}
+}
+function markMatchSelection(){
+ $$('.match-item.selected').forEach(b=>b.classList.remove('selected'));
+ if(matchSelection){$(`[data-${matchSelection.side==='q'?'qid':'aid'}="${matchSelection.id}"]`)?.classList.add('selected')}
+}
+function redrawMatchLines(){
+ if(view!=='match')return;const grid=$('#matchGrid'),svg=$('#matchLines');if(!grid||!svg)return;
+ const rect=grid.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${rect.width} ${rect.height}`);
+ svg.innerHTML=matchPairs.filter(p=>p.done).map(p=>{
+ const a=$(`[data-qid="${p.id}"]`)?.getBoundingClientRect(),b=$(`[data-aid="${p.id}"]`)?.getBoundingClientRect();if(!a||!b)return '';
+ const x1=a.left-rect.left+1,y1=a.top-rect.top+a.height/2,x2=b.right-rect.left-1,y2=b.top-rect.top+b.height/2;
+ const d=`M ${x1} ${y1} C ${(x1+x2)/2} ${y1}, ${(x1+x2)/2} ${y2}, ${x2} ${y2}`;
+ return `<path d="${d}" fill="none" stroke="#168665" stroke-width="3.5" stroke-linecap="round"/><circle cx="${x1}" cy="${y1}" r="5" fill="#168665"/><circle cx="${x2}" cy="${y2}" r="5" fill="#168665"/>`;
+ }).join('');
+}
+window.addEventListener('resize',()=>{if(view==='match')redrawMatchLines()});
+
+function startQuiz(){stopTimer();view='quiz';quizIndex=0;score=0;quizChoice=null;quizSet=nowLesson().quiz.map((x,i)=>scramble(x[1],(lesson+1)*43+i*118));renderQuiz()}
+function renderQuiz(){updateNav();if(quizIndex>=nowLesson().quiz.length){startMatch();return}const q=nowLesson().quiz[quizIndex];quizChoice=null;$('#screen').innerHTML=`<section class="card"><div class="caption"><span class="count">الِاخْتِبَارُ · السُّؤَالُ ${quizIndex+1} مِنْ ${nowLesson().quiz.length}</span><span>${escape(nowLesson().title)}</span></div><h1 class="quiz-q">${escape(q[0])}</h1><div style="flex:1;min-height:8px"></div><div class="pick-area"><div class="pick-title">اِخْتَرِ الْإِجَابَةَ الصَّحِيحَةَ</div><div class="answers" id="answers">${quizSet[quizIndex].map((x,i)=>`<button class="option" data-quiz="${i}">${escape(x)}</button>`).join('')}</div><div class="quiz-feedback" id="quizFeedback"></div></div><div class="bottom"><span>النَّتِيجَةُ: <b>${score}</b></span><button class="small" onclick="startQuiz()">إعادة الاختبار ↺</button></div></section>`;$$('[data-quiz]').forEach((b,i)=>b.onclick=()=>chooseQuiz(i))}
+function chooseQuiz(i){if(quizChoice!==null)return;quizChoice=i;const q=nowLesson().quiz[quizIndex],chosen=quizSet[quizIndex][i],ok=clean(chosen)===clean(q[2]);if(ok)score++;$$('[data-quiz]').forEach((b,j)=>{b.disabled=true;if(clean(quizSet[quizIndex][j])===clean(q[2]))b.classList.add('correct');else if(j===i)b.classList.add('incorrect')});$('#quizFeedback').textContent=ok?'صَحِيحٌ! أَحْسَنْتَ! ✓':`الْإِجَابَةُ الصَّحِيحَةُ: ${q[2]}`;$('#quizFeedback').className='quiz-feedback '+(ok?'good':'bad');timer=setTimeout(()=>{timer=null;quizIndex++;renderQuiz()},950)}
+function endQuiz(){view='result';(saved[lesson]||(saved[lesson]={})).quizDone=true;updateNav();$('#screen').innerHTML=`<section class="card result"><h2>أَحْسَنْتَ يَا مُعْتَصِمُ! 🌟</h2><div class="score">${score} / ${nowLesson().quiz.length}</div><p>أَتْمَمْتَ الْحِفْظَ وَالِاخْتِبَارَ وَتَوْصِيلَ الْأَسْئِلَةِ بِالْإِجَابَاتِ!</p><div class="group"><button class="primary" onclick="${lesson<4?'startLesson(lesson+1)':'home()'}">${lesson<4?'الدَّرْسُ التَّالِي ←':'الرَّئِيسِيَّةُ'}</button><button class="small" onclick="startQuiz()">أَعِدِ الِاخْتِبَارَ ↺</button></div></section>`}
+document.addEventListener('keydown',e=>{if((view==='study'||(view==='landforms'&&landPhase==='choices'))&&/^[1-4]$/.test(e.key)){const b=$('[data-pick], [data-quick], [data-land-option]')[Number(e.key)-1];b?.click()}else if(view==='study'&&e.key==='Enter'&&!busy&&$('#advance')?.style.display!=='none')nextCard()});if(new URLSearchParams(location.search).get('activity')==='landforms'){startLesson(1);card=1;landRound=1;renderStudy()}else{home()};
+</script></body></html>
