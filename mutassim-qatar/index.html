@@ -450,7 +450,7 @@ function landPick(chosen,button){
 function landFinish(){
  stopTimer();view='landforms';landPhase='done';busy=false;updateNav();
  landFrame(`<div class="land-stage land-finished">
-   <h2 class="land-title">مُمْتَازٌ يَا مُعْتَصِمُ! كَتَبْتَ الْأَشْكَالَ الْأَرْبَعَةَ 🎉</h2>
+   <h2 class="land-title">مُمْتَازٌ يَا مُعْتَصِمُ! اِخْتَرْتَ الْأَشْكَالَ الْأَرْبَعَةَ 🎉</h2>
    <div class="land-list">${landData().items.map(([raw,shown],i)=>`<div class="land-row complete"><span class="land-number">${i+1}</span><span class="land-value">${escape(shown)}</span></div>`).join('')}</div>
  </div>`);
  $('#landNext').style.display='';
