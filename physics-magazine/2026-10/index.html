@@ -768,7 +768,7 @@ function goNamed(name){
  var n=pages.findIndex(function(p){return p.dataset.name===name});
  if(n<0){return;}
  drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');
- if(n===0||n===1){closeReader();go(n);return;}
+ if(n===0){closeReader();go(0);return;}
  openReader(name);
 }
 
@@ -1101,9 +1101,10 @@ return '<div class="deep-reader"><header class="deep-hero"><div><small>معلو�
 '<main class="deep-body"><div class="deep-progress"><strong id="sc-progress-label">المحطة 1 من 8</strong><div class="deep-progress-bar"><i id="sc-progress-fill"></i></div><span id="sc-score">0 / 16</span></div><div id="sc-lesson"></div>'+
 '<div class="deep-source">المصادر العلمية: <a href="https://science.nasa.gov/ems/02_anatomy/" target="_blank" rel="noopener">NASA · أنواع الموجات وانتقالها</a> · <a href="https://science.nasa.gov/science-research/astrophysics/data-sonifications/" target="_blank" rel="noopener">NASA · تحويل بيانات الثقوب السوداء إلى صوت</a> · <a href="https://chandra.si.edu/sound/perseus.html" target="_blank" rel="noopener">Chandra · عنقود برساوس</a>. المعلومات والأمثلة والأسئلة صياغة تعليمية للمجلة.</div></main></div>';
 }
+
 function renderScience(){
 var l=document.getElementById('sc-lesson');if(!l)return;
-var v=scienceLessons[scienceUnit];var last=scienceUnit===scienceLessons.length;
+var v=scienceLessons[scienceUnit],last=scienceUnit===scienceLessons.length;
 var counter=document.getElementById('sc-progress-label'),bar=document.getElementById('sc-progress-fill'),score=document.getElementById('sc-score');
 score.textContent=soundScore()+' / 16';
 counter.textContent=last?'أكملتِ رحلة الصوت والفضاء':'المحطة '+(scienceUnit+1)+' من '+scienceLessons.length;
@@ -1112,23 +1113,24 @@ if(last){
 l.innerHTML='<div class="deep-complete"><h3>اكتمل اكتشافكِ!</h3><p>أجبتِ عن 16 سؤالًا على 8 محطات علمية.</p><b>'+soundScore()+' / 16</b><p>الصوت يحتاج وسطًا، أما الموجات الكهرومغناطيسية فلا تحتاج إليه. وقد تجعلنا معالجة بيانات الفضاء نسمع تمثيلًا علميًا لأشياء لا يمكن أن نسمعها مباشرة.</p><div class="deep-controls" style="justify-content:center"><button class="deep-button" data-science-action="restart">أعيدي الرحلة من البداية</button><button class="deep-button secondary" data-science-action="review">مراجعة آخر محطة</button></div></div>';
 return;
 }
-var completed=v.questions.every(function(q,i){return Boolean(scienceAnswers[scienceUnit+':'+i])});
+var firstAnswer=scienceAnswers[scienceUnit+':0'],secondAnswer=scienceAnswers[scienceUnit+':1'];
+var completed=!!firstAnswer&&!!secondAnswer;
 var media=scienceUnit===5?'<div class="deep-watch"><img src="https://img.youtube.com/vi/1qLuEIfp1So/hqdefault.jpg" alt="فيديو مرصد تشاندرا لتحويل بيانات عنقود برساوس إلى صوت"><div><a href="https://www.youtube.com/watch?v=1qLuEIfp1So" target="_blank" rel="noopener">شاهدي فيديو مرصد تشاندرا الأصلي: بيانات برساوس المحوّلة إلى صوت ↗</a><p style="font-size:13px;margin-top:8px">فيديو علمي منشور عام 2022، وليس تسجيل ميكروفون عبر فراغ الفضاء.</p></div></div>':'';
-l.innerHTML='<article class="deep-paper"><small class="deep-kicker">'+v.tag+'</small><h3>'+v.title+'</h3><div class="deep-intro">'+v.lead+'</div>'+
-'<div class="deep-viz">'+v.visual.map(function(x,i){return '<span class="deep-pill">'+x+'</span>'}).join('')+'</div>'+
-v.parts.map(function(p){return '<p class="deep-paragraph">'+p+'</p>'}).join('')+
-'<aside class="deep-fact"><strong>خلاصة المعلومة:</strong> '+v.fact+'</aside>'+media+
-'<h3 style="font-size:31px;margin-top:30px">تحققي من فهمكِ</h3><p class="deep-paragraph" style="margin:0 0 12px">بعد قراءة هذه المحطة أجيبي عن السؤالين؛ سيظهر سبب صحة كل إجابة قبل الانتقال.</p>'+
-v.questions.map(function(q,qi){
+function quizMarkup(q,qi){
 var a=scienceAnswers[scienceUnit+':'+qi];
-return '<section class="deep-question"><small>'+q.type+' · '+(qi+1)+' / 2</small><h4>'+q.q+'</h4><div class="deep-options">'+q.options.map(function(option,oi){
+return '<section class="deep-question"><small>بعد الفقرة '+(qi+1)+' · '+q.type+'</small><h4>'+q.q+'</h4><div class="deep-options">'+q.options.map(function(option,oi){
 return '<button type="button" class="deep-option'+(a?(oi===q.correct?' correct':oi===a.picked?' wrong':''):'')+'" '+(a?'disabled':'')+' data-sc-answer="'+qi+':'+oi+'">'+option+'</button>';
 }).join('')+'</div><div class="deep-feedback'+(a?' visible':'')+'">'+(a?(a.correct?'أحسنتِ! ':'الصحيح مميز باللون الأخضر. ')+q.why:'')+'</div></section>';
-}).join('')+
+}
+l.innerHTML='<article class="deep-paper"><small class="deep-kicker">'+v.tag+'</small><h3>'+v.title+'</h3><div class="deep-intro">'+v.lead+'</div>'+
+'<div class="deep-viz">'+v.visual.map(function(x){return '<span class="deep-pill">'+x+'</span>'}).join('')+'</div>'+
+'<p class="deep-paragraph">'+v.parts[0]+'</p>'+quizMarkup(v.questions[0],0)+
+(firstAnswer?'<div id="sc-second-part"><p class="deep-paragraph">'+v.parts[1]+'</p>'+quizMarkup(v.questions[1],1)+'</div>':'<div class="deep-fact">أجيبي عن السؤال الأول لتظهر المعلومة التالية.</div>')+
+(completed?'<aside class="deep-fact"><strong>خلاصة المحطة:</strong> '+v.fact+'</aside>'+media:'')+
 '<div class="deep-controls"><button class="deep-button" data-science-action="next" '+(!completed?'disabled title="أجيبي عن السؤالين أولًا"':'')+'>'+(scienceUnit===scienceLessons.length-1?'شاهدِي نتيجتكِ ←':'المحطة التالية ←')+'</button>'+
 '<button class="deep-button secondary" data-science-action="prev" '+(scienceUnit===0?'disabled':'')+'>→ المحطة السابقة</button>'+
 '<button class="deep-button secondary" data-science-action="restart">ابدئي من جديد</button></div>'+
-(!completed?'<p class="deep-source">أجيبي عن سؤال صح/خطأ وسؤال الاختيار من متعدد لتُفتح المحطة التالية.</p>':'')+'</article>';
+(!completed?'<p class="deep-source">تظهر الفقرة الثانية بعد السؤال الأول، وتُفتح المحطة التالية بعد السؤال الثاني.</p>':'')+'</article>';
 }
 function scienceAnswer(choice){
 var p=choice.split(':').map(Number),qi=p[0],picked=p[1],key=scienceUnit+':'+qi;
@@ -1325,7 +1327,7 @@ holder.style.width=(400*s)+'px';holder.style.height=(700*s)+'px';sheet.style.tra
 function go(n){
 clearInterval(memoryTimer);
 var target=Math.max(0,Math.min(pages.length-1,n));
-if(target>1){openReader(pages[target].dataset.name);return;}
+if(target>0){openReader(pages[target].dataset.name);return;}
 if(readerOverlay.classList.contains('active')){readerOverlay.classList.remove('active');readerHistory=[];readerCurrent=null;}
 index=target;
 pages.forEach(function(p,i){p.classList.toggle('active',i===index)});
