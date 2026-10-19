@@ -677,7 +677,13 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 'use strict';
 var pages=Array.prototype.slice.call(document.querySelectorAll('.page'));
 var drawer=document.getElementById('section-drawer');
-function goNamed(name){var n=pages.findIndex(function(p){return p.dataset.name===name});if(n>=0){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');openReader(name)}}
+function goNamed(name){
+ var n=pages.findIndex(function(p){return p.dataset.name===name});
+ if(n<0){return;}
+ drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');
+ if(n===0||n===1){closeReader();go(n);return;}
+ openReader(name);
+}
 
 
 /* responsive magazine reader: full article, scrollable, all chapters */
@@ -688,10 +694,24 @@ var readerHistory=[];
 var readerCurrent=null;
 function stripTags(html){var div=document.createElement('div');div.innerHTML=html;return div.textContent.trim()}
 function readerBack(){
+clearInterval(wamdaTimer);clearInterval(curtainTimer);clearInterval(readClock);
 if(readerHistory.length){var previous=readerHistory.pop();openReader(previous,false)}
 else closeReader();
 }
-function closeReader(){clearInterval(wamdaTimer);clearInterval(curtainTimer);readerOverlay.classList.remove('active');readerOverlay.setAttribute('aria-hidden','true');readerScroll.scrollTop=0;readerCurrent=null;readerHistory=[]}
+function closeReader(){
+ clearInterval(wamdaTimer);clearInterval(curtainTimer);clearInterval(readClock);
+ readerOverlay.classList.remove('active');
+ readerOverlay.setAttribute('aria-hidden','true');
+ readerScroll.scrollTop=0;
+ readerCurrent=null;
+ readerHistory=[];
+ index=1;
+ pages.forEach(function(p,i){p.classList.toggle('active',i===1)});
+ byId('section-name').textContent='الفهرس';
+ byId('page-count').textContent='02 / '+pages.length;
+ byId('prev-btn').disabled=false;byId('next-btn').disabled=false;
+ updateFeature();
+}
 function richProject(){
 return String.raw`
 <div class="reader-content reader-project">
@@ -920,12 +940,19 @@ var box=document.getElementById('r-quiz');if(!box)return;
 box.innerHTML=quiz.map(function(q,i){return '<section class="panel" style="margin:22px 0"><strong>السؤال '+(i+1)+' من '+quiz.length+'</strong><h3 style="font:700 28px/1.35 Amiri,serif;margin:12px 0">'+q.q+'</h3><div class="choices">'+q.a.map(function(v,j){return '<button class="choice" data-rquiz="'+i+':'+j+'">'+v+'</button>'}).join('')+'</div><div class="answer" data-rquiz-feedback="'+i+'">اختاري إجابتك لعرض السبب.</div></section>'}).join('');
 }
 function openReader(name,addHistory){
+clearInterval(wamdaTimer);clearInterval(curtainTimer);clearInterval(readClock);
 if(addHistory===undefined)addHistory=true;
 if(readerCurrent&&readerCurrent!==name&&addHistory)readerHistory.push(readerCurrent);
 if(!readerOverlay.classList.contains('active'))readerHistory=[];
-readerCurrent=name;
 var source=pages.find(function(p){return p.dataset.name===name});
-if(!source)return;
+if(!source){return;}
+readerCurrent=name;
+index=pages.indexOf(source);
+pages.forEach(function(p,i){p.classList.toggle('active',i===index)});
+byId('page-count').textContent=String(index+1).padStart(2,'0')+' / '+pages.length;
+byId('section-name').textContent=source.dataset.name;
+byId('prev-btn').disabled=index===0;
+byId('next-btn').disabled=index===pages.length-1;
 readerOverlay.classList.add('active');readerOverlay.setAttribute('aria-hidden','false');
 document.getElementById('reader-brand').textContent=(name==='مشروع الفيزياء النووية'||name==='تقييم المشروع النووي')?'إعلان مشروع الفيزياء النووية':name;
 clearInterval(wamdaTimer);clearInterval(curtainTimer);
@@ -1033,29 +1060,36 @@ holder.style.width=(400*s)+'px';holder.style.height=(700*s)+'px';sheet.style.tra
 }
 function go(n){
 clearInterval(memoryTimer);
-if(n>1){var selected=pages[Math.max(0,Math.min(pages.length-1,n))];if(selected){openReader(selected.dataset.name);return;}}
-index=Math.max(0,Math.min(pages.length-1,n));
+var target=Math.max(0,Math.min(pages.length-1,n));
+if(target>1){openReader(pages[target].dataset.name);return;}
+if(readerOverlay.classList.contains('active')){readerOverlay.classList.remove('active');readerHistory=[];readerCurrent=null;}
+index=target;
 pages.forEach(function(p,i){p.classList.toggle('active',i===index)});
 byId('page-count').textContent=String(index+1).padStart(2,'0')+' / '+pages.length;
 byId('section-name').textContent=pages[index].dataset.name;
 byId('prev-btn').disabled=index===0;byId('next-btn').disabled=index===pages.length-1;updateFeature();
-if(index===16)renderQuiz();
-if(index===19)resetMemoryAnswer();
+if(pages[index].dataset.name==='تدريب تفاعلي')renderQuiz();
+if(pages[index].dataset.name==='سؤال الذاكرة')resetMemoryAnswer();
 if(pages[index].dataset.name==='مسابقة العدد')resetPublicAnswer();
 }
-document.getElementById('next-btn').addEventListener('click',function(){go(index+1)});
-document.getElementById('prev-btn').addEventListener('click',function(){go(index-1)});
+document.getElementById('next-btn').addEventListener('click',function(){go(Math.min(index+1,pages.length-1))});
+document.getElementById('prev-btn').addEventListener('click',function(){go(Math.max(index-1,0))});
 document.getElementById('contents-btn').addEventListener('click',function(){go(1)});
 document.addEventListener('click',function(e){
 var named=e.target.closest('[data-go-name]');if(named){goNamed(named.dataset.goName);return;}
-var b=e.target.closest('[data-goto]');if(b)go(Number(b.getAttribute('data-goto')));
+var b=e.target.closest('[data-goto]');if(b){
+ var wanted=Number(b.getAttribute('data-goto'));if(pages[wanted])goNamed(pages[wanted].dataset.name);
+}
 });
-document.getElementById('sections-btn').addEventListener('click',function(){drawer.classList.toggle('open');drawer.setAttribute('aria-hidden',drawer.classList.contains('open')?'false':'true')});
+document.getElementById('sections-btn').addEventListener('click',function(){
+ readerOverlay.classList.remove('active');readerOverlay.setAttribute('aria-hidden','true');
+ drawer.classList.toggle('open');drawer.setAttribute('aria-hidden',drawer.classList.contains('open')?'false':'true');
+});
 document.getElementById('close-sections').addEventListener('click',function(){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true')});
 
 var startX=null;stage.addEventListener('touchstart',function(e){startX=e.touches[0].clientX},{passive:true});
-stage.addEventListener('touchend',function(e){if(startX===null)return;var d=e.changedTouches[0].clientX-startX;if(Math.abs(d)>60)go(index+(d>0?1:-1));startX=null},{passive:true});
-document.addEventListener('keydown',function(e){if(document.activeElement.tagName==='INPUT'||document.activeElement.tagName==='TEXTAREA')return;if(e.key==='ArrowLeft')go(index+1);if(e.key==='ArrowRight')go(index-1)});
+stage.addEventListener('touchend',function(e){if(startX===null)return;var d=e.changedTouches[0].clientX-startX;if(Math.abs(d)>60&&!drawer.classList.contains('open')&&!readerOverlay.classList.contains('active'))go(index+(d>0?1:-1));startX=null},{passive:true});
+document.addEventListener('keydown',function(e){if(document.activeElement.tagName==='INPUT'||document.activeElement.tagName==='TEXTAREA')return;if(readerOverlay.classList.contains('active')||drawer.classList.contains('open'))return;if(e.key==='ArrowLeft')go(index+1);if(e.key==='ArrowRight')go(index-1)});
 byId('reveal-ship').onclick=function(){byId('ship-answer').hidden=false;this.hidden=true};
 byId('riddle-btn').onclick=function(){byId('riddle-answer').hidden=false;this.hidden=true};
 byId('start-video').onclick=function(){
