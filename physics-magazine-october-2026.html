@@ -414,6 +414,39 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 .food-day-finished b{display:block;color:#b0823b;font:700 clamp(48px,7vw,84px) Georgia,serif;margin:18px 0}
 .food-day-finished p{font:clamp(20px,2vw,27px)/1.5 Amiri,serif;color:#35594c}
 @media(max-width:560px){.food-day-hero{padding:24px 17px}.food-day-content{padding:15px 12px 75px}.food-day-card{padding:20px 14px}.food-day-option{min-height:55px;gap:8px;padding:8px 9px}.food-day-option b{width:29px;height:29px}}
+
+/* October pink awareness: original ten-question interactive challenge */
+.pink-pulse-game{background:#fffbfc;color:#442a39;min-height:100vh}
+.pink-pulse-header{background:radial-gradient(circle at 85% 0%,#f9d0df 0%,transparent 45%),linear-gradient(130deg,#711c49 0%,#a93565 64%,#842d57 100%);color:#fff;padding:clamp(33px,6vw,78px) clamp(19px,6vw,80px)}
+.pink-pulse-inner{max-width:960px;margin:0 auto}
+.pink-pulse-eyebrow{display:inline-block;color:#ffe8dc;border-top:2px solid #f7cbb4;padding-top:11px;font-size:14px}
+.pink-pulse-header h2{font:700 clamp(44px,6vw,79px)/1.2 "Amiri",serif;color:#fff;margin:15px 0 5px}
+.pink-pulse-header h2 em{font-style:normal;color:#ffe3b7}
+.pink-pulse-header p{font:clamp(19px,2vw,28px)/1.5 "Amiri",serif;color:#ffe8f1;max-width:860px}
+.pink-pulse-content{max-width:940px;margin:0 auto;padding:clamp(17px,4vw,42px) clamp(12px,4vw,45px) 90px}
+.pink-pulse-progress-label{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#874d65;font-size:15px;font-weight:700}
+.pink-pulse-progress{background:#f5e3eb;border-radius:20px;height:9px;overflow:hidden;margin:13px 0 28px}
+.pink-pulse-progress span{background:#c86890;height:100%;display:block;transition:width .25s}
+.pink-pulse-card{background:#fff;border:1px solid #f2dae2;box-shadow:0 8px 34px #711c4910;padding:clamp(20px,4vw,43px)}
+.pink-pulse-tag{display:block;color:#b45b78;font-weight:700;font-size:15px;margin-bottom:17px}
+.pink-pulse-card h3{color:#632c47;font:700 clamp(27px,3.5vw,46px)/1.35 "Amiri",serif;margin:0 0 23px}
+.pink-pulse-options{display:grid;grid-template-columns:1fr;gap:11px}
+.pink-pulse-option{border:1px solid #eacdd9;background:#fff9fb;color:#58324a;min-height:61px;padding:12px 15px;display:flex;align-items:center;gap:14px;width:100%;text-align:right;font:500 clamp(14px,1.8vw,19px)/1.4 "El Messiri",Tahoma,sans-serif}
+.pink-pulse-option b{flex:0 0 31px;height:31px;border-radius:50%;display:grid;place-items:center;color:#913f63;background:#f4dae4}
+.pink-pulse-option:hover:enabled{background:#fbe7ee;border-color:#b45c81}
+.pink-pulse-option:disabled{cursor:default}
+.pink-pulse-option.good{background:#e1f0e5;border-color:#559b6a;color:#28613b}
+.pink-pulse-option.good b{background:#cce6d1;color:#28613b}
+.pink-pulse-option.bad{background:#f8dfe4;border-color:#bd687a;color:#813f51}
+.pink-pulse-explain{margin-top:21px;background:#fff0f5;border-right:4px solid #c56b8c;padding:17px 20px;color:#6d3c54;font:clamp(19px,2vw,25px)/1.55 "Amiri",serif}
+.pink-pulse-next{border:0;background:#952d5e;color:#fff;min-height:50px;font-weight:700;font-size:15px;padding:12px 22px;margin-top:20px}
+.pink-pulse-next.secondary{background:#f3d9e4;color:#783d55;margin-inline-start:10px}
+.pink-pulse-finish{background:#fff;border:2px solid #d89cb6;padding:clamp(24px,5vw,58px);text-align:center}
+.pink-pulse-finish h3{color:#a03861;font:700 clamp(36px,4.5vw,61px) "Amiri",serif;margin:8px 0}
+.pink-pulse-finish .result{font:700 clamp(50px,8vw,90px) Georgia,serif;color:#a4476e;margin:14px 0}
+.pink-pulse-finish p{font:clamp(20px,2vw,27px)/1.55 Amiri,serif;color:#604456}
+.pink-pulse-clarification{font-size:12px;line-height:1.6;margin:23px 0;color:#76636d;border-top:1px solid #f0d6e1;padding-top:15px}
+@media(max-width:550px){.pink-pulse-header{padding:24px 17px}.pink-pulse-content{padding:15px 11px 75px}.pink-pulse-card{padding:21px 14px}.pink-pulse-option{min-height:55px;padding:9px;gap:8px}.pink-pulse-option b{flex-basis:28px;height:28px}}
 </style>
 </head>
 <body>
@@ -559,7 +592,7 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
  <p class="note">التسلسل نموذج مبسط لدورة البحث العلمي؛ يمكن أن تكون عملية البحث تكرارية لا خطية.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
 <section class="page" data-name="أكتوبر الوردي"><div class="meta"><span>توعية ومسؤولية</span><span>PINK OCTOBER</span></div><h1>نبض وردي…<br><em>وعي يمتد.</em></h1><p class="deck">مشاركة مجتمعية جمعت المعلمات والطالبات وأولياء الأمور في تحدٍّ للتوعية.</p>
  <div class="panel"><strong>المشاركة</strong><p>تنافست فئات مختلفة عبر أسئلة توعوية، ورافقها تشجيع وتكريم للمشاركات.</p></div>
- <div class="panel"><strong>من قسم الفيزياء</strong><p>ربط التوعية بثقافة البحث العلمي، ودقة المعلومات، والمسؤولية الصحية، دون الاكتفاء بالشعارات.</p></div>
+ <div class="panel"><strong>من قسم الفيزياء</strong><p>ربط التوعية بثقافة البحث العلمي والدقة في المعلومات الطبية، مع التعرف على دور الفيزياء في تقنيات تصوير الثدي مثل الماموغرام والموجات فوق الصوتية والرنين المغناطيسي. أُدرجت الآن الأسئلة العشرة للمسابقة في المجلة بشكل تفاعلي.</p></div>
  <div class="panel"><strong>شكر وتقدير</strong><p>مساحة لعرض أسماء الفائزات والمشاركات من الطالبات والمعلمات وأولياء الأمور، وشهادات التقدير بعد اعتماد القائمة النهائية.</p></div>
  <div class="pull" style="font-size:20px">«نشر المعرفة خطوة أساسية نحو قرارات صحية واعية».</div>
  <p class="note">تُضاف صور شهادة الشكر وأسماء المعلمات والطالبات وأولياء الأمور بعد إرسالها.</p><button class="btn outline" data-go-name="تحدي نبض وردي">افتحي أرشيف مسابقة أكتوبر الوردي ←</button><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
@@ -602,10 +635,14 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 <div class="pull" style="font-size:20px">تذوّقي المعرفة… فاختياراتنا تبدأ بالفهم.</div>
 <button class="btn" data-go-name="يوم الغذاء العالمي">قراءة تقرير الطابور الصباحي ←</button>
 <div class="footer"><span>الفيزياء ممتعة · قسم الفيزياء · أكتوبر 2026</span><span>—</span></div></section>
-<section class="page editorial-new" data-name="تحدي نبض وردي"><div class="meta"><span>المسابقة الثانية</span><span>REPLAY THE QUIZ</span></div><h1>نبض وردي…<br><em>تحدٍّ للتوعية.</em></h1><p class="deck">المسابقة التي شاركت فيها طالبات ومعلمات وأولياء أمور مدرستنا تصبح الآن جزءًا من أرشيف المجلة.</p>
-<div class="placeholder-quiz"><span class="placeholder-symbol">؟</span><strong>قريبًا: أسئلة المسابقة الأصلية</strong><p>ستظهر هنا أسئلة الاختيار من متعدد مع الخيارات، وتصحيح الإجابات، ونتيجة كل قارئة.</p></div>
-<div class="panel"><strong>طريقة المشاركة</strong><p>تقرئين السؤال، تختارين الإجابة، ثم يظهر تفسير موجز. ستكون الأسئلة ذاتها التي استُخدمت في النشاط بعد استلامها منكِ.</p></div>
-<p class="note">لن نختلق أسئلة أو فائزات أو نتائج. هذا القسم جاهز لاستقبال محتوى المسابقة.</p><div class="footer"><span>مجلة الفيزياء ممتعة · مدرسة العب الثانوية للبنات</span><span>—</span></div></section>
+<section class="page editorial-new" data-name="تحدي نبض وردي">
+<div class="meta"><span>مسابقة أكتوبر الوردي · 2026</span><span>PINK PULSE CHALLENGE</span></div>
+<h1>نبض وردي…<br><em>وعيٌ يضيء الحياة.</em></h1>
+<p class="deck">10 أسئلة توعوية تجمع بين صحة المرأة، والتصوير الطبي، ودعم الأسرة. نسخة تفاعلية من مسابقة القسم للطالبات والمعلمات وأولياء الأمور.</p>
+<div class="panel dark"><strong>التحدي الوردي</strong><p>سؤال واحد في كل مرة؛ بعد الإجابة تظهر المعلومة التوعوية والتصحيح، وفي النهاية نتيجتكِ من 10.</p></div>
+<div class="pull" style="font-size:20px">«وعيكِ قوة، وصحتكِ أولوية».</div>
+<button class="btn outline" data-go-name="أكتوبر الوردي">قراءة تقرير فعالية أكتوبر الوردي ←</button>
+<div class="footer"><span>قسم الفيزياء · مدرسة العب الثانوية للبنات</span><span>—</span></div></section>
 <section class="page" data-name="مسابقة العدد">
 <div class="meta"><span>مسابقة للجميع</span><span>MONTHLY CHALLENGE</span></div><h1>سؤال للجميع…<br><em>لا للمتخصصين فقط.</em></h1>
 <p class="deck">لماذا يبدو المعدن أبرد من الخشب، رغم وجودهما في الغرفة نفسها؟</p>
@@ -1238,6 +1275,52 @@ renderFoodDay();
 var scroller=document.getElementById('reader-scroll');if(scroller)scroller.scrollTo({top:0,behavior:'smooth'});
 }
 
+
+/* Pink Pulse awareness challenge: ten original questions supplied by the physics department. */
+var pinkDayQuestions=[
+ {q:"ما الهدف الأساسي من حملة أكتوبر الوردي؟",options:["التوعية بسرطان الثدي وأهمية الكشف المبكر","التوعية بأمراض العيون","تشجيع ممارسة الرياضة فقط"],correct:0,why:"يساعد الوعي والكشف المبكر في تحسين فرص العلاج."},
+ {q:"ما لون الشريط الذي يرمز للتوعية بسرطان الثدي؟",options:["الأزرق","الوردي","الأخضر"],correct:1,why:"الشريط الوردي رمز عالمي للتوعية والتضامن."},
+ {q:"أي جهاز يستخدم الأشعة السينية لتصوير الثدي؟",options:["السماعة الطبية","جهاز قياس الضغط","جهاز الماموغرام"],correct:2,why:"الماموغرام يستخدم جرعات منخفضة من الأشعة السينية."},
+ {q:"أي من هذه التغيرات يستدعي استشارة الطبيب؟",options:["ظهور كتلة جديدة في الثدي","تغيير لون الملابس","الشعور بالجوع"],correct:0,why:"أي تغير جديد وغير معتاد في الثدي يستحق التقييم الطبي."},
+ {q:"ما أفضل تصرف إذا لاحظت المرأة تغيرًا غير طبيعي في الثدي؟",options:["تجاهله حتى يختفي","مراجعة الطبيب","الاكتفاء بالبحث في الإنترنت"],correct:1,why:"الفحص الطبي يساعد على معرفة السبب، ولا يعني وجود التغير الإصابة بالسرطان."},
+ {q:"ما دور الفيزياء في الكشف المبكر عن سرطان الثدي؟",options:["قياس سرعة الرياح","قياس درجة حرارة الهواء فقط","تطوير تقنيات التصوير الطبي"],correct:2,why:"تُستخدم مبادئ الفيزياء في الماموغرام والموجات فوق الصوتية والرنين المغناطيسي."},
+ {q:"كيف يمكن للأسرة دعم امرأة تمر بعلاج سرطان الثدي؟",options:["الاستماع إليها ومساندتها","تجنب الحديث معها","إشعارها بالخوف باستمرار"],correct:0,why:"الدعم النفسي والعملي يساعد على تخفيف الضغوط."},
+ {q:"هل كل كتلة في الثدي تعني الإصابة بالسرطان؟",options:["نعم دائمًا","لا، لكن يجب تقييمها طبيًا","لا تحتاج أي كتلة إلى فحص"],correct:1,why:"كثير من الكتل حميدة، لكن لا يمكن تحديد طبيعتها دون تقييم."},
+ {q:"أي عادة تساعد في تقليل خطر الإصابة بسرطان الثدي؟",options:["السهر باستمرار","إهمال النشاط البدني","ممارسة النشاط البدني بانتظام"],correct:2,why:"يساعد النشاط البدني والحفاظ على وزن صحي في تقليل خطر الإصابة."},
+ {q:"ما أجمل رسالة يمكن أن نوجهها في أكتوبر الوردي؟",options:["وعيكِ قوة، وصحتكِ أولوية","الصمت أفضل من السؤال","الفحص أمر يدعو للخجل"],correct:0,why:"الوعي والمساندة وطلب المشورة الطبية عند الحاجة رسائل أكتوبر الوردي."}
+];
+var pinkDayIndex=0,pinkDayScore=0,pinkDayChoice=null;
+function buildPinkDay(){
+return '<div class="pink-pulse-game"><header class="pink-pulse-header"><div class="pink-pulse-inner"><span class="pink-pulse-eyebrow">نبض وردي | قسم الفيزياء · مدرسة العب الثانوية للبنات · أكتوبر 2026</span><h2>نبض <em>وردي 🎀</em></h2><p>10 أسئلة توعوية عن صحة المرأة والكشف المبكر، مع لمسات من الفيزياء ودور الأسرة. للطالبات والمعلمات والأمهات.</p></div></header><main class="pink-pulse-content"><div class="pink-pulse-progress-label"><span id="pink-quiz-count">السؤال 1 من 10</span><span id="pink-quiz-score">0 / 10</span></div><div class="pink-pulse-progress"><span id="pink-quiz-progress" style="width:0"></span></div><div id="pink-quiz-card"></div><p class="pink-pulse-clarification">هذه مسابقة توعوية وليست أداة تشخيص طبي. عند ملاحظة تغير غير معتاد، تُطلب المشورة الطبية.</p></main></div>';
+}
+function renderPinkDay(){
+var card=document.getElementById('pink-quiz-card');if(!card)return;
+var count=document.getElementById('pink-quiz-count'),score=document.getElementById('pink-quiz-score'),bar=document.getElementById('pink-quiz-progress');
+score.textContent='النتيجة: '+pinkDayScore+' / '+pinkDayQuestions.length;
+if(pinkDayIndex>=pinkDayQuestions.length){
+count.textContent='اكتمل تحدي نبض وردي!';
+bar.style.width='100%';
+card.innerHTML='<div class="pink-pulse-finish"><h3>وعيُكِ قوة… وصحتُكِ أولوية 💗</h3><div class="result">'+pinkDayScore+' / '+pinkDayQuestions.length+'</div><p>اكتملت جولتكِ في مسابقة «نبض وردي». المعرفة الصحيحة والدعم والمشورة الطبية في الوقت المناسب تصنع فرقًا.</p><button type="button" class="pink-pulse-next" data-pink-action="restart">إعادة المسابقة من البداية</button><button type="button" class="pink-pulse-next secondary" data-go-name="أكتوبر الوردي">قراءة تقرير أكتوبر الوردي</button></div>';
+return;
+}
+var q=pinkDayQuestions[pinkDayIndex];
+count.textContent='السؤال '+(pinkDayIndex+1)+' من '+pinkDayQuestions.length;
+bar.style.width=Math.round(pinkDayIndex/pinkDayQuestions.length*100)+'%';
+card.innerHTML='<article class="pink-pulse-card"><span class="pink-pulse-tag">💗 السؤال '+(pinkDayIndex+1)+' من 10</span><h3>'+q.q+'</h3><div class="pink-pulse-options">'+q.options.map(function(opt,i){return '<button type="button" class="pink-pulse-option'+(pinkDayChoice!==null?(i===q.correct?' good':i===pinkDayChoice?' bad':''):'')+'" data-pink-answer="'+i+'" '+(pinkDayChoice!==null?'disabled':'')+'><b>'+String.fromCharCode(65+i)+'</b><span>'+opt+'</span></button>';}).join('')+'</div>'+(pinkDayChoice===null?'<p style="margin:19px 0 0;color:#986c7c;font-size:13px">اختاري الإجابة لتظهر الرسالة التوعوية.</p>':'<div class="pink-pulse-explain"><strong>'+(pinkDayChoice===q.correct?'أحسنتِ!':'الإجابة الصحيحة: '+String.fromCharCode(65+q.correct)+' — '+q.options[q.correct])+'.</strong> 💗 '+q.why+'</div><button type="button" class="pink-pulse-next" data-pink-action="next">'+(pinkDayIndex===pinkDayQuestions.length-1?'إظهار النتيجة النهائية':'السؤال التالي ←')+'</button>')+'</article>';
+}
+function pinkDayAnswer(i){
+if(pinkDayChoice!==null)return;
+pinkDayChoice=i;
+if(i===pinkDayQuestions[pinkDayIndex].correct)pinkDayScore++;
+renderPinkDay();
+}
+function pinkDayNavigate(action){
+if(action==='restart'){pinkDayIndex=0;pinkDayScore=0;pinkDayChoice=null;}
+else if(action==='next'&&pinkDayChoice!==null){pinkDayIndex++;pinkDayChoice=null;}
+renderPinkDay();
+var scroll=document.getElementById('reader-scroll');if(scroll)scroll.scrollTo({top:0,behavior:'smooth'});
+}
+
 function interactiveReader(name){
 if(name==='تدريب تفاعلي'){
 return '<div class="reader-content"><h2 style="font:700 43px Amiri,serif">تدريب الشهر</h2><p class="deck">اختاري الإجابة ثم اقرئي التفسير العلمي.</p><div id="r-quiz"></div></div>';
@@ -1267,6 +1350,8 @@ return '<div class="reader-content">'+headings+'</div>';
 function readerImage(name,source){
 var image=source.querySelector('.picture img,.cover-bg,.art-hero>img');
 var pics={
+'تحدي نبض وردي':'https://images.unsplash.com/photo-1484627147104-f5197bcd6651?auto=format&fit=crop&w=1200&q=85',
+'أكتوبر الوردي':'https://images.unsplash.com/photo-1484627147104-f5197bcd6651?auto=format&fit=crop&w=1200&q=85',
 'تحدي الغذاء الذكي':'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1300',
 'ماري كوري | قصة العدد':marieImage,
 'الفيزياء في حياتنا':'https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=1300',
@@ -1310,7 +1395,9 @@ if(prevButton)prevButton.disabled=index===0;
 readerOverlay.classList.add('active');readerOverlay.setAttribute('aria-hidden','false');
 document.getElementById('reader-brand').textContent=(name==='مشروع الفيزياء النووية'||name==='تقييم المشروع النووي')?'إعلان مشروع الفيزياء النووية':name;
 clearInterval(wamdaTimer);clearInterval(curtainTimer);
-if(name==='تحدي الغذاء الذكي'){
+if(name==='تحدي نبض وردي'){
+pinkDayIndex=0;pinkDayScore=0;pinkDayChoice=null;readerArticle.innerHTML=buildPinkDay();renderPinkDay();
+}else if(name==='تحدي الغذاء الذكي'){
 foodDayIndex=0;foodDayScore=0;foodDayChosen=null;readerArticle.innerHTML=buildFoodDay();renderFoodDay();
 }else if(name==='رحلة إلى عمق المعلومة'){
 scienceUnit=0;scienceAnswers={};readerArticle.innerHTML=makeScience();renderScience();
@@ -1341,6 +1428,8 @@ document.getElementById('reader-back').addEventListener('click',function(){clear
 document.getElementById('reader-next').addEventListener('click',function(){clearInterval(readClock);go(Math.min(index+1,pages.length-1))});
 document.getElementById('reader-list').addEventListener('click',function(){clearInterval(readClock);goNamed('الفهرس')});
 readerOverlay.addEventListener('click',function(e){
+var pinkOption=e.target.closest('[data-pink-answer]');if(pinkOption){pinkDayAnswer(Number(pinkOption.dataset.pinkAnswer));return;}
+var pinkAction=e.target.closest('[data-pink-action]');if(pinkAction){pinkDayNavigate(pinkAction.dataset.pinkAction);return;}
 var foodAnswer=e.target.closest('[data-food-option]');if(foodAnswer){selectFoodDay(Number(foodAnswer.dataset.foodOption));return;}
 var foodAction=e.target.closest('[data-food-action]');if(foodAction){foodDayAction(foodAction.dataset.foodAction);return;}
 var sc=e.target.closest('[data-sc-answer]');if(sc){scienceAnswer(sc.dataset.scAnswer);return;}
