@@ -41,6 +41,21 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
   .holder{margin:0 auto;flex:none}
 }
 @media (max-width: 919px), (max-height: 559px){.desktop-feature{display:none!important}}
+
+/* Compact typography on the new October dossier pages; each print-like page remains scroll-free. */
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42){gap:6px;padding-top:24px;padding-bottom:27px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) h1{font-size:43px;line-height:1.04;margin:4px 0 1px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .meta{min-height:26px;padding-top:5px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .deck{font-size:19px;line-height:1.21}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .copy{font-size:17px;line-height:1.27}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .panel{padding:8px 10px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .panel p{font-size:16px;line-height:1.24;margin-top:2px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .pull{padding:11px 12px;font-size:20px;line-height:1.2}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .math{padding:9px 6px;font-size:23px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .picture{max-height:165px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .table td,
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .table th{padding:6px}
+.sheet>.page:nth-of-type(n+21):nth-of-type(-n+42) .footer{margin-top:auto}
 </style>
 </head>
 <body>
@@ -349,7 +364,23 @@ var art=document.getElementById('desktop-feature');
 function updateFeature(){
  var p=pages[index], image=p.querySelector('.picture img,.cover-bg,.art-hero>img');
  var title=p.querySelector('h1,.masthead,.floating h1'), summary=p.querySelector('p.deck,p.copy,.cover-feature p,.floating p');
- var picture=image?image.getAttribute('src'):'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=1200&q=85';
+ var featuredArt={
+"الهوية الوطنية":"https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=85",
+"أقمار سهيل":"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1400&q=85",
+"سهيل والفيزياء":"https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=1400&q=85",
+"ميناء حمد":"https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=1400",
+"الرافعات والزخم":"https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=1400",
+"هندسة القياس في قطر":"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85",
+"الرادار والمعايرة":"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85",
+"التصادمات والسلامة":"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85",
+"قوانين نيوتن في الحافلة":"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85",
+"رصد كوكب زحل":"https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1400&q=85",
+"برنامج قطر للسماء":"https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1400&q=85",
+"مسابقة البحث العلمي":"https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1400&q=85",
+"يوم الغذاء العالمي":"https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=1400",
+"مشروع الفيزياء النووية":"https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1400&q=85"
+};
+var picture=featuredArt[p.dataset.name] || (image?image.getAttribute('src'):'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=1200&q=85');
  if(art)art.style.backgroundImage="url('"+picture+"')";
  document.getElementById('desktop-title').textContent=title?title.textContent:p.dataset.name;
  document.getElementById('desktop-caption').textContent=summary?summary.textContent:'صفحة من عدد أكتوبر: العلم والهوية والإنجاز.';
