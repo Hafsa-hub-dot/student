@@ -45,6 +45,65 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{
 @media(max-width:1170px){.main{grid-template-columns:285px minmax(320px,1fr) 250px}.top{padding:0 12px}.toolstrip{padding:0 12px}.workspaceCenter{padding:14px}}
 @media(max-width:930px){body{overflow:auto}.app{height:auto;min-height:100dvh;overflow:visible;grid-template-rows:auto auto}.top{min-height:70px;flex-wrap:wrap;padding:10px}.topRight{order:3;flex-basis:100%}.main{display:flex;flex-direction:column;overflow:visible}.leftPanel{order:2;border:none;min-height:360px}.workspace{order:1;min-height:430px}.inspector{order:3;border:none;min-height:250px}.tabBody{max-height:470px}.workspaceCenter{min-height:280px}.toolstrip{height:auto;min-height:55px}.stageHolder{max-width:760px}.footerBar{min-height:40px}.topActions{flex-wrap:wrap}.action{padding:9px 10px}}
 @media print{body{background:white!important;margin:0!important}.app,.toast,.modalOverlay{display:none!important}#printRoot{display:block!important;margin:0!important;padding:0!important}#printRoot .printPage{margin:0!important;padding:0!important;break-after:page;page-break-after:always;overflow:hidden;display:block}#printRoot .printPage:last-child{break-after:auto;page-break-after:auto}#printRoot svg{display:block;width:100%;height:100%;margin:0}}
+
+/* Professional editorial dashboard – high contrast, discreet accents */
+:root{--ink:#131313;--soft:#5e6269;--rose:#222222;--cream:#ffffff;--surface:#fff;--border:#dfe2e5;--shadow:0 9px 30px rgba(0,0,0,.05)}
+body{background:#f3f4f5;color:#161616}
+.top{border-bottom:2px solid #202327;background:#fff}
+.logo{background:#171717;color:#fff;border-radius:11px}
+.brand strong{color:#101010}.brand strong span{color:#292929!important}
+.brand small{color:#5d6269}
+.projectName{background:#f4f5f5;color:#181818;border:1px solid #e0e2e3}
+.action,.miniBtn{color:#171717;border-color:#d6dadd;border-radius:8px;background:#fff}
+.action.primary,.wideBtn.solid,.blackAction{background:#181818!important;color:#fff!important;border-color:#181818!important}
+.action.primary:hover,.wideBtn.solid:hover{background:#383838!important}
+.pill{color:#232323;background:#f7f7f7;border-color:#e4e4e4}
+.leftPanel,.inspector{background:#fff}
+.sideIntro .eyebrow{color:#555;letter-spacing:.5px}
+.sideIntro h2,.inspectorHead h3{color:#101010}
+.sideIntro p,.inspectorHead p{color:#666}
+.tabs{display:block;padding:12px 18px 18px}
+.navLabel{display:block;color:#181818;font-size:12px;font-weight:800;margin-bottom:9px}
+.tabs select{width:100%;border:1px solid #ccd0d4;border-radius:8px;font-size:13px;font-weight:800;color:#191919;background:#fff;padding:13px 12px}
+.sectionHead{color:#101010;font-size:13px}
+.sectionHead span{color:#62676e}
+.sectionLead{font-size:11px;line-height:2.05;color:#60656b;margin:0 0 13px}
+.accordion{margin:0 0 11px;background:#fff;border:1px solid #dcdfe2;border-radius:10px;overflow:hidden}
+.accordion summary{padding:13px 13px;cursor:pointer;font-weight:800;color:#191919;font-size:12px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fafafa}
+.accordion summary::-webkit-details-marker{display:none}
+.accordion summary::after{content:"⌄";font-size:21px;line-height:1;color:#333;transition:transform .2s}
+.accordion[open] summary::after{transform:rotate(180deg)}
+.accordion[open] summary{border-bottom:1px solid #e4e6e8}
+.accordionContent{padding:15px 12px 10px}
+.field label,.labelMini{color:#1a1a1a}
+.field input:not([type=range]):not([type=color]),.field select,.field textarea{border-color:#dce0e3;border-radius:7px;color:#111;background:#fff}
+.field input::placeholder,.field textarea::placeholder{color:#92979d}
+.field input:focus,.field textarea:focus{outline:2px solid #868e96;outline-offset:1px}
+.inlineFields{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
+.inlineFields input{min-width:0}
+.wideBtn{background:#fff;color:#181818;border:1px solid #cfd4d8;border-radius:7px}
+.wideBtn:hover{background:#f1f2f3}
+.textDanger{display:block;margin-right:auto;border:none;background:none;text-decoration:underline;font-size:11px;color:#686868;padding:6px}
+.groupRoster{display:grid;gap:8px}
+.groupCard{width:100%;border:1px solid #e1e4e5;background:white;border-radius:9px;display:flex;justify-content:space-between;align-items:center;text-align:right;padding:12px;gap:10px;color:#171717}
+.groupCard.active{background:#f4f5f5;border-color:#8d9398}
+.groupCard:hover{background:#f6f7f8}
+.groupCard strong{font-size:12px}.groupCard span{font-size:11px;color:#596169}
+.nameCount{background:#f4f5f5;color:#222;border-color:#e0e3e5}
+.tip{background:#f7f7f7;border-color:#ececec;color:#444}
+.presetIcon{color:#252525;background:#f9f9f9;border-color:#e0e0e0}
+.preset:hover,.preset.active,.theme.active{background:#f4f4f4;border-color:#333;box-shadow:0 0 0 1px #333}
+.themePreview:before{border-color:var(--a)}
+.layer.active{background:#f4f4f4;border-color:#777}
+.layerMove{background:#f5f5f5;color:#222}
+.inspectorHead{border-bottom:1px solid #ddd}.inspectorBody{color:#181818}
+.workspace{background:radial-gradient(circle at 50% 30%,#fafafa,#e6e8e9 90%)}
+.toolstrip,.footerBar{background:#fcfcfc}
+.crumb{color:#242424}
+.emptyInspector{color:#595959}
+.emptyInspector .big{color:#555}
+.toast{background:#1d1d1d}
+@media(max-width:930px){.tabs{max-width:100%}}
 </style>
 <style id="pageRule">@page{size:A4 landscape;margin:0}</style>
 </head>
@@ -59,14 +118,50 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{
 <aside class="leftPanel">
  <div class="sideIntro"><div class="eyebrow">CREATIVE WORKSPACE / مساحة إبداع حرة</div><h2>صممي بطريقتك</h2><p>كل نص وكل لون وكل إطار بقرارك، والنتيجة جاهزة للطباعة.</p></div>
  <nav class="tabs" id="tabs">
-  <button class="tab active" data-tab="presets"><span class="tabIcon">▣</span>القوالب</button>
-  <button class="tab" data-tab="themes"><span class="tabIcon">◈</span>الثيمات</button>
-  <button class="tab" data-tab="elements"><span class="tabIcon">✦</span>العناصر</button>
-  <button class="tab" data-tab="names"><span class="tabIcon">♙</span>الأسماء</button>
-  <button class="tab" data-tab="settings"><span class="tabIcon">⚙</span>الضبط</button>
+ <label for="sectionSelect" class="navLabel">قائمة أدوات التصميم</label>
+ <select id="sectionSelect" aria-label="اختيار قسم التصميم">
+  <option value="names">01 — المجموعات وأسماء المشاركات</option>
+  <option value="content">02 — نصوص الشهادة والعناوين</option>
+  <option value="presets">03 — القوالب الجاهزة</option>
+  <option value="themes">04 — الألوان والإطارات</option>
+  <option value="elements">05 — العناصر وترتيبها</option>
+  <option value="settings">06 — إعدادات الطباعة والخطوط</option>
+ </select>
  </nav>
  <div class="tabBody">
-  <div class="tabPage active" id="page-presets">
+  <div class="tabPage" id="page-content">
+   <div class="sectionHead">نصوص الشهادة <span>تحرير مباشر ومنظم</span></div>
+   <p class="sectionLead">عدّلي كل عبارة من هنا، وستظهر تلقائيًا في التصميم. افتحي القسم المطلوب فقط.</p>
+   <details class="accordion" open><summary>01 — الترويسة واسم المؤسسة</summary>
+    <div class="accordionContent">
+     <div class="field"><label>اسم المدرسة أو المؤسسة</label><input data-content="school" placeholder="اسم المدرسة"></div>
+     <div class="field"><label>اسم القسم أو الجهة</label><input data-content="department" placeholder="القسم المنظّم"></div>
+     <div class="field"><label>العام الدراسي أو التاريخ</label><input data-content="date" placeholder="العام الأكاديمي"></div>
+    </div>
+   </details>
+   <details class="accordion" open><summary>02 — العنوان الرئيسي والفرعي</summary>
+    <div class="accordionContent">
+     <div class="field"><label>عنوان الشهادة</label><input data-content="title" placeholder="شهادة تقدير"></div>
+     <div class="field"><label>العبارة أسفل العنوان</label><input data-content="subtitle"></div>
+     <div class="field"><label>العبارة أعلى اسم المستفيدة</label><input data-content="label"></div>
+    </div>
+   </details>
+   <details class="accordion"><summary>03 — نص التكريم والعبارة الختامية</summary>
+    <div class="accordionContent">
+     <div class="field"><label>النص الأساسي</label><textarea data-content="message" rows="6"></textarea></div>
+     <div class="field"><label>العبارة الختامية التشجيعية</label><textarea data-content="closing" rows="3"></textarea></div>
+     <div class="sectionLead">يمكن إدراج <b dir="ltr">{{الاسم}}</b> أو <b dir="ltr">{{الفئة}}</b> داخل أي عبارة لتتغير بحسب المجموعة.</div>
+    </div>
+   </details>
+   <details class="accordion"><summary>04 — التوقيع والاعتماد</summary>
+    <div class="accordionContent">
+     <div class="field"><label>التوقيع الأول</label><input data-content="sign1"></div>
+     <div class="field"><label>التوقيع الثاني</label><input data-content="sign2"></div>
+    </div>
+   </details>
+   <button class="wideBtn" id="fitTexts">ترتيب النصوص تلقائيًا</button>
+  </div>
+   <div class="tabPage active" id="page-presets">
    <div class="sectionHead">ابدئي بنوع التصميم <span>قابل للتعديل بالكامل</span></div>
    <div class="presetGrid" id="presetGrid"></div>
    <p class="tip">يمكنك تغيير كل كلمة في القالب، أو إضافة أي عدد من العبارات وسحبها داخل الشهادة. تغيير القالب يعيد توزيع العناصر.</p>
@@ -102,18 +197,40 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{
    <p class="smallHelp">اسحبي العنصر مباشرةً على الشهادة، واستخدمي الأسهم في لوحة المفاتيح لتحريكه بدقة. يمكن تغيير ترتيب الظهور باستخدام ↑ و↓.</p>
   </div>
   <div class="tabPage" id="page-names">
-   <div class="sectionHead">شهادة واحدة أو مئات الشهادات</div>
-   <div class="field"><label>الأسماء (اسم في كل سطر)</label><textarea id="namesInput" rows="10" placeholder="سارة محمد&#10;نورة أحمد&#10;هناء علي"></textarea></div>
-   <div class="field"><label>الفئة / الوصف التلقائي</label><input id="peopleGroup" placeholder="مثل: طالبات، معلمات، أولياء الأمور" value="المكرمات"></div>
-   <div class="nameCount" id="nameCount">اسم واحد في المعاينة</div>
-   <div class="field"><label>اختيار معاينة الاسم</label><select id="previewName"></select></div>
-   <button class="wideBtn solid" id="batchPrintBtn">▣ طباعة شهادة لكل اسم</button>
-   <button class="wideBtn" id="batchExportBtn">↓ حفظ قائمة الأسماء TXT</button>
-   <p class="tip">العنصر المسمى «اسم المستفيد/ة» يتغير تلقائيًا لكل شخص. يمكنك أيضًا كتابة <strong dir="ltr">{{الاسم}}</strong> و<strong dir="ltr">{{الفئة}}</strong> في أي نص داخل التصميم.</p>
-   <div class="sectionHead">استيراد أسماء من Excel / CSV</div>
-   <label class="wideBtn" style="display:block;text-align:center;cursor:pointer">↑ رفع ملف أسماء <input type="file" id="csvUpload" accept=".csv,.txt,.tsv" hidden></label>
+   <div class="sectionHead">إدارة المجموعات <span>كل صف في مجموعته</span></div>
+   <p class="sectionLead">أنشئي مجموعة باسم الصف أو الفئة، ثم الصقي أسماء جميع الطالبات مرة واحدة.</p>
+   <details class="accordion" open>
+    <summary>01 — اختاري المجموعة أو أنشئي جديدة</summary>
+    <div class="accordionContent">
+     <div class="field"><label>المجموعة الحالية</label><select id="groupSelect"></select></div>
+     <div class="field"><label>إضافة مجموعة جديدة</label><div class="inlineFields"><input id="newGroupName" placeholder="مثال: 11 علمي 2 أو المعلمات"><button class="action blackAction" id="addGroupBtn">+ إضافة</button></div></div>
+     <div class="field"><label>تغيير اسم المجموعة الحالية</label><input id="peopleGroup" placeholder="اسم المجموعة / الصف"></div>
+     <button class="textDanger" id="deleteGroupBtn">حذف المجموعة الحالية</button>
+    </div>
+   </details>
+   <details class="accordion" open>
+    <summary>02 — أدخلي الأسماء دفعة واحدة</summary>
+    <div class="accordionContent">
+     <p class="sectionLead" style="margin-top:0">انسخي عمود الأسماء من Excel أو الصقي قائمة واتساب. اسم في كل سطر أو مفصول بفاصلة.</p>
+     <div class="field"><textarea id="namesInput" rows="10" placeholder="أسماء الطالبات هنا، كل اسم في سطر&#10;سارة محمد&#10;نورة أحمد&#10;ريم عبدالله"></textarea></div>
+     <div class="nameCount" id="nameCount">0 اسم</div>
+     <label class="wideBtn" style="display:block;text-align:center;cursor:pointer">رفع أسماء من CSV / TXT <input type="file" id="csvUpload" accept=".csv,.txt,.tsv" hidden></label>
+    </div>
+   </details>
+   <details class="accordion">
+    <summary>03 — معاينة وإصدار الشهادات</summary>
+    <div class="accordionContent">
+     <div class="field"><label>اسم المعاينة</label><select id="previewName"></select></div>
+     <button class="wideBtn solid" id="batchPrintBtn">طباعة شهادات المجموعة الحالية</button>
+     <button class="wideBtn" id="printAllGroupsBtn">طباعة شهادات جميع المجموعات</button>
+     <button class="wideBtn" id="batchExportBtn">تصدير أسماء المجموعة TXT</button>
+    </div>
+   </details>
+   <div class="sectionHead">ملخص المجموعات <span id="totalCount">0 اسم</span></div>
+   <div class="groupRoster" id="groupRoster"></div>
+   <p class="smallHelp">تُحفظ أسماء المجموعات في المتصفح، ويمكن تحميل نسخة احتياطية من المشروع بأكمله من قسم الإعدادات.</p>
   </div>
-  <div class="tabPage" id="page-settings">
+   <div class="tabPage" id="page-settings">
    <div class="sectionHead">إعدادات الورق والإخراج</div>
    <div class="field"><label>اتجاه الورقة</label><select id="orientation"><option value="landscape">A4 بالعرض</option><option value="portrait">A4 بالطول</option></select></div>
    <div class="field"><label>خلفية الشهادة</label><input id="bgColor" type="color" value="#fffdfb"></div>
@@ -169,7 +286,7 @@ var palettes=[
 ["المرجاني","#fffcfa","#cb7065","#e7b099","#4a3431",2],["الكوبالت الملكي","#fcfdff","#305fc0","#aab6dc","#293451",3],
 ["اللافندر الفضي","#fcfbff","#8576b7","#c0bad0","#363247",4],["الرمال العربية","#fffdfa","#a57e52","#dfc89b","#3f362f",5],
 ["الفيروز الذهبي","#fafffe","#2d8d85","#c5a26c","#264641",6],["أحمر التوت","#fffafa","#9a3259","#d8a6b2","#452b36",7],
-["الخزامى الشاحبة","#fffefe","#8b7290","#d7c5d9","#3c333e",8],["السكون الأبيض","#ffffff","#56545b","#c8c5c9","#302f35",9]
+["الخزامى الشاحبة","#fffefe","#8b7290","#d7c5d9","#3c333e",8],["السكون الأبيض","#ffffff","#222222","#b6b6b6","#131313",9]
 ];
 var themes=palettes.map(function(p,i){return {id:i,name:p[0],bg:p[1],accent:p[2],accent2:p[3],ink:p[4],pattern:p[5]};});
 var frameNames=["مزدوج كلاسيكي","أركان فاخرة","خط عصري","خطوط هندسية","إطار ملكي","أطراف هادئة","زخرفة معاصرة","هالة ناعمة","شريط جانبي","بدون إطار"];
@@ -187,7 +304,7 @@ var presets=[
 {id:"custom",name:"تصميم حر",symbol:"＋",title:"عنوان الشهادة",sub:"عبارة فرعية من اختيارك",body:"اكتبي هنا نص التكريم أو الشكر أو التهنئة، وصممي شهادتك بحرية تامة."}
 ];
 var SVG_NS="http://www.w3.org/2000/svg";
-var st={project:"تصميم شهادات جديد",preset:"appreciation",theme:0,frame:0,frameWidth:2,frameColor:"",pattern:-1,orientation:"landscape",bg:"",bgImage:"",font:"El Messiri",peopleGroup:"المكرمات",names:[],preview:0,elements:[],selected:null};
+var st={project:"تصميم شهادات جديد",groups:[],activeGroup:"",preset:"appreciation",theme:29,frame:0,frameWidth:2,frameColor:"",pattern:-1,orientation:"landscape",bg:"",bgImage:"",font:"El Messiri",peopleGroup:"المكرمات",names:[],preview:0,elements:[],selected:null};
 var undo=[],redo=[],nextId=0,drag=null,autosaveTimer=null,fontLoaded={};
 function el(id){return document.getElementById(id);}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
@@ -218,16 +335,16 @@ function populatePreset(id,keepText){
  if(keepText){var prev={};st.elements.forEach(function(e){prev[e.id]=e});elements.forEach(function(e){if(prev[e.id]&&prev[e.id].type==="text")e.text=prev[e.id].text;});}
  st.preset=id;st.elements=elements;st.selected=null;
 }
-function safeState(){return {project:st.project,preset:st.preset,theme:st.theme,frame:st.frame,frameWidth:st.frameWidth,frameColor:st.frameColor,pattern:st.pattern,orientation:st.orientation,bg:st.bg,bgImage:st.bgImage,font:st.font,peopleGroup:st.peopleGroup,names:st.names,preview:st.preview,elements:st.elements};}
+function safeState(){return {project:st.project,preset:st.preset,theme:st.theme,frame:st.frame,frameWidth:st.frameWidth,frameColor:st.frameColor,pattern:st.pattern,orientation:st.orientation,bg:st.bg,bgImage:st.bgImage,font:st.font,peopleGroup:st.peopleGroup,names:st.names,groups:st.groups,activeGroup:st.activeGroup,preview:st.preview,elements:st.elements};}
 function capture(){undo.push(JSON.stringify(safeState()));if(undo.length>65)undo.shift();redo=[];}
-function restore(obj){if(!obj||!Array.isArray(obj.elements))throw Error("ملف المشروع غير صالح");var s=Object.assign({},st,obj);if(!["landscape","portrait"].includes(s.orientation))s.orientation="landscape";s.theme=clamp(+s.theme||0,0,29);s.frame=clamp(+s.frame||0,0,9);s.elements=s.elements.map(function(e){return Object.assign({},tpl(e.id),e)});st=s;nextId+=100;st.selected=null;syncInputs();renderAll();}
+function restore(obj){if(!obj||!Array.isArray(obj.elements))throw Error("ملف المشروع غير صالح");var s=Object.assign({},st,obj);if(!["landscape","portrait"].includes(s.orientation))s.orientation="landscape";s.theme=clamp(+s.theme||0,0,29);s.frame=clamp(+s.frame||0,0,9);s.elements=s.elements.map(function(e){return Object.assign({},tpl(e.id),e)});st=s;nextId+=100;normalizeGroups();st.selected=null;syncInputs();renderAll();}
 function doUndo(){if(!undo.length)return;redo.push(JSON.stringify(safeState()));restore(JSON.parse(undo.pop()));notify("تم التراجع");}
 function doRedo(){if(!redo.length)return;undo.push(JSON.stringify(safeState()));restore(JSON.parse(redo.pop()));notify("تمت الإعادة");}
 function autosave(){el("saveStatus").textContent="◌ جاري الحفظ";clearTimeout(autosaveTimer);autosaveTimer=setTimeout(function(){try{localStorage.setItem("shahadati_studio_v1",JSON.stringify(safeState()));el("saveStatus").textContent="● محفوظ محليًا";}catch(e){el("saveStatus").textContent="! مساحة الحفظ ممتلئة";}},600);}
 function notify(msg){var t=el("toast");t.textContent=msg;t.classList.add("on");clearTimeout(notify.timer);notify.timer=setTimeout(function(){t.classList.remove("on")},2700);}
 function normalText(s){return String(s==null?"":s);}
 function personName(override){if(override!==undefined)return override;return st.names[st.preview]||"اسم المستفيد/ة";}
-function nameRepl(s,n){return normalText(s).replace(/\{\{الاسم\}\}/g,n).replace(/\{\{الفئة\}\}/g,st.peopleGroup);}
+function nameRepl(s,n,group){return normalText(s).replace(/\{\{الاسم\}\}/g,n).replace(/\{\{الفئة\}\}/g,group||st.peopleGroup);}
 function measureLines(txt,maxw,size){var rows=[];String(txt).split(/\r?\n/).forEach(function(para){if(!para){rows.push("");return}var words=para.split(/\s+/),line="";words.forEach(function(w){var test=line?line+" "+w:w;var factor=0.57;var estimate=Array.from(test).length*size*factor;if(line&&estimate>maxw){rows.push(line);line=w}else line=test});rows.push(line)});return rows.length?rows:[""];}
 function decoration(W,H,t,p){
  var a=t.accent,b=t.accent2,style=p<0?t.pattern:p;var o="";
@@ -265,11 +382,11 @@ function iconShape(type,size,stroke){
  if(type==="laurel")g='<path d="M-6 41C-60 11-48-28-25-41 M6 41C60 11 48-28 25-41" fill="none" stroke="currentColor" stroke-width="4"/><path d="M-29-18l-18-9 10 20 M-38 0l-14-4 10 17 M-25 23l-15 5 17 8 M29-18l18-9-10 20 M38 0l14-4-10 17 M25 23l15 5-17 8" fill="currentColor" opacity=".65"/>';
  return '<g transform="scale('+s+')" color="'+esc(stroke)+'">'+g+'</g>';
 }
-function renderItem(e,name){
- var color=col(e),op=clamp(Number(e.opacity==null?1:e.opacity),0,1),rotation=Number(e.rotation)||0;
+function renderItem(e,name,group){
+ var color=(e.type==="text"&&e.colorKey&&!e.color?"#171717":col(e)),op=clamp(Number(e.opacity==null?1:e.opacity),0,1),rotation=Number(e.rotation)||0;
  var g='<g data-eid="'+esc(e.id)+'" transform="translate('+Number(e.x||0)+' '+Number(e.y||0)+') rotate('+rotation+')" opacity="'+op+'">';
  if(e.type==="text"){
-  var txt=e.id==="recipient"?name:nameRepl(e.text,name);
+  var txt=e.id==="recipient"?name:nameRepl(e.text,name,group);
   var sz=+e.size||32, mw=+e.maxWidth||900;
   if(e.id==="recipient"&&txt.length>23)sz=Math.min(sz,Math.max(22,mw/(txt.length*.56)));
   var lines=measureLines(txt,mw,sz),lineH=sz*(+e.lineHeight||1.4),offset=-(lines.length-1)*lineH/2;
@@ -286,13 +403,13 @@ function renderItem(e,name){
  }else{g+=iconShape(e.type,e.size||90,color);}
  g+='</g>';return g;
 }
-function drawSvg(name,editing){
+function drawSvg(name,editing,group){
  var d=dims(),W=d[0],H=d[1],t=theme(),bg=st.bg||t.bg;
  var svg='<svg xmlns="'+SVG_NS+'" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" role="img" aria-label="معاينة الشهادة">';
  svg+='<rect width="'+W+'" height="'+H+'" fill="'+esc(bg)+'"/>';
  if(st.bgImage)svg+='<image href="'+esc(st.bgImage)+'" x="0" y="0" width="'+W+'" height="'+H+'" opacity=".35" preserveAspectRatio="xMidYMid slice"/>';
  svg+=decoration(W,H,t,st.pattern)+borderSvg(W,H,t);
- st.elements.forEach(function(e){svg+=renderItem(e,name);});
+ st.elements.forEach(function(e){svg+=renderItem(e,name,group);});
  if(editing&&st.selected){
   var e=st.elements.find(function(x){return x.id===st.selected});
   if(e){
@@ -319,10 +436,34 @@ function renderFontList(){
  var q=(el("fontSearch").value||"").toLowerCase();
  el("allFonts").innerHTML=fonts.filter(function(f){return f.toLowerCase().includes(q)}).map(function(f){return '<button class="fontOption '+(st.selected?((st.elements.find(function(e){return e.id===st.selected})||{}).font===f?"active":""):(st.font===f?"active":""))+'" data-font="'+esc(f)+'"><span style="font-family:'+esc(fontCss(f))+'">'+esc(f)+'</span><em>AA</em></button>';}).join("");
 }
+
+function groupCurrent(){return st.groups.find(function(g){return g.id===st.activeGroup})||st.groups[0]||null;}
+function normalizeGroups(){
+ if(!Array.isArray(st.groups)||!st.groups.length)st.groups=[{id:"group-1",title:st.peopleGroup||"الصف أو المجموعة الأولى",names:Array.isArray(st.names)?st.names.slice():[]}];
+ st.groups=st.groups.map(function(g,i){return {id:String(g.id||"group-"+(i+1)),title:String(g.title||"المجموعة "+(i+1)),names:Array.isArray(g.names)?parseNames(g.names.join("\n")):[]};});
+ if(!st.groups.some(function(g){return g.id===st.activeGroup}))st.activeGroup=st.groups[0].id;
+ var g=groupCurrent();st.names=g.names.slice();st.peopleGroup=g.title;st.preview=clamp(st.preview||0,0,Math.max(0,st.names.length-1));
+}
+function groupSet(id){
+ if(id===st.activeGroup)return;capture();st.activeGroup=id;normalizeGroups();syncInputs();renderNames();renderStage();autosave();
+}
+function renderGroups(){
+ var select=el("groupSelect"),roster=el("groupRoster"),total=st.groups.reduce(function(a,g){return a+g.names.length},0);
+ select.innerHTML=st.groups.map(function(g){return '<option value="'+esc(g.id)+'">'+esc(g.title)+' — '+g.names.length+' أسماء</option>'}).join("");
+ select.value=st.activeGroup;
+ el("totalCount").textContent=st.groups.length+" مجموعات · "+total+" أسماء";
+ roster.innerHTML=st.groups.map(function(g){
+  return '<button class="groupCard '+(g.id===st.activeGroup?"active":"")+'" data-groupid="'+esc(g.id)+'"><strong>'+esc(g.title)+'</strong><span>'+g.names.length+' '+(g.names.length===1?"اسم":"أسماء")+'</span></button>';
+ }).join("");
+}
+function renderContentInputs(){
+ document.querySelectorAll("[data-content]").forEach(function(inp){var e=st.elements.find(function(x){return x.id===inp.dataset.content});if(e)inp.value=e.text;});
+}
 function renderNames(){
  el("nameCount").textContent=st.names.length?"عدد الشهادات عند الطباعة: "+st.names.length:"لا توجد أسماء مدخلة — اسم افتراضي للمعاينة";
  el("previewName").innerHTML=(st.names.length?st.names:["اسم المستفيد/ة"]).map(function(n,i){return '<option value="'+i+'">'+esc(n)+'</option>'}).join("");
  el("previewName").value=String(clamp(st.preview,0,Math.max(0,st.names.length-1)));
+ renderGroups();
 }
 function inspectValue(id,val){var input=el(id);if(input)input.value=val==null?"":val;}
 function renderInspector(){
@@ -357,10 +498,10 @@ function renderInspector(){
  el("centerEl").onclick=function(){capture();var wh=dims();e.x=wh[0]/2;e.y=wh[1]/2;renderAll();autosave();};
  el("fontCurrent").textContent="الخط: "+fontFix(e.font);
 }
-function renderAll(){renderStage();renderThemes();renderPresets();renderLayers();renderNames();renderInspector();renderFontList();el("projectName").value=st.project;el("undoBtn").disabled=!undo.length;el("redoBtn").disabled=!redo.length;}
+function renderAll(){renderStage();renderThemes();renderPresets();renderLayers();renderNames();renderContentInputs();renderInspector();renderFontList();el("projectName").value=st.project;el("undoBtn").disabled=!undo.length;el("redoBtn").disabled=!redo.length;}
 function select(id){if(st.selected===id)return;st.selected=id;renderStage();renderLayers();renderInspector();renderFontList();}
 function moveSelected(dx,dy){var e=st.elements.find(function(x){return x.id===st.selected});if(!e)return;var wh=dims();e.x=clamp(+e.x+dx,0,wh[0]);e.y=clamp(+e.y+dy,0,wh[1]);renderStage();inspectValue("propX",Math.round(e.x));inspectValue("propY",Math.round(e.y));autosave();}
-function showTab(which){document.querySelectorAll(".tab").forEach(function(b){b.classList.toggle("active",b.dataset.tab===which)});document.querySelectorAll(".tabPage").forEach(function(p){p.classList.toggle("active",p.id==="page-"+which)});}
+function showTab(which){el("sectionSelect").value=which;document.querySelectorAll(".tabPage").forEach(function(p){p.classList.toggle("active",p.id==="page-"+which)});if(which==="content")renderContentInputs();}
 function syncInputs(){
  el("projectName").value=st.project;el("frameSelect").value=st.frame;el("frameWidth").value=st.frameWidth;el("frameValue").textContent=st.frameWidth;el("frameColor").value=st.frameColor||theme().accent;el("patternSelect").value=st.pattern;el("orientation").value=st.orientation;el("bgColor").value=st.bg||theme().bg;el("peopleGroup").value=st.peopleGroup;el("namesInput").value=st.names.join("\n");el("pageRule").textContent="@page{size:A4 "+(st.orientation==="portrait"?"portrait":"landscape")+";margin:0}";}
 function changeOrientation(newOrientation){if(st.orientation===newOrientation)return;capture();var old=dims();st.orientation=newOrientation;var nw=dims();st.elements.forEach(function(e){e.x=e.x*nw[0]/old[0];e.y=e.y*nw[1]/old[1];if(e.maxWidth)e.maxWidth*=nw[0]/old[0];if(e.type==="text")e.size*=nw[0]/old[0];});st.selected=null;syncInputs();renderAll();autosave();}
@@ -389,14 +530,14 @@ function printNames(names){
  var root=el("printRoot"),orientation=st.orientation;
  el("pageRule").textContent="@page{size:A4 "+orientation+";margin:0}";
  var dim=orientation==="landscape"?"width:297mm;height:210mm;":"width:210mm;height:297mm;";
- root.innerHTML=names.map(function(n){return '<div class="printPage" style="'+dim+'">'+drawSvg(n,false)+'</div>';}).join("");
+ root.innerHTML=names.map(function(n){var item=typeof n==="string"?{name:n,group:st.peopleGroup}:n;return '<div class="printPage" style="'+dim+'">'+drawSvg(item.name,false,item.group)+'</div>';}).join("");
  var promise=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
  Promise.race([promise,new Promise(function(r){setTimeout(r,1400)})]).then(function(){window.print();});
 }
 function ask(title,message,cb){el("modalTitle").textContent=title;el("modalText").textContent=message;el("modal").classList.add("open");el("modalConfirm").onclick=function(){el("modal").classList.remove("open");cb();};el("modalCancel").onclick=function(){el("modal").classList.remove("open");};}
 function parseNames(v){return Array.from(new Set(String(v).split(/\r?\n/).map(function(n){return n.trim().split(/\t/)[0].trim()}).filter(Boolean)));}
 function bind(){
- el("tabs").onclick=function(ev){var b=ev.target.closest("[data-tab]");if(b)showTab(b.dataset.tab);};
+ el("sectionSelect").onchange=function(){showTab(this.value);};
  el("presetGrid").onclick=function(ev){var b=ev.target.closest("[data-preset]");if(!b)return;var id=b.dataset.preset;if(id===st.preset)return;ask("تغيير القالب","سيُعاد توزيع الشهادة بما يلائم القالب الجديد. هل تريدين إبقاء نصوصك الحالية في أماكن القالب الجديد؟",function(){capture();populatePreset(id,true);renderAll();autosave();});};
  el("themeGrid").onclick=function(ev){var b=ev.target.closest("[data-theme]");if(b)applyTheme(+b.dataset.theme);};
  document.querySelectorAll("[data-add]").forEach(function(b){b.onclick=function(){var type=b.dataset.add;if(type==="image"){var inp=document.createElement("input");inp.type="file";inp.accept="image/*";inp.onchange=function(){readImage(inp.files[0],function(src){addElement("image",src)})};inp.click();}else addElement(type);};});
@@ -410,10 +551,33 @@ function bind(){
  el("bgColor").oninput=function(){st.bg=this.value;renderStage();autosave()};
  el("bgUpload").onchange=function(){readImage(this.files[0],function(src){capture();st.bgImage=src;renderStage();autosave();});};
  el("removeBg").onclick=function(){capture();st.bgImage="";el("bgUpload").value="";renderStage();autosave();notify("أُزيلت صورة الخلفية");};
- el("namesInput").oninput=function(){st.names=parseNames(this.value);st.preview=0;renderNames();renderStage();autosave();};
- el("peopleGroup").oninput=function(){st.peopleGroup=this.value;renderStage();autosave();};
+
+ document.querySelectorAll("[data-content]").forEach(function(input){
+  input.addEventListener("input",function(){var e=st.elements.find(function(x){return x.id===input.dataset.content});if(e){e.text=input.value;renderStage();autosave();}});
+ });
+ el("fitTexts").onclick=function(){capture();var core=clone(st.elements),old=st.preset;populatePreset(old,true);var ids=st.elements.map(function(e){return e.id});core.forEach(function(e){if(!ids.includes(e.id))st.elements.push(e)});renderAll();autosave();notify("تم ترتيب العبارات");};
+ el("namesInput").oninput=function(){st.names=parseNames(this.value);var g=groupCurrent();if(g)g.names=st.names.slice();st.preview=0;renderNames();renderStage();autosave();};
+
+ el("peopleGroup").oninput=function(){st.peopleGroup=this.value;var g=groupCurrent();if(g)g.title=st.peopleGroup;renderGroups();renderStage();autosave();};
+ el("groupSelect").onchange=function(){groupSet(this.value);};
+ el("groupRoster").onclick=function(ev){var b=ev.target.closest("[data-groupid]");if(b)groupSet(b.dataset.groupid);};
+ el("addGroupBtn").onclick=function(){
+  var title=el("newGroupName").value.trim();if(!title){el("newGroupName").focus();notify("اكتبي اسم الصف أو المجموعة أولًا");return;}
+  if(st.groups.some(function(g){return g.title===title})){notify("هذه المجموعة موجودة بالفعل");return;}
+  capture();var id="group-"+(++nextId)+"-"+Date.now();st.groups.push({id:id,title:title,names:[]});st.activeGroup=id;normalizeGroups();el("newGroupName").value="";syncInputs();renderNames();renderStage();autosave();notify("أُنشئت مجموعة "+title);
+ };
+ el("newGroupName").addEventListener("keydown",function(ev){if(ev.key==="Enter"){ev.preventDefault();el("addGroupBtn").click();}});
+ el("deleteGroupBtn").onclick=function(){
+  if(st.groups.length<2){notify("يجب الإبقاء على مجموعة واحدة على الأقل");return;}
+  var g=groupCurrent();ask("حذف مجموعة", "سيتم حذف مجموعة «"+g.title+"» وأسمائها من المشروع. هل تريدين المتابعة؟",function(){
+   capture();st.groups=st.groups.filter(function(x){return x.id!==g.id});st.activeGroup=st.groups[0].id;normalizeGroups();syncInputs();renderNames();renderStage();autosave();});
+ };
+ el("printAllGroupsBtn").onclick=function(){
+  var all=[];st.groups.forEach(function(g){g.names.forEach(function(n){all.push({name:n,group:g.title})})});
+  if(!all.length){notify("أضيفي أسماء إلى مجموعة واحدة على الأقل");return;}printNames(all);
+ };
  el("previewName").onchange=function(){st.preview=+this.value;renderStage();autosave();};
- el("csvUpload").onchange=function(){var file=this.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(){var txt=String(reader.result||"").replace(/^\uFEFF/,""),lines=txt.split(/\r?\n/).map(function(line){return line.split(/[\t,;]/)[0].replace(/^"|"$/g,"").trim()}).filter(Boolean);if(lines[0]&&/^(name|الاسم|اسم المشاركة)$/i.test(lines[0]))lines.shift();st.names=Array.from(new Set(lines));st.preview=0;el("namesInput").value=st.names.join("\n");renderNames();renderStage();autosave();notify("تم استيراد "+st.names.length+" اسم");};reader.readAsText(file,"UTF-8");};
+ el("csvUpload").onchange=function(){var file=this.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(){var txt=String(reader.result||"").replace(/^\uFEFF/,""),lines=txt.split(/\r?\n/).map(function(line){return line.split(/[\t,;]/)[0].replace(/^"|"$/g,"").trim()}).filter(Boolean);if(lines[0]&&/^(name|الاسم|اسم المشاركة)$/i.test(lines[0]))lines.shift();st.names=Array.from(new Set(lines));var g=groupCurrent();if(g)g.names=st.names.slice();st.preview=0;el("namesInput").value=st.names.join("\n");renderNames();renderStage();autosave();notify("تم استيراد "+st.names.length+" اسم إلى "+st.peopleGroup);};reader.readAsText(file,"UTF-8");};
  el("layerList").onclick=function(ev){var s=ev.target.closest("[data-select]"),f=ev.target.closest("[data-front]"),b=ev.target.closest("[data-back]");if(s)select(s.dataset.select);else if(f||b){var id=(f||b).dataset.front||(f||b).dataset.back;var i=st.elements.findIndex(function(e){return e.id===id});var j=i+(f?1:-1);if(j<0||j>=st.elements.length)return;capture();var temp=st.elements[i];st.elements[i]=st.elements[j];st.elements[j]=temp;renderAll();autosave();}};
  el("fontSearch").oninput=renderFontList;
  el("allFonts").onclick=function(ev){var b=ev.target.closest("[data-font]");if(!b)return;var f=b.dataset.font;loadFont(f);var e=st.elements.find(function(x){return x.id===st.selected});capture();if(e){e.font=f;renderInspector();}else {st.font=f;st.elements.forEach(function(x){if(x.type==="text")x.font=f;});}renderFontList();renderStage();el("fontCurrent").textContent="الخط: "+f;autosave();};
@@ -433,7 +597,7 @@ function bind(){
  el("jsonExport").onclick=function(){downloadText(JSON.stringify(safeState(),null,2),"مشروع_شهادتي.json","application/json;charset=utf-8");notify("تم حفظ ملف مشروعك");};
  el("saveBtn").onclick=function(){downloadText(JSON.stringify(safeState(),null,2),"مشروع_شهادتي.json","application/json;charset=utf-8");notify("تم تنزيل نسخة قابلة للتعديل");};
  el("jsonImport").onchange=function(){var f=this.files[0];if(!f)return;var reader=new FileReader();reader.onload=function(){try{capture();restore(JSON.parse(reader.result));autosave();notify("تم استعادة المشروع بنجاح");}catch(e){notify("ملف المشروع غير صالح")}};reader.readAsText(f);};
- el("newBtn").onclick=function(){ask("بدء مشروع جديد","سيُنشأ تصميم جديد مستقل. يُفضّل حفظ نسخة من تصميمك الحالي قبل المتابعة.",function(){capture();st.names=[];st.preview=0;st.bgImage="";st.project="تصميم شهادات جديد";populatePreset("appreciation",false);syncInputs();renderAll();autosave();});};
+ el("newBtn").onclick=function(){ask("بدء مشروع جديد","سيُنشأ تصميم جديد مستقل. يُفضّل حفظ نسخة من تصميمك الحالي قبل المتابعة.",function(){capture();st.names=[];st.groups=[{id:"group-1",title:"الصف أو المجموعة الأولى",names:[]}];st.activeGroup="group-1";st.peopleGroup="الصف أو المجموعة الأولى";st.preview=0;st.bgImage="";st.project="تصميم شهادات جديد";populatePreset("appreciation",false);syncInputs();renderAll();autosave();});};
  el("resetBtn").onclick=function(){ask("العودة للتصميم الابتدائي","سيُعاد ضبط القالب والخطوط والتنسيقات الحالية. احفظي نسخة إذا كنتِ تريدين الاحتفاظ بعملك.",function(){capture();var ns=st.names.slice();st.theme=0;st.frame=0;st.pattern=-1;st.frameColor="";st.bg="";st.bgImage="";st.font="El Messiri";populatePreset("appreciation",false);st.names=ns;syncInputs();renderAll();autosave();});};
  window.addEventListener("afterprint",function(){el("printRoot").innerHTML="";});
 }
@@ -442,7 +606,7 @@ function init(){
  el("patternSelect").innerHTML=patternNames.map(function(n,i){return '<option value="'+(i===0?-1:i===10?10:i-1)+'">'+esc(n)+'</option>'}).join("");
  var saved=null;try{saved=JSON.parse(localStorage.getItem("shahadati_studio_v1")||"null");}catch(e){}
  if(saved&&Array.isArray(saved.elements)){st=Object.assign(st,saved);}else populatePreset("appreciation",false);
- bind();syncInputs();renderAll();loadFont("El Messiri");
+ normalizeGroups();bind();syncInputs();renderAll();showTab("names");loadFont("El Messiri");
 }
 init();
 })();
