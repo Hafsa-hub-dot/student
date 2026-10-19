@@ -104,28 +104,155 @@ body{background:#f3f4f5;color:#161616}
 .emptyInspector .big{color:#555}
 .toast{background:#1d1d1d}
 @media(max-width:930px){.tabs{max-width:100%}}
+
+/* SHAHADATI 2.0 — focused official workspace, designed for legibility */
+:root{--ink:#151a1e;--soft:#5c6570;--rose:#252b2f;--border:#e4e7e9;--surface:#fff;--shadow:0 8px 38px rgba(29,34,38,.065)}
+html,body{background:#f7f8f9;color:#191e24}
+body{font-family:"Cairo",Tahoma,sans-serif;font-size:13px}
+.app{grid-template-rows:74px minmax(0,1fr)}
+.top{padding:0 28px;gap:22px;border-bottom:1px solid #e6e9ec;box-shadow:0 3px 16px rgba(0,0,0,.025)}
+.logo{background:#20262b!important;color:#fff;width:44px;height:44px;border-radius:12px;font-size:26px;box-shadow:none}
+.brand{min-width:190px;gap:12px}.brand strong{font-size:23px;color:#10161b;font-weight:800}.brand small{font-size:10px;color:#69737a;margin-top:4px;letter-spacing:0;line-height:1.3}
+.topRight{flex:1;justify-content:center;min-width:0;gap:10px}
+.topProjectLabel{font-size:11px;color:#6d737c;font-weight:700;white-space:nowrap}
+.projectName{font-size:12px;font-weight:700;width:min(265px,45%);padding:10px 13px;background:#f9fafb;border:1px solid #e8e9eb;border-radius:8px;text-align:right}
+.saveIndicator{font-size:10px;color:#6e7a72;white-space:nowrap}
+.topActions{gap:9px}.action{font-size:11.5px;padding:10px 14px;border-radius:8px;border:1px solid #dce0e3;background:#fff;box-shadow:none}
+.action:hover,.miniBtn:hover{background:#f3f5f6}
+.action.primary{background:#242a2f!important;color:#fff!important;border-color:#242a2f!important;min-width:105px}
+.action.quiet{color:#424a51}
+.exportMenu{position:relative}.exportMenu>summary{list-style:none;cursor:pointer;display:block;white-space:nowrap}.exportMenu>summary::-webkit-details-marker{display:none}.dropArrow{margin-right:6px;font-size:14px;color:#66707a}
+.exportItems{position:absolute;top:48px;left:0;min-width:215px;background:#fff;z-index:50;border:1px solid #e2e5e8;border-radius:11px;box-shadow:0 14px 35px #0002;padding:7px;display:grid;gap:3px}
+.exportItems button{border:0;background:#fff;border-radius:7px;text-align:right;padding:11px;color:#252b30;font-size:12px;font-weight:700}.exportItems button:hover{background:#f4f5f6}
+.main{display:grid;grid-template-columns:330px minmax(0,1fr);min-height:0;overflow:hidden}
+.leftPanel{grid-column:1;grid-row:1;min-width:0;border-left:1px solid #e5e7e9;box-shadow:-6px 0 18px rgba(0,0,0,.015);background:#fff;overflow:hidden}
+.sideIntro{padding:28px 24px 6px}.sideIntro .eyebrow{font-size:10px;font-weight:700;letter-spacing:0;color:#6a7379}
+.sideIntro h2{font-family:"El Messiri","Cairo",sans-serif;font-size:24px;line-height:1.5;margin:4px 0 1px;color:#181d22}
+.sideIntro p{font-size:12px;line-height:1.75;color:#7a8188}
+.tabs{padding:21px 22px 21px;border-bottom:1px solid #edf0f1}
+.navLabel{font-size:12px;font-weight:800;color:#252c30;margin-bottom:10px}
+.tabs select{height:50px;font-size:13px;line-height:1.2;font-weight:700;padding:10px 15px;border:1px solid #cfd5d9;border-radius:8px;color:#161c22;background:#fff}
+.tabBody{padding:23px 22px 30px;scrollbar-width:thin}
+.sectionHead{margin:0 0 15px;font-size:14px;line-height:1.6;color:#1a2227;font-weight:800}
+.sectionHead span{color:#7b858b;font-size:11px;font-weight:400}
+.sectionLead{line-height:1.9;font-size:12px;color:#646e75;margin-bottom:17px}
+.accordion{border:1px solid #e2e6e8;border-radius:9px;margin-bottom:13px;background:#fff}
+.accordion summary{padding:16px 13px;background:#fff;color:#262b30;font-size:12.5px;line-height:1.55;font-weight:800}
+.accordion[open] summary{background:#fafbfb}
+.accordionContent{padding:18px 13px 15px}
+.accordion summary::after{color:#566067}
+.field{margin-bottom:16px}.field label{font-size:12px;font-weight:700;color:#3a434c;line-height:1.45;margin-bottom:8px}
+.field input:not([type=range]):not([type=color]),.field select,.field textarea{border:1px solid #dce1e4;border-radius:8px;padding:11px 12px;font-size:13px;line-height:1.7;color:#192025;background:#fff}
+.field textarea{font-size:13px}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#5d6771;box-shadow:0 0 0 3px #dfe5e888}
+.nameCount{background:#f5f6f7;border:0;border-radius:8px;color:#2e373d;font-size:12px;font-weight:700;padding:10px 13px}
+.groupRoster{gap:8px}
+.groupCard{border:1px solid #e3e7ea;border-radius:9px;padding:13px 14px}
+.groupCard.active{background:#eff2f3;border-color:#aab3b9}
+.groupCard strong{font-size:12.5px}.groupCard span{font-size:11px}
+.wideBtn{padding:12px;font-weight:700;font-size:12px;border-radius:8px}
+.wideBtn.solid{background:#20272d!important}
+.tip{background:#fafafa;color:#5c656a;border:1px solid #eceff0;font-size:12px;line-height:2}
+.presetGrid,.themeGrid{gap:12px}
+.preset,.theme{padding:10px;border-radius:10px;color:#222b30}
+.presetIcon{height:84px;background:#fafafa;color:#364048}
+.preset .presetIcon{font-size:28px}
+.preset.active,.theme.active{border:1px solid #3d464e;box-shadow:0 0 0 1px #3d464e}
+.layer.active{background:#f2f5f6}
+.workspace{grid-column:2;grid-row:1;background:#f5f6f7;min-width:0;min-height:0}
+.toolstrip{height:68px;padding:0 32px;background:#fff;border-bottom:1px solid #e6e8e9;gap:20px}
+.toolgroup{gap:14px}.previewHeading{display:flex;align-items:center;gap:13px}.previewHeading strong{font-size:15px;color:#1b242c;font-weight:800}.previewHeading span{font-size:11px;color:#798188}
+.pill{border-color:#e1e5e7;background:#f7f9fa;color:#4d5961;padding:7px 12px;font-weight:700}
+.miniBtn{background:#fff;border:1px solid #e0e5e8;border-radius:8px;color:#44505a;font-size:14px;padding:8px 10px;min-width:38px}
+#clearSelection{font-size:11px;min-width:auto}
+.workspaceCenter{padding:30px 42px;overflow:auto;display:flex;align-items:center;justify-content:center;background:#f6f7f8}
+.stageHolder{width:min(100%,1040px,calc((100dvh - 270px) * 1.414));margin:auto;max-width:100%}
+.stageHolder.portrait{width:min(100%,670px,calc((100dvh - 270px) * .7067))}
+.stage{border:1px solid #e1e4e6;box-shadow:0 8px 30px rgba(35,45,50,.11),0 2px 5px rgba(35,45,50,.04);background:#fff;transition:none}
+.stageInfo{font-size:11px;color:#626d76;margin-top:16px;line-height:1.6;gap:12px}
+.footerBar{height:43px;padding:0 30px;background:#fff;color:#777f88;border-top:1px solid #e7eaec;font-size:11px}
+.inspector{display:flex;position:fixed;top:88px;left:17px;width:min(340px,calc(100vw - 36px));height:calc(100dvh - 106px);z-index:80;background:#fff;border:1px solid #dce1e4;border-radius:13px;box-shadow:0 15px 65px rgba(16,22,25,.18);transform:translateX(calc(-100% - 35px));opacity:0;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
+body.has-selection .inspector{transform:translateX(0);opacity:1;pointer-events:auto}
+.inspectorHead{padding:19px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e8ebed;gap:12px}
+.inspectorHead h3{font-size:17px;color:#161b20;margin:0 0 3px}
+.inspectorHead p{font-size:11px;color:#6f777e;margin:0}
+#closeInspector{display:grid;place-items:center;width:32px;height:32px;font-size:23px;font-family:Arial;background:#f3f5f6;color:#242a2e;border:0;border-radius:8px;padding:0}
+.inspectorBody{padding:19px 18px}
+.emptyInspector{display:none}
+#saveStatus{flex-shrink:0}
+@media(max-width:1360px){
+ .main{grid-template-columns:305px minmax(0,1fr)}
+ .top{padding:0 18px;gap:12px}
+ .topRight{justify-content:flex-start}
+ .topProjectLabel{display:none}
+ .saveIndicator{display:none}
+ .topActions{gap:6px}
+ .action{padding:9px 10px}
+ .workspaceCenter{padding:22px}
+ .stageHolder{width:min(100%,950px,calc((100dvh - 255px) * 1.414))}
+}
+@media(max-width:940px){
+ html,body{height:auto;min-height:100%;overflow:auto}
+ .app{display:flex;flex-direction:column;height:auto;min-height:100dvh;overflow:visible}
+ .top{min-height:70px;padding:12px 14px;gap:12px;flex-wrap:wrap}
+ .brand{min-width:150px}
+ .topRight{order:2;flex:1;justify-content:flex-end}
+ .projectName{max-width:250px;width:100%}
+ .topActions{order:3;width:100%;justify-content:flex-end;flex-wrap:wrap}
+ .main{display:flex;flex-direction:column;overflow:visible}
+ .leftPanel{order:1;border:0;box-shadow:none;max-height:none}
+ .sideIntro{padding:19px 20px 6px}
+ .sideIntro h2{font-size:22px}
+ .tabs{padding:14px 20px}
+ .tabBody{max-height:440px;padding:20px;overflow:auto}
+ .workspace{order:2;min-height:410px}
+ .toolstrip{padding:12px 16px;height:auto;min-height:65px}
+ .workspaceCenter{min-height:300px;padding:18px 20px}
+ .stageHolder,.stageHolder.portrait{width:min(100%,800px);max-width:100%}
+ .stageInfo{flex-wrap:wrap;gap:6px}
+ .footerBar{padding:0 18px}
+ .inspector{position:fixed;top:auto;left:12px;right:12px;bottom:12px;width:auto;height:min(75dvh,620px);border-radius:15px;transform:translateY(calc(100% + 25px))}
+ body.has-selection .inspector{transform:translateY(0)}
+}
+@media(max-width:560px){
+ .top{gap:10px}.topRight{order:3;width:100%;flex:1 0 100%}.projectName{width:100%;max-width:100%;text-align:right}
+ .topActions{order:2;flex:1;justify-content:flex-end}
+ .topActions .quiet{font-size:10px;padding:8px}
+ .exportMenu>summary{font-size:10px;padding:8px}
+ .topActions .primary{min-width:auto}
+ .logo{width:38px;height:38px}
+ .brand{min-width:132px}.brand strong{font-size:20px}.brand small{font-size:9px}
+ .workspaceCenter{padding:16px 12px}
+ .toolstrip{gap:8px}.previewHeading span{display:none}.toolgroup{gap:7px}
+ #clearSelection{display:none}
+ .stageInfo{font-size:10px}
+}
+
 </style>
 <style id="pageRule">@page{size:A4 landscape;margin:0}</style>
 </head>
 <body>
 <div class="app">
 <header class="top">
- <div class="brand"><div class="logo">ش</div><div><strong>شهادتي <span style="color:#a85171">STUDIO</span></strong><small>CERTIFICATE DESIGN ATELIER</small></div></div>
- <div class="topRight"><input id="projectName" class="projectName" value="تصميم شهادات جديد" aria-label="عنوان المشروع"><span class="pill" id="saveStatus">● محفوظ محليًا</span></div>
- <div class="topActions"><button class="action" id="newBtn">＋ جديد</button><button class="action" id="saveBtn">◫ حفظ مشروع</button><button class="action" id="svgBtn">↓ SVG</button><button class="action" id="pngBtn">↓ PNG HD</button><button class="action primary" id="printBtn">▣ طباعة / PDF</button></div>
+ <div class="brand"><div class="logo">ش</div><div><strong>شهادتي</strong><small>منصة تصميم وإصدار الشهادات</small></div></div>
+ <div class="topRight"><label class="topProjectLabel" for="projectName">المشروع الحالي</label><input id="projectName" class="projectName" value="تصميم شهادات جديد" aria-label="عنوان المشروع"><span class="saveIndicator" id="saveStatus">● محفوظ محليًا</span></div>
+ <div class="topActions"><button class="action quiet" id="newBtn">تصميم جديد</button><button class="action quiet" id="saveBtn">حفظ المشروع</button>
+  <details class="exportMenu"><summary class="action">تصدير <span class="dropArrow">⌄</span></summary><div class="exportItems"><button id="pngBtn">صورة PNG عالية الدقة</button><button id="svgBtn">ملف SVG متجهي</button><button id="exportProjectBtn">ملف المشروع القابل للتعديل</button></div></details>
+  <button class="action primary" id="printBtn">طباعة / PDF</button>
+ </div>
 </header>
 <div class="main">
 <aside class="leftPanel">
- <div class="sideIntro"><div class="eyebrow">CREATIVE WORKSPACE / مساحة إبداع حرة</div><h2>صممي بطريقتك</h2><p>كل نص وكل لون وكل إطار بقرارك، والنتيجة جاهزة للطباعة.</p></div>
+ <div class="sideIntro"><div class="eyebrow">إدارة الشهادات</div><h2>لوحة التصميم</h2><p>خطوات واضحة، ونتيجة جاهزة للطباعة.</p></div>
  <nav class="tabs" id="tabs">
- <label for="sectionSelect" class="navLabel">قائمة أدوات التصميم</label>
+ <label for="sectionSelect" class="navLabel">القسم الذي تريدين تعديله</label>
  <select id="sectionSelect" aria-label="اختيار قسم التصميم">
-  <option value="names">01 — المجموعات وأسماء المشاركات</option>
-  <option value="content">02 — نصوص الشهادة والعناوين</option>
-  <option value="presets">03 — القوالب الجاهزة</option>
-  <option value="themes">04 — الألوان والإطارات</option>
-  <option value="elements">05 — العناصر وترتيبها</option>
-  <option value="settings">06 — إعدادات الطباعة والخطوط</option>
+  <option value="names">1. الأسماء والمجموعات</option>
+  <option value="content">2. عبارات الشهادة</option>
+  <option value="presets">3. القوالب الجاهزة</option>
+  <option value="themes">4. الثيمات والإطارات</option>
+  <option value="elements">5. العناصر والصور</option>
+  <option value="settings">6. الخطوط والطباعة</option>
  </select>
  </nav>
  <div class="tabBody">
@@ -252,16 +379,16 @@ body{background:#f3f4f5;color:#161616}
 </aside>
 <section class="workspace">
  <div class="toolstrip">
-  <div class="toolgroup"><span class="crumb">الاستوديو / <span id="currentPreset">شهادة تقدير</span></span><span class="pill" id="orientationBadge">A4 أفقي</span></div>
-  <div class="toolgroup"><button class="miniBtn" id="undoBtn" title="تراجع">↶ تراجع</button><button class="miniBtn" id="redoBtn" title="إعادة">↷ إعادة</button><button class="miniBtn" id="clearSelection" title="إلغاء التحديد">◇ إلغاء التحديد</button><button class="miniBtn" id="fullscreenBtn">⛶ ملء الشاشة</button></div>
+  <div class="toolgroup"><div class="previewHeading"><strong>معاينة الشهادة</strong><span id="currentPreset">شهادة تقدير</span></div><span class="pill" id="orientationBadge">A4 أفقي</span></div>
+  <div class="toolgroup"><button class="miniBtn" id="undoBtn" title="تراجع عن آخر تغيير">↶</button><button class="miniBtn" id="redoBtn" title="إعادة آخر تغيير">↷</button><button class="miniBtn" id="clearSelection" title="إلغاء التحديد">إلغاء التحديد</button><button class="miniBtn" id="fullscreenBtn" title="عرض بملء الشاشة">⛶</button></div>
  </div>
- <div class="workspaceCenter"><div class="stageHolder">
+ <div class="workspaceCenter"><div class="stageHolder" id="stageHolder">
   <div class="stage" id="stage"><div id="sheet"></div></div>
-  <div class="stageInfo"><span><span class="dot"></span>معاينة مباشرة • اسحبي النص لتحريكه • انقريه مرتين للتعديل</span><span id="sheetDimensions">A4 · 297 × 210 مم</span></div>
+  <div class="stageInfo"><span>انقري أي عبارة لتعديلها، أو اسحبيها لتغيير مكانها</span><span id="sheetDimensions">A4 · 297 × 210 مم</span></div>
  </div></div>
- <div class="footerBar"><span>◈ كل العناصر حرة التعديل والتنسيق</span><span id="fontCurrent">الخط: المسيري</span><span>⌨ الأسهم للتحريك · Shift + سهم = 10 وحدات</span></div>
+ <div class="footerBar"><span>تُحفظ التعديلات تلقائيًا في هذا المتصفح</span><span id="fontCurrent">الخط: المسيري</span></div>
 </section>
-<aside class="inspector"><div class="inspectorHead"><h3>خصائص العنصر</h3><p>تفاصيل دقيقة لكل كلمة وشكل</p></div><div class="inspectorBody" id="inspectorBody"></div></aside>
+<aside class="inspector" aria-label="لوحة تنسيق العنصر"><div class="inspectorHead"><div><h3>تنسيق العنصر</h3><p>تعديل الخط، اللون، الحجم والموقع</p></div><button type="button" id="closeInspector" title="إغلاق اللوحة" aria-label="إغلاق لوحة التنسيق">×</button></div><div class="inspectorBody" id="inspectorBody"></div></aside>
 </div></div>
 <div id="printRoot"></div><div class="toast" id="toast"></div>
 <div class="modalOverlay" id="modal"><div class="modal"><h3 id="modalTitle">تنبيه</h3><p id="modalText"></p><div class="modalActions"><button class="action primary" id="modalConfirm">متابعة</button><button class="action" id="modalCancel">إلغاء</button></div></div></div>
@@ -420,7 +547,7 @@ function drawSvg(name,editing,group){
  }
  svg+='</svg>';return svg;
 }
-function renderStage(){var wh=dims(),W=wh[0],H=wh[1];el("stage").style.aspectRatio=W+" / "+H;el("sheet").innerHTML=drawSvg(personName(),true);el("sheetDimensions").textContent=st.orientation==="landscape"?"A4 · 297 × 210 مم":"A4 · 210 × 297 مم";el("orientationBadge").textContent=st.orientation==="landscape"?"A4 أفقي":"A4 عمودي";}
+function renderStage(){var wh=dims(),W=wh[0],H=wh[1];el("stageHolder").classList.toggle("portrait",st.orientation==="portrait");el("stage").style.aspectRatio=W+" / "+H;el("sheet").innerHTML=drawSvg(personName(),true);el("sheetDimensions").textContent=st.orientation==="landscape"?"A4 · 297 × 210 مم":"A4 · 210 × 297 مم";el("orientationBadge").textContent=st.orientation==="landscape"?"A4 أفقي":"A4 عمودي";}
 function renderThemes(){
  el("themeGrid").innerHTML=themes.map(function(t){return '<button class="theme '+(st.theme===t.id?"active":"")+'" data-theme="'+t.id+'"><div class="themePreview" style="background:'+t.bg+';--a:'+t.accent+';--b:'+t.accent2+'"></div><span class="themeName">'+esc(t.name)+'</span></button>';}).join("");
 }
@@ -467,7 +594,7 @@ function renderNames(){
 }
 function inspectValue(id,val){var input=el(id);if(input)input.value=val==null?"":val;}
 function renderInspector(){
- var node=el("inspectorBody"),e=st.elements.find(function(x){return x.id===st.selected});
+ var node=el("inspectorBody"),e=st.elements.find(function(x){return x.id===st.selected});document.body.classList.toggle("has-selection",!!e);
  if(!e){node.innerHTML='<div class="emptyInspector"><span class="big">✦</span><strong>اختاري عنصرًا من الشهادة</strong><br>اضغطي على أي نص أو شكل لتغيير مكانه وخطه ولونه وأبعاده بحرية.</div>';return;}
  var h='<div class="sectionHead">العنصر المحدد <span>'+esc(e.label||e.type)+'</span></div>';
  if(e.type==="text")h+='<div class="field"><label>محتوى النص</label><textarea id="propText" rows="5">'+esc(e.text)+'</textarea></div>';
@@ -538,6 +665,9 @@ function ask(title,message,cb){el("modalTitle").textContent=title;el("modalText"
 function parseNames(v){var parts=String(v).split(/\r?\n|[،;,؛]/).map(function(n){return n.trim().split(/\t/)[0].trim().replace(/^"|"$/g,"")}).filter(function(n){return n&&!/^(الاسم|name|اسم المشاركة)$/i.test(n)});return Array.from(new Set(parts));}
 function bind(){
  el("sectionSelect").onchange=function(){showTab(this.value);};
+ el("closeInspector").onclick=function(){select(null);};
+ el("exportProjectBtn").onclick=function(){el("jsonExport").click();el("exportProjectBtn").closest("details").open=false;};
+ document.querySelectorAll(".exportItems button").forEach(function(b){b.addEventListener("click",function(){el("exportProjectBtn").closest("details").open=false;});});
  el("presetGrid").onclick=function(ev){var b=ev.target.closest("[data-preset]");if(!b)return;var id=b.dataset.preset;if(id===st.preset)return;ask("تغيير القالب","سيُعاد توزيع الشهادة بما يلائم القالب الجديد. هل تريدين إبقاء نصوصك الحالية في أماكن القالب الجديد؟",function(){capture();populatePreset(id,true);renderAll();autosave();});};
  el("themeGrid").onclick=function(ev){var b=ev.target.closest("[data-theme]");if(b)applyTheme(+b.dataset.theme);};
  document.querySelectorAll("[data-add]").forEach(function(b){b.onclick=function(){var type=b.dataset.add;if(type==="image"){var inp=document.createElement("input");inp.type="file";inp.accept="image/*";inp.onchange=function(){readImage(inp.files[0],function(src){addElement("image",src)})};inp.click();}else addElement(type);};});
