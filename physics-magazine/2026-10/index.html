@@ -240,6 +240,65 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 .page[data-name="الفيزياء في حياتنا"] .hub-card{min-height:105px}
 .page[data-name="مسابقات أكتوبر التفاعلية"] .hub-grid{gap:7px}
 .page[data-name="مسابقات أكتوبر التفاعلية"] .hub-card{max-height:104px;min-height:95px;padding:7px}
+
+/* Black & gold Wamda; refined curtain competition */
+.edition-game{min-height:100%;background:#0d1718;color:#f5e9d1;padding:clamp(18px,3vw,35px);font-family:"El Messiri",Tahoma,Arial,sans-serif}
+.edition-game .game-box{width:min(850px,100%);margin:0 auto}
+.game-eyebrow{color:#d6b783;border-bottom:1px solid #bd995d;padding-bottom:14px;font-size:14px;letter-spacing:.4px}
+.edition-game h2{font:700 clamp(35px,5vw,67px)/1.22 "Amiri",serif;margin:16px 0;color:#fff1ce}
+.edition-game p{font:clamp(17px,2vw,25px)/1.4 "Amiri",serif}
+.edition-game .game-frame{position:relative;min-height:310px;border:1px solid #b19c6a;background:radial-gradient(circle at center,#253c39,#0b1617);overflow:hidden;margin:18px 0}
+.edition-game .game-upper{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0;color:#ebc487;font-size:14px}
+.edition-game .game-button{background:#d7b77f;color:#132823;border:0;padding:12px 18px;font-size:14px;font-weight:700;margin-top:12px}
+.edition-game .game-button.outlined{border:1px solid #d7b77f;color:#e8c68e;background:transparent}
+.edition-game .game-choice{display:block;width:100%;text-align:right;color:#e9e8df;border:1px solid #65766a;background:#20312f;padding:14px 16px;margin-top:9px;font-size:14px;min-height:46px}
+.edition-game .game-choice.good{background:#234d3f;border-color:#9bc4a4}
+.edition-game .game-choice.bad{background:#5b3132;border-color:#df987d}
+.edition-game .game-feedback{padding:16px;margin-top:15px;background:#202d2a;border-right:3px solid #d7b77f;font:19px/1.5 "Amiri",serif}
+.game-scene{width:100%;min-height:315px;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:15px;gap:6px}
+.game-scene svg{width:min(460px,98%);max-height:300px}
+.game-scene .scene-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,1fr);width:min(530px,100%);height:310px;gap:8px}
+.game-scene .scene-photos img{width:100%;height:100%;object-fit:cover}
+.game-scene .digits{direction:rtl;display:flex;justify-content:space-around;align-items:center;gap:10px;width:100%;font:700 clamp(38px,9vw,95px) Georgia,serif;color:#f4d48c}
+.game-veil{position:absolute;inset:0;background:repeating-linear-gradient(90deg,#162c2c 0,#162c2c 26px,#25403e 27px,#25403e 43px);display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;padding:21px;gap:14px;color:#f9ebd5;z-index:1;transition:transform .6s ease}
+.game-veil.retracted{transform:translateY(-101%)}
+.game-veil strong{font:700 clamp(29px,4vw,53px)/1.23 Amiri,serif}
+.game-veil span{font-size:16px;max-width:540px}
+.game-score{font:21px Georgia,serif;color:#eac98c;direction:ltr}
+.curtain-game{background:#271820}
+.curtain-game .game-frame{border-color:#c8949b;background:#261b25}
+.curtain-game .game-eyebrow{border-color:#b2696f;color:#e9a8aa}
+.curtain-game .game-button{background:#eac8a7;color:#4a1832}
+.curtain-game .game-veil{background:repeating-linear-gradient(90deg,#541c38 0,#541c38 30px,#7a3150 32px,#7a3150 50px)}
+.curtain-game .game-choice{background:#3d2534;border-color:#86516c}
+.curtain-game .game-feedback{background:#442736;border-right-color:#e7bd9a}
+.curtain-game .game-upper{color:#f2cdb8}
+.game-photo{height:320px;width:100%;object-fit:cover;filter:brightness(.8)}
+.game-question{font:700 clamp(26px,3vw,39px)/1.35 Amiri,serif;color:#f8eee4;margin:19px 0}
+.profile-marie{background:#f9f6ef;color:#1d332d;min-height:100vh}
+.profile-marie .profile-banner{position:relative;min-height:440px;display:grid;grid-template-columns:1fr 1fr;gap:0;background:#192f2d;color:white;overflow:hidden}
+.profile-marie .profile-banner .profile-photo{height:440px;object-fit:cover;width:100%;filter:grayscale(1)}
+.profile-marie .profile-banner>div{align-self:center;padding:clamp(21px,4vw,60px)}
+.profile-marie .profile-banner .eyebrow{color:#e9c292}
+.profile-marie .profile-banner h2{font:700 clamp(55px,7vw,108px)/1.1 Amiri,serif;margin:15px 0;color:#fff}
+.profile-marie .profile-banner p{font:clamp(19px,2vw,28px)/1.45 Amiri,serif;color:#efddc2}
+.profile-marie .reader-content{background:#f9f6ef}
+.profile-marie .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:23px 0}
+.profile-marie .timeline article{border-top:3px solid #a15a3b;background:#f0e8dc;padding:20px}
+.profile-marie .timeline strong{font:32px Georgia,serif;color:#95583e}
+.profile-marie .timeline p{font:20px/1.45 Amiri,serif;margin-top:9px}
+@media(max-width:680px){
+ .edition-game{padding:17px 13px}
+ .edition-game .game-frame{min-height:270px}
+ .game-scene{min-height:270px;padding:10px}
+ .game-scene .scene-photos{height:270px}
+ .game-photo{height:275px}
+ .profile-marie .profile-banner{grid-template-columns:1fr;min-height:0}
+ .profile-marie .profile-banner .profile-photo{height:275px;object-position:center 25%}
+ .profile-marie .profile-banner>div{padding:20px}
+ .profile-marie .profile-banner h2{font-size:60px}
+ .profile-marie .timeline{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -632,7 +691,7 @@ function readerBack(){
 if(readerHistory.length){var previous=readerHistory.pop();openReader(previous,false)}
 else closeReader();
 }
-function closeReader(){readerOverlay.classList.remove('active');readerOverlay.setAttribute('aria-hidden','true');readerScroll.scrollTop=0;readerCurrent=null;readerHistory=[]}
+function closeReader(){clearInterval(wamdaTimer);clearInterval(curtainTimer);readerOverlay.classList.remove('active');readerOverlay.setAttribute('aria-hidden','true');readerScroll.scrollTop=0;readerCurrent=null;readerHistory=[]}
 function richProject(){
 return String.raw`
 <div class="reader-content reader-project">
@@ -688,6 +747,128 @@ return String.raw`
 </div>
 `;
 }
+
+/* New monthly editorial interactions: Wamda and Behind the Curtain */
+var wamdaTimer=null,curtainTimer=null;
+var wamdaRound=0,wamdaPhase='intro',wamdaScore=0,wamdaAnswered=false;
+var curtainRound=0,curtainPhase='closed',curtainScore=0;
+var marieImage='https://commons.wikimedia.org/wiki/Special:FilePath/Marie%20Curie%20c1920.jpg?width=1000';
+var wamdaRounds=[
+ {secs:8,tag:'الجولة 1 | الأشكال الأولى',prompt:'ما لون الدائرة الكبيرة؟',options:['أحمر عنابي','أزرق','أصفر'],answer:0,
+ scene:'<svg viewBox="0 0 460 290" aria-label="دائرة عنابية ومثلث ذهبي ومربع تركوازي ونقاط صغيرة"><rect x="12" y="12" width="436" height="266" rx="9" fill="#102623" stroke="#c6a669" stroke-width="2"/><circle cx="104" cy="83" r="38" fill="#a43f54"/><polygon points="252,36 300,131 200,131" fill="#e3bb71"/><rect x="336" y="174" width="70" height="70" rx="4" fill="#5eada1"/><circle cx="91" cy="206" r="8" fill="#efdab0"/><circle cx="123" cy="206" r="8" fill="#efdab0"/><circle cx="155" cy="206" r="8" fill="#efdab0"/></svg>'},
+ {secs:10,tag:'الجولة 2 | أربع لقطات',prompt:'أي صورة ظهرت في الأسفل على اليسار؟',options:['فنجان القهوة','البرق','السفينة'],answer:1,
+ scene:'<div class="scene-photos"><img alt="سفينة" src="https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=500"><img alt="الأرض" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=500&q=80"><img alt="القهوة" src="https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=500"><img alt="البرق" src="https://images.unsplash.com/photo-1461511669078-d46bf351cd6e?auto=format&fit=crop&w=500&q=80"></div>'},
+ {secs:12,tag:'الجولة 3 | الشفرة السريعة',prompt:'أي رقم جاء ثالثًا عند القراءة من اليمين؟',options:['6','3','2'],answer:0,
+ scene:'<div class="digits"><span>8</span><span>3</span><span>6</span><span>2</span></div><div style="margin-top:10px;color:#bfa778;font-size:12px">تذكّري ترتيب الأرقام كما ظهرت أمامكِ.</div>'},
+ {secs:15,tag:'الجولة 4 | تحدي التفاصيل',prompt:'كم نجمة ذهبية ظهرت في الرسم؟',options:['3','5','4'],answer:1,
+ scene:'<svg viewBox="0 0 460 290" aria-label="خمس نجوم ذهبية بين أشكال زخرفية"><rect x="12" y="12" width="436" height="266" rx="9" fill="#112d2a" stroke="#c3a169"/><g fill="#d9b365"><polygon points="87,38 96,58 117,61 102,77 107,98 87,87 66,98 72,77 56,61 77,58"/><polygon points="222,56 230,74 252,76 235,89 240,110 222,100 203,110 207,89 192,76 214,74"/><polygon points="359,37 367,55 388,57 373,73 379,94 359,84 339,94 346,73 330,57 351,55"/><polygon points="134,175 142,193 163,196 148,211 153,232 134,223 114,232 121,211 105,196 126,193"/><polygon points="330,172 339,190 360,193 344,209 349,230 330,220 311,230 316,209 301,193 322,190"/></g><g stroke="#70b2ab" stroke-width="5" fill="none"><circle cx="220" cy="183" r="33"/><path d="M29 139 H104 M356 139 H430"/></g></svg>'}
+];
+function buildWamda(){
+return '<div class="edition-game"><div class="game-box"><div class="game-eyebrow">ومضة | إعداد وفكرة: حفصة طيبي · راقبي • تذكّري • ارسمي</div>'+
+'<h2>ومضة <span style="color:#d0a866">الذاكرة البصرية</span></h2>'+
+'<div class="game-upper"><span id="wm-round">4 مستويات متدرجة</span><span id="wm-score" class="game-score"></span></div>'+
+'<div class="game-frame" id="wm-stage"><div class="game-scene" id="wm-scene"></div><div class="game-veil" id="wm-veil"><strong id="wm-veil-title">هل تثقين بذاكرتكِ؟</strong><span id="wm-veil-sub">شاهدِي مشاهد بصرية سريعة، ثم استعيدي تفاصيلها خلف الستارة.</span></div></div>'+
+'<div id="wm-details"><p>4 جولات؛ تبدأ بثماني ثوانٍ وتزداد صعوبةً حتى 15 ثانية. يمكنك إخفاء الصورة مبكرًا، ثم مقارنة ذاكرتك بالمشهد الأصلي.</p><button class="game-button" data-wamda="start">الدخول إلى التحدي ←</button></div>'+
+'</div></div>';
+}
+function wmStatus(){
+var el=document.getElementById('wm-score');if(el)el.textContent=wamdaScore+' / 4';
+var r=document.getElementById('wm-round');if(r)r.textContent='المستوى '+(wamdaRound+1)+' من 4';
+}
+function wmShowScene(){
+var sc=document.getElementById('wm-scene');if(sc)sc.innerHTML=wamdaRounds[wamdaRound].scene;
+var veil=document.getElementById('wm-veil');if(veil)veil.classList.add('retracted');
+}
+function wmBegin(){
+clearInterval(wamdaTimer);wamdaPhase='observe';wamdaAnswered=false;
+var data=wamdaRounds[wamdaRound];wmStatus();wmShowScene();
+document.getElementById('wm-details').innerHTML='<p>'+data.tag+' · راقبي التفاصيل قبل إغلاق الستارة.</p><button type="button" class="game-button outlined" data-wamda="hide">إخفاء المشهد الآن</button><div class="game-feedback">المتبقي: <b id="wm-timer">'+data.secs+'</b> ثوانٍ</div>';
+var left=data.secs;
+wamdaTimer=setInterval(function(){left--;var timer=document.getElementById('wm-timer');if(timer)timer.textContent=left;if(left<=0)wmRecall()},1000);
+}
+function wmRecall(){
+clearInterval(wamdaTimer);wamdaPhase='recall';
+var veil=document.getElementById('wm-veil');veil.classList.remove('retracted');
+document.getElementById('wm-veil-title').textContent='أُغلقت الستارة!';
+document.getElementById('wm-veil-sub').textContent='حاولي إعادة رسم المشهد في ذهنكِ أو على ورقة قبل الإجابة.';
+var data=wamdaRounds[wamdaRound];
+document.getElementById('wm-details').innerHTML='<div class="game-question">'+data.prompt+'</div>'+data.options.map(function(a,i){return '<button class="game-choice" data-wanswer="'+i+'">'+a+'</button>'}).join('')+'<div class="game-feedback" id="wm-feedback">أجيبي من ذاكرتكِ دون مشاهدة المشهد الأصلي.</div>';
+}
+function wmAnswer(i){
+if(wamdaPhase!=='recall'||wamdaAnswered)return;wamdaAnswered=true;var data=wamdaRounds[wamdaRound],correct=i===data.answer;
+if(correct)wamdaScore++;wmStatus();
+document.querySelectorAll('[data-wanswer]').forEach(function(b){b.disabled=true;if(Number(b.dataset.wanswer)===data.answer)b.classList.add('good');else if(Number(b.dataset.wanswer)===i)b.classList.add('bad')});
+document.getElementById('wm-feedback').textContent=correct?'أحسنتِ! تفصيل واحد قد يغير النتيجة.':'الاختيار الصحيح محدد باللون الأخضر. قارني بذاكرتكِ بعد الكشف.';
+document.getElementById('wm-details').insertAdjacentHTML('beforeend','<button class="game-button" data-wamda="compare">اكشفي الرسم الأصلي للمقارنة ←</button>');
+}
+function wmCompare(){
+wamdaPhase='compare';wmShowScene();
+document.getElementById('wm-details').innerHTML='<div class="game-feedback">قارني التفاصيل بما تذكرتِه. '+(wamdaRound===3?'هذه الجولة الأخيرة!':'هل لاحظتِ ما فاتكِ؟')+'</div><button class="game-button" data-wamda="next">'+(wamdaRound===3?'اكتشفي نتيجتكِ':'الجولة التالية ←')+'</button><button class="game-button outlined" data-wamda="again">إعادة مشاهدة هذه الجولة</button>';
+}
+function wmNext(){
+clearInterval(wamdaTimer);
+if(wamdaRound<3){wamdaRound++;wmBegin();return;}
+wamdaPhase='done';document.getElementById('wm-veil').classList.remove('retracted');
+document.getElementById('wm-veil-title').textContent='ومضة مكتملة';
+document.getElementById('wm-veil-sub').textContent='دقة الملاحظة مهارة تتحسن بالممارسة.';
+document.getElementById('wm-details').innerHTML='<h2 style="font-size:43px;color:#f2d29a">النتيجة: '+wamdaScore+' من 4</h2><p>تذكّري أن المقارنة مع المشهد الأصلي أهم من السرعة وحدها.</p><button class="game-button" data-wamda="restart">إعادة التحدي</button>';
+}
+var curtainData=[
+ {q:'لماذا تطفو سفينة حديدية ضخمة؟',image:'https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=1000',a:['لأن الماء يزيح وزنًا يكفي لمعادلة وزنها','لأن الحديد يصبح أخف فوق الماء','لأن المحرك يمسك السفينة'],correct:0,why:'شكل السفينة وحجم الماء المزاح يتيحان لقوة الطفو موازنة وزنها.'},
+ {q:'لماذا يبدو المعدن أبرد من الخشب أحيانًا في الغرفة نفسها؟',image:'https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=900',a:['لأن المعدن لا يحتفظ بحرارة أبدًا','لأنه ينقل الحرارة من اليد أسرع','لأن الخشب يصنع الحرارة'],correct:1,why:'المعدن ناقل أفضل للحرارة؛ لذلك يفقد الجلد حرارته إليه بسرعة أكبر إذا كان أبرد من اليد.'},
+ {q:'لماذا يصل إلينا وميض البرق قبل صوت الرعد؟',image:'https://images.unsplash.com/photo-1461511669078-d46bf351cd6e?auto=format&fit=crop&w=1000&q=80',a:['لأن البرق دائمًا أقرب من الرعد','لأن الضوء أسرع كثيرًا من الصوت','لأن الرعد لا يتكون فورًا'],correct:1,why:'الضوء أسرع بكثير من الصوت، فيُرى الوميض قبل سماع دويّ الرعد.'},
+ {q:'لماذا يميل جسمك إلى الاندفاع للأمام عند توقف الحافلة فجأة؟',image:'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80',a:['بسبب القصور الذاتي','لأن جاذبية الأرض تختفي','لأن كتلتك تصبح أكبر'],correct:0,why:'الجسم يميل إلى الحفاظ على حالته الحركية؛ وهذا هو القصور الذاتي.'},
+ {q:'هل ينتقل الصوت عبر الفراغ الكامل؟',image:'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=1000&q=85',a:['نعم، لكن ببطء','نعم، إذا كان الصوت قويًا','لا، لأنه يحتاج وسطًا ماديًا'],correct:2,why:'الموجات الصوتية تحتاج مادة تهتز لتنقل الاضطراب، فلا تنتقل في الفراغ المثالي.'}
+];
+function buildCurtain(){
+return '<div class="edition-game curtain-game"><div class="game-box"><div class="game-eyebrow">خلف الستار | أسرار فيزيائية من حياتنا · لجميع القراء</div>'+
+'<h2>خلف الستار… <span style="color:#eabda4">ما الحقيقة؟</span></h2>'+
+'<div class="game-upper"><span id="ct-round">5 مشاهد، 5 أسرار</span><span id="ct-score" class="game-score"></span></div>'+
+'<div class="game-frame" id="ct-stage"><div id="ct-media" style="min-height:315px"></div><div class="game-veil" id="ct-veil"><strong id="ct-title">ستارة تخفي الحقيقة</strong><span id="ct-sub">اكشفي المشهد، ثم اختاري تفسيركِ قبل قراءة الإجابة العلمية.</span></div></div>'+
+'<div id="ct-details"><p>خمسة أسئلة لا تحتاج إلى حفظ قوانين الفيزياء، بل إلى الملاحظة والفضول.</p><button class="game-button" data-curtain="start">افتحي الستارة الأولى ←</button></div></div></div>';
+}
+function ctStatus(){
+document.getElementById('ct-round').textContent='المشهد '+(curtainRound+1)+' من 5';
+document.getElementById('ct-score').textContent=curtainScore+' / 5';
+}
+function ctBegin(){
+curtainPhase='closed';var data=curtainData[curtainRound];ctStatus();
+document.getElementById('ct-media').innerHTML='<img class="game-photo" src="'+data.image+'" alt="مشهد من الحياة اليومية">';
+var veil=document.getElementById('ct-veil');veil.classList.remove('retracted');
+document.getElementById('ct-title').textContent='سرّ جديد خلف الستارة';
+document.getElementById('ct-sub').textContent='ما رأيكِ؟ هل تستطيعين تفسير الظاهرة؟';
+document.getElementById('ct-details').innerHTML='<button class="game-button" data-curtain="open">افتحي الستارة واكتشفي السؤال ←</button>';
+}
+function ctOpen(){
+curtainPhase='choose';document.getElementById('ct-veil').classList.add('retracted');
+var data=curtainData[curtainRound];
+document.getElementById('ct-details').innerHTML='<div class="game-question">'+data.q+'</div>'+data.a.map(function(a,i){return '<button class="game-choice" data-canswer="'+i+'">'+a+'</button>'}).join('')+'<div class="game-feedback" id="ct-feedback">ما تفسيركِ الأقرب إلى الحقيقة؟</div>';
+}
+function ctAnswer(i){
+if(curtainPhase!=='choose')return;curtainPhase='answer';
+var data=curtainData[curtainRound];if(i===data.correct)curtainScore++;ctStatus();
+document.querySelectorAll('[data-canswer]').forEach(function(b){b.disabled=true;if(Number(b.dataset.canswer)===data.correct)b.classList.add('good');else if(Number(b.dataset.canswer)===i)b.classList.add('bad')});
+document.getElementById('ct-feedback').textContent=(i===data.correct?'اكتشاف موفق! ':'التفسير الصحيح محدد بالأخضر. ')+data.why;
+document.getElementById('ct-details').insertAdjacentHTML('beforeend','<button class="game-button" data-curtain="next">'+(curtainRound===4?'إظهار النتيجة':'المشهد التالي ←')+'</button>');
+}
+function ctNext(){
+if(curtainRound<4){curtainRound++;ctBegin();return;}
+curtainPhase='finished';document.getElementById('ct-title').textContent='وصلتِ إلى نهاية الأسرار';
+document.getElementById('ct-sub').textContent='تذكّري: كل ظاهرة يومية تستحق سؤالًا جديدًا.';
+document.getElementById('ct-veil').classList.remove('retracted');
+document.getElementById('ct-details').innerHTML='<h2 style="font-size:43px">نتيجتكِ '+curtainScore+' من 5</h2><p>المتعة في تفسير الواقع، لا في تخمين الإجابة فقط.</p><button class="game-button" data-curtain="restart">خوض التحدّي مرة أخرى</button>';
+}
+function buildMarieProfile(){
+return '<div class="profile-marie"><div class="profile-banner"><img class="profile-photo" src="'+marieImage+'" alt="صورة ماري كوري نحو عام 1920"><div><span class="eyebrow">عالمة العدد | وجوه صنعت العلم</span><h2>ماري<br>كوري</h2><p>من الشغف بالسؤال إلى اكتشافات غيّرت فهمنا للمادة.</p><span style="font-size:12px;color:#e7c9a2">صورة أرشيفية: Henri Manuel · Wikimedia Commons · ملكية عامة</span></div></div>'+
+'<div class="reader-content"><p class="deck">تبدأ القصة في بولندا، وتمتد إلى مختبرات باريس؛ قصة امرأة آمنت أن العلم يتقدم بالصبر والدقة.</p>'+
+'<div class="timeline"><article><strong>1867</strong><p>وُلدت ماري سكلودوفسكا في وارسو.</p></article><article><strong>1898</strong><p>ساهمت مع بيير كوري في اكتشاف البولونيوم والراديوم.</p></article><article><strong>1903 / 1911</strong><p>جائزتا نوبل في الفيزياء والكيمياء.</p></article></div>'+
+'<div class="panel"><strong>كيف غيّرت العلم؟</strong><p>ساهمت دراساتها في تأسيس فهم أعمق للنشاط الإشعاعي وخواص المواد، وفتحت أبوابًا لاحقة لتطبيقات علمية وطبية.</p></div>'+
+'<div class="panel"><strong>تفصيل مدهش</strong><p>كانت أول امرأة تفوز بجائزة نوبل، وأول شخص ينال جائزتي نوبل في مجالين علميين مختلفين.</p></div>'+
+'<div class="pull">«أحيانًا لا تكون أعظم لحظة في المختبر هي اكتشاف الإجابة، بل التمسك بالسؤال.»</div>'+
+'<div class="panel"><strong>للقارئة</strong><p>كيف تتحول مشكلة صغيرة في التجربة إلى اكتشاف كبير عندما يرفض الباحث التسرع في تفسير النتائج؟</p></div>'+
+'<p class="small-links">الصورة التاريخية: <a href="https://commons.wikimedia.org/wiki/File:Marie_Curie_c1920.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>.</p></div></div>';
+}
+
 function interactiveReader(name){
 if(name==='تدريب تفاعلي'){
 return '<div class="reader-content"><h2 style="font:700 43px Amiri,serif">تدريب الشهر</h2><p class="deck">اختاري الإجابة ثم اقرئي التفسير العلمي.</p><div id="r-quiz"></div></div>';
@@ -717,6 +898,14 @@ return '<div class="reader-content">'+headings+'</div>';
 function readerImage(name,source){
 var image=source.querySelector('.picture img,.cover-bg,.art-hero>img');
 var pics={
+'ماري كوري | قصة العدد':marieImage,
+'الفيزياء في حياتنا':'https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=1300',
+'المعدن والخشب':'https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=1300',
+'لغز المصعد':'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1300&q=85',
+'البرق والرعد':'https://images.unsplash.com/photo-1461511669078-d46bf351cd6e?auto=format&fit=crop&w=1300&q=85',
+'خلف الستار | مسابقة الأسرار':'https://images.unsplash.com/photo-1461511669078-d46bf351cd6e?auto=format&fit=crop&w=1300&q=85',
+'ومضة | تحدي الذاكرة':'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1300&q=85',
+
 'الهوية الوطنية':'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=85',
 'أنشطة القسم':'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1500&q=85',
 'مسابقات أكتوبر التفاعلية':'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1500&q=85',
@@ -739,7 +928,14 @@ var source=pages.find(function(p){return p.dataset.name===name});
 if(!source)return;
 readerOverlay.classList.add('active');readerOverlay.setAttribute('aria-hidden','false');
 document.getElementById('reader-brand').textContent=(name==='مشروع الفيزياء النووية'||name==='تقييم المشروع النووي')?'إعلان مشروع الفيزياء النووية':name;
-if(name==='مشروع الفيزياء النووية'||name==='تقييم المشروع النووي'){
+clearInterval(wamdaTimer);clearInterval(curtainTimer);
+if(name==='ومضة | تحدي الذاكرة'){
+wamdaRound=0;wamdaScore=0;wamdaPhase='intro';readerArticle.innerHTML=buildWamda();
+}else if(name==='خلف الستار | مسابقة الأسرار'){
+curtainRound=0;curtainScore=0;curtainPhase='closed';readerArticle.innerHTML=buildCurtain();
+}else if(name==='ماري كوري | قصة العدد'||name==='عالمة العدد'||name==='ماري كوري'){
+readerArticle.innerHTML=buildMarieProfile();
+}else if(name==='مشروع الفيزياء النووية'||name==='تقييم المشروع النووي'){
 readerArticle.innerHTML=richProject();
 }else{
 var heading=source.querySelector('h1,.masthead,.floating h1');
@@ -757,6 +953,24 @@ document.getElementById('reader-close').addEventListener('click',function(){clea
 document.getElementById('reader-back').addEventListener('click',function(){clearInterval(readClock);readerBack()});
 document.getElementById('reader-list').addEventListener('click',function(){clearInterval(readClock);openReader('الفهرس')});
 readerOverlay.addEventListener('click',function(e){
+var w=e.target.closest('[data-wamda]');if(w){
+var action=w.dataset.wamda;
+if(action==='start'||action==='restart'){wamdaRound=0;wamdaScore=0;wmBegin();}
+if(action==='hide')wmRecall();
+if(action==='again')wmBegin();
+if(action==='compare')wmCompare();
+if(action==='next')wmNext();
+return;
+}
+var wa=e.target.closest('[data-wanswer]');if(wa){wmAnswer(Number(wa.dataset.wanswer));return;}
+var c=e.target.closest('[data-curtain]');if(c){
+var action=c.dataset.curtain;
+if(action==='start'||action==='restart'){curtainRound=0;curtainScore=0;ctBegin();}
+if(action==='open')ctOpen();
+if(action==='next')ctNext();
+return;
+}
+var ca=e.target.closest('[data-canswer]');if(ca){ctAnswer(Number(ca.dataset.canswer));return;}
 var m=e.target.closest('[data-rquiz]');if(m){
 var parts=m.dataset.rquiz.split(':').map(Number),q=quiz[parts[0]],root=m.closest('.panel');
 if(root.dataset.answered)return;
