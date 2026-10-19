@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f4f2">
+<title>شهادتي | استوديو التصميم المفتوح</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=El+Messiri:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#27303c;--soft:#7f8692;--rose:#ad466b;--cream:#fcfaf8;--surface:#fff;--border:#e9e7e8;--shadow:0 16px 50px rgba(37,42,55,.08)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:Cairo,Arial,sans-serif;background:#f6f5f3;color:var(--ink);overflow:hidden}
+button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #d9b0c0;outline-offset:2px}button{transition:background .15s,transform .15s}button:active{transform:scale(.985)}
+.app{height:100dvh;display:grid;grid-template-rows:72px minmax(0,1fr);overflow:hidden}
+.top{background:white;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:16px;z-index:20}
+.brand{display:flex;gap:11px;align-items:center;min-width:210px}.logo{width:46px;height:46px;border-radius:15px;background:#752c45;color:white;display:grid;place-items:center;font-family:Amiri,serif;font-size:29px}.brand strong{display:block;font:700 23px/1.1 "El Messiri",Cairo}.brand small{display:block;color:var(--soft);font-size:10px;letter-spacing:.7px}
+.topActions,.topRight{display:flex;align-items:center;gap:8px}.topRight{flex:1;justify-content:center}.projectName{max-width:255px;border:none;background:#faf9f7;border-radius:12px;padding:10px 14px;text-align:center;color:#50535a;font-weight:700;font-size:13px}
+.action,.miniBtn{background:white;border:1px solid #e9e5e7;border-radius:11px;color:#343842;padding:10px 12px;font-size:12px;font-weight:800;white-space:nowrap}.action:hover,.miniBtn:hover{background:#fbf0f4}.action.primary{background:#842d4e;color:white;border-color:#842d4e}.action.primary:hover{background:#6b213d}.action svg{vertical-align:middle;margin-left:3px}
+.main{display:grid;grid-template-columns:312px minmax(340px,1fr) 290px;min-height:0;overflow:hidden}
+.leftPanel{background:#fff;border-left:1px solid var(--border);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.sideIntro{padding:20px 21px 12px}.eyebrow{font-size:10px;color:#a55e78;letter-spacing:1px;font-weight:800}.sideIntro h2{font:700 22px/1.25 "El Messiri",Cairo;margin:5px 0 4px}.sideIntro p{font-size:11px;color:#87909b;margin:0;line-height:1.9}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:6px 12px 14px;border-bottom:1px solid var(--border)}.tab{border:0;background:transparent;color:#858792;border-radius:10px;padding:9px 2px;font-size:10px;font-weight:800}.tab .tabIcon{font-size:19px;display:block;margin-bottom:1px}.tab.active{background:#fbebf0;color:#913c5b}
+.tabBody{padding:17px 18px 26px;overflow:auto;flex:1;scrollbar-width:thin}.tabPage{display:none}.tabPage.active{display:block}.sectionHead{font-size:12px;font-weight:800;color:#555c68;margin:4px 0 11px;display:flex;justify-content:space-between;align-items:center}.sectionHead span{font-size:10px;color:#9399a0}
+.presetGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.preset{border:1px solid #eae4e5;border-radius:13px;padding:8px;background:#fff;text-align:center;font-weight:800;font-size:11px;color:#50515a}.preset:hover,.preset.active{border-color:#b35e7b;background:#fff8fa}.presetIcon{display:grid;place-items:center;height:68px;border:1px solid #e9ddd9;border-radius:9px;background:linear-gradient(160deg,#fffdfb,#f5f0ed);margin-bottom:8px;font-size:27px;color:#b2627c}
+.themeGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.theme{border:1px solid #e7e2e4;border-radius:12px;padding:7px;background:white;text-align:right;color:#474855}.theme.active{border-color:#a74c6b;box-shadow:0 0 0 2px #f7e0e9}.themePreview{height:60px;border-radius:8px;position:relative;overflow:hidden;border:1px solid #efeded}.themePreview:before{content:"";position:absolute;inset:7px;border:1.5px solid var(--a);border-radius:3px}.themePreview:after{content:"";position:absolute;top:27px;right:28%;width:44%;height:5px;background:var(--a);border-radius:9px;box-shadow:0 -12px 0 -1px var(--b),0 13px 0 -1px var(--b)}.themeName{font-size:10px;font-weight:800;display:block;margin:5px 2px 1px}.tip{font-size:11px;color:#7f8591;line-height:2;background:#faf9f7;border:1px solid #f0eded;border-radius:12px;padding:12px;margin:14px 0}
+.field{margin-bottom:13px}.field label{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:800;color:#656772;margin-bottom:6px}.field input:not([type=range]):not([type=color]),.field select,.field textarea{width:100%;border:1px solid #e8e4e6;background:#fff;border-radius:10px;padding:10px 11px;color:#323c47;min-width:0;font-size:12px}.field textarea{resize:vertical;min-height:78px;line-height:1.8}.field input[type=range]{width:100%;accent-color:#a84d6f}.field input[type=color]{width:46px;height:34px;border:1px solid #e8e4e6;background:white;padding:3px;border-radius:8px}.fieldRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.wideBtn{width:100%;border:1px solid #e7ced8;color:#862f50;background:#fff6f9;border-radius:11px;padding:11px 13px;font-weight:800;font-size:12px;margin-top:7px}.wideBtn:hover{background:#fcecf2}.wideBtn.solid{background:#873352;color:white;border-color:#873352}
+.nameCount{background:#faf4f6;color:#914662;border:1px solid #f1e1e7;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800;margin-bottom:10px}.smallHelp{font-size:10px;line-height:1.9;color:#9a9ca2;margin-top:7px}.fontsBox{max-height:188px;overflow:auto;border:1px solid #eae8e8;border-radius:10px;background:#fff}.fontOption{width:100%;text-align:right;display:flex;justify-content:space-between;gap:9px;align-items:center;padding:8px 10px;background:#fff;border:0;border-bottom:1px solid #f2efef;font-size:13px}.fontOption:hover,.fontOption.active{background:#fff4f7;color:#922e51}.fontOption em{font:10px Cairo;color:#aaa}
+.elementBtnGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.elBtn{border:1px solid #ebe1e5;background:white;color:#585561;border-radius:12px;padding:13px 5px;font-size:11px;font-weight:800}.elBtn b{display:block;font-size:23px;color:#995573;margin-bottom:4px;font-weight:600}.elBtn:hover{background:#fff3f7;border-color:#ca9cb0}
+.layerList{display:flex;flex-direction:column;gap:5px;margin-top:12px}.layer{border:1px solid #eeeceb;background:white;border-radius:10px;display:flex;align-items:center;gap:5px;padding:4px 7px}.layer.active{border-color:#bc8298;background:#fff6f8}.layerName{flex:1;text-align:right;background:none;border:0;color:#54515b;padding:6px;font-size:11px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.layerMove{width:24px;height:26px;border:none;background:#faf6f7;border-radius:5px;color:#96516b}
+.workspace{display:flex;flex-direction:column;min-width:0;min-height:0;background:radial-gradient(circle at 50% 25%,#faf9f7,#efece9 88%)}
+.toolstrip{height:62px;background:#fdfcfb;border-bottom:1px solid #e8e4e5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 20px;flex-wrap:wrap;flex-shrink:0}
+.toolgroup{display:flex;align-items:center;gap:8px}.crumb{color:#7b7481;font-size:11px;font-weight:800}.pill{border-radius:999px;padding:6px 11px;font-size:10px;border:1px solid #e6dce0;background:white;color:#80586a;font-weight:800}
+.workspaceCenter{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;min-width:0;padding:24px;position:relative;overflow:auto}
+.stageHolder{width:min(100%,1050px);margin:auto}.stage{position:relative;width:100%;margin:auto;box-shadow:0 22px 60px rgba(34,41,54,.19),0 0 0 1px #d9d6d5;background:white;transition:aspect-ratio .2s}
+.stage svg{display:block;width:100%;height:100%;touch-action:none;user-select:none}
+.stage [data-eid]{cursor:grab}.stage [data-eid]:active{cursor:grabbing}
+.stageInfo{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:11px;color:#8a8690}.dot{display:inline-block;width:6px;height:6px;background:#4d9d86;border-radius:50%;margin-left:6px}
+.footerBar{height:46px;background:#fdfcfb;border-top:1px solid #ebe7e8;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:11px;color:#7e7782;gap:12px}
+.inspector{background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;min-height:0}.inspectorHead{padding:21px 18px 13px;border-bottom:1px solid #f1ecee}.inspectorHead h3{font-size:17px;margin:0 0 4px;font-family:"El Messiri",Cairo}.inspectorHead p{font-size:11px;color:#93929d;margin:0}
+.inspectorBody{padding:18px;overflow:auto;flex:1;scrollbar-width:thin}.emptyInspector{padding:45px 10px;text-align:center;color:#999;font-size:12px;line-height:2.2}.emptyInspector .big{display:block;font-size:44px;color:#e2becb}.inspectActions{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:10px 0 18px}.inspectActions button{border:1px solid #eadde3;background:white;border-radius:8px;padding:8px 2px;font-size:11px;color:#6d5863;font-weight:800}
+.labelMini{font-size:11px;color:#85818a}.divider{height:1px;background:#f1e9ec;margin:15px 0}.toast{position:fixed;bottom:24px;right:50%;transform:translateX(50%) translateY(20px);opacity:0;pointer-events:none;background:#342d35;color:#fff;padding:10px 19px;border-radius:12px;font-size:12px;font-weight:700;z-index:99;transition:.25s;box-shadow:0 16px 30px #0002}.toast.on{opacity:1;transform:translateX(50%) translateY(0)}
+.modalOverlay{position:fixed;inset:0;background:#1a1720aa;z-index:100;display:none;align-items:center;justify-content:center;padding:16px}.modalOverlay.open{display:flex}.modal{width:min(480px,100%);background:#fff;border-radius:22px;padding:26px;box-shadow:0 30px 90px #0005}.modal h3{margin:0 0 8px;font:700 23px "El Messiri",Cairo}.modal p{font-size:12px;color:#7c7780;line-height:2}.modalActions{display:flex;gap:9px;margin-top:20px}
+#printRoot{display:none}
+@media(max-width:1170px){.main{grid-template-columns:285px minmax(320px,1fr) 250px}.top{padding:0 12px}.toolstrip{padding:0 12px}.workspaceCenter{padding:14px}}
+@media(max-width:930px){body{overflow:auto}.app{height:auto;min-height:100dvh;overflow:visible;grid-template-rows:auto auto}.top{min-height:70px;flex-wrap:wrap;padding:10px}.topRight{order:3;flex-basis:100%}.main{display:flex;flex-direction:column;overflow:visible}.leftPanel{order:2;border:none;min-height:360px}.workspace{order:1;min-height:430px}.inspector{order:3;border:none;min-height:250px}.tabBody{max-height:470px}.workspaceCenter{min-height:280px}.toolstrip{height:auto;min-height:55px}.stageHolder{max-width:760px}.footerBar{min-height:40px}.topActions{flex-wrap:wrap}.action{padding:9px 10px}}
+@media print{body{background:white!important;margin:0!important}.app,.toast,.modalOverlay{display:none!important}#printRoot{display:block!important;margin:0!important;padding:0!important}#printRoot .printPage{margin:0!important;padding:0!important;break-after:page;page-break-after:always;overflow:hidden;display:block}#printRoot .printPage:last-child{break-after:auto;page-break-after:auto}#printRoot svg{display:block;width:100%;height:100%;margin:0}}
+</style>
+<style id="pageRule">@page{size:A4 landscape;margin:0}</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="brand"><div class="logo">ش</div><div><strong>شهادتي <span style="color:#a85171">STUDIO</span></strong><small>CERTIFICATE DESIGN ATELIER</small></div></div>
+ <div class="topRight"><input id="projectName" class="projectName" value="تصميم شهادات جديد" aria-label="عنوان المشروع"><span class="pill" id="saveStatus">● محفوظ محليًا</span></div>
+ <div class="topActions"><button class="action" id="newBtn">＋ جديد</button><button class="action" id="saveBtn">◫ حفظ مشروع</button><button class="action" id="svgBtn">↓ SVG</button><button class="action" id="pngBtn">↓ PNG HD</button><button class="action primary" id="printBtn">▣ طباعة / PDF</button></div>
+</header>
+<div class="main">
+<aside class="leftPanel">
+ <div class="sideIntro"><div class="eyebrow">CREATIVE WORKSPACE / مساحة إبداع حرة</div><h2>صممي بطريقتك</h2><p>كل نص وكل لون وكل إطار بقرارك، والنتيجة جاهزة للطباعة.</p></div>
+ <nav class="tabs" id="tabs">
+  <button class="tab active" data-tab="presets"><span class="tabIcon">▣</span>القوالب</button>
+  <button class="tab" data-tab="themes"><span class="tabIcon">◈</span>الثيمات</button>
+  <button class="tab" data-tab="elements"><span class="tabIcon">✦</span>العناصر</button>
+  <button class="tab" data-tab="names"><span class="tabIcon">♙</span>الأسماء</button>
+  <button class="tab" data-tab="settings"><span class="tabIcon">⚙</span>الضبط</button>
+ </nav>
+ <div class="tabBody">
+  <div class="tabPage active" id="page-presets">
+   <div class="sectionHead">ابدئي بنوع التصميم <span>قابل للتعديل بالكامل</span></div>
+   <div class="presetGrid" id="presetGrid"></div>
+   <p class="tip">يمكنك تغيير كل كلمة في القالب، أو إضافة أي عدد من العبارات وسحبها داخل الشهادة. تغيير القالب يعيد توزيع العناصر.</p>
+   <div class="sectionHead">اختصارات سريعة</div>
+   <button class="wideBtn" id="addCustomText">＋ إضافة عبارة حرة</button>
+   <button class="wideBtn" id="autoArrange">✧ إعادة تنسيق العناصر</button>
+  </div>
+  <div class="tabPage" id="page-themes">
+   <div class="sectionHead">30 هوية لونية راقية <span id="themeCount">30 ثيمًا</span></div>
+   <div class="themeGrid" id="themeGrid"></div>
+   <div class="divider"></div>
+   <div class="sectionHead">إطارات الشهادة</div>
+   <div class="field"><select id="frameSelect"></select></div>
+   <div class="field"><label>سمك الإطار <span id="frameValue">2</span></label><input id="frameWidth" type="range" min="1" max="9" step="1" value="2"></div>
+   <div class="field"><label>لون مخصص للإطار</label><input type="color" id="frameColor" value="#9a4763"></div>
+   <div class="field"><label>زخرفة الخلفية</label><select id="patternSelect"></select></div>
+  </div>
+  <div class="tabPage" id="page-elements">
+   <div class="sectionHead">أضيفي ما تشائين</div>
+   <div class="elementBtnGrid">
+    <button class="elBtn" data-add="text"><b>𝐓</b>نص حر</button>
+    <button class="elBtn" data-add="line"><b>━</b>خط فاصل</button>
+    <button class="elBtn" data-add="box"><b>▢</b>مستطيل / إطار</button>
+    <button class="elBtn" data-add="star"><b>✦</b>نجمة</button>
+    <button class="elBtn" data-add="atom"><b>⚛</b>رمز الفيزياء</button>
+    <button class="elBtn" data-add="ribbon"><b>♧</b>شريط توعوي</button>
+    <button class="elBtn" data-add="laurel"><b>❧</b>إكليل تكريم</button>
+    <button class="elBtn" data-add="image"><b>▧</b>شعار / صورة</button>
+   </div>
+   <div class="divider"></div>
+   <div class="sectionHead">ترتيب الطبقات <span>اختاري للتعديل</span></div>
+   <div class="layerList" id="layerList"></div>
+   <p class="smallHelp">اسحبي العنصر مباشرةً على الشهادة، واستخدمي الأسهم في لوحة المفاتيح لتحريكه بدقة. يمكن تغيير ترتيب الظهور باستخدام ↑ و↓.</p>
+  </div>
+  <div class="tabPage" id="page-names">
+   <div class="sectionHead">شهادة واحدة أو مئات الشهادات</div>
+   <div class="field"><label>الأسماء (اسم في كل سطر)</label><textarea id="namesInput" rows="10" placeholder="سارة محمد&#10;نورة أحمد&#10;هناء علي"></textarea></div>
+   <div class="field"><label>الفئة / الوصف التلقائي</label><input id="peopleGroup" placeholder="مثل: طالبات، معلمات، أولياء الأمور" value="المكرمات"></div>
+   <div class="nameCount" id="nameCount">اسم واحد في المعاينة</div>
+   <div class="field"><label>اختيار معاينة الاسم</label><select id="previewName"></select></div>
+   <button class="wideBtn solid" id="batchPrintBtn">▣ طباعة شهادة لكل اسم</button>
+   <button class="wideBtn" id="batchExportBtn">↓ حفظ قائمة الأسماء TXT</button>
+   <p class="tip">العنصر المسمى «اسم المستفيد/ة» يتغير تلقائيًا لكل شخص. يمكنك أيضًا كتابة <strong dir="ltr">{{الاسم}}</strong> و<strong dir="ltr">{{الفئة}}</strong> في أي نص داخل التصميم.</p>
+   <div class="sectionHead">استيراد أسماء من Excel / CSV</div>
+   <label class="wideBtn" style="display:block;text-align:center;cursor:pointer">↑ رفع ملف أسماء <input type="file" id="csvUpload" accept=".csv,.txt,.tsv" hidden></label>
+  </div>
+  <div class="tabPage" id="page-settings">
+   <div class="sectionHead">إعدادات الورق والإخراج</div>
+   <div class="field"><label>اتجاه الورقة</label><select id="orientation"><option value="landscape">A4 بالعرض</option><option value="portrait">A4 بالطول</option></select></div>
+   <div class="field"><label>خلفية الشهادة</label><input id="bgColor" type="color" value="#fffdfb"></div>
+   <div class="field"><label>صورة خلفية خاصة</label><input id="bgUpload" type="file" accept="image/*"></div>
+   <button class="wideBtn" id="removeBg">إزالة صورة الخلفية</button>
+   <div class="divider"></div>
+   <div class="sectionHead">الخطوط والهوية</div>
+   <div class="field"><label>بحث بين 40+ خط عربي ولاتيني</label><input id="fontSearch" placeholder="اكتبي اسم الخط"></div>
+   <div class="fontsBox" id="allFonts"></div>
+   <p class="smallHelp">الخط الذي تختارينه هنا يُطبق على العنصر المحدد، أو على كل العبارات إذا لم يكن أي عنصر محددًا. بعض خطوط Google تحتاج اتصالًا بالإنترنت أول مرة.</p>
+   <div class="divider"></div>
+   <div class="sectionHead">العمل على مشاريعك</div>
+   <button class="wideBtn" id="jsonExport">↓ تنزيل نسخة مشروع قابلة للتعديل JSON</button>
+   <label class="wideBtn" style="display:block;text-align:center;cursor:pointer">↑ استعادة مشروع محفوظ <input type="file" id="jsonImport" accept=".json" hidden></label>
+   <button class="wideBtn" id="resetBtn">↻ استعادة التصميم الابتدائي</button>
+   <p class="tip">المشروع يُحفظ تلقائيًا في هذا المتصفح. للحصول على نسخة احتياطية دائمة، استخدمي «حفظ مشروع».</p>
+  </div>
+ </div>
+</aside>
+<section class="workspace">
+ <div class="toolstrip">
+  <div class="toolgroup"><span class="crumb">الاستوديو / <span id="currentPreset">شهادة تقدير</span></span><span class="pill" id="orientationBadge">A4 أفقي</span></div>
+  <div class="toolgroup"><button class="miniBtn" id="undoBtn" title="تراجع">↶ تراجع</button><button class="miniBtn" id="redoBtn" title="إعادة">↷ إعادة</button><button class="miniBtn" id="clearSelection" title="إلغاء التحديد">◇ إلغاء التحديد</button><button class="miniBtn" id="fullscreenBtn">⛶ ملء الشاشة</button></div>
+ </div>
+ <div class="workspaceCenter"><div class="stageHolder">
+  <div class="stage" id="stage"><div id="sheet"></div></div>
+  <div class="stageInfo"><span><span class="dot"></span>معاينة مباشرة • اسحبي النص لتحريكه • انقريه مرتين للتعديل</span><span id="sheetDimensions">A4 · 297 × 210 مم</span></div>
+ </div></div>
+ <div class="footerBar"><span>◈ كل العناصر حرة التعديل والتنسيق</span><span id="fontCurrent">الخط: المسيري</span><span>⌨ الأسهم للتحريك · Shift + سهم = 10 وحدات</span></div>
+</section>
+<aside class="inspector"><div class="inspectorHead"><h3>خصائص العنصر</h3><p>تفاصيل دقيقة لكل كلمة وشكل</p></div><div class="inspectorBody" id="inspectorBody"></div></aside>
+</div></div>
+<div id="printRoot"></div><div class="toast" id="toast"></div>
+<div class="modalOverlay" id="modal"><div class="modal"><h3 id="modalTitle">تنبيه</h3><p id="modalText"></p><div class="modalActions"><button class="action primary" id="modalConfirm">متابعة</button><button class="action" id="modalCancel">إلغاء</button></div></div></div>
+<script>
+(function(){
+"use strict";
+var fonts=[
+"El Messiri","Cairo","Tajawal","Almarai","Amiri","Lateef","Markazi Text","Noto Naskh Arabic","Noto Kufi Arabic","IBM Plex Sans Arabic","Readex Pro","Alexandria","Vazirmatn","Reem Kufi","Reem Kufi Fun","Changa","Harmattan","Mada","Mirza","Scheherazade New","Rakkas","Aref Ruqaa","Aref Ruqaa Ink","Lalezar","Baloo Bhaijaan 2","Marhey","Kufam","Noto Sans Arabic","Noto Nastaliq Urdu","Noto Serif","Rubik","Montserrat","Poppins","Playfair Display","Cormorant Garamond","Cinzel","Lora","DM Sans","Libre Baskerville","Roboto Slab","Bodoni Moda","Tinos","Great Vibes","Merriweather","Oswald","Nunito"
+];
+var palettes=[
+["اللؤلؤ الملكي","#fffdfb","#81516a","#c5a277","#342d39",0],["العنابي القطري","#fffdfd","#832943","#c9a16a","#302733",1],
+["روز جولد","#fffaf9","#ba6580","#c69d79","#493440",2],["الأزرق الأكاديمي","#fbfdff","#244d7b","#b7a17d","#1c2c40",3],
+["الذهب الهادئ","#fffefa","#a07b34","#d7bd84","#302f2b",4],["التركواز المعاصر","#fafffe","#258c91","#9ab8ad","#233d3d",5],
+["المخمل البنفسجي","#fefbff","#68477b","#c4a3c9","#33263e",6],["الزمرد الأنيق","#fbfffb","#317864","#a8c4a5","#233a32",7],
+["الرمادي اللؤلؤي","#fdfdfd","#586678","#b5bbc4","#31353d",8],["الوردي التوعوي","#fffafc","#bb4779","#f0b4cb","#482c3a",9],
+["الليلك الفاخر","#fefcff","#8660a3","#d5c1de","#473b51",0],["الأخضر الزيتوني","#fcfdf8","#6c7650","#c7bb88","#343a2a",1],
+["البحر الكحلي","#fbfdff","#213f68","#7aa8bf","#213040",2],["الكراميل الكلاسيكي","#fffdfa","#a4744f","#dbc2a7","#3f352d",3],
+["الأسود الذهبي","#ffffff","#26272c","#b79c61","#1d1b1e",4],["السماء الصافية","#fbfeff","#4e82b1","#b9d4e7","#28394c",5],
+["الياسمين","#fffffb","#8f8b60","#d8d1a6","#3c3a2c",6],["الفوشيا الناعم","#fffcff","#b34882","#e5a9c9","#3c2940",7],
+["البرونزي","#fffefa","#91634f","#c6a38a","#392d2b",8],["الفجر الوردي","#fffafa","#cd7c87","#f0c9bf","#553a44",9],
+["أزرق منتصف الليل","#fafbff","#283f69","#7c8dad","#202b40",0],["النعناع الهادئ","#fafffc","#4b9c88","#a6d4c5","#2a443b",1],
+["المرجاني","#fffcfa","#cb7065","#e7b099","#4a3431",2],["الكوبالت الملكي","#fcfdff","#305fc0","#aab6dc","#293451",3],
+["اللافندر الفضي","#fcfbff","#8576b7","#c0bad0","#363247",4],["الرمال العربية","#fffdfa","#a57e52","#dfc89b","#3f362f",5],
+["الفيروز الذهبي","#fafffe","#2d8d85","#c5a26c","#264641",6],["أحمر التوت","#fffafa","#9a3259","#d8a6b2","#452b36",7],
+["الخزامى الشاحبة","#fffefe","#8b7290","#d7c5d9","#3c333e",8],["السكون الأبيض","#ffffff","#56545b","#c8c5c9","#302f35",9]
+];
+var themes=palettes.map(function(p,i){return {id:i,name:p[0],bg:p[1],accent:p[2],accent2:p[3],ink:p[4],pattern:p[5]};});
+var frameNames=["مزدوج كلاسيكي","أركان فاخرة","خط عصري","خطوط هندسية","إطار ملكي","أطراف هادئة","زخرفة معاصرة","هالة ناعمة","شريط جانبي","بدون إطار"];
+var patternNames=["زخرفة الثيم التلقائية","موجات حريرية","خطوط هندسية","دوائر هادئة","أقواس عربية","نقاط دقيقة","زوايا ملكية","شرائط ملونة","نجوم متناثرة","سكون أبيض","ورود مجردة"];
+var presets=[
+{id:"appreciation",name:"شهادة تقدير",symbol:"✧",title:"شهادة تقدير",sub:"عرفانًا بالعطاء والتميز",body:"تقديرًا لمشاركتكم القيّمة وجهودكم المميزة، وإسهامكم البنّاء الذي ترك أثرًا طيبًا يستحق الشكر والاعتزاز."},
+{id:"star",name:"نجمة الأسبوع",symbol:"★",title:"نجمة الأسبوع",sub:"تميزٌ يستحق الاحتفاء",body:"لما أظهرتِه من التزام واجتهاد وروح إيجابية، فأنتِ مصدر إلهام وفخر. واصلي التألق!" },
+{id:"participation",name:"شهادة مشاركة",symbol:"◉",title:"شهادة مشاركة",sub:"شكرًا على حضورك الفاعل",body:"تقديرًا لمشاركتك الفاعلة وحماسك في إنجاح النشاط، وإسهامك في إثراء التجربة."},
+{id:"parent",name:"تكريم أولياء الأمور",symbol:"♡",title:"شهادة شكر وعرفان",sub:"شراكة تصنع الأثر",body:"امتنانًا لتعاونكم المثمر ودعمكم المستمر، ولدوركم المهم في تعزيز شراكة الأسرة والمدرسة."},
+{id:"honor",name:"شهادة تفوق",symbol:"✦",title:"شهادة تفوق",sub:"تفوقٌ تفتخر به المدرسة",body:"تقديرًا لتفوقك الأكاديمي وتميزك في التحصيل العلمي، مع أطيب الأمنيات بمزيد من النجاح."},
+{id:"volunteer",name:"تكريم المبادرات",symbol:"❋",title:"شهادة تميز",sub:"بصمة إيجابية باقية",body:"تقديرًا لمبادرتك المبدعة وروح المسؤولية والعمل الجماعي، وإسهامك في نجاح هذه المبادرة."},
+{id:"sports",name:"إنجاز رياضي",symbol:"♜",title:"شهادة إنجاز",sub:"شغف · إرادة · نجاح",body:"احتفاءً بروحك الرياضية وإصرارك الجميل، وإنجازك الذي يستحق كل فخر وتقدير."},
+{id:"science",name:"إنجاز علمي",symbol:"⚛",title:"شهادة إنجاز علمي",sub:"شغف المعرفة يصنع المستقبل",body:"تقديرًا لفضولك العلمي وتفكيرك الإبداعي ومساهمتك المميزة في الأنشطة العلمية."},
+{id:"teacher",name:"شكر للمعلمات",symbol:"❀",title:"شهادة شكر وتقدير",sub:"للعطاء حكايات لا تُنسى",body:"امتنانًا لرسالتك السامية، ولجهودك المخلصة في الإبداع والتعليم وبناء الأثر الإيجابي."},
+{id:"custom",name:"تصميم حر",symbol:"＋",title:"عنوان الشهادة",sub:"عبارة فرعية من اختيارك",body:"اكتبي هنا نص التكريم أو الشكر أو التهنئة، وصممي شهادتك بحرية تامة."}
+];
+var SVG_NS="http://www.w3.org/2000/svg";
+var st={project:"تصميم شهادات جديد",preset:"appreciation",theme:0,frame:0,frameWidth:2,frameColor:"",pattern:-1,orientation:"landscape",bg:"",bgImage:"",font:"El Messiri",peopleGroup:"المكرمات",names:[],preview:0,elements:[],selected:null};
+var undo=[],redo=[],nextId=0,drag=null,autosaveTimer=null,fontLoaded={};
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+function clamp(x,a,b){return Math.min(b,Math.max(a,x));}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function dims(){return st.orientation==="landscape"?[1200,848]:[848,1200];}
+function theme(){return themes[st.theme]||themes[0];}
+function col(obj){return obj.colorKey?(theme()[obj.colorKey]||theme().ink):(obj.color||theme().ink);}
+function fontFix(f){return f||st.font||"El Messiri";}
+function fontCss(f){return "'"+String(f).replace(/'/g,"")+"', 'Cairo', serif";}
+function loadFont(f){if(!f||fontLoaded[f])return;fontLoaded[f]=true;var link=document.createElement("link");link.rel="stylesheet";link.href="https://fonts.googleapis.com/css2?family="+encodeURIComponent(f).replace(/%20/g,"+")+":wght@400;600;700;800&display=swap";document.head.appendChild(link);}
+function tpl(id,extra){return Object.assign({id:id||("e"+(++nextId)),type:"text",text:"نص قابل للتعديل",x:600,y:400,size:34,font:st.font,weight:700,colorKey:"ink",color:"",align:"middle",maxWidth:930,opacity:1,lineHeight:1.4,rotation:0},extra||{});}
+function populatePreset(id,keepText){
+ var p=presets.find(function(x){return x.id===id})||presets[0],wh=dims(),W=wh[0],H=wh[1],r=st.orientation==="landscape"?1:.76;
+ var elements=[
+ tpl("school",{label:"اسم المدرسة / الجهة",text:"اسم المدرسة أو المؤسسة",x:W/2,y:H*.118,size:32*r,colorKey:"ink",weight:700}),
+ tpl("department",{label:"القسم / الجهة المنظمة",text:"القسم أو الجهة المنظمة",x:W/2,y:H*.165,size:20*r,colorKey:"accent",weight:600}),
+ tpl("title",{label:"عنوان الشهادة",text:p.title,x:W/2,y:H*.292,size:78*r,colorKey:"accent",weight:700}),
+ tpl("subtitle",{label:"عبارة تحت العنوان",text:p.sub,x:W/2,y:H*.374,size:29*r,colorKey:"ink",weight:600}),
+ tpl("label",{label:"عبارة قبل الاسم",text:"تُمنح هذه الشهادة إلى",x:W/2,y:H*.49,size:23*r,colorKey:"accent",weight:600}),
+ tpl("recipient",{label:"اسم المستفيد/ة",text:"اسم المستفيد/ة",x:W/2,y:H*.582,size:66*r,colorKey:"ink",weight:700,maxWidth:W*.80}),
+ tpl("message",{label:"نص الشهادة",text:p.body,x:W/2,y:H*.685,size:26*r,colorKey:"ink",weight:400,maxWidth:W*.77,lineHeight:1.5}),
+ tpl("closing",{label:"عبارة ختامية",text:"مع خالص الأمنيات بدوام النجاح والتألق",x:W/2,y:H*.802,size:19*r,colorKey:"accent",weight:600}),
+ tpl("sign1",{label:"التوقيع الأيمن",text:"القسم المنظم",x:W*.80,y:H*.905,size:18*r,colorKey:"ink",weight:600}),
+ tpl("sign2",{label:"التوقيع الأيسر",text:"الإدارة المدرسية",x:W*.20,y:H*.905,size:18*r,colorKey:"ink",weight:600}),
+ tpl("date",{label:"التاريخ",text:"العام الأكاديمي 2026 - 2027",x:W/2,y:H*.963,size:15*r,colorKey:"muted",weight:400})
+ ];
+ if(keepText){var prev={};st.elements.forEach(function(e){prev[e.id]=e});elements.forEach(function(e){if(prev[e.id]&&prev[e.id].type==="text")e.text=prev[e.id].text;});}
+ st.preset=id;st.elements=elements;st.selected=null;
+}
+function safeState(){return {project:st.project,preset:st.preset,theme:st.theme,frame:st.frame,frameWidth:st.frameWidth,frameColor:st.frameColor,pattern:st.pattern,orientation:st.orientation,bg:st.bg,bgImage:st.bgImage,font:st.font,peopleGroup:st.peopleGroup,names:st.names,preview:st.preview,elements:st.elements};}
+function capture(){undo.push(JSON.stringify(safeState()));if(undo.length>65)undo.shift();redo=[];}
+function restore(obj){if(!obj||!Array.isArray(obj.elements))throw Error("ملف المشروع غير صالح");var s=Object.assign({},st,obj);if(!["landscape","portrait"].includes(s.orientation))s.orientation="landscape";s.theme=clamp(+s.theme||0,0,29);s.frame=clamp(+s.frame||0,0,9);s.elements=s.elements.map(function(e){return Object.assign({},tpl(e.id),e)});st=s;nextId+=100;st.selected=null;syncInputs();renderAll();}
+function doUndo(){if(!undo.length)return;redo.push(JSON.stringify(safeState()));restore(JSON.parse(undo.pop()));notify("تم التراجع");}
+function doRedo(){if(!redo.length)return;undo.push(JSON.stringify(safeState()));restore(JSON.parse(redo.pop()));notify("تمت الإعادة");}
+function autosave(){el("saveStatus").textContent="◌ جاري الحفظ";clearTimeout(autosaveTimer);autosaveTimer=setTimeout(function(){try{localStorage.setItem("shahadati_studio_v1",JSON.stringify(safeState()));el("saveStatus").textContent="● محفوظ محليًا";}catch(e){el("saveStatus").textContent="! مساحة الحفظ ممتلئة";}},600);}
+function notify(msg){var t=el("toast");t.textContent=msg;t.classList.add("on");clearTimeout(notify.timer);notify.timer=setTimeout(function(){t.classList.remove("on")},2700);}
+function normalText(s){return String(s==null?"":s);}
+function personName(override){if(override!==undefined)return override;return st.names[st.preview]||"اسم المستفيد/ة";}
+function nameRepl(s,n){return normalText(s).replace(/\{\{الاسم\}\}/g,n).replace(/\{\{الفئة\}\}/g,st.peopleGroup);}
+function measureLines(txt,maxw,size){var rows=[];String(txt).split(/\r?\n/).forEach(function(para){if(!para){rows.push("");return}var words=para.split(/\s+/),line="";words.forEach(function(w){var test=line?line+" "+w:w;var factor=0.57;var estimate=Array.from(test).length*size*factor;if(line&&estimate>maxw){rows.push(line);line=w}else line=test});rows.push(line)});return rows.length?rows:[""];}
+function decoration(W,H,t,p){
+ var a=t.accent,b=t.accent2,style=p<0?t.pattern:p;var o="";
+ if(style===0)o='<circle cx="'+(W*.5)+'" cy="'+(H*.38)+'" r="'+(W*.24)+'" fill="none" stroke="'+b+'" stroke-width="1.4" opacity=".12"/><circle cx="'+(W*.5)+'" cy="'+(H*.38)+'" r="'+(W*.23)+'" fill="none" stroke="'+a+'" stroke-width=".8" opacity=".08"/>';
+ if(style===1)o='<path d="M0 '+(H*.22)+' Q'+(W*.2)+' '+(H*.10)+' '+(W*.38)+' '+(H*.19)+' T '+W+' '+(H*.13)+'" fill="none" stroke="'+b+'" stroke-width="16" opacity=".13"/><path d="M0 '+(H*.86)+' Q'+(W*.3)+' '+(H*.99)+' '+(W*.58)+' '+(H*.91)+' T'+W+' '+(H*.95)+'" fill="none" stroke="'+a+'" stroke-width="2" opacity=".20"/>';
+ if(style===2)for(var i=0;i<10;i++)o+='<line x1="'+(W*.04+i*21)+'" y1="0" x2="'+(W*.20+i*21)+'" y2="'+H+'" stroke="'+b+'" stroke-width="1" opacity=".10"/>';
+ if(style===3)o='<circle cx="'+(W*.04)+'" cy="'+(H*.08)+'" r="'+(W*.24)+'" fill="'+b+'" opacity=".075"/><circle cx="'+(W*.96)+'" cy="'+(H*.93)+'" r="'+(W*.23)+'" fill="'+a+'" opacity=".065"/>';
+ if(style===4)o='<path d="M '+(W*.13)+' '+(H*.84)+' A '+(W*.35)+' '+(H*.7)+' 0 0 1 '+(W*.83)+' '+(H*.84)+'" fill="none" stroke="'+b+'" stroke-width="2" opacity=".20"/><path d="M '+(W*.23)+' '+(H*.81)+' A '+(W*.26)+' '+(H*.55)+' 0 0 1 '+(W*.75)+' '+(H*.81)+'" fill="none" stroke="'+a+'" stroke-width="1" opacity=".12"/>';
+ if(style===5)for(var k=0;k<9;k++)for(var j=0;j<5;j++)o+='<circle cx="'+(W*.12+k*W*.095)+'" cy="'+(H*.11+j*H*.18)+'" r="1.7" fill="'+b+'" opacity=".23"/>';
+ if(style===6)o='<path d="M36 180 V36 H180 M'+(W-180)+' 36 H'+(W-36)+' V180 M36 '+(H-180)+' V'+(H-36)+' H180 M'+(W-180)+' '+(H-36)+' H'+(W-36)+' V'+(H-180)+'" stroke="'+b+'" stroke-width="4" fill="none" opacity=".20"/>';
+ if(style===7)o='<rect x="0" y="0" width="23" height="'+H+'" fill="'+a+'" opacity=".10"/><rect x="'+(W-23)+'" y="0" width="23" height="'+H+'" fill="'+b+'" opacity=".12"/>';
+ if(style===8)for(var z=0;z<18;z++){var x=(z*187+51)%W,y=(z*113+39)%H;o+='<path d="M'+x+' '+(y-4)+'v8 M'+(x-4)+' '+y+'h8" stroke="'+b+'" stroke-width="1.6" opacity=".20"/>';}
+ if(style===10)o='<ellipse cx="'+(W*.09)+'" cy="'+(H*.87)+'" rx="120" ry="80" fill="'+b+'" opacity=".07"/><ellipse cx="'+(W*.91)+'" cy="'+(H*.13)+'" rx="115" ry="82" fill="'+a+'" opacity=".055"/>';
+ return o;
+}
+function borderSvg(W,H,t){
+ var a=st.frameColor||t.accent,b=t.accent2,k=st.frameWidth||2,frame=st.frame;
+ if(frame===9)return "";
+ if(frame===0)return '<rect x="27" y="27" width="'+(W-54)+'" height="'+(H-54)+'" rx="5" fill="none" stroke="'+a+'" stroke-width="'+k+'"/><rect x="38" y="38" width="'+(W-76)+'" height="'+(H-76)+'" rx="3" fill="none" stroke="'+b+'" stroke-width="1.5" opacity=".7"/>';
+ if(frame===1)return '<path d="M60 176V60H176 M'+(W-176)+' 60H'+(W-60)+'V176 M60 '+(H-176)+'V'+(H-60)+'H176 M'+(W-176)+' '+(H-60)+'H'+(W-60)+'V'+(H-176)+'" fill="none" stroke="'+a+'" stroke-width="'+(k+2)+'" stroke-linecap="square"/>';
+ if(frame===2)return '<path d="M52 83H'+(W-52)+' M52 '+(H-83)+'H'+(W-52)+'" stroke="'+a+'" stroke-width="'+k+'" opacity=".75"/><circle cx="'+(W/2)+'" cy="83" r="5" fill="'+b+'"/><circle cx="'+(W/2)+'" cy="'+(H-83)+'" r="5" fill="'+b+'"/>';
+ if(frame===3)return '<rect x="31" y="31" width="'+(W-62)+'" height="'+(H-62)+'" fill="none" stroke="'+a+'" stroke-width="'+k+'" stroke-dasharray="16 8"/><path d="M31 135V31H135 M'+(W-135)+' 31H'+(W-31)+'V135" stroke="'+b+'" stroke-width="7" fill="none"/>';
+ if(frame===4)return '<rect x="26" y="26" width="'+(W-52)+'" height="'+(H-52)+'" fill="none" stroke="'+a+'" stroke-width="'+k+'"/><rect x="49" y="49" width="'+(W-98)+'" height="'+(H-98)+'" fill="none" stroke="'+b+'" stroke-width="2"/><path d="M'+(W/2-58)+' 26 l58 23 58-23 M'+(W/2-58)+' '+(H-26)+' l58-23 58 23" fill="none" stroke="'+b+'" stroke-width="3"/>';
+ if(frame===5)return '<path d="M50 140V50H140 M'+(W-140)+' 50H'+(W-50)+'V140 M50 '+(H-140)+'V'+(H-50)+'H140 M'+(W-140)+' '+(H-50)+'H'+(W-50)+'V'+(H-140)+'" fill="none" stroke="'+a+'" stroke-width="'+k+'"/><circle cx="50" cy="50" r="4" fill="'+b+'"/><circle cx="'+(W-50)+'" cy="'+(H-50)+'" r="4" fill="'+b+'"/>';
+ if(frame===6)return '<path d="M42 110V54Q42 42 54 42H110 M'+(W-110)+' 42H'+(W-54)+'Q'+(W-42)+' 42 '+(W-42)+' 54V110 M42 '+(H-110)+'V'+(H-54)+'Q42 '+(H-42)+' 54 '+(H-42)+'H110 M'+(W-110)+' '+(H-42)+'H'+(W-54)+'Q'+(W-42)+' '+(H-42)+' '+(W-42)+' '+(H-54)+'V'+(H-110)+'" stroke="'+a+'" stroke-width="'+(k+1)+'" fill="none"/>';
+ if(frame===7)return '<rect x="37" y="37" width="'+(W-74)+'" height="'+(H-74)+'" rx="48" stroke="'+b+'" stroke-width="'+k+'" fill="none" opacity=".68"/><rect x="48" y="48" width="'+(W-96)+'" height="'+(H-96)+'" rx="39" stroke="'+a+'" stroke-width="1" fill="none" opacity=".58"/>';
+ if(frame===8)return '<rect x="0" y="0" width="20" height="'+H+'" fill="'+a+'"/><rect x="'+(W-20)+'" y="0" width="20" height="'+H+'" fill="'+b+'"/><path d="M70 70H'+(W-70)+' M70 '+(H-70)+'H'+(W-70)+'" stroke="'+b+'" stroke-width="'+k+'" opacity=".45"/>';
+ return "";
+}
+function iconShape(type,size,stroke){
+ var s=size/100,g="";
+ if(type==="atom")g='<ellipse rx="40" ry="16" fill="none" stroke="currentColor" stroke-width="4"/><ellipse rx="40" ry="16" transform="rotate(60)" fill="none" stroke="currentColor" stroke-width="4"/><ellipse rx="40" ry="16" transform="rotate(120)" fill="none" stroke="currentColor" stroke-width="4"/><circle r="7" fill="currentColor"/>';
+ if(type==="star")g='<path d="M0-44L12-14 44-14 18 7 28 40 0 20-28 40-18 7-44-14-12-14Z" fill="none" stroke="currentColor" stroke-width="4"/>';
+ if(type==="ribbon")g='<path d="M0-40C-32-62-49-25-12 6L-27 49 -6 39 0 19 9 39 28 49 12 6C49-25 32-62 0-40Z" fill="none" stroke="currentColor" stroke-width="9"/>';
+ if(type==="laurel")g='<path d="M-6 41C-60 11-48-28-25-41 M6 41C60 11 48-28 25-41" fill="none" stroke="currentColor" stroke-width="4"/><path d="M-29-18l-18-9 10 20 M-38 0l-14-4 10 17 M-25 23l-15 5 17 8 M29-18l18-9-10 20 M38 0l14-4-10 17 M25 23l15 5-17 8" fill="currentColor" opacity=".65"/>';
+ return '<g transform="scale('+s+')" color="'+esc(stroke)+'">'+g+'</g>';
+}
+function renderItem(e,name){
+ var color=col(e),op=clamp(Number(e.opacity==null?1:e.opacity),0,1),rotation=Number(e.rotation)||0;
+ var g='<g data-eid="'+esc(e.id)+'" transform="translate('+Number(e.x||0)+' '+Number(e.y||0)+') rotate('+rotation+')" opacity="'+op+'">';
+ if(e.type==="text"){
+  var txt=e.id==="recipient"?name:nameRepl(e.text,name);
+  var sz=+e.size||32, mw=+e.maxWidth||900;
+  if(e.id==="recipient"&&txt.length>23)sz=Math.min(sz,Math.max(22,mw/(txt.length*.56)));
+  var lines=measureLines(txt,mw,sz),lineH=sz*(+e.lineHeight||1.4),offset=-(lines.length-1)*lineH/2;
+  var anchor=e.align||"middle";
+  g+='<text x="0" y="0" text-anchor="'+esc(anchor)+'" direction="rtl" unicode-bidi="plaintext" fill="'+esc(color)+'" font-family="'+esc(fontFix(e.font))+'" font-size="'+sz+'" font-weight="'+(+e.weight||400)+'" dominant-baseline="middle">';
+  lines.forEach(function(line,i){g+='<tspan x="0" y="'+(offset+i*lineH)+'">'+esc(line||" ")+'</tspan>';});
+  g+='</text>';
+ }else if(e.type==="line"){
+  g+='<line x1="'+(-Number(e.width||260)/2)+'" y1="0" x2="'+(Number(e.width||260)/2)+'" y2="0" stroke="'+esc(color)+'" stroke-width="'+(+e.size||3)+'" stroke-linecap="round"/>';
+ }else if(e.type==="box"){
+  g+='<rect x="'+(-Number(e.width||280)/2)+'" y="'+(-Number(e.height||90)/2)+'" width="'+(+e.width||280)+'" height="'+(+e.height||90)+'" rx="'+(+e.radius||14)+'" fill="'+esc(e.fill||"none")+'" stroke="'+esc(color)+'" stroke-width="'+(+e.size||3)+'"/>';
+ }else if(e.type==="image"){
+  if(e.src)g+='<image href="'+esc(e.src)+'" x="'+(-Number(e.width||150)/2)+'" y="'+(-Number(e.height||150)/2)+'" width="'+(+e.width||150)+'" height="'+(+e.height||150)+'" preserveAspectRatio="xMidYMid meet"/>';
+ }else{g+=iconShape(e.type,e.size||90,color);}
+ g+='</g>';return g;
+}
+function drawSvg(name,editing){
+ var d=dims(),W=d[0],H=d[1],t=theme(),bg=st.bg||t.bg;
+ var svg='<svg xmlns="'+SVG_NS+'" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" role="img" aria-label="معاينة الشهادة">';
+ svg+='<rect width="'+W+'" height="'+H+'" fill="'+esc(bg)+'"/>';
+ if(st.bgImage)svg+='<image href="'+esc(st.bgImage)+'" x="0" y="0" width="'+W+'" height="'+H+'" opacity=".35" preserveAspectRatio="xMidYMid slice"/>';
+ svg+=decoration(W,H,t,st.pattern)+borderSvg(W,H,t);
+ st.elements.forEach(function(e){svg+=renderItem(e,name);});
+ if(editing&&st.selected){
+  var e=st.elements.find(function(x){return x.id===st.selected});
+  if(e){
+   var w=e.type==="text"?Math.min(+e.maxWidth||850,W*.82):(e.width||e.size||100);
+   var h=e.type==="text"?(e.size||40)*Math.max(1,measureLines(e.text,e.maxWidth||850,e.size||30).length)*1.55:(e.height||e.size||100);
+   svg+='<rect x="'+(e.x-w/2)+'" y="'+(e.y-h/2)+'" width="'+w+'" height="'+h+'" rx="7" fill="none" stroke="#bd6788" stroke-width="2" stroke-dasharray="9 6" pointer-events="none"/><circle cx="'+e.x+'" cy="'+(e.y-h/2)+'" r="5" fill="#bd6788" pointer-events="none"/>';
+  }
+ }
+ svg+='</svg>';return svg;
+}
+function renderStage(){var wh=dims(),W=wh[0],H=wh[1];el("stage").style.aspectRatio=W+" / "+H;el("sheet").innerHTML=drawSvg(personName(),true);el("sheetDimensions").textContent=st.orientation==="landscape"?"A4 · 297 × 210 مم":"A4 · 210 × 297 مم";el("orientationBadge").textContent=st.orientation==="landscape"?"A4 أفقي":"A4 عمودي";}
+function renderThemes(){
+ el("themeGrid").innerHTML=themes.map(function(t){return '<button class="theme '+(st.theme===t.id?"active":"")+'" data-theme="'+t.id+'"><div class="themePreview" style="background:'+t.bg+';--a:'+t.accent+';--b:'+t.accent2+'"></div><span class="themeName">'+esc(t.name)+'</span></button>';}).join("");
+}
+function renderPresets(){
+ el("presetGrid").innerHTML=presets.map(function(p){return '<button class="preset '+(st.preset===p.id?"active":"")+'" data-preset="'+p.id+'"><span class="presetIcon">'+esc(p.symbol)+'</span>'+esc(p.name)+'</button>';}).join("");
+ el("currentPreset").textContent=(presets.find(function(x){return x.id===st.preset})||presets[0]).name;
+}
+function renderLayers(){el("layerList").innerHTML=st.elements.slice().reverse().map(function(e){
+ var title=e.label||({text:e.text,line:"خط",box:"إطار",image:"صورة",star:"نجمة",atom:"ذرة",ribbon:"شريط",laurel:"إكليل"}[e.type]||"عنصر");
+ return '<div class="layer '+(st.selected===e.id?"active":"")+'"><button class="layerName" data-select="'+esc(e.id)+'" title="'+esc(title)+'">'+(e.type==="text"?"𝐓 ":"◇ ")+esc(title)+'</button><button class="layerMove" data-front="'+esc(e.id)+'" title="للأمام">↑</button><button class="layerMove" data-back="'+esc(e.id)+'" title="للخلف">↓</button></div>';
+ }).join("");}
+function renderFontList(){
+ var q=(el("fontSearch").value||"").toLowerCase();
+ el("allFonts").innerHTML=fonts.filter(function(f){return f.toLowerCase().includes(q)}).map(function(f){return '<button class="fontOption '+(st.selected?((st.elements.find(function(e){return e.id===st.selected})||{}).font===f?"active":""):(st.font===f?"active":""))+'" data-font="'+esc(f)+'"><span style="font-family:'+esc(fontCss(f))+'">'+esc(f)+'</span><em>AA</em></button>';}).join("");
+}
+function renderNames(){
+ el("nameCount").textContent=st.names.length?"عدد الشهادات عند الطباعة: "+st.names.length:"لا توجد أسماء مدخلة — اسم افتراضي للمعاينة";
+ el("previewName").innerHTML=(st.names.length?st.names:["اسم المستفيد/ة"]).map(function(n,i){return '<option value="'+i+'">'+esc(n)+'</option>'}).join("");
+ el("previewName").value=String(clamp(st.preview,0,Math.max(0,st.names.length-1)));
+}
+function inspectValue(id,val){var input=el(id);if(input)input.value=val==null?"":val;}
+function renderInspector(){
+ var node=el("inspectorBody"),e=st.elements.find(function(x){return x.id===st.selected});
+ if(!e){node.innerHTML='<div class="emptyInspector"><span class="big">✦</span><strong>اختاري عنصرًا من الشهادة</strong><br>اضغطي على أي نص أو شكل لتغيير مكانه وخطه ولونه وأبعاده بحرية.</div>';return;}
+ var h='<div class="sectionHead">العنصر المحدد <span>'+esc(e.label||e.type)+'</span></div>';
+ if(e.type==="text")h+='<div class="field"><label>محتوى النص</label><textarea id="propText" rows="5">'+esc(e.text)+'</textarea></div>';
+ if(e.type==="text"){
+ h+='<div class="field"><label>الخط</label><select id="propFont">'+fonts.map(function(f){return '<option value="'+esc(f)+'" '+(f===e.font?"selected":"")+'>'+esc(f)+'</option>'}).join("")+'</select></div>';
+ h+='<div class="fieldRow"><div class="field"><label>حجم الخط</label><input id="propSize" type="number" min="8" max="220" value="'+(+e.size||28)+'"></div><div class="field"><label>السمك</label><select id="propWeight"><option value="400" '+(+e.weight===400?"selected":"")+'>عادي</option><option value="600" '+(+e.weight===600?"selected":"")+'>متوسط</option><option value="700" '+(+e.weight===700?"selected":"")+'>عريض</option><option value="800" '+(+e.weight===800?"selected":"")+'>ثقيل</option></select></div></div>';
+ h+='<div class="field"><label>محاذاة النص</label><select id="propAlign"><option value="middle" '+(e.align==="middle"?"selected":"")+'>وسط</option><option value="start" '+(e.align==="start"?"selected":"")+'>بداية السطر</option><option value="end" '+(e.align==="end"?"selected":"")+'>نهاية السطر</option></select></div>';
+ h+='<div class="fieldRow"><div class="field"><label>عرض صندوق النص</label><input id="propMaxWidth" type="number" min="70" max="1200" value="'+(+e.maxWidth||850)+'"></div><div class="field"><label>تباعد السطور</label><input id="propLineHeight" type="number" min=".9" max="3" step=".1" value="'+(+e.lineHeight||1.4)+'"></div></div>';
+ }else if(e.type==="image"){
+ h+='<div class="fieldRow"><div class="field"><label>العرض</label><input id="propWidth" type="number" value="'+(+e.width||150)+'"></div><div class="field"><label>الارتفاع</label><input id="propHeight" type="number" value="'+(+e.height||150)+'"></div></div>';
+ h+='<label class="wideBtn" style="display:block;text-align:center;cursor:pointer">استبدال الصورة <input type="file" accept="image/*" id="propImage" hidden></label>';
+ }else if(e.type==="box"||e.type==="line"){
+ h+='<div class="fieldRow"><div class="field"><label>العرض</label><input id="propWidth" type="number" value="'+(+e.width||300)+'"></div><div class="field"><label>الارتفاع</label><input id="propHeight" type="number" value="'+(+e.height||90)+'" '+(e.type==="line"?"disabled":"")+'></div></div>';
+ if(e.type==="box")h+='<div class="field"><label>تعبئة الإطار</label><input id="propFill" type="color" value="'+(e.fill&&e.fill!=="none"?e.fill:"#ffffff")+'"><label><input type="checkbox" id="propNoFill" '+(e.fill==="none"?"checked":"")+'> بدون تعبئة</label></div>';
+ }else h+='<div class="field"><label>حجم الزخرفة</label><input id="propSize" type="number" min="16" max="500" value="'+(+e.size||90)+'"></div>';
+ h+='<div class="divider"></div><div class="fieldRow"><div class="field"><label>اللون</label><input id="propColor" type="color" value="'+esc(col(e))+'"></div><div class="field"><label>الشفافية %</label><input id="propOpacity" type="number" min="5" max="100" value="'+Math.round((e.opacity==null?1:e.opacity)*100)+'"></div></div>';
+ h+='<div class="fieldRow"><div class="field"><label>أفقي X</label><input id="propX" type="number" value="'+Math.round(e.x)+'"></div><div class="field"><label>رأسي Y</label><input id="propY" type="number" value="'+Math.round(e.y)+'"></div></div>';
+ h+='<div class="field"><label>استدارة العنصر (درجة)</label><input id="propRotation" type="range" min="-180" max="180" value="'+(+e.rotation||0)+'"></div>';
+ h+='<div class="inspectActions"><button id="duplicateEl">نسخ</button><button id="deleteEl">حذف</button><button id="centerEl">توسيط</button></div>';
+ h+='<p class="smallHelp">النقر مرتين على النص يعيد فتح محرره. يمكنك تحريك كل عنصر بحرية بالفأرة أو لوحة المفاتيح.</p>';
+ node.innerHTML=h;
+ var map={propText:"text",propFont:"font",propSize:"size",propWeight:"weight",propAlign:"align",propMaxWidth:"maxWidth",propLineHeight:"lineHeight",propWidth:"width",propHeight:"height",propOpacity:"opacity",propX:"x",propY:"y",propRotation:"rotation",propColor:"color",propFill:"fill"};
+ Object.keys(map).forEach(function(id){var input=el(id);if(!input)return;var action=function(){var val=input.value;if(id==="propOpacity")val=clamp(+val,5,100)/100;else if(["propSize","propWeight","propMaxWidth","propLineHeight","propWidth","propHeight","propX","propY","propRotation"].includes(id))val=+val;if(id==="propColor")e.colorKey=null;if(id==="propFont")loadFont(val);e[map[id]]=val;renderStage();renderLayers();autosave();};input.addEventListener("input",action);input.addEventListener("change",action);});
+ var nFill=el("propNoFill");if(nFill)nFill.onchange=function(){e.fill=this.checked?"none":(el("propFill")||{}).value||"#ffffff";renderStage();autosave();};
+ var pi=el("propImage");if(pi)pi.onchange=function(){readImage(this.files[0],function(src){capture();e.src=src;renderStage();autosave();});};
+ el("duplicateEl").onclick=function(){capture();var copy=clone(e);copy.id="e"+(++nextId);copy.x+=26;copy.y+=26;st.elements.push(copy);st.selected=copy.id;renderAll();autosave();};
+ el("deleteEl").onclick=function(){capture();st.elements=st.elements.filter(function(a){return a.id!==e.id});st.selected=null;renderAll();autosave();};
+ el("centerEl").onclick=function(){capture();var wh=dims();e.x=wh[0]/2;e.y=wh[1]/2;renderAll();autosave();};
+ el("fontCurrent").textContent="الخط: "+fontFix(e.font);
+}
+function renderAll(){renderStage();renderThemes();renderPresets();renderLayers();renderNames();renderInspector();renderFontList();el("projectName").value=st.project;el("undoBtn").disabled=!undo.length;el("redoBtn").disabled=!redo.length;}
+function select(id){if(st.selected===id)return;st.selected=id;renderStage();renderLayers();renderInspector();renderFontList();}
+function moveSelected(dx,dy){var e=st.elements.find(function(x){return x.id===st.selected});if(!e)return;var wh=dims();e.x=clamp(+e.x+dx,0,wh[0]);e.y=clamp(+e.y+dy,0,wh[1]);renderStage();inspectValue("propX",Math.round(e.x));inspectValue("propY",Math.round(e.y));autosave();}
+function showTab(which){document.querySelectorAll(".tab").forEach(function(b){b.classList.toggle("active",b.dataset.tab===which)});document.querySelectorAll(".tabPage").forEach(function(p){p.classList.toggle("active",p.id==="page-"+which)});}
+function syncInputs(){
+ el("projectName").value=st.project;el("frameSelect").value=st.frame;el("frameWidth").value=st.frameWidth;el("frameValue").textContent=st.frameWidth;el("frameColor").value=st.frameColor||theme().accent;el("patternSelect").value=st.pattern;el("orientation").value=st.orientation;el("bgColor").value=st.bg||theme().bg;el("peopleGroup").value=st.peopleGroup;el("namesInput").value=st.names.join("\n");el("pageRule").textContent="@page{size:A4 "+(st.orientation==="portrait"?"portrait":"landscape")+";margin:0}";}
+function changeOrientation(newOrientation){if(st.orientation===newOrientation)return;capture();var old=dims();st.orientation=newOrientation;var nw=dims();st.elements.forEach(function(e){e.x=e.x*nw[0]/old[0];e.y=e.y*nw[1]/old[1];if(e.maxWidth)e.maxWidth*=nw[0]/old[0];if(e.type==="text")e.size*=nw[0]/old[0];});st.selected=null;syncInputs();renderAll();autosave();}
+function applyTheme(index){capture();st.theme=index;st.bg="";st.frameColor="";syncInputs();renderAll();autosave();}
+function addElement(type,src){
+ capture();var wh=dims(),e;
+ if(type==="text")e=tpl(null,{text:"اكتبي عبارتك هنا",label:"عبارة حرة",x:wh[0]/2,y:wh[1]*.49,size:34,colorKey:"ink"});
+ else if(type==="line")e=tpl(null,{type:"line",label:"خط فاصل",x:wh[0]/2,y:wh[1]/2,width:300,size:3,colorKey:"accent"});
+ else if(type==="box")e=tpl(null,{type:"box",label:"إطار حر",x:wh[0]/2,y:wh[1]/2,width:420,height:135,size:3,colorKey:"accent",fill:"none",radius:12});
+ else if(type==="image")e=tpl(null,{type:"image",label:"صورة / شعار",x:wh[0]/2,y:wh[1]*.19,width:180,height:130,src:src||""});
+ else e=tpl(null,{type:type,label:{star:"نجمة",atom:"رمز فيزياء",ribbon:"شريط توعوي",laurel:"إكليل"}[type],x:wh[0]*.16,y:wh[1]*.25,size:92,colorKey:"accent"});
+ st.elements.push(e);st.selected=e.id;renderAll();autosave();showTab("elements");
+}
+function readImage(file,cb){if(!file)return;if(file.size>8*1024*1024){notify("الصورة كبيرة جدًا، اختاري أقل من 8 MB");return;}var reader=new FileReader();reader.onload=function(){cb(reader.result)};reader.readAsDataURL(file);}
+function downloadBlob(blob,filename){var url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},2500);}
+function downloadText(str,name,type){downloadBlob(new Blob([str],{type:type||"text/plain;charset=utf-8"}),name);}
+function svgExport(){downloadText(drawSvg(personName(),false),"شهادتي_تصميم.svg","image/svg+xml;charset=utf-8");notify("تم تجهيز تصميم SVG متجهي عالي الجودة");}
+function pngExport(){
+ var data=drawSvg(personName(),false),blob=new Blob([data],{type:"image/svg+xml;charset=utf-8"}),url=URL.createObjectURL(blob),im=new Image();im.onload=function(){
+  var d=dims(),canvas=document.createElement("canvas");canvas.width=d[0]*3;canvas.height=d[1]*3;var ctx=canvas.getContext("2d");ctx.fillStyle=st.bg||theme().bg;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(im,0,0,canvas.width,canvas.height);
+  canvas.toBlob(function(out){if(out)downloadBlob(out,"شهادتي_HD.png");else notify("تعذر تصدير PNG؛ استخدمي طباعة PDF");URL.revokeObjectURL(url);},"image/png");
+ };im.onerror=function(){URL.revokeObjectURL(url);notify("تعذر إخراج PNG. يمكنك تنزيل SVG أو الطباعة إلى PDF.")};im.src=url;
+}
+function printNames(names){
+ if(!names||!names.length)names=[personName()];
+ var root=el("printRoot"),orientation=st.orientation;
+ el("pageRule").textContent="@page{size:A4 "+orientation+";margin:0}";
+ var dim=orientation==="landscape"?"width:297mm;height:210mm;":"width:210mm;height:297mm;";
+ root.innerHTML=names.map(function(n){return '<div class="printPage" style="'+dim+'">'+drawSvg(n,false)+'</div>';}).join("");
+ var promise=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
+ Promise.race([promise,new Promise(function(r){setTimeout(r,1400)})]).then(function(){window.print();});
+}
+function ask(title,message,cb){el("modalTitle").textContent=title;el("modalText").textContent=message;el("modal").classList.add("open");el("modalConfirm").onclick=function(){el("modal").classList.remove("open");cb();};el("modalCancel").onclick=function(){el("modal").classList.remove("open");};}
+function parseNames(v){return Array.from(new Set(String(v).split(/\r?\n/).map(function(n){return n.trim().split(/\t/)[0].trim()}).filter(Boolean)));}
+function bind(){
+ el("tabs").onclick=function(ev){var b=ev.target.closest("[data-tab]");if(b)showTab(b.dataset.tab);};
+ el("presetGrid").onclick=function(ev){var b=ev.target.closest("[data-preset]");if(!b)return;var id=b.dataset.preset;if(id===st.preset)return;ask("تغيير القالب","سيُعاد توزيع الشهادة بما يلائم القالب الجديد. هل تريدين إبقاء نصوصك الحالية في أماكن القالب الجديد؟",function(){capture();populatePreset(id,true);renderAll();autosave();});};
+ el("themeGrid").onclick=function(ev){var b=ev.target.closest("[data-theme]");if(b)applyTheme(+b.dataset.theme);};
+ document.querySelectorAll("[data-add]").forEach(function(b){b.onclick=function(){var type=b.dataset.add;if(type==="image"){var inp=document.createElement("input");inp.type="file";inp.accept="image/*";inp.onchange=function(){readImage(inp.files[0],function(src){addElement("image",src)})};inp.click();}else addElement(type);};});
+ el("addCustomText").onclick=function(){addElement("text")};
+ el("autoArrange").onclick=function(){ask("تنسيق تلقائي","سأعيد توزيع العناصر الأساسية بشكل متوازن مع الاحتفاظ بعباراتك. العناصر الحرة التي أضفتِها ستبقى كما هي.",function(){capture();var old=clone(st.elements),id=st.preset;populatePreset(id,true);var defaults=st.elements.map(function(e){return e.id});old.forEach(function(e){if(!defaults.includes(e.id))st.elements.push(e);});renderAll();autosave();});};
+ el("frameSelect").onchange=function(){capture();st.frame=+this.value;renderStage();autosave()};
+ el("frameWidth").oninput=function(){st.frameWidth=+this.value;el("frameValue").textContent=this.value;renderStage();autosave()};
+ el("frameColor").oninput=function(){st.frameColor=this.value;renderStage();autosave()};
+ el("patternSelect").onchange=function(){capture();st.pattern=+this.value;renderStage();autosave()};
+ el("orientation").onchange=function(){changeOrientation(this.value)};
+ el("bgColor").oninput=function(){st.bg=this.value;renderStage();autosave()};
+ el("bgUpload").onchange=function(){readImage(this.files[0],function(src){capture();st.bgImage=src;renderStage();autosave();});};
+ el("removeBg").onclick=function(){capture();st.bgImage="";el("bgUpload").value="";renderStage();autosave();notify("أُزيلت صورة الخلفية");};
+ el("namesInput").oninput=function(){st.names=parseNames(this.value);st.preview=0;renderNames();renderStage();autosave();};
+ el("peopleGroup").oninput=function(){st.peopleGroup=this.value;renderStage();autosave();};
+ el("previewName").onchange=function(){st.preview=+this.value;renderStage();autosave();};
+ el("csvUpload").onchange=function(){var file=this.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(){var txt=String(reader.result||"").replace(/^\uFEFF/,""),lines=txt.split(/\r?\n/).map(function(line){return line.split(/[\t,;]/)[0].replace(/^"|"$/g,"").trim()}).filter(Boolean);if(lines[0]&&/^(name|الاسم|اسم المشاركة)$/i.test(lines[0]))lines.shift();st.names=Array.from(new Set(lines));st.preview=0;el("namesInput").value=st.names.join("\n");renderNames();renderStage();autosave();notify("تم استيراد "+st.names.length+" اسم");};reader.readAsText(file,"UTF-8");};
+ el("layerList").onclick=function(ev){var s=ev.target.closest("[data-select]"),f=ev.target.closest("[data-front]"),b=ev.target.closest("[data-back]");if(s)select(s.dataset.select);else if(f||b){var id=(f||b).dataset.front||(f||b).dataset.back;var i=st.elements.findIndex(function(e){return e.id===id});var j=i+(f?1:-1);if(j<0||j>=st.elements.length)return;capture();var temp=st.elements[i];st.elements[i]=st.elements[j];st.elements[j]=temp;renderAll();autosave();}};
+ el("fontSearch").oninput=renderFontList;
+ el("allFonts").onclick=function(ev){var b=ev.target.closest("[data-font]");if(!b)return;var f=b.dataset.font;loadFont(f);var e=st.elements.find(function(x){return x.id===st.selected});capture();if(e){e.font=f;renderInspector();}else {st.font=f;st.elements.forEach(function(x){if(x.type==="text")x.font=f;});}renderFontList();renderStage();el("fontCurrent").textContent="الخط: "+f;autosave();};
+ el("sheet").addEventListener("pointerdown",function(ev){var target=ev.target.closest("[data-eid]");if(!target)return;ev.preventDefault();var id=target.getAttribute("data-eid");select(id);var e=st.elements.find(function(x){return x.id===id}),svg=el("sheet").querySelector("svg");if(!svg||!e)return;var p=svg.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;var q=p.matrixTransform(svg.getScreenCTM().inverse());drag={id:id,startX:q.x,startY:q.y,x:e.x,y:e.y,moved:false};capture();});
+ window.addEventListener("pointermove",function(ev){if(!drag)return;var svg=el("sheet").querySelector("svg");if(!svg)return;var m=svg.getScreenCTM();if(!m)return;var p=svg.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;var q=p.matrixTransform(m.inverse());var e=st.elements.find(function(v){return v.id===drag.id});if(!e)return;var d=dims();e.x=clamp(drag.x+q.x-drag.startX,0,d[0]);e.y=clamp(drag.y+q.y-drag.startY,0,d[1]);drag.moved=true;renderStage();inspectValue("propX",Math.round(e.x));inspectValue("propY",Math.round(e.y));});
+ window.addEventListener("pointerup",function(){if(!drag)return;if(!drag.moved)undo.pop();else autosave();drag=null;});
+ el("sheet").addEventListener("dblclick",function(ev){var t=ev.target.closest("[data-eid]");if(t){select(t.getAttribute("data-eid"));var input=el("propText");if(input){input.focus();input.select();}}});
+ window.addEventListener("keydown",function(ev){if(ev.target.matches("input,textarea,select,[contenteditable]"))return;if((ev.ctrlKey||ev.metaKey)&&ev.key.toLowerCase()==="z"){ev.preventDefault();if(ev.shiftKey)doRedo();else doUndo();return}if(ev.key==="Delete"||ev.key==="Backspace"){var e=st.elements.find(function(x){return x.id===st.selected});if(e){capture();st.elements=st.elements.filter(function(x){return x.id!==e.id});st.selected=null;renderAll();autosave();}return;}var dir={ArrowRight:[1,0],ArrowLeft:[-1,0],ArrowDown:[0,1],ArrowUp:[0,-1]}[ev.key];if(dir&&st.selected){ev.preventDefault();moveSelected(dir[0]*(ev.shiftKey?10:1),dir[1]*(ev.shiftKey?10:1));}});
+ el("projectName").oninput=function(){st.project=this.value;autosave()};
+ el("undoBtn").onclick=doUndo;el("redoBtn").onclick=doRedo;
+ el("clearSelection").onclick=function(){select(null)};
+ el("fullscreenBtn").onclick=function(){if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();};
+ el("svgBtn").onclick=svgExport;el("pngBtn").onclick=pngExport;
+ el("printBtn").onclick=function(){printNames([personName()])};
+ el("batchPrintBtn").onclick=function(){printNames(st.names.length?st.names:[personName()]);};
+ el("batchExportBtn").onclick=function(){downloadText(st.names.join("\n"),"أسماء_المشاركين.txt");};
+ el("jsonExport").onclick=function(){downloadText(JSON.stringify(safeState(),null,2),"مشروع_شهادتي.json","application/json;charset=utf-8");notify("تم حفظ ملف مشروعك");};
+ el("saveBtn").onclick=function(){downloadText(JSON.stringify(safeState(),null,2),"مشروع_شهادتي.json","application/json;charset=utf-8");notify("تم تنزيل نسخة قابلة للتعديل");};
+ el("jsonImport").onchange=function(){var f=this.files[0];if(!f)return;var reader=new FileReader();reader.onload=function(){try{capture();restore(JSON.parse(reader.result));autosave();notify("تم استعادة المشروع بنجاح");}catch(e){notify("ملف المشروع غير صالح")}};reader.readAsText(f);};
+ el("newBtn").onclick=function(){ask("بدء مشروع جديد","سيُنشأ تصميم جديد مستقل. يُفضّل حفظ نسخة من تصميمك الحالي قبل المتابعة.",function(){capture();st.names=[];st.preview=0;st.bgImage="";st.project="تصميم شهادات جديد";populatePreset("appreciation",false);syncInputs();renderAll();autosave();});};
+ el("resetBtn").onclick=function(){ask("العودة للتصميم الابتدائي","سيُعاد ضبط القالب والخطوط والتنسيقات الحالية. احفظي نسخة إذا كنتِ تريدين الاحتفاظ بعملك.",function(){capture();var ns=st.names.slice();st.theme=0;st.frame=0;st.pattern=-1;st.frameColor="";st.bg="";st.bgImage="";st.font="El Messiri";populatePreset("appreciation",false);st.names=ns;syncInputs();renderAll();autosave();});};
+ window.addEventListener("afterprint",function(){el("printRoot").innerHTML="";});
+}
+function init(){
+ el("frameSelect").innerHTML=frameNames.map(function(n,i){return '<option value="'+i+'">'+esc(n)+'</option>'}).join("");
+ el("patternSelect").innerHTML=patternNames.map(function(n,i){return '<option value="'+(i===0?-1:i===10?10:i-1)+'">'+esc(n)+'</option>'}).join("");
+ var saved=null;try{saved=JSON.parse(localStorage.getItem("shahadati_studio_v1")||"null");}catch(e){}
+ if(saved&&Array.isArray(saved.elements)){st=Object.assign(st,saved);}else populatePreset("appreciation",false);
+ bind();syncInputs();renderAll();loadFont("El Messiri");
+}
+init();
+})();
+</script>
+</body>
+</html>
