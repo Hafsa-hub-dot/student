@@ -28,12 +28,25 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 .certificate{flex:1;border:5px double #bea67a;margin:8px 0;background:#f3eee3;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;text-align:center;gap:5px;padding:18px}.certificate h2{font:700 44px "Amiri",serif;color:#8f513e}.certificate input{width:100%;border:0;border-bottom:1px solid #a48663;background:transparent;font-size:17px;text-align:center;padding:8px;color:#162a24}
 .small-links{font-size:11px;line-height:1.6;color:#56685d;overflow-wrap:anywhere}.small-links a{color:#a05036}
 @media print{body{background:white}#app{height:auto;background:white}.topbar,.bottombar{display:none}.stage{position:static;display:block}.holder{height:auto;width:auto}.sheet{transform:none!important;position:static;box-shadow:none}.page{display:none!important}.page.printable{display:flex!important}}
+
+/* October editorial update */
+@media (min-width: 920px) and (min-height: 560px){
+  .stage{gap:18px;padding:0 14px;justify-content:space-between}
+  .desktop-feature{display:flex!important;flex:1;align-self:stretch;min-width:0;overflow:hidden;background:#15251f center/cover no-repeat;position:relative;border:1px solid #b9a17a30}
+  .desktop-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#081b15b2 3%,#0919161a 55%,#0d201bb3 100%)}
+  .desktop-feature-inner{position:absolute;z-index:1;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(25px,4.5vw,74px);color:#fff}
+  .desktop-feature-inner .kick{font-size:clamp(12px,1.2vw,16px);letter-spacing:1px;border-top:2px solid #dfcba7;padding-top:14px;width:max-content}
+  .desktop-feature-inner h2{font:700 clamp(40px,5vw,88px)/1.09 "Amiri",serif;margin:12px 0;text-shadow:0 3px 20px #0008}
+  .desktop-feature-inner p{font:clamp(15px,1.7vw,25px)/1.4 "Amiri",serif;color:#f4e8d2;max-width:540px}
+  .holder{margin:0 auto;flex:none}
+}
+@media (max-width: 919px), (max-height: 559px){.desktop-feature{display:none!important}}
 </style>
 </head>
 <body>
 <div id="app">
 <header class="topbar"><strong>PHYSICS MONTHLY · 01</strong><span class="flag" id="section-name">الغلاف</span><button id="contents-btn" type="button">الفهرس ◈</button></header>
-<main class="stage" id="stage"><div class="holder" id="holder"><div class="sheet" id="sheet">
+<main class="stage" id="stage"><aside class="desktop-feature" id="desktop-feature" aria-hidden="true" style="display:none"><div class="desktop-feature-inner"><span class="kick">الفيزياء ممتعة · حصاد أكتوبر</span><h2 id="desktop-title">العلم في حياتنا</h2><p id="desktop-caption">اكتشفي صفحات هذا العدد.</p></div></aside><div class="holder" id="holder"><div class="sheet" id="sheet">
 <section class="page cover active" data-name="الغلاف">
 <img class="cover-bg" src="https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="سفينة حاويات فوق المحيط">
 <div class="cover-overlay"></div>
@@ -45,17 +58,7 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 <button class="cover-button" data-goto="1">ابدئي تصفح المجلة ←</button></div></div></section>
 <section class="page" data-name="الفهرس">
 <div class="meta"><span>دليل العدد</span><span>CONTENTS</span></div><h1>بين صفحات<br><em>هذا العدد.</em></h1>
-<div class="toc">
-<button data-goto="2"><span class="num">03</span><span class="name">افتتاحية التحرير</span>←</button>
-<button data-goto="3"><span class="num">04</span><span class="name">قصة الغلاف · أسرار الطفو</span>←</button>
-<button data-goto="5"><span class="num">06</span><span class="name">سينما العلم · NASA</span>←</button>
-<button data-goto="6"><span class="num">07</span><span class="name">عالمة العدد · ماري كوري</span>←</button>
-<button data-goto="8"><span class="num">09</span><span class="name">ملف مراجعة شهر أكتوبر</span>←</button>
-<button data-goto="13"><span class="num">14</span><span class="name">الرموز والقوانين والمسائل</span>←</button>
-<button data-goto="16"><span class="num">17</span><span class="name">الأسئلة التدريبية</span>←</button>
-<button data-goto="17"><span class="num">18</span><span class="name">الألغاز والذاكرة البصرية</span>←</button>
-<button data-goto="20"><span class="num">21</span><span class="name">أخبار قسم الفيزياء</span>←</button>
-<button data-goto="23"><span class="num">24</span><span class="name">شهادة قارئة العدد</span>←</button></div><div class="footer"><span>قسم الفيزياء · مدرسة العب الثانوية للبنات</span><span>02</span></div>
+<div class="toc" style="gap:0"><button data-goto="2" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">03</span><span class="name" style="font-size:15px">الافتتاحية</span>←</button><button data-goto="3" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">04</span><span class="name" style="font-size:15px">قصة الغلاف: لماذا تطفو السفن؟</span>←</button><button data-goto="6" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">07</span><span class="name" style="font-size:15px">عالمة العدد: ماري كوري</span>←</button><button data-goto="8" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">09</span><span class="name" style="font-size:15px">فيزياء أكتوبر: ملخصات وقوانين</span>←</button><button data-goto="14" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">15</span><span class="name" style="font-size:15px">تمارين ومسائل الكتاب</span>←</button><button data-goto="17" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">18</span><span class="name" style="font-size:15px">ألغاز وذاكرة بصرية</span>←</button><button data-goto="20" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">21</span><span class="name" style="font-size:15px">الهوية الوطنية وفيزياء قطر</span>←</button><button data-goto="21" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">22</span><span class="name" style="font-size:15px">أقمار سهيل وميناء حمد</span>←</button><button data-goto="25" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">26</span><span class="name" style="font-size:15px">دقة القياس والرادار والسلامة</span>←</button><button data-goto="31" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">32</span><span class="name" style="font-size:15px">رصد زحل وأنشطة المدرسة</span>←</button><button data-goto="33" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">34</span><span class="name" style="font-size:15px">الغذاء العالمي وأكتوبر الوردي</span>←</button><button data-goto="36" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">37</span><span class="name" style="font-size:15px">المعمل والمشروع النووي</span>←</button><button data-goto="40" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">41</span><span class="name" style="font-size:15px">المتميزات والتكريم</span>←</button><button data-goto="45" style="padding:5px 3px;min-height:30px"><span class="num" style="font-size:16px;min-width:27px">46</span><span class="name" style="font-size:15px">شهادة قارئة العدد</span>←</button></div><div class="footer"><span>قسم الفيزياء · مدرسة العب الثانوية للبنات</span><span>02</span></div>
 </section>
 <section class="page" data-name="الافتتاحية">
 <div class="meta"><span>افتتاحية التحرير</span><span>EDITORIAL</span></div>
@@ -179,6 +182,131 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 <div class="meta"><span>ومضة · بعد الستارة</span><span>MEMORY CHECK</span></div><h1>ماذا بقي<br><em>في ذاكرتك؟</em></h1><p class="deck">ما الصورة التي ظهرت في المربع السفلي الأيمن؟</p>
 <div class="choices" id="memory-answers" style="margin-top:17px"><button class="choice" data-memory="0">السفينة</button><button class="choice" data-memory="1">الأرض</button><button class="choice" data-memory="2">فنجان القهوة</button><button class="choice" data-memory="3">ماري كوري</button></div>
 <div class="answer" id="memory-feedback">اختاري صورة واحدة دون الرجوع إلى المشهد.</div><button class="btn outline" style="margin-top:auto" data-goto="18">إعادة تحدي الذاكرة</button><div class="footer"><span>ذاكرة بصرية</span><span>20</span></div></section>
+<section class="page" data-name="الهوية الوطنية"><div class="meta"><span>ملف خاص · قطر والفيزياء</span><span>QATAR × PHYSICS</span></div><h1>حين تلتقي الفيزياء<br><em>بهوية وطن.</em></h1><p class="deck">من الأقمار الصناعية إلى الموانئ والطرقات، تترجم الدقة العلمية إلى بنية تحتية وخدمات لحياة أفضل.</p>
+ <div class="pull">«نعتز بهويتنا حين نرى المعرفة تتحول إلى إنجاز يخدم قطر.»</div>
+ <div class="panel"><strong>ماذا سنكتشف؟</strong><p>الفضاء والاتصالات · ميناء حمد · هندسة القياس · الرادار والسلامة · حافلاتنا · الهوية في كيدزون.</p></div>
+ <div class="panel"><strong>قيمة وطنية تتجاوز الشعارات</strong><p>العمل بإتقان، الدقة، الأمان، التعاون والابتكار؛ قيم تتجلى في تطبيقات الفيزياء حولنا.</p></div>
+ <p class="note">هذا القسم ربط علمي تحريري بأمثلة من قطر؛ وليس إعلانًا رسميًا من الجهات المذكورة.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="أقمار سهيل"><div class="meta"><span>قصة وطنية في الفضاء</span><span>ES'HAILSAT</span></div><h1>من سهيل 1 إلى<br><em>سهيل 3.</em></h1><p class="deck">خطوات قطرية متتالية في الاتصالات الفضائية.</p>
+ <div class="panel"><strong>سهيل 1 | 2013</strong><p>دخل الخدمة التجارية في 18 ديسمبر 2013 من الموقع المداري 25.5° شرقًا، ويدعم البث والاتصالات.</p></div>
+ <div class="panel"><strong>سهيل 2 | 2018</strong><p>أُطلق في 15 نوفمبر 2018، وعزّز قدرات الاتصال والبث، وأتاح خدمات لهواة الاتصالات اللاسلكية عبر المدار الثابت ظاهريًا.</p></div>
+ <div class="panel"><strong>سهيل 3 | مشروع توسع</strong><p>أُعلنت في 30 يونيو 2026 شراكة سهيل سات وتوركسات حول مشروع سهيل 3/توركسات بيروني؛ لا نقدّمه هنا على أنه قمر أُطلق بالفعل.</p></div>
+ <div class="pull" style="font-size:20px">من بثّ الأخبار إلى خدمة الاتصالات: تطبيق عملي للموجات والمدارات والهوائيات.</div>
+ <p class="small-links">مصادر رسمية: <a href="https://www.eshailsat.qa/ar/satellites/" target="_blank">سهيل سات</a> · <a href="https://www.turksat.com.tr/en/corporate/press-media/news/eshailsat-and-turksat-sign-partnership-agreement-eshail-3turksat-biruni" target="_blank">إعلان سهيل 3</a></p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="سهيل والفيزياء"><div class="meta"><span>كيف يعمل القمر؟</span><span>THE ORBIT</span></div><h1>قريب من حياتنا…<br><em>بعيد في الفضاء.</em></h1><figure class="picture" style="height:192px"><img loading="lazy" src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1000&q=85" alt="الأرض من الفضاء"><figcaption>صورة علمية توضيحية: الأرض من المدار</figcaption></figure>
+ <p class="copy">القمر الثابت ظاهريًا بالنسبة للأرض يدور باتجاه دورانها، ويكمل دورته في زمن يساوي يومًا فلكيًا تقريبًا.</p>
+ <div class="math">v = √(GM / r)<small>سرعة قمر صناعي في مدار دائري</small></div>
+ <div class="panel"><strong>لماذا يبدو ثابتًا؟</strong><p>لأن زمنه الدوري واتجاه دورانه وموقع مداره تجعل موضعه الظاهري قريبًا من الثبات بالنسبة إلى الراصد الأرضي.</p></div>
+ <div class="panel"><strong>تحدٍّ للقراء</strong><p>ما الذي قد يحدث لخدمة البث إذا اختل توجيه الهوائي عن موقع القمر؟</p></div>
+ <div class="pull" style="font-size:19px">الهوية الوطنية هنا ليست صورة علم فقط؛ إنها قدرة على التواصل والمعرفة والخدمة.</div><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="ميناء حمد"><div class="meta"><span>الفيزياء في اقتصاد قطر</span><span>HAMAD PORT</span></div><h1>ميناء حمد:<br><em>عندما تتحرك الأطنان.</em></h1><figure class="picture" style="height:184px"><img loading="lazy" src="https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="سفينة حاويات"><figcaption>صورة توضيحية لسفينة حاويات؛ ليست توثيقًا مباشرًا لميناء حمد</figcaption></figure>
+ <p class="copy">عند رفع الحاويات ونقلها وتثبيتها، تتداخل مفاهيم الوزن والتسارع والعزوم والاتزان والزخم مع معايير السلامة.</p>
+ <div class="panel"><strong>هل تعلم؟</strong><p>أشارت وزارة المواصلات إلى استخدام رافعات متخصصة كثيرة الأنواع في ميناء حمد، وبعضها مصمم للتعامل مع أحمال كبيرة جدًا.</p></div>
+ <div class="panel"><strong>سؤال من واقع الميناء</strong><p>لماذا يجب ألا تتحرك الحمولة المعلّقة بسرعة كبيرة ثم تتوقف فجأة؟</p></div>
+ <p class="small-links">مصدر: <a href="https://www.mot.gov.qa/en/news/hamad-port-cranes-amongst-most-advanced-world" target="_blank">وزارة المواصلات · رافعات ميناء حمد</a></p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="الرافعات والزخم"><div class="meta"><span>علوم الموانئ</span><span>FORCE & IMPULSE</span></div><h1>لا تكتفي<br><em>بحمل الحمولة!</em></h1><p class="deck">العامل الأهم هو التحكم في كيفية تسارع الحمولة وكيفية إيقافها.</p>
+ <div class="math">Fnet = ma<small>قانون نيوتن الثاني</small></div>
+ <div class="math">J = Favg Δt = Δp<small>الدفع يساوي التغير في الزخم</small></div>
+ <div class="panel"><strong>في الرافعة</strong><p>تُضبط السرعة والتسارع لتقليل التأرجح، ويُراعى مركز الكتلة وحدود الأحمال الآمنة.</p></div>
+ <div class="panel"><strong>في إيقاف الحمولة</strong><p>يؤثر زمن الإيقاف في متوسط القوة اللازمة لإحداث تغير معين في الزخم؛ لذا يفضّل التوقف التدريجي المتحكَّم به.</p></div>
+ <div class="pull">الرسالة: الإنجاز الهندسي لا يُقاس بالقوة فقط، بل بدقة التحكم وسلامة الإنسان.</div><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="هندسة القياس في قطر"><div class="meta"><span>الهامش والخطأ</span><span>MEASUREMENT</span></div><h1>مليمترات تصنع<br><em>فرقًا كبيرًا.</em></h1><p class="deck">وراء الأبراج والجسور والمساحات العامة عمل قياس لا يقل أهمية عن التصميم.</p>
+ <div class="panel"><strong>جهاز الثيودوليت</strong><p>يقيس الزوايا الأفقية والرأسية بدقة في أعمال المساحة، ويعين على تحديد الاتجاهات ومحاور المنشآت.</p></div>
+ <div class="panel"><strong>عدم اليقين وهامش السماح</strong><p>عدم اليقين يعبّر عن حدود معرفتنا بقيمة القياس. أما سماحية التنفيذ فهي نطاق هندسي يُسمح به بحسب المواصفات؛ المفهومان ليسا متطابقين.</p></div>
+ <div class="panel"><strong>الخطأ المنتظم</strong><p>قد ينتج من سوء ضبط جهاز القياس أو انحياز طريقة القراءة، فيدفع النتائج في اتجاه متكرر ويستلزم كشفه ومعايرته.</p></div>
+ <div class="pull" style="font-size:20px">جودة البناء تبدأ بقرار صغير: هل قِسنا الشيء الصحيح بالطريقة الصحيحة؟</div><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="الرادار والمعايرة"><div class="meta"><span>دقة القياس والسلامة</span><span>RADAR</span></div><h1>عندما تكون<br><em>المعايرة ضرورة.</em></h1><p class="deck">الرادار مثال مألوف يوضح معنى القياس الدقيق والتحقق الدوري.</p>
+ <div class="panel"><strong>الفيزياء خلف الرادار</strong><p>تتيح الموجات الكهرومغناطيسية قياس المسافة أو السرعة بطرق متعددة، منها الاستفادة من تغير التردد المرتبط بالحركة.</p></div>
+ <div class="panel"><strong>هل يمكن أن يخطئ جهاز؟</strong><p>نظريًا، قد تسبب معايرة غير صحيحة خطأً منتظمًا في قراءات أي جهاز قياس. لهذا تُستخدم إجراءات تحقق ومعايرة وضبط جودة.</p></div>
+ <div class="panel"><strong>الدقة والهوية</strong><p>تطبيق القياس المنضبط يدعم العدالة والسلامة والثقة في الخدمات، وهي أهداف مجتمعية ترتبط بالمسؤولية المهنية.</p></div>
+ <p class="note">هذا شرح افتراضي لمبدأ القياس، وليس ادعاءً بوجود خلل في رادارات المرور القطرية.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="التصادمات والسلامة"><div class="meta"><span>علم يحمي حياتنا</span><span>ROAD SAFETY</span></div><h1>التصادم غير المرن:<br><em>أين تذهب الطاقة؟</em></h1><p class="copy">في كثير من حوادث المركبات، تتغير أشكال الأجسام وتتحول أجزاء من الطاقة الحركية إلى تشوه وحرارة وصوت. لذلك لا تبقى الطاقة الحركية محفوظة كما في التصادم المرن المثالي.</p>
+ <div class="math">Σp<sub>before</sub> = Σp<sub>after</sub><small>في نظام معزول خلال التصادم</small></div>
+ <div class="math">Favg = Δp / Δt<small>إطالة زمن التوقف تقلل مقدار متوسط القوة عند ثبات تغير الزخم</small></div>
+ <div class="panel"><strong>كيف تخدم الفيزياء السلامة؟</strong><p>أحزمة الأمان ومناطق امتصاص الصدمات مصممة لإدارة التباطؤ وتقليل خطر الإصابات، مع مراعاة طبيعة الحادث.</p></div>
+ <div class="pull" style="font-size:20px">وعي السائق والتقيد بقواعد المرور أهم من اختبار أي نظرية على الطريق.</div><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="قوانين نيوتن في الحافلة"><div class="meta"><span>فيزياء الطريق</span><span>NEWTON ON THE BUS</span></div><h1>لماذا نندفع<br><em>داخل الحافلة؟</em></h1><p class="deck">عندما تتوقف الحافلة، يميل جسم الراكب إلى الاستمرار في الحركة؛ هذا مثال للقصور الذاتي.</p>
+ <div class="panel"><strong>القانون الأول | القصور الذاتي</strong><p>الجسم يحافظ على حالته الحركية ما لم تؤثر فيه قوة محصلة تغيرها.</p></div>
+ <div class="panel"><strong>القانون الثاني | التسارع</strong><p>كلما زادت القوة المحصلة على جسم ثابت الكتلة، ازداد تسارعه في اتجاهها: Fnet = ma.</p></div>
+ <div class="panel"><strong>القانون الثالث | التفاعل</strong><p>عند تلامس قدم الراكب مع أرضية الحافلة تؤثر كل منهما بقوة في الأخرى مساوية في المقدار ومعاكسة في الاتجاه.</p></div>
+ <div class="pull">لماذا يُنصح بالإمساك بالمقبض أو الجلوس بأمان قبل انطلاق الحافلة؟</div><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="الهوية الوطنية في كيدزون"><div class="meta"><span>تفعيل تفاعلي</span><span>QATARI IDENTITY</span></div><h1>كيدزون:<br><em>تتحدث الفيزياء.</em></h1><p class="deck">تفعيل للهوية الوطنية يربط المواقف اليومية بأهمية السلامة والحركة والتصادمات في بيئتنا.</p>
+ <div class="panel"><strong>من اللعب إلى الفهم</strong><p>تخيل المواقف التي تتغير فيها سرعة المركبات أو اتجاهها؛ ما الذي يجعل الاندفاع أخطر؟ وكيف نحدّ من أثره؟</p></div>
+ <div class="panel"><strong>الرسالة الوطنية</strong><p>بناء مجتمع آمن يبدأ بالالتزام والمسؤولية واحترام تعليمات السلامة، وتساعدنا الفيزياء على فهم أسبابها.</p></div>
+ <div class="pull" style="font-size:20px">«نصون وطننا بالعلم والسلوك المسؤول».</div>
+ <div class="panel" style="border-style:dashed;background:#faf5e9"><strong>مساحة توثيق</strong><p>تُدرج هنا صور تفعيل كيدزون المعتمدة ووصف المحطة بعد إرسالها.</p></div><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="برنامج قطر للسماء"><div class="meta"><span>ركن فلكي</span><span>QATAR SKY</span></div><h1>قطر والسماء:<br><em>رحلة بين الكواكب.</em></h1><p class="deck">ركن بعنوان مقترح «قطر للسماء والكواكب» يربط المشاهدة الفلكية بالأسئلة العلمية.</p>
+ <div class="panel"><strong>محطات مقترحة</strong><p>كيف نميز الكوكب من النجم؟ لماذا تتغير المواقع الظاهرية؟ وما الذي يحدد زمن دورة القمر؟</p></div>
+ <div class="panel"><strong>أداة تفاعلية</strong><p>تُعرض خريطة سماء أو نموذج مدارات، ثم تختار القارئة جرمًا للتعرف إلى طبيعته وعلاقته بالجاذبية.</p></div>
+ <div class="panel"><strong>صلة بالهوية</strong><p>تاريخ الملاحة والاهتمام بالسماء في المنطقة يلتقيان مع الاتصالات الفضائية والرصد الحديث في قطر.</p></div>
+ <p class="note">هذا ركن مقترح للمجلة، وليس إعلانًا عن إطلاق برنامج رسمي باسم «برنامج قطر للكواكب» قبل تأكيد الاسم والجهة.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="رصد كوكب زحل"><div class="meta"><span>من حصاد أكتوبر</span><span>SATURN OBSERVATION</span></div><h1>ليلة مع<br><em>كوكب الحلقات.</em></h1><div class="eyebrow">13 أكتوبر 2026 · فعالية رصد زحل</div>
+ <p class="copy">في فعالية فلكية نظّمها قسم الفيزياء، تعرّفت المشاركات إلى جمال الرصد السماوي ودوره في تقريب مفاهيم الحركة المدارية، مع ربط المشاهدة بالبحث والسؤال العلمي.</p>
+ <div class="panel"><strong>من لحظات التميز</strong><p>تهنئة للمعلمة <b>ورد أبو شهلة</b>، معلمة الدراسات الاجتماعية، الفائزة في فعالية رصد زحل.</p></div>
+ <div class="panel" style="text-align:center;border:2px dashed #c8a26f;background:#f5efdf;padding:22px 14px"><strong style="font-size:18px">مساحة صورة الشهادة</strong><p>ستضاف شهادة المعلمة ورد أبو شهلة هنا عند إرسالها.</p></div>
+ <div class="panel"><strong>السؤال العلمي</strong><p>هل تتحرك حلقات زحل باعتبارها جسمًا واحدًا صلبًا، أم تتكون من جسيمات كثيرة تدور حول الكوكب؟</p></div>
+ <p class="note">وقت الرصد وصور الفعالية يُستكملان عند تزويدهما.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="مسابقة البحث العلمي"><div class="meta"><span>من طابور الصباح</span><span>RESEARCH STEPS</span></div><h1>من سؤال…<br><em>إلى اكتشاف!</em></h1><p class="deck">مسابقة تفاعلية في الطابور عن ترتيب خطوات البحث العلمي.</p>
+ <div class="panel dark"><strong>01</strong><p>ملاحظة الظاهرة وتحديد سؤال البحث.</p></div>
+ <div class="panel dark"><strong>02</strong><p>اقتراح فرضية قابلة للاختبار.</p></div>
+ <div class="panel dark"><strong>03</strong><p>تخطيط إجراء مناسب وجمع البيانات.</p></div>
+ <div class="panel dark"><strong>04</strong><p>تحليل النتائج واستخلاص استنتاج مدعوم بالأدلة.</p></div>
+ <div class="panel"><strong>تحدي القارئات</strong><p>ما الخطوة التي يجب الرجوع إليها إذا لم تدعم النتائج الفرضية؟</p></div>
+ <p class="note">التسلسل نموذج مبسط لدورة البحث العلمي؛ يمكن أن تكون عملية البحث تكرارية لا خطية.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="يوم الغذاء العالمي"><div class="meta"><span>من فعاليات القسم</span><span>WORLD FOOD DAY</span></div><h1>غذاؤنا…<br><em>ومعرفتنا.</em></h1><p class="copy">بدأ التفعيل بمقدمة وتلاوة قدمتها الطالبة <b>رحمة جمال شعيبي</b>، وقدّمت الفقرات الطالبة <b>مايا سامي مرقة</b>، ثم عُرض فيديو قصير عن أهمية الغذاء، تلاه تحدٍ تفاعلي شاركت فيه الصفوف والمعلمات.</p>
+ <div class="panel"><strong>كيف جرت المسابقة؟</strong><p>دخلت المشاركات عبر رمز الاستجابة السريعة وأجبن عن أسئلة مرتبطة بالغذاء والمفاهيم العلمية بطريقة تنافسية.</p></div>
+ <div class="panel"><strong>أولياء الأمور في Padlet</strong><p>مساحة لإضافة مشاركات أولياء الأمور وتعليقاتهم أو صور لوحة Padlet بعد مشاركتها.</p></div>
+ <div class="panel"><strong>فيزياء على المائدة</strong><p>السعرات الغذائية تقيس مقدار الطاقة؛ والجسم يحوّل الطاقة الكيميائية المخزنة في الطعام إلى أشكال أخرى، منها الحركة والحرارة.</p></div>
+ <p class="note">أضيفي تاريخ التنفيذ الدقيق وصور النشاط ورابط Padlet في التحديث القادم.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="أكتوبر الوردي"><div class="meta"><span>توعية ومسؤولية</span><span>PINK OCTOBER</span></div><h1>نبض وردي…<br><em>وعي يمتد.</em></h1><p class="deck">مشاركة مجتمعية جمعت المعلمات والطالبات وأولياء الأمور في تحدٍّ للتوعية.</p>
+ <div class="panel"><strong>المشاركة</strong><p>تنافست فئات مختلفة عبر أسئلة توعوية، ورافقها تشجيع وتكريم للمشاركات.</p></div>
+ <div class="panel"><strong>من قسم الفيزياء</strong><p>ربط التوعية بثقافة البحث العلمي، ودقة المعلومات، والمسؤولية الصحية، دون الاكتفاء بالشعارات.</p></div>
+ <div class="panel"><strong>شكر وتقدير</strong><p>مساحة لعرض أسماء الفائزات والمشاركات، وشهادات التقدير بعد اعتماد القائمة النهائية.</p></div>
+ <div class="pull" style="font-size:20px">«نشر المعرفة خطوة أساسية نحو قرارات صحية واعية».</div>
+ <p class="note">تُضاف صور شهادة الشكر وأسماء المعلمات والطالبات وأولياء الأمور بعد إرسالها.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="يوم المدير"><div class="meta"><span>تقدير وعطاء</span><span>SCHOOL LEADERSHIP</span></div><h1>لمن تقود<br><em>مسارات التميز.</em></h1><p class="deck">في يوم المدير، مساحة لتقدير دور القيادة المدرسية في دعم الأفكار والأنشطة والبيئة التعليمية المحفزة.</p>
+ <div class="panel"><strong>رسالة قسم الفيزياء</strong><p>خالص التقدير للإدارة المدرسية على دعم التعلم النوعي والمبادرات التي تمنح الطالبات فرصة السؤال والتجريب والإبداع.</p></div>
+ <div class="panel" style="padding:23px;text-align:center;border:2px dashed #c8a26f;background:#fbf7ed"><strong>مساحة صور يوم المدير</strong><p>صور اللحظة أو بطاقة التكريم من المدرسة.</p></div>
+ <div class="pull">حين تدعم القيادة الفضول العلمي، يصبح الإنجاز عادةً في المدرسة.</div>
+ <p class="note">يمكن إدراج اسم المديرة وصور التكريم لاحقًا بعد التأكيد.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="محطات معمل الفيزياء"><div class="meta"><span>طالبات 11 علمي</span><span>LAB STATIONS</span></div><h1>في المعمل…<br><em>كل محطة اكتشاف.</em></h1><p class="copy">تفاعلت طالبات المستوى الحادي عشر العلمي مع محطات تعلم تتناول مفاهيم الحركة والاحتكاك والتصادمات، مستندة إلى الملاحظة والحساب والمقارنة.</p>
+ <div class="panel"><strong>المحطة 1 | السكون والاحتكاك</strong><p>مقارنة تأثير طبيعة السطح في الاحتكاك السكوني.</p></div>
+ <div class="panel"><strong>المحطة 2 | القوة والكتلة</strong><p>دراسة تغير القوة مع اختلاف الأحمال في حالة اتزان أو قرب الحركة.</p></div>
+ <div class="panel"><strong>المحطة 3 | التصادمات</strong><p>قراءة اتجاهات حركة الأجسام قبل التصادم وبعده ومقارنة الزخم.</p></div>
+ <div class="panel"><strong>المحطة 4 | المستوى المائل</strong><p>حساب التسارع من المسافة والزمن، ومقارنته بالنموذج النظري المناسب.</p></div>
+ <p class="note">تُضاف صور المحطات الفعلية وأسماء المجموعات المتميزة بعد إرسالها.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="تفعيل الحصص الإلكترونية"><div class="meta"><span>من قاعات الصف</span><span>DIGITAL LEARNING</span></div><h1>حين تشرح الشاشة…<br><em>وتكتشف الطالبة.</em></h1><p class="copy">في الحصص الإلكترونية التفاعلية، تنتقل الطالبة من التلقي إلى التنبؤ، وتجربة الفكرة في محاكاة، ثم المقارنة وصياغة الاستنتاج.</p>
+ <div class="panel"><strong>الحركة المدارية والجاذبية</strong><p>مقارنة الأقمار ومداراتها، واستنتاج العلاقة بين الجاذبية والحركة الدائرية.</p></div>
+ <div class="panel"><strong>المكثفات</strong><p>تتبّع انتقال الإلكترونات، وفهم تغير الشحنة والسعة من خلال أنشطة ومحاكاة.</p></div>
+ <div class="panel"><strong>الحركة الدورية والاهتزازية</strong><p>ملاحظة مشاهد واقعية وتصنيف الحركة قبل الانتقال إلى التعريفات.</p></div>
+ <div class="pull">«أرى · أتوقع · أختبر · أفسّر»</div>
+ <p class="note">ستُضاف أسماء الحصص، وصفوفها، وتواريخها، وصور الشاشة عند توفيرها.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="مشروع الفيزياء النووية"><div class="meta"><span>إعلان رسمي للصفين 10 و11</span><span>NUCLEAR PHYSICS</span></div><h1>الفيزياء النووية:<br><em>علم يصنع المستقبل.</em></h1><p class="deck">مشروع لإثراء البحث العلمي والإبداع، وإبراز الاستخدامات السلمية للعلوم النووية.</p>
+ <div class="spread"><div class="panel dark"><strong>15 درجة</strong><p>للمشروع</p></div><div class="panel dark"><strong>1–3</strong><p>طالبات في المجموعة</p></div></div>
+ <div class="panel dark"><strong>موعد التسليم: الأحد 8 نوفمبر 2026</strong><p>لا تُقبل المشاريع بعد الموعد المحدد.</p></div>
+ <div class="panel"><strong>الأشكال المتاحة</strong><p>صحيفة علمية · قصة مصورة · موقع إلكتروني · لعبة تعليمية · مجسم علمي · بوستر · فيديو توعوي · عرض بوربوينت · محاكاة رقمية.</p></div>
+ <div class="panel"><strong>ماذا يتضمن العمل؟</strong><p>عنوان واضح، شرح علمي صحيح، صور عند الحاجة، أسماء وصفوف المشاركات، ومصادر المعلومات.</p></div>
+ <p class="note">جميع التجارب والمجسمات تعليمية وآمنة، ويُمنع استخدام أي مواد مشعة أو مصادر إشعاعية حقيقية.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="تقييم المشروع النووي"><div class="meta"><span>من الإعلان الرسمي</span><span>PROJECT RUBRIC</span></div><h1>كيف تحصلين<br><em>على 15 درجة؟</em></h1><table class="table"><thead><tr><th>المعيار</th><th>الدرجة</th></tr></thead><tbody>
+ <tr><td>صحة المعلومات والمفاهيم العلمية</td><td>5</td></tr>
+ <tr><td>الإبداع والابتكار وأصالة الفكرة</td><td>3</td></tr>
+ <tr><td>جودة التصميم والإخراج الفني</td><td>3</td></tr>
+ <tr><td>تنظيم المحتوى ووضوح الرسالة</td><td>2</td></tr>
+ <tr><td>توثيق المصادر والالتزام بالمتطلبات</td><td>2</td></tr>
+ <tr><td><b>المجموع</b></td><td><b>15</b></td></tr></tbody></table>
+ <div class="panel"><strong>موضوعات مقترحة</strong><p>الانشطار والاندماج، الطاقة النووية، الطب النووي، الوقاية الإشعاعية، التطبيقات الصناعية والزراعية، تاريخ الاكتشافات، السلامة والاستدامة.</p></div>
+ <div class="pull" style="font-size:19px">ليس المطلوب شراء أدوات مكلفة؛ المهم جودة الفكرة وصحتها العلمية.</div>
+ <p class="note">نُقل توزيع الدرجات والموعد وأنواع المشروعات من الإعلان الرسمي المرفوع للمدرسة.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="المتميزات والتكريم"><div class="meta"><span>لوحة الشرف</span><span>HONOUR ROLL</span></div><h1>وجوه نفخر بها…<br><em>وأسماء ننتظرها.</em></h1><p class="deck">صفحات تقدير للطالبات المتفوقات والمعلمات والأمهات اللاتي أسهمن في أنشطة أكتوبر.</p>
+ <div class="panel"><strong>المتفوقات في الفيزياء</strong><p>مكان مخصص للأسماء والصفوف والصور المعتمدة بعد إرسالها.</p></div>
+ <div class="panel"><strong>الفائزات في مسابقات أكتوبر</strong><p>مسابقة أكتوبر الوردي · تحديات معمل الفيزياء · مسابقات الطابور.</p></div>
+ <div class="panel"><strong>أولياء الأمور المشاركون</strong><p>يُضاف سجل مشاركة أولياء الأمور في Padlet والتحديات المجتمعية.</p></div>
+ <div class="panel" style="border:2px dashed #bf9d71;text-align:center;padding:20px;background:#fff9ed"><strong>مساحة لصور شهادات التكريم</strong><p>ستُستبدل هذه المساحة بالشهادات الأصلية.</p></div><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
+<section class="page" data-name="ألبوم أكتوبر"><div class="meta"><span>مساحات توثيقية</span><span>PHOTO JOURNAL</span></div><h1>شهر كامل<br><em>في لقطات.</em></h1><p class="deck">هذا العدد ما زال قابلًا للتحديث: الصور الموثقة ستمنحه بصمة مدرستنا الحقيقية.</p>
+ <div class="spread"><div class="panel" style="border-style:dashed;text-align:center;padding:24px 8px"><strong>رصد زحل</strong><p>مساحة صورة</p></div><div class="panel" style="border-style:dashed;text-align:center;padding:24px 8px"><strong>الغذاء العالمي</strong><p>مساحة صورة</p></div></div>
+ <div class="spread"><div class="panel" style="border-style:dashed;text-align:center;padding:24px 8px"><strong>أكتوبر الوردي</strong><p>مساحة صورة</p></div><div class="panel" style="border-style:dashed;text-align:center;padding:24px 8px"><strong>المعمل</strong><p>مساحة صورة</p></div></div>
+ <div class="panel"><strong>تحديث العدد</strong><p>عند وصول الصور والدرجات والأسماء وأسئلة المسابقات ومسائل الكتاب، تُدمج في نفس العدد دون تغيير هوية المجلة.</p></div>
+ <p class="note">تُفضَّل الصور الأفقية العالية الجودة مع موافقات المدرسة على النشر عند ظهور طالبات.</p><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
 <section class="page" data-name="فعاليات القسم">
 <div class="meta"><span>من مدرستنا</span><span>PHYSICS DEPARTMENT</span></div><h1>أكتوبر…<br><em>شهر العلم.</em></h1>
 <div class="panel"><strong>أسبوع الفضاء</strong><p>أنشطة مرتبطة بالكواكب والفضاء وأسئلة تحفز الثقافة الفلكية.</p></div>
@@ -217,11 +345,22 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 (function(){
 'use strict';
 var pages=Array.prototype.slice.call(document.querySelectorAll('.page'));
+var art=document.getElementById('desktop-feature');
+function updateFeature(){
+ var p=pages[index], image=p.querySelector('.picture img,.cover-bg,.art-hero>img');
+ var title=p.querySelector('h1,.masthead,.floating h1'), summary=p.querySelector('p.deck,p.copy,.cover-feature p,.floating p');
+ var picture=image?image.getAttribute('src'):'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=1200&q=85';
+ if(art)art.style.backgroundImage="url('"+picture+"')";
+ document.getElementById('desktop-title').textContent=title?title.textContent:p.dataset.name;
+ document.getElementById('desktop-caption').textContent=summary?summary.textContent:'صفحة من عدد أكتوبر: العلم والهوية والإنجاز.';
+ var ft=p.querySelector('.footer');if(ft&&ft.lastElementChild)ft.lastElementChild.textContent=String(index+1).padStart(2,'0');
+}
+
 var index=0,quizIndex=0,quizAnswered=false,memoryTimer=null;
 var stage=document.getElementById('stage'),holder=document.getElementById('holder'),sheet=document.getElementById('sheet');
 function byId(id){return document.getElementById(id)}
 function fit(){
-var r=stage.getBoundingClientRect();var s=Math.min((r.width-6)/400,(r.height-6)/700,1.3);
+var r=stage.getBoundingClientRect();var desktop=window.innerWidth>=920&&window.innerHeight>=560;var w=desktop?Math.min(r.width*.39,490):r.width;var s=Math.min((w-6)/400,(r.height-6)/700,1.3);
 holder.style.width=(400*s)+'px';holder.style.height=(700*s)+'px';sheet.style.transform='scale('+s+')';
 }
 function go(n){
@@ -229,7 +368,7 @@ clearInterval(memoryTimer);index=Math.max(0,Math.min(pages.length-1,n));
 pages.forEach(function(p,i){p.classList.toggle('active',i===index)});
 byId('page-count').textContent=String(index+1).padStart(2,'0')+' / '+pages.length;
 byId('section-name').textContent=pages[index].dataset.name;
-byId('prev-btn').disabled=index===0;byId('next-btn').disabled=index===pages.length-1;
+byId('prev-btn').disabled=index===0;byId('next-btn').disabled=index===pages.length-1;updateFeature();
 if(index===16)renderQuiz();
 if(index===19)resetMemoryAnswer();
 if(index===22)resetPublicAnswer();
