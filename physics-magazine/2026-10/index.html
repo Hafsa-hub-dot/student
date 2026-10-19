@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#152a28">
+<meta name="description" content="مجلة الفيزياء ممتعة، العدد الأول، أكتوبر 2026. مجلة شهرية تفاعلية من قسم الفيزياء في مدرسة العب الثانوية للبنات.">
+<title>الفيزياء ممتعة | مجلة أكتوبر 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#17312c;--darkest:#0c1c19;--ink:#1e332d;--copper:#ad5c3e;--cream:#f9f6ee;--gold:#d6ad77}
+*{box-sizing:border-box}html,body{height:100%;width:100%;margin:0}body{overflow:hidden;background:#0b1916;color:white;font-family:"El Messiri",Tahoma,Arial,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #e3b57c;outline-offset:2px}button:disabled{opacity:.3;cursor:default}
+#app{height:100dvh;min-height:380px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#3c534d 0,#152722 50%,#091311 100%)}
+.topbar{height:48px;position:absolute;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:0 14px;background:#0a1815e9;border-bottom:1px solid #ffffff25;z-index:10;font-size:11px}.topbar strong{letter-spacing:.8px}.topbar button,.bottombar button{color:#fdf7ea;background:transparent;border:1px solid #ffffff50;border-radius:2px;padding:7px 10px;font-size:11px}.topbar .flag{color:#e5c59b}
+.stage{position:absolute;inset:51px 8px 57px;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:pan-y}.holder{position:relative;flex:none;width:400px;height:700px;transform-origin:center center}.sheet{position:absolute;inset:0;width:400px;height:700px;background:var(--cream);color:var(--ink);transform-origin:top right;box-shadow:0 20px 52px #0008;overflow:hidden}
+.page{position:absolute;inset:0;display:none;padding:28px 28px 34px;overflow:hidden;flex-direction:column;gap:8px}.page.active{display:flex}.page:after{content:"";pointer-events:none;position:absolute;inset:0;border:1px solid #57462a24}.page.cover{padding:0;color:white;background:#112925}.page.cover:after{border:9px solid #ffffff0c}
+.meta{display:flex;align-items:center;justify-content:space-between;border-top:4px solid var(--dark);padding-top:7px;color:var(--copper);font-weight:700;font-size:11px;letter-spacing:.2px;min-height:29px}.meta span:last-child{font:9px Georgia,serif;letter-spacing:1px;color:#8f8c7e;direction:ltr}
+h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.5px;margin:8px 0 4px}h1 em{font-style:normal;color:var(--copper)}h2{font:700 29px/1.12 "Amiri",serif}p.copy{font:19px/1.46 "Amiri",serif;color:#344139}p.deck{font:22px/1.25 "Amiri",serif;color:#536254}p.note{font:11px/1.55 "El Messiri",sans-serif;color:#6e766f}.eyebrow{font-size:11px;letter-spacing:.3px;color:var(--copper);font-weight:700}.picture{position:relative;overflow:hidden;flex:none;background:#e7e8e2}.picture img{width:100%;height:100%;object-fit:cover;display:block}.picture figcaption{position:absolute;inset:auto 0 0;padding:8px 9px;background:linear-gradient(transparent,#081813c9);color:white;font:11px/1.3 "El Messiri",sans-serif}.fill{flex:1;min-height:0}.panel{background:#efeae0;border-right:3px solid var(--copper);padding:12px 13px;flex:none}.panel strong{font:700 14px "El Messiri",sans-serif}.panel p{font:18px/1.35 "Amiri",serif;margin-top:3px}.pull{padding:14px;background:var(--dark);color:#f1e6cf;font:23px/1.26 "Amiri",serif;text-align:right}.panel.dark{background:var(--dark);color:white}.btn{display:block;border:0;background:#204b42;color:#fff;padding:12px 16px;font-size:13px;text-align:center;font-weight:700}.btn.light{background:#f5e7cf;color:#234238}.btn.outline{background:transparent;border:1px solid var(--copper);color:var(--copper)}.spread{display:flex;gap:10px}.spread>*{flex:1;min-width:0}.math{background:#193630;color:#f8edda;font:26px Georgia,serif;text-align:center;direction:ltr;padding:13px 5px}.math small{display:block;direction:rtl;font:11px "El Messiri",sans-serif;color:#dfc39e;margin-top:6px}.footer{margin-top:auto;display:flex;justify-content:space-between;border-top:1px solid #c9c2b4;padding-top:6px;color:#999083;font:10px Georgia,serif;direction:rtl;min-height:18px}
+.bottombar{height:56px;position:absolute;inset:auto 0 0;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:#091713e8;border-top:1px solid #ffffff22;gap:8px}.bottombar .count{color:#e5cba4;font:12px Georgia,serif;direction:ltr}.bottombar button{min-width:99px}
+.cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.68) saturate(.82)}.cover-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,#081a16bc 0%,#081a1612 38%,#071915e8 87%)}.cover-main{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:33px 26px 27px}.cover-topline{font-size:11px;display:flex;justify-content:space-between;gap:9px;border-top:2px solid #e6e2d3;padding-top:8px}.masthead{font:700 69px/.89 "Amiri",serif;letter-spacing:-2px;text-shadow:0 5px 18px #0008;margin-top:31px}.masthead .gold{color:#ffe0b2}.cover-en{letter-spacing:2.6px;font:9px Georgia,serif;margin-top:9px}.cover-feature{margin-top:auto}.cover-feature h2{font:700 43px/1.04 "Amiri",serif;margin:8px 0}.cover-feature p{font:20px/1.35 "Amiri",serif}.cover-teasers{font-size:12px;line-height:1.8;margin:12px 0 5px;color:#f1e6d3}.values{display:flex;gap:5px;flex-wrap:wrap;border-top:1px solid #e8dec39c;padding-top:10px;margin-top:8px}.values span{font-size:10px;border:1px solid #f7e7c782;background:#0004;padding:5px 8px}.cover-button{border:0;background:#f1e0c7;color:#20352f;font-weight:700;padding:12px;margin-top:14px}
+.toc{display:flex;flex-direction:column;flex:1;min-height:0}.toc button{display:flex;align-items:center;gap:11px;border:0;border-bottom:1px solid #cfc8b8;background:transparent;text-align:right;color:#213c31;padding:9px 4px;min-height:42px}.toc button:hover{background:#eee8dc}.toc .num{color:var(--copper);font:21px Georgia,serif;min-width:31px;direction:ltr}.toc .name{font:700 19px "Amiri",serif;flex:1}
+.art-hero{position:relative;margin:-28px -28px -34px;height:700px;color:white;background:#18241e}.art-hero>img{width:100%;height:100%;object-fit:cover;filter:grayscale(.88) brightness(.72)}.art-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 28%,#061714e9 99%)}.art-hero .floating{position:absolute;z-index:2;bottom:48px;right:28px;left:28px}.art-hero h1{font:700 74px/.96 "Amiri",serif;color:white}.art-hero p{font:24px/1.25 "Amiri",serif;margin-top:13px}
+.table{border-collapse:collapse;width:100%;font-size:12px}.table td,.table th{border:1px solid #d1c7b8;padding:8px}.table th{background:#203e35;color:white}.table td[dir=ltr]{font-family:Georgia,serif;text-align:center}
+.choices{display:flex;flex-direction:column;gap:8px}.choice{background:#f0ece3;border:1px solid #d0c4b5;padding:12px;text-align:right;color:#17372c;font-size:13px;min-height:44px}.choice.ok{background:#d8ead8;border-color:#42855e}.choice.bad{background:#f2dcd4;border-color:#bf5b44}.answer{background:#ede7da;padding:11px;font:18px/1.35 "Amiri",serif;min-height:66px}
+.memory{position:relative;display:grid;grid-template:1fr 1fr / 1fr 1fr;gap:5px;flex:1;min-height:0;background:#1b342e;padding:5px}.memory .picture{height:100%}.curtain{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:23px;background:repeating-linear-gradient(90deg,#235047 0,#235047 24px,#193e37 25px,#193e37 39px);color:#fff;text-align:center;transition:transform .55s}.curtain.hidden{transform:translateY(-105%)}.curtain strong{font:700 45px "Amiri",serif}.curtain p{font:20px/1.3 "Amiri",serif}
+.certificate{flex:1;border:5px double #bea67a;margin:8px 0;background:#f3eee3;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;text-align:center;gap:5px;padding:18px}.certificate h2{font:700 44px "Amiri",serif;color:#8f513e}.certificate input{width:100%;border:0;border-bottom:1px solid #a48663;background:transparent;font-size:17px;text-align:center;padding:8px;color:#162a24}
+.small-links{font-size:11px;line-height:1.6;color:#56685d;overflow-wrap:anywhere}.small-links a{color:#a05036}
+@media print{body{background:white}#app{height:auto;background:white}.topbar,.bottombar{display:none}.stage{position:static;display:block}.holder{height:auto;width:auto}.sheet{transform:none!important;position:static;box-shadow:none}.page{display:none!important}.page.printable{display:flex!important}}
+</style>
+</head>
+<body>
+<div id="app">
+<header class="topbar"><strong>PHYSICS MONTHLY · 01</strong><span class="flag" id="section-name">الغلاف</span><button id="contents-btn" type="button">الفهرس ◈</button></header>
+<main class="stage" id="stage"><div class="holder" id="holder"><div class="sheet" id="sheet">
+<section class="page cover active" data-name="الغلاف">
+<img class="cover-bg" src="https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="سفينة حاويات فوق المحيط">
+<div class="cover-overlay"></div>
+<div class="cover-main"><div class="cover-topline"><span>مدرسة العب الثانوية للبنات · قسم الفيزياء</span><span>أكتوبر 2026 | العدد 01</span></div>
+<div class="masthead">الفيزياء<br><span class="gold">ممتعة</span></div><div class="cover-en">PHYSICS IS FASCINATING</div>
+<div class="cover-feature"><div class="eyebrow" style="color:#f2c59e">قصة الغلاف</div><h2>كيف يحمل البحر<br>مدينة من الحديد؟</h2><p>قصص علمية تقرئينها… فتتغير نظرتكِ للعالم.</p>
+<div class="cover-teasers">عالمة العدد: ماري كوري · فيزياء أكتوبر<br>قوانين ومسائل وتدريبات · ذاكرة وألغاز · إنجازات قسم الفيزياء</div>
+<div class="values"><span>الفضول</span><span>الدقة</span><span>التعاون</span><span>الإبداع</span></div>
+<button class="cover-button" data-goto="1">ابدئي تصفح المجلة ←</button></div></div></section>
+<section class="page" data-name="الفهرس">
+<div class="meta"><span>دليل العدد</span><span>CONTENTS</span></div><h1>بين صفحات<br><em>هذا العدد.</em></h1>
+<div class="toc">
+<button data-goto="2"><span class="num">03</span><span class="name">افتتاحية التحرير</span>←</button>
+<button data-goto="3"><span class="num">04</span><span class="name">قصة الغلاف · أسرار الطفو</span>←</button>
+<button data-goto="5"><span class="num">06</span><span class="name">سينما العلم · NASA</span>←</button>
+<button data-goto="6"><span class="num">07</span><span class="name">عالمة العدد · ماري كوري</span>←</button>
+<button data-goto="8"><span class="num">09</span><span class="name">ملف مراجعة شهر أكتوبر</span>←</button>
+<button data-goto="13"><span class="num">14</span><span class="name">الرموز والقوانين والمسائل</span>←</button>
+<button data-goto="16"><span class="num">17</span><span class="name">الأسئلة التدريبية</span>←</button>
+<button data-goto="17"><span class="num">18</span><span class="name">الألغاز والذاكرة البصرية</span>←</button>
+<button data-goto="20"><span class="num">21</span><span class="name">أخبار قسم الفيزياء</span>←</button>
+<button data-goto="23"><span class="num">24</span><span class="name">شهادة قارئة العدد</span>←</button></div><div class="footer"><span>قسم الفيزياء · مدرسة العب الثانوية للبنات</span><span>02</span></div>
+</section>
+<section class="page" data-name="الافتتاحية">
+<div class="meta"><span>افتتاحية التحرير</span><span>EDITORIAL</span></div>
+<h1>العلم يبدأ<br>بـ<em>لماذا؟</em></h1>
+<figure class="picture" style="height:226px"><img src="https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=900" alt="قهوة وحياة يومية"><figcaption>حتى التفاصيل الصغيرة تخفي حكاية علمية.</figcaption></figure>
+<p class="copy">في فنجان قهوة، وفي هاتف نحمله، وفي سفينة تعبر البحر، تختبئ عشرات القصص التي تستحق أن تُروى.</p>
+<p class="copy">نلتقي كل شهر لنقرأ، ونتساءل، ونكتشف. ونفتح نافذة على دروس طالباتنا وإنجازات قسم الفيزياء.</p>
+<div class="pull">«ليست الفيزياء معادلات فقط… إنها طريقة مختلفة لرؤية العالم.»</div><div class="footer"><span>الفيزياء ممتعة · العدد الأول</span><span>03</span></div>
+</section>
+<section class="page" data-name="قصة الغلاف">
+<div class="meta"><span>قصة الغلاف</span><span>COVER STORY</span></div><div class="eyebrow">سرّ يتكرر أمام أعيننا كل يوم</div><h1>لماذا لا تغرق<br><em>السفينة الحديدية؟</em></h1>
+<figure class="picture" style="height:255px"><img src="https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="سفينة"><figcaption>الماء يرفع السفينة على الرغم من كتلتها الكبيرة.</figcaption></figure>
+<p class="deck">المسألة لا تتعلق بخفة الحديد وحدها.</p><p class="copy">عندما تطفو السفينة، فإنها تزيح ماءً يولّد قوة طفو تساوي وزنها. ويساعد شكل الهيكل وفراغه الداخلي على تحقيق ذلك.</p>
+<button class="btn" data-goto="4">كيف يحدث ذلك؟ اقلبي الصفحة ←</button><div class="footer"><span>العلوم من حولنا</span><span>04</span></div>
+</section>
+<section class="page" data-name="اكتشفي السر">
+<div class="meta"><span>وراء الظاهرة</span><span>THE SCIENCE</span></div><h1>السر ليس<br><em>في خفة الحديد.</em></h1>
+<div class="panel dark" style="text-align:center;height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column"><span style="font-size:75px">🚢</span><strong>قوة الطفو إلى أعلى ↥ | الوزن إلى أسفل ↧</strong></div>
+<div class="panel"><strong>فكرة أرخميدس</strong><p>قوة الطفو تساوي وزن الماء الذي يزيحه الجزء المغمور من الجسم.</p></div>
+<div class="panel"><strong>توقعي!</strong><p>لماذا تغرق قطعة حديد صغيرة بينما تطفو سفينة أكبر منها بكثير؟</p></div>
+<button class="btn outline" id="reveal-ship">اكشفي التفسير</button><div id="ship-answer" class="answer" hidden>لأن شكل السفينة يجعلها تزيح حجمًا كبيرًا من الماء، فتتولد قوة طفو يمكنها موازنة وزنها. أما قطعة الحديد المصمتة فلا تزيح عادة ماءً كافيًا قبل أن تغرق.</div>
+<div class="footer"><span>معلومة في دقيقة</span><span>05</span></div>
+</section>
+<section class="page" data-name="سينما العلم">
+<div class="meta"><span>سينما العلم</span><span>WATCH NASA</span></div><h1>الأرض كما<br><em>لم نعتد رؤيتها.</em></h1><p class="deck">رحلة بصرية حقيقية من وكالة ناسا.</p>
+<div id="video-box" style="position:relative;height:282px;background:#122923;overflow:hidden;flex:none"><img src="https://img.youtube.com/vi/VbB1p9wm0XA/hqdefault.jpg" alt="فيديو ناسا" style="width:100%;height:100%;object-fit:cover"><button class="btn light" id="start-video" style="position:absolute;top:40%;right:11%;left:11%">▶ تشغيل الفيديو داخل الصفحة</button></div>
+<div class="panel"><strong>سؤال قبل المشاهدة</strong><p>كيف تساعد الأقمار الصناعية على رصد التغيرات في الغلاف الجوي والبحار؟</p></div>
+<p class="note">الفيديو الأصلي: The Earth from Space · قناة NASA الرسمية. قد يحتاج الإنترنت والسماح بالتشغيل.</p>
+<a class="small-links" href="https://www.youtube.com/watch?v=VbB1p9wm0XA" target="_blank" rel="noopener">مشاهدة الفيديو من مصدره إذا تعذر تشغيله هنا ↗</a>
+<div class="footer"><span>المشاهدة والتأمل</span><span>06</span></div>
+</section>
+<section class="page" data-name="عالمة العدد" style="padding:0">
+<div class="art-hero"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=850" alt="صورة أرشيفية لماري كوري">
+<div class="floating"><div class="eyebrow" style="color:#f2b883">وجوه صنعت التاريخ · شخصية العدد</div><h1>ماري<br>كوري</h1><p>عالمة صاغت بالمثابرة صفحة جديدة في تاريخ البحث العلمي.</p><div class="small-links" style="color:#ddd5ca;margin-top:10px">صورة تاريخية: Henri Manuel · Wikimedia Commons · ملكية عامة</div></div></div></section>
+<section class="page" data-name="ماري كوري">
+<div class="meta"><span>حكاية اكتشاف</span><span>THE SCIENTIST</span></div><h1>امرأة تحدّت<br><em>المجهول.</em></h1>
+<p class="copy">ولدت ماري كوري سنة 1867، ودرست الظواهر الإشعاعية. وأسهمت مع بيير كوري في اكتشاف البولونيوم والراديوم عام 1898.</p>
+<div class="spread"><div class="panel dark"><strong style="color:#e9c69b;font:29px Georgia,serif">1903</strong><p>جائزة نوبل في الفيزياء.</p></div><div class="panel dark"><strong style="color:#e9c69b;font:29px Georgia,serif">1911</strong><p>جائزة نوبل في الكيمياء.</p></div></div>
+<div class="pull">أول إنسان يحصل على جائزتي نوبل في مجالين علميين مختلفين.</div>
+<p class="copy">لم تكن قصة ماري كوري نجاحًا سريعًا؛ بل سنوات من البحث الدقيق والمثابرة، وتجربة أكدت أن الاكتشاف يرتبط أيضًا بالمسؤولية العلمية.</p>
+<div class="panel"><strong>قيمة العدد: المثابرة</strong><p>كل نتيجة دقيقة تبدأ بسؤال ومحاولة ومراجعة.</p></div><div class="footer"><span>شخصية العدد</span><span>08</span></div>
+</section>
+<section class="page" data-name="ملف أكتوبر">
+<div class="meta"><span>من داخل الصف</span><span>OCTOBER REVIEW</span></div><h1>فيزياء<br><em>هذا الشهر.</em></h1><p class="deck">ملخصات بسيطة تساعد على الفهم والمراجعة.</p>
+<figure class="picture" style="height:194px"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=900&q=85" alt="كوكب الأرض من الفضاء"><figcaption>من الجاذبية إلى حركة الأقمار الصناعية.</figcaption></figure>
+<div class="panel"><strong>الجاذبية والحركة المدارية</strong><p>المجال والجذب والسرعة المدارية.</p></div><div class="panel"><strong>المكثفات الكهربائية</strong><p>السعة والشحنة والتوالي والتوازي.</p></div>
+<div class="panel"><strong>الزخم والحركة الدورية</strong><p>حفظ الزخم والزمن الدوري والتردد.</p></div><div class="footer"><span>دروس أكتوبر</span><span>09</span></div>
+</section>
+<section class="page" data-name="الجاذبية">
+<div class="meta"><span>ملخص الدرس</span><span>GRAVITATION</span></div><h1>الجاذبية:<br><em>تأثير لا نراه.</em></h1>
+<p class="copy">خارج جسم كروي متماثل الكثافة، تتناقص شدة مجال جاذبيته بزيادة المسافة من مركزه وفق علاقة التربيع العكسي.</p>
+<div class="math">g = GM / r²<small>شدة مجال الجاذبية</small></div>
+<div class="panel"><strong>ماذا تعني الرموز؟</strong><p>G ثابت الجذب العام، وM كتلة الجسم الجاذب، وr البعد عن مركزه.</p></div>
+<div class="pull">عند مضاعفة البعد من المركز، تصبح شدة المجال ربع القيمة، مع ثبات الكتلة.</div>
+<div class="math">g = Fg / m<small>N/kg = m/s²</small></div><p class="note">تنبيه: البعد r يُقاس من المركز، وليس من سطح الكوكب.</p><div class="footer"><span>ملف المراجعة</span><span>10</span></div>
+</section>
+<section class="page" data-name="الحركة المدارية">
+<div class="meta"><span>ملخص الدرس</span><span>ORBITAL MOTION</span></div><h1>كيف يبقى القمر<br><em>في مداره؟</em></h1>
+<figure class="picture" style="height:178px"><img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=900&q=85" alt="الأرض في الفضاء"><figcaption>الجاذبية نفسها تمنح القمر الصناعي التسارع المركزي.</figcaption></figure>
+<p class="copy">القمر الصناعي في سقوط حر حول الأرض. وتسمح له سرعته المناسبة بالاستمرار في مسار مداري بدل السقوط مباشرة على سطحها.</p>
+<div class="math">v = √(GM / r)<small>سرعة مدار دائري</small></div><div class="math">Fc = Fg<small>قوة الجذب هي القوة المركزية</small></div>
+<div class="panel"><strong>من قطر إلى الفضاء</strong><p>الأقمار الثابتة ظاهريًا تكمل دورتها في يوم فلكي تقريبًا.</p></div>
+<div class="footer"><span>الفيزياء في مدارنا</span><span>11</span></div>
+</section>
+<section class="page" data-name="المكثفات">
+<div class="meta"><span>ملخص الدرس</span><span>CAPACITORS</span></div><h1>طاقة صغيرة<br><em>تنتظر لحظتها.</em></h1>
+<p class="copy">يخزن المكثف شحنة وطاقة في مجال كهربائي. وفي أبسط صوره، يتكوّن من موصلين يفصل بينهما عازل.</p><div class="math">C = Q / ΔV<small>السعة الكهربائية</small></div>
+<div class="spread"><div class="panel dark"><strong>توازي</strong><p>تُجمع السعات مباشرة.</p><div style="font:17px Georgia,serif;direction:ltr">Ceq=C₁+C₂</div></div><div class="panel dark"><strong>توالي</strong><p>تُجمع مقلوبات السعات.</p><div style="font:17px Georgia,serif;direction:ltr">1/Ceq=1/C₁+1/C₂</div></div></div>
+<div class="panel"><strong>تفصيل مهم</strong><p>في الأسلاك المعدنية تتحرك الإلكترونات؛ ولا تعبر الشحنات العازل المثالي بين لوحي المكثف.</p></div><div class="pull">وحدة السعة: الفاراد F.</div>
+<div class="footer"><span>المكثفات</span><span>12</span></div></section>
+<section class="page" data-name="الحركة والزخم">
+<div class="meta"><span>ملخص الدرس</span><span>MOTION / MOMENTUM</span></div><h1>حركة تتكرر…<br><em>وزخم يتغير.</em></h1>
+<div class="panel"><strong>الحركة الدورية</strong><p>حركة تعود إلى حالتها كل فترة زمنية متساوية؛ الزمن الدوري هو زمن دورة واحدة.</p></div><div class="math">f = 1 / T<small>التردد والزمن الدوري</small></div>
+<div class="panel"><strong>كمية الحركة (الزخم)</strong><p>يعتمد الزخم على الكتلة والسرعة المتجهة، وله مقدار واتجاه.</p></div>
+<div class="math">p = mv<small>kg·m/s</small></div><div class="panel"><strong>التصادمات</strong><p>يبقى الزخم الكلي محفوظًا في نظام معزول لا تؤثر فيه محصلة قوى خارجية.</p></div>
+<div class="footer"><span>الحركة والزخم</span><span>13</span></div></section>
+<section class="page" data-name="دليل الرموز">
+<div class="meta"><span>بطاقة مرجعية</span><span>SYMBOLS / UNITS</span></div><h1>لغة الفيزياء<br><em>في صفحة.</em></h1>
+<table class="table"><thead><tr><th>الرمز</th><th>الكمية</th><th>الوحدة</th></tr></thead><tbody>
+<tr><td dir="ltr">g</td><td>شدة المجال</td><td>N/kg</td></tr><tr><td dir="ltr">G</td><td>ثابت الجذب</td><td>N·m²/kg²</td></tr>
+<tr><td dir="ltr">M, m</td><td>الكتلة</td><td>kg</td></tr><tr><td dir="ltr">r</td><td>البعد من المركز</td><td>m</td></tr>
+<tr><td dir="ltr">v</td><td>السرعة</td><td>m/s</td></tr><tr><td dir="ltr">T</td><td>الزمن الدوري</td><td>s</td></tr>
+<tr><td dir="ltr">f</td><td>التردد</td><td>Hz</td></tr><tr><td dir="ltr">p</td><td>الزخم</td><td>kg·m/s</td></tr>
+<tr><td dir="ltr">C</td><td>السعة</td><td>F</td></tr><tr><td dir="ltr">Q</td><td>الشحنة</td><td>C</td></tr>
+<tr><td dir="ltr">ΔV</td><td>فرق الجهد</td><td>V</td></tr></tbody></table>
+<div class="pull" style="font-size:19px">الرمز C يُستخدم للسعة، وكذلك رمزًا لوحدة الشحنة (كولوم)؛ السياق يحدد المقصود.</div>
+<div class="footer"><span>دليل سريع</span><span>14</span></div></section>
+<section class="page" data-name="مسائل الكتاب">
+<div class="meta"><span>خريطة المراجعة</span><span>TEXTBOOK GUIDE</span></div><h1>من الكتاب<br><em>إلى الفهم.</em></h1><p class="deck">خريطة لمتابعة صفحات مسائل الجاذبية والحركة المدارية.</p>
+<div class="spread" style="gap:5px"><div class="panel dark" style="text-align:center;font:27px Georgia,serif">49</div><div class="panel dark" style="text-align:center;font:27px Georgia,serif">52</div><div class="panel dark" style="text-align:center;font:27px Georgia,serif">53</div></div>
+<div class="spread" style="gap:5px"><div class="panel dark" style="text-align:center;font:27px Georgia,serif">56</div><div class="panel dark" style="text-align:center;font:27px Georgia,serif">57</div></div>
+<div class="panel"><strong>مراحل الحل</strong><p>المعطيات ← المطلوب ← القانون ← التعويض ← الناتج بوحدته ← التحقق.</p></div>
+<div class="panel"><strong>مهمة القارئة</strong><p>حددي المسائل المرتبطة بشدة المجال، والأخرى المرتبطة بالسرعة المدارية، ثم اختاري مسألة تحتاجين مراجعتها.</p></div>
+<p class="note">هذه أرقام صفحات للمراجعة. لم تُدرج نصوص الكتاب الأصلية قبل مطابقتها من المصدر.</p><div class="footer"><span>من صفحات الكتاب</span><span>15</span></div></section>
+<section class="page" data-name="مسألة محلولة">
+<div class="meta"><span>نموذج حل</span><span>WORKED EXAMPLE</span></div><h1>هل تضعف<br><em>الجاذبية كثيرًا؟</em></h1>
+<p class="deck">انتقل قمر صناعي من بعد R عن مركز الأرض إلى بعد 2R. ما نسبة المجال الجديد إلى القديم؟</p>
+<div class="panel"><strong>المعطيات</strong><p>كتلة الأرض ثابتة. البعد الجديد يساوي ضعف البعد الأول.</p></div><div class="math">g₁ = GM / R²</div><div class="math">g₂ = GM / (2R)²</div><div class="math">g₂ = g₁ / 4</div>
+<div class="pull">النتيجة: تصبح شدة المجال ربع قيمتها الأصلية.</div><p class="note">مسألة تدريبية أصلية أُعدت للمجلة، وليست نصًا من الكتاب.</p><div class="footer"><span>نتعلم بالممارسة</span><span>16</span></div></section>
+<section class="page" data-name="تدريب تفاعلي">
+<div class="meta"><span>تدريب الشهر</span><span>PRACTICE</span></div><h1>اختبري<br><em>ما فهمته.</em></h1><p class="deck">ثلاثة أسئلة قصيرة، تظهر الإجابة بعد الاختيار.</p>
+<div class="panel"><strong id="quiz-count">السؤال 1 من 3</strong><h2 id="quiz-question" style="margin-top:7px">...</h2></div><div class="choices" id="quiz-answers"></div><div class="answer" id="quiz-feedback">اختاري إجابتك، ثم اكتشفي التفسير.</div>
+<button class="btn" id="quiz-next" style="margin-top:auto">السؤال التالي ←</button><div class="footer"><span>تدريب وتفسير</span><span>17</span></div></section>
+<section class="page" data-name="لغز العدد">
+<div class="meta"><span>لغز العدد</span><span>THE RIDDLE</span></div><h1>هل رأيتِ<br><em>الماضي من قبل؟</em></h1>
+<figure class="picture" style="height:240px"><img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=900&q=85" alt="الفضاء والنجوم"><figcaption>الضوء يحتاج إلى زمن ليصل إلينا.</figcaption></figure>
+<p class="copy">كلما نظرتِ إلى نجم بعيد، فإنك ترينه كما كان وقت انطلاق الضوء منه، لا كما هو بالضرورة في اللحظة الحالية.</p>
+<div class="pull">إذا كان نجم على بعد 100 سنة ضوئية، فكم مضى على الضوء الذي نراه منه؟</div>
+<button class="btn outline" id="riddle-btn">اكشفي الجواب</button><div class="answer" id="riddle-answer" hidden>حوالي 100 سنة. السنة الضوئية وحدة مسافة، وقد قطع الضوء هذه المسافة في 100 سنة.</div>
+<div class="footer"><span>فكّري قبل الكشف</span><span>18</span></div></section>
+<section class="page" data-name="الذاكرة البصرية">
+<div class="meta"><span>ومضة · الذاكرة البصرية</span><span>VISUAL MEMORY</span></div><h1>هل تثقين<br><em>بذاكرتك؟</em></h1><p class="deck">15 ثانية لملاحظة الصور، ثم تُغلق الستارة.</p>
+<div class="memory">
+<figure class="picture"><img src="https://images.pexels.com/photos/11186162/pexels-photo-11186162.jpeg?auto=compress&cs=tinysrgb&w=450" alt="السفينة"></figure>
+<figure class="picture"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=450&q=80" alt="الأرض"></figure>
+<figure class="picture"><img src="https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=450" alt="القهوة"></figure>
+<figure class="picture"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=450" alt="ماري كوري"></figure>
+<div class="curtain" id="curtain"><span class="eyebrow" style="color:#e9c09b">ومضة | اختبري ملاحظتكِ</span><strong>15 ثانية</strong><p id="curtain-msg">ارفعي الستارة، شاهدي المشهد، ثم أجيبي.</p><button class="btn light" id="memory-start">ارفعي الستارة</button><span id="memory-countdown" style="font:24px Georgia,serif"></span></div>
+</div><button class="btn" data-goto="19">انتقلي إلى اختبار الذاكرة ←</button><div class="footer"><span>تحدي التركيز</span><span>19</span></div></section>
+<section class="page" data-name="سؤال الذاكرة">
+<div class="meta"><span>ومضة · بعد الستارة</span><span>MEMORY CHECK</span></div><h1>ماذا بقي<br><em>في ذاكرتك؟</em></h1><p class="deck">ما الصورة التي ظهرت في المربع السفلي الأيمن؟</p>
+<div class="choices" id="memory-answers" style="margin-top:17px"><button class="choice" data-memory="0">السفينة</button><button class="choice" data-memory="1">الأرض</button><button class="choice" data-memory="2">فنجان القهوة</button><button class="choice" data-memory="3">ماري كوري</button></div>
+<div class="answer" id="memory-feedback">اختاري صورة واحدة دون الرجوع إلى المشهد.</div><button class="btn outline" style="margin-top:auto" data-goto="18">إعادة تحدي الذاكرة</button><div class="footer"><span>ذاكرة بصرية</span><span>20</span></div></section>
+<section class="page" data-name="فعاليات القسم">
+<div class="meta"><span>من مدرستنا</span><span>PHYSICS DEPARTMENT</span></div><h1>أكتوبر…<br><em>شهر العلم.</em></h1>
+<div class="panel"><strong>أسبوع الفضاء</strong><p>أنشطة مرتبطة بالكواكب والفضاء وأسئلة تحفز الثقافة الفلكية.</p></div>
+<div class="panel"><strong>رصد كوكب زحل</strong><p>نشاط فلكي يربط الرصد المباشر بدراسة الأجرام وحركتها.</p></div>
+<div class="panel"><strong>محطات الفيزياء</strong><p>استقصاء لمفاهيم الاحتكاك والتصادمات والمستوى المائل.</p></div>
+<div class="pull">التعلّم يصبح أعمق عندما نرى أثر العلم في حياتنا.</div>
+<p class="note">لإصدار المدرسة الرسمي، تُستبدل هذه المساحات بصور فعلية معتمدة للأنشطة.</p><div class="footer"><span>مدرسة العب الثانوية للبنات</span><span>21</span></div></section>
+<section class="page" data-name="مسابقات وإنجازات">
+<div class="meta"><span>من إنجازاتنا</span><span>OUR COMMUNITY</span></div><h1>حين يصبح<br><em>العلم مشاركة.</em></h1>
+<div class="panel"><strong>تحدي الغذاء الذكي</strong><p>مسابقة تفاعلية شاركت فيها الصفوف والمعلمات باستخدام رمز الاستجابة السريعة.</p></div>
+<div class="panel"><strong>نبض وردي</strong><p>تحدٍ توعوي يجمع الطالبات والمعلمات وأولياء الأمور.</p></div>
+<div class="panel"><strong>قد التحدي</strong><p>مساحة للتنافس الإيجابي وتنمية التفكير العلمي لدى المتفوقات.</p></div>
+<div class="panel"><strong>سُلّم النجاح</strong><p>مبادرة لدعم التحصيل والمتابعة وتبادل الخبرات.</p></div>
+<p class="note">لا تُعرض أسماء فائزات أو صور طالبات من دون إدراج النتائج والصور المعتمدة.</p><div class="footer"><span>أخبار قسم الفيزياء</span><span>22</span></div></section>
+<section class="page" data-name="مسابقة العدد">
+<div class="meta"><span>مسابقة للجميع</span><span>MONTHLY CHALLENGE</span></div><h1>سؤال للجميع…<br><em>لا للمتخصصين فقط.</em></h1>
+<p class="deck">لماذا يبدو المعدن أبرد من الخشب، رغم وجودهما في الغرفة نفسها؟</p>
+<div class="choices" id="public-answers" style="margin-top:18px">
+<button class="choice" data-public="0">لأن المعدن دائمًا أقل حرارة.</button><button class="choice" data-public="1">لأن المعدن ينقل الحرارة من يدنا بسرعة أكبر.</button><button class="choice" data-public="2">لأن الخشب ينتج حرارة بنفسه.</button></div>
+<div class="answer" id="public-feedback">اختاري توقعك لتظهر لكِ الإجابة والتفسير.</div>
+<div class="pull" style="margin-top:auto">في العدد المقبل: ظاهرة جديدة ومسابقة جديدة وعالِم أو عالِمة جديدة!</div>
+<div class="footer"><span>مسابقة العدد</span><span>23</span></div></section>
+<section class="page" data-name="شهادة قراءة">
+<div class="meta"><span>ختام العدد</span><span>READING CERTIFICATE</span></div><h1>كل قراءة<br><em>بداية اكتشاف.</em></h1>
+<div class="certificate">
+<div style="font:47px Georgia,serif;color:#ad8b55">✺</div>
+<div style="font-size:12px">قسم الفيزياء · مدرسة العب الثانوية للبنات</div>
+<h2>شهادة قارئة العدد</h2><p class="copy" style="text-align:center">تقديرًا لشغفها بالمعرفة وقراءتها للعدد الأول من مجلة «الفيزياء ممتعة».</p>
+<input id="reader-name" maxlength="50" placeholder="اكتبي اسمكِ هنا" autocomplete="name">
+<span style="font-size:12px;color:#8c7b61">أكتوبر 2026 · العدد 01</span></div>
+<button class="btn" id="print-cert">طباعة الشهادة A4</button><button class="btn outline" data-goto="0">العودة إلى الغلاف</button><div class="footer"><span>إلى اللقاء في العدد القادم</span><span>24</span></div></section>
+</div></div></main>
+<nav class="bottombar"><button id="next-btn" type="button">التالية ←</button><span class="count" id="page-count">01 / 24</span><button id="prev-btn" type="button">→ السابقة</button></nav>
+</div>
+<script>
+(function(){
+'use strict';
+var pages=Array.prototype.slice.call(document.querySelectorAll('.page'));
+var index=0,quizIndex=0,quizAnswered=false,memoryTimer=null;
+var stage=document.getElementById('stage'),holder=document.getElementById('holder'),sheet=document.getElementById('sheet');
+function byId(id){return document.getElementById(id)}
+function fit(){
+var r=stage.getBoundingClientRect();var s=Math.min((r.width-6)/400,(r.height-6)/700,1.3);
+holder.style.width=(400*s)+'px';holder.style.height=(700*s)+'px';sheet.style.transform='scale('+s+')';
+}
+function go(n){
+clearInterval(memoryTimer);index=Math.max(0,Math.min(pages.length-1,n));
+pages.forEach(function(p,i){p.classList.toggle('active',i===index)});
+byId('page-count').textContent=String(index+1).padStart(2,'0')+' / '+pages.length;
+byId('section-name').textContent=pages[index].dataset.name;
+byId('prev-btn').disabled=index===0;byId('next-btn').disabled=index===pages.length-1;
+if(index===16)renderQuiz();
+if(index===19)resetMemoryAnswer();
+if(index===22)resetPublicAnswer();
+}
+document.getElementById('next-btn').addEventListener('click',function(){go(index+1)});
+document.getElementById('prev-btn').addEventListener('click',function(){go(index-1)});
+document.getElementById('contents-btn').addEventListener('click',function(){go(1)});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-goto]');if(b)go(Number(b.getAttribute('data-goto')))});
+var startX=null;stage.addEventListener('touchstart',function(e){startX=e.touches[0].clientX},{passive:true});
+stage.addEventListener('touchend',function(e){if(startX===null)return;var d=e.changedTouches[0].clientX-startX;if(Math.abs(d)>60)go(index+(d>0?1:-1));startX=null},{passive:true});
+document.addEventListener('keydown',function(e){if(document.activeElement.tagName==='INPUT'||document.activeElement.tagName==='TEXTAREA')return;if(e.key==='ArrowLeft')go(index+1);if(e.key==='ArrowRight')go(index-1)});
+byId('reveal-ship').onclick=function(){byId('ship-answer').hidden=false;this.hidden=true};
+byId('riddle-btn').onclick=function(){byId('riddle-answer').hidden=false;this.hidden=true};
+byId('start-video').onclick=function(){
+byId('video-box').innerHTML='<iframe title="NASA: The Earth from Space" src="https://www.youtube-nocookie.com/embed/VbB1p9wm0XA?autoplay=1" style="border:0;width:100%;height:100%" allow="autoplay;encrypted-media;picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+};
+var quiz=[
+{q:'إذا تضاعفت المسافة من مركز الأرض، فكم تصبح شدة المجال؟',a:['ضعف القيمة','نصف القيمة','ربع القيمة'],correct:2,why:'لأن شدة المجال تتناسب عكسيًا مع مربع البعد.'},
+{q:'مكثفان سعتهما 3 و5 ميكروفاراد على التوازي. ما السعة المكافئة؟',a:['8 ميكروفاراد','2 ميكروفاراد','15 ميكروفاراد'],correct:0,why:'في التوازي نجمع السعات: 3 + 5 = 8 ميكروفاراد.'},
+{q:'جسم كتلته 2 kg وسرعته 4 m/s. ما مقدار زخمه؟',a:['2 kg·m/s','8 kg·m/s','6 kg·m/s'],correct:1,why:'p = mv، وبالتالي 2 × 4 = 8 kg·m/s.'}
+];
+function renderQuiz(){
+var q=quiz[quizIndex];quizAnswered=false;
+byId('quiz-count').textContent='السؤال '+(quizIndex+1)+' من '+quiz.length;byId('quiz-question').textContent=q.q;
+byId('quiz-answers').innerHTML='';
+q.a.forEach(function(v,i){var b=document.createElement('button');b.className='choice';b.textContent=v;b.addEventListener('click',function(){answerQuiz(i)});byId('quiz-answers').appendChild(b)});
+byId('quiz-feedback').textContent='اختاري إجابتك، ثم اكتشفي التفسير.';
+byId('quiz-next').textContent=quizIndex===quiz.length-1?'أعيدي التدريب':'السؤال التالي ←';
+}
+function answerQuiz(i){
+if(quizAnswered)return;quizAnswered=true;
+var q=quiz[quizIndex];Array.prototype.forEach.call(byId('quiz-answers').children,function(b,j){b.disabled=true;if(j===q.correct)b.classList.add('ok');else if(j===i)b.classList.add('bad')});
+byId('quiz-feedback').textContent=(i===q.correct?'صحيح. ':'الجواب الصحيح بالأخضر. ')+q.why;
+}
+byId('quiz-next').onclick=function(){quizIndex=(quizIndex+1)%quiz.length;renderQuiz()};
+byId('memory-start').onclick=function(){
+clearInterval(memoryTimer);var curtain=byId('curtain');curtain.classList.add('hidden');
+var secs=15;byId('memory-countdown').textContent=secs;
+memoryTimer=setInterval(function(){secs--;byId('memory-countdown').textContent=secs;
+if(secs<=0){clearInterval(memoryTimer);curtain.classList.remove('hidden');byId('curtain-msg').textContent='انتهت المشاهدة. انتقلي إلى سؤال الذاكرة.';byId('memory-start').textContent='إعادة المشاهدة';}},1000);
+};
+function resetMemoryAnswer(){
+Array.prototype.forEach.call(byId('memory-answers').children,function(b){b.disabled=false;b.classList.remove('ok','bad')});
+byId('memory-feedback').textContent='اختاري صورة واحدة دون الرجوع إلى المشهد.';
+}
+Array.prototype.forEach.call(document.querySelectorAll('[data-memory]'),function(b){
+b.onclick=function(){
+var chosen=Number(b.dataset.memory);Array.prototype.forEach.call(byId('memory-answers').children,function(x){x.disabled=true;var v=Number(x.dataset.memory);if(v===2)x.classList.add('ok');else if(v===chosen)x.classList.add('bad')});
+byId('memory-feedback').textContent=(chosen===2?'صحيح! ':'التصحيح بالأخضر. ')+'كانت القهوة في المربع السفلي الأيمن.';};
+});
+function resetPublicAnswer(){Array.prototype.forEach.call(byId('public-answers').children,function(b){b.disabled=false;b.classList.remove('ok','bad')});byId('public-feedback').textContent='اختاري توقعك لتظهر لكِ الإجابة والتفسير.'}
+Array.prototype.forEach.call(document.querySelectorAll('[data-public]'),function(b){b.onclick=function(){var selected=Number(b.dataset.public);Array.prototype.forEach.call(byId('public-answers').children,function(x){x.disabled=true;var v=Number(x.dataset.public);if(v===1)x.classList.add('ok');else if(v===selected)x.classList.add('bad')});byId('public-feedback').textContent=(selected===1?'صحيح! ':'الصحيح باللون الأخضر. ')+'المعدن ينقل الحرارة بعيدًا عن اليد أسرع من الخشب، لذلك يبدو أبرد حتى عند تساوي درجة الحرارة.';}});
+byId('print-cert').onclick=function(){
+var name=byId('reader-name').value.trim()||'قارئة العدد';name=name.replace(/[<>&"'`]/g,'');
+var html='<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>شهادة قراءة</title><style>@page{size:A4 landscape;margin:12mm}body{font-family:Tahoma,Arial,sans-serif;text-align:center;border:6px double #b69b6b;height:165mm;box-sizing:border-box;padding:17mm;color:#19352e}h1{font-size:38px}h2{font-size:32px;color:#a45139}p{font-size:23px;line-height:1.7}small{font-size:14px}</style><h1>مجلة الفيزياء ممتعة</h1><small>قسم الفيزياء · مدرسة العب الثانوية للبنات</small><h2>شهادة قارئة العدد</h2><p>تُمنح إلى</p><h1>'+name+'</h1><p>تقديرًا لاهتمامها بالثقافة العلمية وقراءة العدد الأول من المجلة.</p><small>أكتوبر 2026 · العدد 01</small></html>';
+var w=window.open('','_blank');if(w){w.document.write(html);w.document.close();w.focus();setTimeout(function(){w.print()},350)}else alert('اسمحي بالنوافذ المنبثقة لطباعة الشهادة.');
+};
+window.addEventListener('resize',fit);window.addEventListener('orientationchange',fit);
+fit();go(0);
+})();
+</script>
+</body></html>
