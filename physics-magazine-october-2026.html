@@ -383,6 +383,37 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
  .reader-toolbar .reader-actions{width:100%;display:flex;justify-content:space-between;gap:3px}
  .reader-toolbar .reader-actions button{font-size:10px;padding:7px 6px;flex:1;min-width:0}
 }
+
+/* Food Day 2026: six-question original challenge, adaptive reading layout */
+.food-day-game{background:#fcf9f3;min-height:100vh;color:#263b2f}
+.food-day-hero{padding:clamp(27px,5vw,72px) clamp(20px,6vw,80px);background:linear-gradient(118deg,#174b43,#235b4b 55%,#457a45);color:#fff}
+.food-day-hero-inner{max-width:980px;margin:auto}
+.food-day-kicker{display:inline-flex;align-items:center;gap:10px;border-top:2px solid #f6d7a0;padding-top:10px;color:#ffdb94;font-size:14px;letter-spacing:.4px}
+.food-day-hero h2{font:700 clamp(45px,5.5vw,76px)/1.22 Amiri,serif;margin:15px 0 9px;color:#fff3d3}
+.food-day-hero h2 em{font-style:normal;color:#ffe09d}
+.food-day-hero p{font:clamp(19px,2.25vw,28px)/1.5 Amiri,serif;color:#fcf0d9}
+.food-day-content{max-width:940px;margin:auto;padding:clamp(17px,3.5vw,45px) clamp(14px,4vw,45px) 90px}
+.food-day-stat{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:14px;font-weight:700;color:#34594b;flex-wrap:wrap}
+.food-day-progress{height:9px;background:#e4e0d7;border-radius:12px;overflow:hidden;margin:14px 0 27px}
+.food-day-progress span{height:100%;display:block;background:#d1a45c;transition:width .25s}
+.food-day-card{padding:clamp(22px,4vw,46px);background:#fff;box-shadow:0 8px 40px #364f3020;border:1px solid #e9ded1}
+.food-day-card .food-question-tag{color:#9a6835;font-weight:700;font-size:15px;display:block;margin-bottom:17px}
+.food-day-card h3{font:700 clamp(29px,3.5vw,46px)/1.35 Amiri,serif;color:#24483a;margin:0 0 26px}
+.food-day-options{display:grid;gap:11px}
+.food-day-option{background:#f6f6ef;border:1px solid #d3dbc9;text-align:right;color:#1e4134;display:flex;align-items:center;gap:15px;width:100%;min-height:63px;padding:11px 15px;font-size:clamp(14px,1.7vw,18px)}
+.food-day-option b{flex:none;width:31px;height:31px;display:grid;place-items:center;border-radius:50%;background:#e3eadf;color:#356449;font-size:15px}
+.food-day-option:hover:enabled{border-color:#55896b;background:#eaf3ec}
+.food-day-option.good{background:#deeee1;border-color:#438e5d}
+.food-day-option.bad{background:#fae4df;border-color:#c75d4f}
+.food-day-option:disabled{cursor:default}
+.food-day-explanation{margin-top:22px;background:#ecf2e7;border-right:4px solid #63956c;padding:17px 20px;font:clamp(19px,2vw,25px)/1.5 Amiri,serif;color:#2a5140}
+.food-day-next{background:#245f4c;color:#fff;border:0;padding:14px 26px;min-height:50px;margin-top:18px;font-weight:700;font-size:15px}
+.food-day-next:focus-visible{outline:3px solid #daaa64}
+.food-day-finished{text-align:center;padding:clamp(24px,5vw,55px);background:#fff;border:2px solid #dbb870}
+.food-day-finished h3{font:700 clamp(37px,4vw,60px) Amiri,serif;color:#28614e}
+.food-day-finished b{display:block;color:#b0823b;font:700 clamp(48px,7vw,84px) Georgia,serif;margin:18px 0}
+.food-day-finished p{font:clamp(20px,2vw,27px)/1.5 Amiri,serif;color:#35594c}
+@media(max-width:560px){.food-day-hero{padding:24px 17px}.food-day-content{padding:15px 12px 75px}.food-day-card{padding:20px 14px}.food-day-option{min-height:55px;gap:8px;padding:8px 9px}.food-day-option b{width:29px;height:29px}}
 </style>
 </head>
 <body>
@@ -515,7 +546,7 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 <div class="hub-grid"><button class="hub-card" type="button" data-go-name="يوم الغذاء العالمي"><span class="hub-card-k">الطابور الصباحي الأول</span><strong>يوم الغذاء العالمي</strong><small>افتحي الموضوع ←</small></button><button class="hub-card" type="button" data-go-name="مسابقة البحث العلمي"><span class="hub-card-k">الطابور الصباحي الثاني</span><strong>خطوات البحث العلمي</strong><small>افتحي الموضوع ←</small></button><button class="hub-card" type="button" data-go-name="أكتوبر الوردي"><span class="hub-card-k">توعية ومسابقة</span><strong>أكتوبر الوردي</strong><small>افتحي الموضوع ←</small></button><button class="hub-card" type="button" data-go-name="يوم المدير"><span class="hub-card-k">تقدير وقيادة</span><strong>يوم المدير</strong><small>افتحي الموضوع ←</small></button><button class="hub-card" type="button" data-go-name="رصد كوكب زحل"><span class="hub-card-k">رصد فلكي</span><strong>رصد كوكب زحل</strong><small>افتحي الموضوع ←</small></button><button class="hub-card" type="button" data-go-name="محطات معمل الفيزياء"><span class="hub-card-k">الصف الحادي عشر</span><strong>محطات المعمل</strong><small>افتحي الموضوع ←</small></button><button class="hub-card" type="button" data-go-name="تفعيل الحصص الإلكترونية"><span class="hub-card-k">تعلم رقمي</span><strong>التفعيل الإلكتروني</strong><small>افتحي الموضوع ←</small></button><button class="hub-card" type="button" data-go-name="الهوية الوطنية في كيدزون"><span class="hub-card-k">فيزياء وانتماء</span><strong>الهوية في كيدزون</strong><small>افتحي الموضوع ←</small></button></div>
 <p class="note" style="margin-top:auto">تُدرج الصور الفعلية وتواريخ التنفيذ التفصيلية بعد اعتمادها.</p><div class="footer"><span>مجلة الفيزياء ممتعة · مدرسة العب الثانوية للبنات</span><span>—</span></div></section>
 <section class="page" data-name="يوم الغذاء العالمي"><div class="meta"><span>الطابور الصباحي الأول · أكتوبر 2026</span><span>WORLD FOOD DAY</span></div><h1>غذاؤنا…<br><em>ومعرفتنا.</em></h1><p class="copy">بدأ التفعيل بمقدمة وتلاوة قدمتها الطالبة <b>رحمة جمال شعيبي</b>، وقدّمت الفقرات الطالبة <b>مايا سامي مرقة</b>، ثم عُرض فيديو قصير عن أهمية الغذاء، تلاه تحدٍ تفاعلي شاركت فيه الصفوف والمعلمات.</p>
- <div class="panel"><strong>كيف جرت المسابقة؟</strong><p>دخلت الطالبات والمعلمات المسابقة من خلال الباركود، وتنافسن بالإجابة عن أسئلة متنوعة مرتبطة بالغذاء والعلوم. وسيصبح الاختبار تفاعليًا داخل المجلة بعد إرسال أسئلته الأصلية.</p></div>
+ <div class="panel"><strong>كيف جرت المسابقة؟</strong><p>دخلت الطالبات والمعلمات المسابقة من خلال الباركود، وتنافسن بالإجابة عن أسئلة متنوعة مرتبطة بالغذاء والعلوم. وتضم المجلة الآن الأسئلة الستة الأصلية للمسابقة، مع تصحيح تفاعلي ونتيجة في الختام.</p></div>
  <div class="panel"><strong>أولياء الأمور في Padlet</strong><p>مساحة لإضافة مشاركات أولياء الأمور وتعليقاتهم أو صور لوحة Padlet بعد مشاركتها.</p></div>
  <div class="panel"><strong>فيزياء على المائدة</strong><p>السعرات الغذائية تقيس مقدار الطاقة؛ والجسم يحوّل الطاقة الكيميائية المخزنة في الطعام إلى أشكال أخرى، منها الحركة والحرارة.</p></div>
  <p class="note">أضيفي تاريخ التنفيذ الدقيق وصور النشاط ورابط Padlet في التحديث القادم.</p><button class="btn outline" data-go-name="تحدي الغذاء الذكي">افتحي أرشيف مسابقة الغذاء ←</button><div class="footer"><span>مجلة الفيزياء ممتعة · حصاد أكتوبر 2026</span><span>—</span></div></section>
@@ -566,10 +597,11 @@ h1,h2,h3,p,figure{margin:0}h1{font:700 48px/1.08 "Amiri",serif;letter-spacing:-.
 <div class="panel dark"><strong>4 مشاهد · 8 إلى 15 ثانية</strong><p>من الأشكال السهلة إلى التركيبات الأكثر دقة، دون كتابة إلزامية.</p></div>
 <div class="pull" style="font-size:20px">ليس المهم ما رأيته فقط… بل ما بقي في ذاكرتك.</div>
 <p class="note">افتحي هذا الركن من الفهرس لتجربة المستويات التفاعلية.</p><div class="footer"><span>مجلة الفيزياء ممتعة · أكتوبر 2026</span><span>—</span></div></section>
-<section class="page editorial-new" data-name="تحدي الغذاء الذكي"><div class="meta"><span>المسابقة الأولى</span><span>REPLAY THE QUIZ</span></div><h1>ماذا تعرفين عن<br><em>الغذاء والطاقة؟</em></h1><p class="deck">المسابقة التي شاركت فيها طالبات ومعلمات وأولياء أمور مدرستنا تصبح الآن جزءًا من أرشيف المجلة.</p>
-<div class="placeholder-quiz"><span class="placeholder-symbol">؟</span><strong>قريبًا: أسئلة المسابقة الأصلية</strong><p>ستظهر هنا أسئلة الاختيار من متعدد مع الخيارات، وتصحيح الإجابات، ونتيجة كل قارئة.</p></div>
-<div class="panel"><strong>طريقة المشاركة</strong><p>تقرئين السؤال، تختارين الإجابة، ثم يظهر تفسير موجز. ستكون الأسئلة ذاتها التي استُخدمت في النشاط بعد استلامها منكِ.</p></div>
-<p class="note">لن نختلق أسئلة أو فائزات أو نتائج. هذا القسم جاهز لاستقبال محتوى المسابقة.</p><div class="footer"><span>مجلة الفيزياء ممتعة · مدرسة العب الثانوية للبنات</span><span>—</span></div></section>
+<section class="page editorial-new" data-name="تحدي الغذاء الذكي"><div class="meta"><span>اليوم العالمي للغذاء · أكتوبر 2026</span><span>SMART FOOD CHALLENGE</span></div><h1>تحدّي<br><em>الغذاء الذكي.</em></h1><p class="deck">6 أسئلة من مسابقة طابور اليوم العالمي للغذاء: هل تستطيعين التمييز بين العبارة التسويقية والحقيقة الغذائية؟</p>
+<div class="panel dark"><strong>مسابقة اليوم العالمي للغذاء</strong><p>اختاري الإجابة ثم اكتشفي التصحيح والتفسير. تُحسب نقطة عن كل إجابة صحيحة من المحاولة الأولى.</p></div>
+<div class="pull" style="font-size:20px">تذوّقي المعرفة… فاختياراتنا تبدأ بالفهم.</div>
+<button class="btn" data-go-name="يوم الغذاء العالمي">قراءة تقرير الطابور الصباحي ←</button>
+<div class="footer"><span>الفيزياء ممتعة · قسم الفيزياء · أكتوبر 2026</span><span>—</span></div></section>
 <section class="page editorial-new" data-name="تحدي نبض وردي"><div class="meta"><span>المسابقة الثانية</span><span>REPLAY THE QUIZ</span></div><h1>نبض وردي…<br><em>تحدٍّ للتوعية.</em></h1><p class="deck">المسابقة التي شاركت فيها طالبات ومعلمات وأولياء أمور مدرستنا تصبح الآن جزءًا من أرشيف المجلة.</p>
 <div class="placeholder-quiz"><span class="placeholder-symbol">؟</span><strong>قريبًا: أسئلة المسابقة الأصلية</strong><p>ستظهر هنا أسئلة الاختيار من متعدد مع الخيارات، وتصحيح الإجابات، ونتيجة كل قارئة.</p></div>
 <div class="panel"><strong>طريقة المشاركة</strong><p>تقرئين السؤال، تختارين الإجابة، ثم يظهر تفسير موجز. ستكون الأسئلة ذاتها التي استُخدمت في النشاط بعد استلامها منكِ.</p></div>
@@ -1164,6 +1196,48 @@ else if(action==='restart'){scienceUnit=0;scienceAnswers={};}
 renderScience();readerScroll.scrollTo({top:0,behavior:'smooth'});
 }
 
+
+/* World Food Day: original six questions provided for the October 2026 activity */
+var foodDayQuestions=[
+ {tag:"العصير الطبيعي 🍹",q:"اشترت هدى عصيرًا «دون سكر مضاف». هل قد يحتوي على سكريات حرة؟",options:["صح","خطأ"],correct:0,explain:"نعم. العصير، حتى دون سكر مضاف، قد يحتوي على سكريات حرة مصدرها الفاكهة نفسها."},
+ {tag:"الكوليسترول 🛒",q:"كُتب على المنتج «خالٍ من الكوليسترول». ماذا نفهم؟",options:["يمكن تناوله بأي كمية","لا يحتوي على دهون","قد يحتوي على دهون وسعرات مرتفعة","قليل السعرات بالضرورة"],correct:2,explain:"عبارة خالٍ من الكوليسترول لا تعني أن المنتج خالٍ من الدهون، ولا أنها تحدد عدد سعراته الحرارية."},
+ {tag:"الخبز البني 🍞",q:"كيف نعرف أن الخبز البني مصنوع من الحبوب الكاملة؟",options:["نقرأ المكونات ونتأكد من وجود قمح كامل","من لونه الداكن","من كلمة «صحي»","من سعره المرتفع"],correct:0,explain:"اللون وحده ليس دليلًا. قراءة قائمة المكونات هي الطريقة الأدق للتحقق من استخدام الحبوب الكاملة."},
+ {tag:"امتصاص الحديد 🍋",q:"ما الذي يساعد على امتصاص الحديد النباتي في العدس؟",options:["شرب الشاي","إضافة الليمون","شرب القهوة","إضافة الملح"],correct:1,explain:"يحتوي الليمون على فيتامين C الذي يساعد الجسم على امتصاص الحديد غير الهيمي الموجود في الأغذية النباتية."},
+ {tag:"السعرات الحرارية 🍔",q:"شطيرة 340 سعرة + بطاطس 220 سعرة + ماء 0. كم المجموع؟",options:["340 سعرة","460 سعرة","560 سعرة","660 سعرة"],correct:2,explain:"340 + 220 + 0 = 560 سعرة حرارية."},
+ {tag:"الفيتامينات 💊",q:"الجرعات الكبيرة من الفيتامينات آمنة للجميع. صح أم خطأ؟",options:["صح","خطأ"],correct:1,explain:"خطأ. تناول جرعات عالية من بعض الفيتامينات قد يسبب آثارًا ضارة، وتختلف الحاجة إليها من شخص إلى آخر."}
+];
+var foodDayIndex=0,foodDayScore=0,foodDayChosen=null;
+function buildFoodDay(){
+return '<div class="food-day-game"><header class="food-day-hero"><div class="food-day-hero-inner"><span class="food-day-kicker">مدرسة العب الثانوية للبنات · قسم الفيزياء · أكتوبر 2026</span><h2>تحدّي <em>الغذاء الذكي</em> 🍏</h2><p>مسابقة اليوم العالمي للغذاء · 6 أسئلة من فعالية الطابور الصباحي. اختاري الإجابة واكتشفي الحقيقة.</p></div></header><main class="food-day-content"><div class="food-day-stat"><span id="fd-question-progress">السؤال 1 من 6</span><span id="fd-score">النتيجة: 0 / 6</span></div><div class="food-day-progress"><span id="fd-progress" style="width:0"></span></div><div id="fd-question"></div><p style="font:17px/1.5 Amiri,serif;color:#597569;margin-top:20px">تحدٍ للثقافة الغذائية والتفكير الناقد · نسخة تفاعلية من مسابقة القسم.</p></main></div>';
+}
+function renderFoodDay(){
+var c=document.getElementById('fd-question');if(!c)return;
+var counter=document.getElementById('fd-question-progress'),score=document.getElementById('fd-score'),bar=document.getElementById('fd-progress');
+score.textContent='النتيجة: '+foodDayScore+' / '+foodDayQuestions.length;
+if(foodDayIndex>=foodDayQuestions.length){
+counter.textContent='اكتمل التحدّي!';
+bar.style.width='100%';
+c.innerHTML='<div class="food-day-finished"><h3>أحسنتِ! اكتمل تحدّي الغذاء الذكي</h3><b>'+foodDayScore+' / '+foodDayQuestions.length+'</b><p>من العصير إلى الملصقات الغذائية والسعرات والفيتامينات، كل اختيار واعٍ يبدأ بمعلومة صحيحة.</p><button type="button" class="food-day-next" data-food-action="restart">أعيدي التحدي من البداية ←</button><button type="button" class="food-day-next" style="background:#d8b272;color:#24483a;margin-right:12px" data-go-name="يوم الغذاء العالمي">تقرير الطابور الصباحي</button></div>';
+return;
+}
+var q=foodDayQuestions[foodDayIndex];
+counter.textContent='السؤال '+(foodDayIndex+1)+' من '+foodDayQuestions.length;
+bar.style.width=Math.round(foodDayIndex/foodDayQuestions.length*100)+'%';
+c.innerHTML='<div class="food-day-card"><span class="food-question-tag">'+q.tag+' · السؤال '+(foodDayIndex+1)+'</span><h3>'+q.q+'</h3><div class="food-day-options">'+q.options.map(function(option,j){return '<button type="button" class="food-day-option'+(foodDayChosen!==null?(j===q.correct?' good':j===foodDayChosen?' bad':''):'')+'" data-food-option="'+j+'" '+(foodDayChosen!==null?'disabled':'')+'><b>'+String.fromCharCode(65+j)+'</b><span>'+option+'</span></button>';}).join('')+'</div>'+(foodDayChosen===null?'<p style="color:#62806e;font-size:13px;margin-top:16px">تظهر الإجابة بعد اختياركِ.</p>':'<div class="food-day-explanation"><strong>'+(foodDayChosen===q.correct?'إجابة صحيحة!':'الإجابة الصحيحة: '+String.fromCharCode(65+q.correct)+' — '+q.options[q.correct])+'.</strong> '+q.explain+'</div><button type="button" class="food-day-next" data-food-action="next">'+(foodDayIndex===foodDayQuestions.length-1?'عرض النتيجة النهائية':'السؤال التالي ←')+'</button>')+'</div>';
+}
+function selectFoodDay(i){
+if(foodDayChosen!==null)return;
+foodDayChosen=i;
+if(i===foodDayQuestions[foodDayIndex].correct)foodDayScore++;
+renderFoodDay();
+}
+function foodDayAction(a){
+if(a==='restart'){foodDayScore=0;foodDayIndex=0;foodDayChosen=null;}
+if(a==='next'&&foodDayChosen!==null){foodDayIndex++;foodDayChosen=null;}
+renderFoodDay();
+var scroller=document.getElementById('reader-scroll');if(scroller)scroller.scrollTo({top:0,behavior:'smooth'});
+}
+
 function interactiveReader(name){
 if(name==='تدريب تفاعلي'){
 return '<div class="reader-content"><h2 style="font:700 43px Amiri,serif">تدريب الشهر</h2><p class="deck">اختاري الإجابة ثم اقرئي التفسير العلمي.</p><div id="r-quiz"></div></div>';
@@ -1193,6 +1267,7 @@ return '<div class="reader-content">'+headings+'</div>';
 function readerImage(name,source){
 var image=source.querySelector('.picture img,.cover-bg,.art-hero>img');
 var pics={
+'تحدي الغذاء الذكي':'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1300',
 'ماري كوري | قصة العدد':marieImage,
 'الفيزياء في حياتنا':'https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=1300',
 'المعدن والخشب':'https://images.pexels.com/photos/7241331/pexels-photo-7241331.jpeg?auto=compress&cs=tinysrgb&w=1300',
@@ -1235,7 +1310,9 @@ if(prevButton)prevButton.disabled=index===0;
 readerOverlay.classList.add('active');readerOverlay.setAttribute('aria-hidden','false');
 document.getElementById('reader-brand').textContent=(name==='مشروع الفيزياء النووية'||name==='تقييم المشروع النووي')?'إعلان مشروع الفيزياء النووية':name;
 clearInterval(wamdaTimer);clearInterval(curtainTimer);
-if(name==='رحلة إلى عمق المعلومة'){
+if(name==='تحدي الغذاء الذكي'){
+foodDayIndex=0;foodDayScore=0;foodDayChosen=null;readerArticle.innerHTML=buildFoodDay();renderFoodDay();
+}else if(name==='رحلة إلى عمق المعلومة'){
 scienceUnit=0;scienceAnswers={};readerArticle.innerHTML=makeScience();renderScience();
 }else if(name==='كلمة إلى مديرة المدرسة'){
 readerArticle.innerHTML=makeDirector();
@@ -1264,6 +1341,8 @@ document.getElementById('reader-back').addEventListener('click',function(){clear
 document.getElementById('reader-next').addEventListener('click',function(){clearInterval(readClock);go(Math.min(index+1,pages.length-1))});
 document.getElementById('reader-list').addEventListener('click',function(){clearInterval(readClock);goNamed('الفهرس')});
 readerOverlay.addEventListener('click',function(e){
+var foodAnswer=e.target.closest('[data-food-option]');if(foodAnswer){selectFoodDay(Number(foodAnswer.dataset.foodOption));return;}
+var foodAction=e.target.closest('[data-food-action]');if(foodAction){foodDayAction(foodAction.dataset.foodAction);return;}
 var sc=e.target.closest('[data-sc-answer]');if(sc){scienceAnswer(sc.dataset.scAnswer);return;}
 var nav=e.target.closest('[data-science-action]');if(nav){scienceNavigation(nav.dataset.scienceAction);return;}
 var w=e.target.closest('[data-wamda]');if(w){
