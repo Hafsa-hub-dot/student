@@ -535,7 +535,7 @@ function printNames(names){
  Promise.race([promise,new Promise(function(r){setTimeout(r,1400)})]).then(function(){window.print();});
 }
 function ask(title,message,cb){el("modalTitle").textContent=title;el("modalText").textContent=message;el("modal").classList.add("open");el("modalConfirm").onclick=function(){el("modal").classList.remove("open");cb();};el("modalCancel").onclick=function(){el("modal").classList.remove("open");};}
-function parseNames(v){return Array.from(new Set(String(v).split(/\r?\n/).map(function(n){return n.trim().split(/\t/)[0].trim()}).filter(Boolean)));}
+function parseNames(v){var parts=String(v).split(/\r?\n|[،;,؛]/).map(function(n){return n.trim().split(/\t/)[0].trim().replace(/^"|"$/g,"")}).filter(function(n){return n&&!/^(الاسم|name|اسم المشاركة)$/i.test(n)});return Array.from(new Set(parts));}
 function bind(){
  el("sectionSelect").onchange=function(){showTab(this.value);};
  el("presetGrid").onclick=function(ev){var b=ev.target.closest("[data-preset]");if(!b)return;var id=b.dataset.preset;if(id===st.preset)return;ask("تغيير القالب","سيُعاد توزيع الشهادة بما يلائم القالب الجديد. هل تريدين إبقاء نصوصك الحالية في أماكن القالب الجديد؟",function(){capture();populatePreset(id,true);renderAll();autosave();});};
