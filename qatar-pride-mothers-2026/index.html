@@ -4,14 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#850d3d" />
-<title>قطر في قلوبنا | مسابقة الأمهات</title>
+<title>قطر في قلوبنا | نسخة التسجيل الإلزامي والشهادات</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--q:#8a1538;--q2:#5f0a2b;--gold:#e6bf63;--gold2:#fff0c7;--ink:#2d0b16;--paper:#fff9ef;--soft:#f9e8ee;--ok:#d4ffd9;--bad:#ffe2e5}
 *{box-sizing:border-box}html,body{margin:0;padding:0;font-family:'Tajawal',system-ui,sans-serif;background:#5a0827;color:#fff}body{min-height:100dvh;overflow-x:hidden}
-button,input{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity:.6;cursor:not-allowed}
+button,input{font:inherit}input[aria-invalid="true"]{outline:3px solid #ffadb5;box-shadow:0 0 0 5px rgba(255,255,255,.14)}button{cursor:pointer;border:0}button:disabled{opacity:.6;cursor:not-allowed}
 #app{min-height:100dvh;position:relative;overflow:hidden;background:
  radial-gradient(circle at 12% 12%, rgba(255,217,97,.22), transparent 18%),
  radial-gradient(circle at 88% 16%, rgba(255,255,255,.13), transparent 18%),
@@ -43,7 +43,7 @@ button,input{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity
 .footerActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.toast{position:fixed;bottom:20px;right:20px;background:#fff8ec;color:#59152a;padding:12px 14px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);font-weight:800;opacity:0;transform:translateY(12px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}
 @media (max-width:980px){.hero,.gameWrap,.resultGrid{grid-template-columns:1fr}.gameWrap{gap:14px}.portrait{height:220px}}
 @media (max-width:640px){.container{padding:14px}.hero{padding:16px}.formBox,.side,.main,.resultCard,.certCard,.board{padding:16px}.brand{padding:10px 12px}.timer{width:76px;height:76px}.timer .core{width:56px;height:56px}.question{font-size:1.25rem}.scoreLine{display:grid;grid-template-columns:1fr 1fr}.cert-foot{flex-direction:column;align-items:center;text-align:center}}
-@media print{body{background:#fff} .topbar,.btnRow,.footerActions,.noteBox,.board.print-hide,.hero .right,.gameWrap,.toast,#welcome{display:none!important} #results{display:block!important} #app,.container{background:#fff!important;padding:0!important;max-width:none} .resultCard{display:none!important} .certCard{display:block!important;padding:0!important} .certificate{box-shadow:none;margin:0;border-width:8px;min-height:100vh;break-inside:avoid}}
+@page{size:A4 landscape;margin:6mm}@media print{body{background:#fff} .topbar,.btnRow,.footerActions,.noteBox,.board.print-hide,.hero .right,.gameWrap,.toast,#welcome{display:none!important} #results{display:block!important} #app,.container{background:#fff!important;padding:0!important;max-width:none} .resultCard{display:none!important} .certCard{display:block!important;padding:0!important} .certificate{box-shadow:none;margin:0;border-width:8px;width:100%;min-height:180mm;break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -69,24 +69,24 @@ button,input{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity
           </div>
         </div>
         <div class="right formBox">
-          <h3 class="title">بيانات المشاركة</h3>
+          <h3 class="title">التسجيل إلزامي قبل بدء التحدّي</h3><p style="font-size:.98rem;color:#fff1cf;line-height:1.6">يرجى كتابة اسم الأم واسم ابنتها وصف ابنتها كاملًا، حتى تظهر الأسماء صحيحة في الشهادة والتكريم.</p>
           <div class="fields">
             <div class="field">
               <label for="motherName">اسم الأم <span style="color:#ffe08a">*</span></label>
-              <input id="motherName" placeholder="مثال: أمّ سارة" maxlength="40" required>
+              <input id="motherName" name="motherName" placeholder="الاسم الكامل للأم" autocomplete="name" maxlength="60" minlength="2" aria-required="true" required>
             </div>
             <div class="field">
               <label for="daughterName">اسم البنت <span style="color:#ffe08a">*</span></label>
-              <input id="daughterName" placeholder="مثال: سارة" maxlength="40" required>
+              <input id="daughterName" name="daughterName" placeholder="الاسم الكامل للبنت" maxlength="60" minlength="2" aria-required="true" required>
             </div>
             <div class="field">
               <label for="daughterClass">صف البنت <span style="color:#ffe08a">*</span></label>
-              <input id="daughterClass" placeholder="مثال: الصف الحادي عشر" maxlength="40" required>
+              <input id="daughterClass" name="daughterClass" placeholder="مثال: الصف الحادي عشر علمي 2" maxlength="60" minlength="2" aria-required="true" required>
             </div>
           </div>
-          <div class="hint">يشترط إدخال جميع البيانات لبدء المسابقة. سيتم استخدامها في شهادة المشاركة ولوحة التكريم.</div>
+          <div class="hint">* الحقول الثلاثة إجبارية، ولا يمكن دخول الأسئلة دون استكمالها.</div><div id="formError" role="alert" aria-live="assertive" style="display:none;background:#fff5e6;color:#8a1538;font-weight:900;padding:12px;border:2px solid #edbc67;border-radius:14px;margin-top:10px"></div>
           <div class="btnRow">
-            <button id="startBtn" class="btn primary">ابدئي المسابقة الآن</button>
+            <button id="startBtn" class="btn primary" type="button">ابدئي المسابقة الآن</button>
             <button id="clearBoardBtn" class="btn secondary" type="button">إعادة تعيين لوحة الشرف</button>
           </div>
         </div>
@@ -95,7 +95,7 @@ button,input{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity
       <div class="card board print-hide">
         <h3>🏅 لوحة الشرف الحالية — أفضل 5 مراكز</h3>
         <div id="leadersWelcome" class="leader-list"></div>
-        <div class="noteBox">مهم: <b>لوحة الشرف في هذه النسخة تُحفظ على نفس الجهاز/المتصفح فقط.</b> إذا أردتِ ترتيبًا مباشرًا لكل المشاركات عبر الرابط نفسه من أجهزة مختلفة، فذلك يحتاج ربطًا بقاعدة بيانات مثل Firebase.</div>
+        <div class="noteBox">مهم: <b>لوحة الشرف في هذه النسخة تُحفظ على نفس الجهاز/المتصفح فقط، ولا تجمع نتائج جميع الأمهات من أجهزة مختلفة.</b> إذا أردتِ ترتيبًا مباشرًا لكل المشاركات عبر الرابط نفسه من أجهزة مختلفة، فذلك يحتاج ربطًا بقاعدة بيانات مثل Firebase.</div>
       </div>
     </section>
 
@@ -141,7 +141,7 @@ button,input{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity
           <div class="scoreLine">
             <div class="scoreChip"><span>النتيجة النهائية</span><b id="finalPoints">0</b></div>
             <div class="scoreChip"><span>الدقة</span><b id="accuracyText">0%</b></div>
-            <div class="scoreChip"><span>الوقت المستغرق</span><b id="timeSpent">0ث</b></div>
+            <div class="scoreChip"><span>زمن الإجابات</span><b id="timeSpent">0ث</b></div>
             <div class="scoreChip"><span>المركز</span><b id="myRank">—</b></div>
           </div>
           <div class="noteBox" id="resultMsg"></div>
@@ -198,7 +198,7 @@ const questions=[
 const $=id=>document.getElementById(id);
 const screens=['welcome','game','results'];
 const TIME_PER_Q=15,BOARD_KEY='qatar_mothers_honors_v1';
-let state={round:0,score:0,correct:0,speedBonus:0,locked:false,seconds:TIME_PER_Q,deadline:0,clock:null,startAt:0,mother:'',daughter:'',daughterClass:'',finalTimeMs:0,entry:null};
+let state={round:0,score:0,correct:0,speedBonus:0,locked:false,seconds:TIME_PER_Q,deadline:0,clock:null,questionStartedAt:0,answerTimeMs:0,startAt:0,mother:'',daughter:'',daughterClass:'',finalTimeMs:0,entry:null};
 const cheerFail=['المشاركة بحد ذاتها فخر 🌷','كل سؤال يزيد المعرفة حبًا للوطن 🇶🇦','أحسنتِ المحاولة… القادم أجمل ✨','روحكِ الوطنية أجمل من النتيجة 💕'];
 function show(screen){screens.forEach(s=>$(s).classList.toggle('active',s===screen));window.scrollTo({top:0,behavior:'instant'});}
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._x);toast._x=setTimeout(()=>t.classList.remove('show'),2600)}
@@ -212,14 +212,22 @@ function resetVisualQuestion(){ $('feedback').className='feedback'; $('explain')
 function dots(){const box=$('steps');box.innerHTML='';questions.forEach((_,i)=>{const d=document.createElement('span');d.className='dot '+(i<state.round?'done':i===state.round?'current':'');box.appendChild(d)})}
 function paintTimer(){ $('secondsText').textContent=state.seconds; const pct=Math.max(0,state.seconds/TIME_PER_Q*100); $('timer').style.background=`conic-gradient(${state.seconds<=5?'#ff8799':'#ffe08f'} ${pct}%,rgba(255,255,255,.12) ${pct}%)`; $('timer').classList.toggle('urgent',state.seconds<=5&&state.seconds>0); }
 function stopClock(){clearInterval(state.clock);state.clock=null}
-function startClock(){stopClock();state.seconds=TIME_PER_Q;state.deadline=Date.now()+TIME_PER_Q*1000;paintTimer();state.clock=setInterval(()=>{if(state.locked)return;const left=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));if(left!==state.seconds){state.seconds=left;paintTimer()} if(left===0) choose(-1)},150)}
+function startClock(){stopClock();state.seconds=TIME_PER_Q;state.questionStartedAt=performance.now();state.deadline=Date.now()+TIME_PER_Q*1000;paintTimer();state.clock=setInterval(()=>{if(state.locked)return;const left=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));if(left!==state.seconds){state.seconds=left;paintTimer()} if(left===0) choose(-1)},150)}
 function loadQuestion(){state.locked=false;dots();const q=questions[state.round];$('roundText').textContent=`${state.round+1} / ${questions.length}`;$('scoreText').textContent=state.score;$('correctText').textContent=state.correct;$('speedText').textContent=state.speedBonus;$('tag').textContent=q.tag;$('question').textContent=q.question;$('portrait').src=q.image;$('subline').textContent='اختاري بسرعة: الإجابة الصحيحة تمنح 100 نقطة + Bonus بحسب الوقت المتبقي.';$('options').innerHTML='';q.opts.forEach((opt,i)=>{const b=document.createElement('button');b.className='option';b.type='button';b.innerHTML=`<span class="letter">${['أ','ب','ج'][i]}</span><span>${escapeHtml(opt)}</span>`;b.addEventListener('click',()=>choose(i));$('options').appendChild(b)});resetVisualQuestion();startClock()}
-function choose(i){if(state.locked)return;state.locked=true;stopClock();state.seconds=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));paintTimer();$('timer').classList.remove('urgent');const q=questions[state.round];const correct=i===q.answer;const btns=[...$('options').children];btns.forEach((b,idx)=>{b.disabled=true;if(idx===q.answer)b.classList.add('correct');else if(idx===i)b.classList.add('wrong');else b.classList.add('dim')}); if(correct){const bonus=state.seconds*10;state.correct++;state.speedBonus+=bonus;state.score+=100+bonus;$('feedback').textContent=`${q.cheer} +${100+bonus} نقطة`; } else { $('feedback').textContent=i<0?'انتهى الوقت ⏳':'إجابة غير صحيحة'; }
+function choose(i){if(state.locked)return;const reactionMs=i<0?TIME_PER_Q*1000:Math.min(TIME_PER_Q*1000,Math.max(0,performance.now()-state.questionStartedAt));state.answerTimeMs+=reactionMs;state.locked=true;stopClock();state.seconds=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));paintTimer();$('timer').classList.remove('urgent');const q=questions[state.round];const correct=i===q.answer;const btns=[...$('options').children];btns.forEach((b,idx)=>{b.disabled=true;if(idx===q.answer)b.classList.add('correct');else if(idx===i)b.classList.add('wrong');else b.classList.add('dim')}); if(correct){const bonus=Math.max(0,Math.ceil((TIME_PER_Q*1000-reactionMs)/100));state.correct++;state.speedBonus+=bonus;state.score+=100+bonus;$('feedback').textContent=`${q.cheer} +${100+bonus} نقطة`; } else { $('feedback').textContent=i<0?'انتهى الوقت ⏳':'إجابة غير صحيحة'; }
 $('scoreText').textContent=state.score;$('correctText').textContent=state.correct;$('speedText').textContent=state.speedBonus;$('feedback').classList.add('show');$('explain').textContent=correct ? `أحسنتِ! ${q.explain}` : `${cheerFail[state.round%cheerFail.length]} ${q.explain}`;$('explain').classList.add('show');$('nextBtn').style.display='inline-flex'; }
-function validate(){const mother=$('motherName').value.trim();const daughter=$('daughterName').value.trim();const daughterClass=$('daughterClass').value.trim(); if(!mother||!daughter||!daughterClass){toast('يرجى تعبئة اسم الأم واسم البنت وصفها');return null} return {mother,daughter,daughterClass}}
-function startGame(){const data=validate(); if(!data)return; Object.assign(state,{round:0,score:0,correct:0,speedBonus:0,startAt:Date.now(),mother:data.mother,daughter:data.daughter,daughterClass:data.daughterClass}); $('miniMother').textContent=data.mother; $('miniDaughter').textContent=data.daughter; show('game'); loadQuestion()}
-function finish(){stopClock();state.finalTimeMs=Date.now()-state.startAt; const accuracy=Math.round((state.correct/questions.length)*100); const title=state.correct===5?'وسام التميّز الوطني':state.correct>=4?'نجمة الهوية القطرية':state.correct>=3?'مشاركة وطنية متميزة':'سفيرة حب الوطن'; const entry={mother:state.mother,daughter:state.daughter,daughterClass:state.daughterClass,points:state.score,timeMs:state.finalTimeMs,accuracy,correct:state.correct,created:Date.now()}; const board=rankBoard([...getBoard(),entry]); saveBoard(board); const my=board.findIndex(x=>x.created===entry.created && x.mother===entry.mother && x.points===entry.points)+1; state.entry={...entry,rank:my,title}; $('finalPoints').textContent=entry.points; $('accuracyText').textContent=accuracy+'%'; $('timeSpent').textContent=(entry.timeMs/1000).toFixed(1)+'ث'; $('myRank').textContent=my?('#'+my):'—'; $('resultMsg').innerHTML=`<b>أحسنتِ يا ${escapeHtml(state.mother)}</b> 💐<br>تم تسجيل مشاركتكِ باسم ابنتكِ <b>${escapeHtml(state.daughter)}</b> — <b>${escapeHtml(state.daughterClass)}</b>.<br>المجموع النهائي يعتمد على <b>الدقة + السرعة</b>، وقد تم إدراج نتيجتكِ ضمن لوحة الشرف على هذا الجهاز.`; $('certMother').textContent=state.mother; $('certDaughter').textContent=state.daughter; $('certClass').textContent=state.daughterClass; $('certScore').textContent=entry.points; $('certTitle').textContent=title; $('certDate').textContent=new Date().toLocaleDateString('ar-QA',{year:'numeric',month:'long',day:'numeric'}); renderLeaders('leadersWelcome'); renderLeaders('leadersResults'); show('results')}
-$('startBtn').addEventListener('click',startGame); ['motherName','daughterName','daughterClass'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')startGame()}));
+function validate(){
+const fields=[['motherName','اسم الأم'],['daughterName','اسم البنت'],['daughterClass','صف البنت']];
+const error=$('formError');error.style.display='none';error.textContent='';
+for(const [id,label] of fields){const input=$(id),value=input.value.trim();
+  if(value.length<2){error.textContent='إدخال '+label+' إجباري، اكتبي بيانات صحيحة لا تقل عن حرفين.';error.style.display='block';input.setAttribute('aria-invalid','true');input.focus();return null}
+  input.removeAttribute('aria-invalid');
+}
+return {mother:$('motherName').value.trim(),daughter:$('daughterName').value.trim(),daughterClass:$('daughterClass').value.trim()};
+}
+function startGame(){const data=validate(); if(!data)return; Object.assign(state,{round:0,score:0,correct:0,speedBonus:0,answerTimeMs:0,startAt:Date.now(),mother:data.mother,daughter:data.daughter,daughterClass:data.daughterClass}); $('miniMother').textContent=data.mother; $('miniDaughter').textContent=data.daughter; show('game'); loadQuestion()}
+function finish(){stopClock();state.finalTimeMs=Math.round(state.answerTimeMs); const accuracy=Math.round((state.correct/questions.length)*100); const title=state.correct===5?'وسام التميّز الوطني':state.correct>=4?'نجمة الهوية القطرية':state.correct>=3?'مشاركة وطنية متميزة':'سفيرة حب الوطن'; const entry={mother:state.mother,daughter:state.daughter,daughterClass:state.daughterClass,points:state.score,timeMs:state.finalTimeMs,accuracy,correct:state.correct,created:Date.now()}; const board=rankBoard([...getBoard(),entry]); saveBoard(board); const my=board.findIndex(x=>x.created===entry.created && x.mother===entry.mother && x.points===entry.points)+1; state.entry={...entry,rank:my,title}; $('finalPoints').textContent=entry.points; $('accuracyText').textContent=accuracy+'%'; $('timeSpent').textContent=(entry.timeMs/1000).toFixed(1)+'ث'; $('myRank').textContent=my?('#'+my):'—'; $('resultMsg').innerHTML=`<b>أحسنتِ يا ${escapeHtml(state.mother)}</b> 💐<br>تم تسجيل مشاركتكِ باسم ابنتكِ <b>${escapeHtml(state.daughter)}</b> — <b>${escapeHtml(state.daughterClass)}</b>.<br>المجموع النهائي يعتمد على <b>الدقة + السرعة</b>، وقد تم إدراج نتيجتكِ ضمن لوحة الشرف على هذا الجهاز.`; $('certMother').textContent=state.mother; $('certDaughter').textContent=state.daughter; $('certClass').textContent=state.daughterClass; $('certScore').textContent=entry.points; $('certTitle').textContent=title; $('certDate').textContent=new Date().toLocaleDateString('ar-QA',{year:'numeric',month:'long',day:'numeric'}); renderLeaders('leadersWelcome'); renderLeaders('leadersResults'); show('results')}
+$('startBtn').addEventListener('click',startGame); ['motherName','daughterName','daughterClass'].forEach(id=>{ $(id).addEventListener('keydown',e=>{if(e.key==='Enter')startGame()});$(id).addEventListener('input',()=>{ $('formError').style.display='none';$(id).removeAttribute('aria-invalid') });});
 $('nextBtn').addEventListener('click',()=>{ if(state.round<questions.length-1){state.round++; loadQuestion()} else finish() });
 $('playAgainBtn').addEventListener('click',()=>{show('welcome')});
 $('printBtn').addEventListener('click',()=>window.print());
