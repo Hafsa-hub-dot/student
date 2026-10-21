@@ -145,4 +145,5 @@ function closeKids(){document.getElementById('kidsPortal').classList.remove('act
 function answerKid(correct){document.getElementById('kidsFeedback').textContent=correct?'أحسنت يا مستكشف السماء! الشهاب ليس نجمًا يسقط. 🌟':'محاولة جميلة! اقرأ بطاقة «ما الشهاب؟» ثم حاول مرة أخرى. 💛'}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('kidsPortal').classList.contains('active')){e.stopPropagation();closeKids()}});
 </script>
+<div id="afaq-author-credit" style="position:fixed;bottom:0;left:0;right:0;z-index:70;text-align:center;padding:6px 12px;background:rgba(255,253,248,.96);border-top:1px solid #dcd5c7;color:#27374a;font-family:'El Messiri',Tahoma,sans-serif;font-size:clamp(11px,1.2vw,15px);pointer-events:none">إعداد المعلمة حفصة طيبي</div>
 </body></html>
