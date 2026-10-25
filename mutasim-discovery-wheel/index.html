@@ -2,6 +2,24 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<script>
+(function () {
+  try {
+    const address = new URL(window.location.href);
+    const trackingKeys = Array.from(address.searchParams.keys()).filter(function (key) {
+      return /^utm_/i.test(key);
+    });
+    if (!trackingKeys.length) return;
+    trackingKeys.forEach(function (key) { address.searchParams.delete(key); });
+    window.history.replaceState(
+      window.history.state,
+      '',
+      address.pathname + address.search + address.hash
+    );
+  } catch (_) {}
+})();
+</script>
+<link rel="canonical" href="https://hafsa-hub-dot.github.io/student/mutasim-discovery-wheel/"/>
 <meta name="theme-color" content="#5405be"/>
 <meta name="description" content="لعبة تعليمية تفاعلية بالعربية: اختر الفئة العمرية والمجالات والمستوى ثم لفّ عجلة الاكتشاف!"/>
 <title>عجلة الاكتشاف | مغامرات ذكية للصغار</title>
